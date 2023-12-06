@@ -1,1 +1,305 @@
 <app-header></app-header>
+
+<section id="home" class="home">
+  <h1 class="home-parallax" data-speed="-2">Find Your Car</h1>
+  <img class="home-parallax" data-speed="5" src="../../../../assets/images/Home_Car_Collection.png" alt="">
+  <a href="#" class="btn home-parallax" data-speed="7">Explore Cars</a>
+</section>
+
+<section id="icons" class="icons-container">
+  <div class="icons">
+    <i class="fas fa-home"></i>
+    <div class="content">
+      <h3>150+</h3>
+      <p>branches</p>
+    </div>
+  </div>
+  <div class="icons">
+    <i class="fas fa-car"></i>
+    <div class="content">
+      <h3>4770+</h3>
+      <p>cars sold</p>
+    </div>
+  </div>
+  <div class="icons">
+    <i class="fas fa-users"></i>
+    <div class="content">
+      <h3>590+</h3>
+      <p>happy clients</p>
+    </div>
+  </div>
+  <div class="icons">
+    <i class="fas fa-car"></i>
+    <div class="content">
+      <h3>40+</h3>
+      <p>new cars</p>
+    </div>
+  </div>
+</section>
+
+<section class="vehicles" id="vehicles">
+  <h1 class="heading">popular <span>vehicles</span></h1>
+
+  <swiper-container fmSwiper [config]="vehicleConfig" init="false" class="vehicles-slider">
+    <swiper-slide class="box" *ngFor="let eachImage of contents">
+      <img [src]="eachImage" alt="" loading="lazy">
+      <div class="content">
+        <h3>new model</h3>
+        <div class="price"><span>price: </span> $65000/- </div>
+        <p>
+          new
+          <span class="fas fa-circle"></span> 2021
+          <span class="fas fa-circle"></span> automatic
+          <span class="fas fa-circle"></span> petrol
+          <span class="fas fa-circle"></span> 183mph
+        </p>
+        <a href="#" class="btn">Check Out</a>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</section>
+
+<section id="services" class="services">
+  <h1 class="heading"> our <span>services</span></h1>
+  <div class="box-container">
+    <div class="box">
+      <i class="fas fa-car"></i>
+      <h3>car selling</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, deserunt.</p>
+      <a href="#" class="btn">read more</a>
+    </div>
+    <div class="box">
+      <i class="fas fa-tools"></i>
+      <h3>parts repair</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, deserunt.</p>
+      <a href="#" class="btn">read more</a>
+    </div>
+    <div class="box">
+      <i class="fas fa-car-crash"></i>
+      <h3>car insurance</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, deserunt.</p>
+      <a href="#" class="btn">read more</a>
+    </div>
+    <div class="box">
+      <i class="fas fa-battery"></i>
+      <h3>battery replacement</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, deserunt.</p>
+      <a href="#" class="btn">read more</a>
+    </div>
+    <div class="box">
+      <i class="fas fa-gas-pump"></i>
+      <h3>Oil Change</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, deserunt.</p>
+      <a href="#" class="btn">read more</a>
+    </div>
+    <div class="box">
+      <i class="fas fa-headset"></i>
+      <h3>24/7 support</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, deserunt.</p>
+      <a href="#" class="btn">read more</a>
+    </div>
+  </div>
+</section>
+
+<section id="featured" class="featured">
+  <h1 class="heading"><span>featured </span>cars</h1>
+
+  <swiper-container fmSwiper [config]="featureConfig" init="false" class="featured-slider">
+    <swiper-slide class="box" *ngFor="let eachImage of contents">
+      <img [src]="eachImage" alt="" loading="lazy">
+      <div class="content">
+        <h3>new model</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <div class="price"><span>price: </span> $65000/- </div>
+        <a href="#" class="btn">Check Out</a>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <swiper-container fmSwiper [config]="featureConfig" init="false" class="featured-slider">
+    <swiper-slide class="box" *ngFor="let eachImage of contents">
+      <img [src]="eachImage" alt="" loading="lazy">
+      <div class="content">
+        <h3>new model</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <div class="price"><span>price: </span> $65000/- </div>
+        <a href="#" class="btn">Check Out</a>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</section>
+
+<section id="newsletter" class="newsletter">
+  <h1>subscribe for latest updates</h1>
+
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste consequatur molestias quo.</p>
+  <form>
+    <input type="email" name="email" id="email" placeholder="enter your email">
+    <button type="button">Submit</button>
+  </form>
+</section>
+
+<section id="reviews" class="review">
+  <h1 class="heading">client's <span>review</span></h1>
+
+  <swiper-container fmSwiper [config]="reviewConfig" init="false" class="review-slider">
+    <swiper-slide class="box">
+      <i class="fas fa-user user-icon"></i>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque nisi quibusdam illum voluptatem odit laudantium. Facere culpa iure, dicta
+          eaque iste incidunt? Assumenda iusto necessitatibus officia distinctio perferendis maiores doloribus.</p>
+        <h3>Soumyajit Sarkar</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="box">
+      <i class="fas fa-user user-icon"></i>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque nisi quibusdam illum voluptatem odit laudantium. Facere culpa iure, dicta
+          eaque iste incidunt? Assumenda iusto necessitatibus officia distinctio perferendis maiores doloribus.</p>
+        <h3>John Deo</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="box">
+      <i class="fas fa-user user-icon"></i>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque nisi quibusdam illum voluptatem odit laudantium. Facere culpa iure, dicta
+          eaque iste incidunt? Assumenda iusto necessitatibus officia distinctio perferendis maiores doloribus.</p>
+        <h3>Shubhayu Dasgupta</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="box">
+      <i class="fas fa-user user-icon"></i>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque nisi quibusdam illum voluptatem odit laudantium. Facere culpa iure, dicta
+          eaque iste incidunt? Assumenda iusto necessitatibus officia distinctio perferendis maiores doloribus.</p>
+        <h3>John Deo</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="box">
+      <i class="fas fa-user user-icon"></i>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque nisi quibusdam illum voluptatem odit laudantium. Facere culpa iure, dicta
+          eaque iste incidunt? Assumenda iusto necessitatibus officia distinctio perferendis maiores doloribus.</p>
+        <h3>Rahim Khan</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="box">
+      <i class="fas fa-user user-icon"></i>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque nisi quibusdam illum voluptatem odit laudantium. Facere culpa iure, dicta
+          eaque iste incidunt? Assumenda iusto necessitatibus officia distinctio perferendis maiores doloribus.</p>
+        <h3>Soumyajit Sarkar</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</section>
+
+<section id="contact" class="contact">
+  <h1 class="heading"><span>contact </span> us </h1>
+
+  <div class="row">
+    <iframe class="map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235850.8115155397!2d88.1828891054038!3d22.535343793821482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1701868996187!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <form action="">
+      <h3>get in touch</h3>
+      <input type="text" placeholder="name" name="name" id="name">
+      <input type="email" placeholder="email" name="email" id="email-contact">
+      <input type="tel" placeholder="number" name="number" id="number">
+      <textarea placeholder="message" name="message" id="message"></textarea>
+      <button type="button" class="btn">send message</button>
+    </form>
+  </div>
+</section>
+
+<section id="footer" class="footer">
+  <div class="box-container">
+    <div class="box">
+      <h3>Our Offices</h3>
+      <a href="#"><i class="fas fa-location-dot"></i> India</a>
+      <a href="#"><i class="fas fa-location-dot"></i> France</a>
+      <a href="#"><i class="fas fa-location-dot"></i> Africa</a>
+      <a href="#"><i class="fas fa-location-dot"></i> Australia</a>
+      <a href="#"><i class="fas fa-location-dot"></i> Russia</a>
+    </div>
+    <div class="box">
+      <h3>Quick Links</h3>
+      <a href="#"><i class="fas fa-arrow-right"></i> Home</a>
+      <a href="#"><i class="fas fa-arrow-right"></i> Vehicles</a>
+      <a href="#"><i class="fas fa-arrow-right"></i> Services</a>
+      <a href="#"><i class="fas fa-arrow-right"></i> Featured</a>
+      <a href="#"><i class="fas fa-arrow-right"></i> Reviews</a>
+      <a href="#"><i class="fas fa-arrow-right"></i> Contact</a>
+    </div>
+    <div class="box">
+      <h3>Contacts</h3>
+      <a href="#"><i class="fas fa-phone"></i> +122-456-7890</a>
+      <a href="#"><i class="fas fa-phone"></i> +122-222-3333</a>
+      <a href="#"><i class="fas fa-envelope"></i> soumyajit@gmail.com</a>
+      <a href="#"><i class="fas fa-location-dot"></i> Kolkata, India - 700156</a>
+    </div>
+    <div class="box">
+      <h3>Our Offices</h3>
+      <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#"><i class="fab fa-pinterest"></i> Pinterest</a>
+    </div>
+  </div>
+</section>

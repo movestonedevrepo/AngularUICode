@@ -1,15 +1,24 @@
-<header class="header">
-  <div id="menu-btn" class="fas fa-bars"></div>
-  <a href="#" class="logo">
-    <span>max</span>Wheels
-  </a>
+<header class="header" [ngClass]="{'active': isVerticalScroll}">
+  <div id="menu-btn" (click)="onMenuBtnClick()">
+    <i class="fas fa-bars" *ngIf="!isMenuVisible"></i>
+    <i class="fas fa-times" *ngIf="isMenuVisible"></i>
+  </div>
+  <a href="#" class="logo"><span>max</span>Wheels</a>
 
-  <nav class="navbar">
-    <a class="cursor-pointer">home</a>
-    <a class="cursor-pointer">products</a>
-    <a class="cursor-pointer">services</a>
-    <a class="cursor-pointer">query</a>
-    <a class="cursor-pointer">contact</a>
-    <a class="cursor-pointer">page</a>
+  <nav class="navbar" [ngClass]="{'active': isMenuVisible}" (click)="selectNavOptions()">
+    <a class="cursor-pointer" href="#">home</a>
+    <a class="cursor-pointer" href="#vehicles">vehicles</a>
+    <a class="cursor-pointer" href="#services">services</a>
+    <a class="cursor-pointer" href="#featured">featured</a>
+    <a class="cursor-pointer" href="#reviews">reviews</a>
+    <a class="cursor-pointer" href="#contact">contact</a>
   </nav>
+
+  <div id="login-btn" (click)="onLoginBtnClick()">
+    <button class="btn">Login</button>
+    <span id="login-icon">
+      <i class="far fa-user" *ngIf="!isLoginVisible"></i>
+      <i class="fas fa-times" *ngIf="isLoginVisible"></i>
+    </span>
+  </div>
 </header>
