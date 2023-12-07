@@ -58,7 +58,7 @@ html {
 }
 
 .header .logo {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: var(--black);
   font-weight: bolder;
 }
@@ -88,6 +88,21 @@ html {
   color: var(--light-color);
   cursor: pointer;
   display: none;
+}
+
+.loggedin-user {
+  font-size: 2rem;
+  text-align: center;
+  color: var(--black);
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  > i {
+    font-size: 2.5rem;
+    border: var(--border);
+    padding: 1.5rem;
+    border-radius: 50%;
+  }
 }
 
 #menu-btn {

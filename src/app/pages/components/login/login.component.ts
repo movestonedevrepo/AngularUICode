@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { WebService } from 'src/app/shared/services/web.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private router: Router) {}
+  loginForm = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
+
+  constructor(private router: Router, private webService: WebService) {}
 
   closeLoginPopup() {
     this.router.navigate(['pages/home']);
+  }
+
+  onLogin() {
+    if (this.loginForm.valid) {
+      this.webService.setUserName(this.loginForm?.value?.email);
+      this.closeLoginPopup();
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
   }
 }

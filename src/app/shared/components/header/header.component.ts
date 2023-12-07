@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { WebService } from '../../services/web.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   isVerticalScroll: boolean = false;
   isLoginVisible: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private webService: WebService) {}
 
   ngOnInit(): void {
     this.isLoginVisible = false;
@@ -44,5 +45,9 @@ export class HeaderComponent implements OnInit {
     if (this.isLoginVisible) {
       this.router.navigate(['pages/login']);
     }
+  }
+
+  get getUserName(): string {
+    return this.webService.getUserName();
   }
 }

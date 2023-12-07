@@ -14,11 +14,17 @@
     <a class="cursor-pointer" href="#contact">contact</a>
   </nav>
 
-  <div id="login-btn" (click)="onLoginBtnClick()">
+  <div id="login-btn" (click)="onLoginBtnClick()" *ngIf="!getUserName; else loggedInUser">
     <button class="btn">Login</button>
     <span id="login-icon">
       <i class="far fa-user" *ngIf="!isLoginVisible"></i>
       <i class="fas fa-times" *ngIf="isLoginVisible"></i>
     </span>
   </div>
+  <ng-template #loggedInUser>
+    <label class="loggedin-user" for="loggedin-user">
+      <i id="loggedin-user" class="fas fa-user"></i>
+      {{getUserName.toUpperCase()}}
+    </label>
+  </ng-template>
 </header>
