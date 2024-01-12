@@ -67,15 +67,16 @@ html {
   color: var(--yellow);
 }
 
-.header .navbar a {
+.header .navbar-section a {
   font-size: 1.7rem;
   margin: 0 1rem;
   color: var(--black);
   cursor: pointer;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
-.header .navbar a:hover {
+.header .navbar-section a:hover {
   color: var(--yellow);
 }
 
@@ -296,6 +297,9 @@ section {
 
 .vehicles .vehicles-slider .box img {
   width: 100%;
+  height: 100%;
+  border: 1px solid rgb(207, 205, 205);
+  border-radius: 5px;
   opacity: 0.5;
   transform: scale(0.8);
 }
@@ -619,6 +623,157 @@ textarea {
   padding-right: 2rem;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.product-view {
+  padding-top: 10rem;
+  margin-top: 10rem;
+  overflow-x: hidden;
+}
+
+.product-view .col-6 {
+  padding: 20px;
+}
+
+.product-view .col-6 img {
+  padding: 0;
+  height: 75%;
+}
+
+.product-view h4 {
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.product-view h1 {
+  font-size: 3rem;
+  border-bottom: 1px solid rgb(189, 189, 189);
+  padding: 2rem 0;
+}
+
+.product-view p {
+  color: var(--light-color);
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  line-height: 1.8rem;
+}
+
+.product-view h3 {
+  padding: 2rem 0 1rem 0;
+}
+
+.product-view .fa {
+  color: #ff523b;
+  margin-left: 10px;
+}
+
+.product-view .small-container .row input,
+select {
+  margin: 0.7rem 0;
+  width: 100%;
+  border: var(--border);
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: var(--black);
+  border-radius: 0.5rem;
+  text-transform: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.product-view .small-img-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.product-view .small-img-col {
+  flex-basis: 25%;
+  cursor: pointer;
+}
+
+.product-view .small-img-col img {
+  width: 100%;
+  height: 100%;
+  border: var(--border);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.products .small-container .row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.products .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+}
+
+.products .box-container .box {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  border-color: var(--border);
+  padding: 2rem;
+  height: auto;
+}
+
+.products .box-container .box img {
+  width: 100%;
+  padding: 5px;
+}
+
+.products .box-container .box .stars {
+  padding: 1rem 0;
+}
+
+.products .box-container .box .stars i {
+  font-size: 1.7rem;
+  color: var(--yellow);
+}
+
+.products .box-container .box .price {
+  font-size: 2.2rem;
+  color: var(--black);
+}
+
+.products .box-container .box h3 {
+  color: var(--black);
+  font-size: 2.2rem;
+}
+
+.products .box-container .box p {
+  color: var(--light-color);
+  font-size: 1.4rem;
+  padding: 1rem 0;
+  line-height: 1.8rem;
+}
+
+.products .box-container .box:hover {
+  background: var(--black);
+}
+
+.products .box-container .box:hover h3 {
+  color: #fff;
+}
+
+.products .box-container .box:hover p {
+  color: #fff;
+}
+
 @media (max-width: 991px) {
   html {
     font-size: 55.5%;
@@ -630,7 +785,7 @@ textarea {
 }
 
 @media (max-width: 750px) {
-  .header .navbar {
+  .header .navbar-section {
     position: absolute;
     top: 99%;
     left: 0;
@@ -640,11 +795,11 @@ textarea {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 
-  .header .navbar.active {
+  .header .navbar-section.active {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  .header .navbar a {
+  .header .navbar-section a {
     display: block;
     margin: 2rem;
     font-size: 2rem;
@@ -674,6 +829,10 @@ textarea {
   .services .box-container {
     grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
   }
+
+  .products .box-container {
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  }
 }
 
 @media (max-width: 450px) {
@@ -684,8 +843,12 @@ textarea {
   .services .box-container {
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   }
-}
 
-.cursor-pointer {
-  cursor: pointer;
+  .products .box-container {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+
+  .product-view .col-6 {
+    width: 100%;
+  }
 }

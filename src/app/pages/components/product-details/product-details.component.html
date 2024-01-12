@@ -1,0 +1,126 @@
+<app-header></app-header>
+
+@defer (on viewport) {
+<section id="product-view" class="product-view">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-6">
+        <img [src]="selectedImage" alt="Image" width="100%" />
+
+        <div class="small-img-row">
+          <div class="small-img-col" *ngFor="let eachImage of images">
+            <img
+              [src]="eachImage.image"
+              alt="Image-{{ eachImage.id }}"
+              (click)="changeSelectedImage(eachImage.image)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <p>Product / Car</p>
+        <h1>White coloreded Jaguar By Landrover</h1>
+        <h4>$65000</h4>
+        <select title="Select Size">
+          <option disabled hidden>Select Size</option>
+          <option value="XXL">XXL</option>
+          <option value="XL">XL</option>
+          <option value="Large">Large</option>
+          <option value="Medium">Medium</option>
+          <option value="Small">Small</option>
+        </select>
+        <input type="number" title="quantity" value="1" />
+        <a href="" class="btn">Add To Cart</a>
+
+        <h3>Product Details <i class="fa fa-indent"></i></h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident id
+          odit, eum voluptatibus, placeat facilis rerum impedit illum laborum ea
+          pariatur fuga cumque distinctio reprehenderit amet animi. Fugiat,
+          aliquam cumque.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="product-details-section">
+    <swiper-container
+      fmSwiper
+      [config]="vehicleConfig"
+      init="false"
+      class="image-slider"
+    >
+      @for (eachImage of images; track eachImage) {
+      <swiper-slide class="box">
+        <img [src]="eachImage.image" alt="image" loading="lazy" />
+      </swiper-slide>
+      }
+    </swiper-container>
+  </div> -->
+</section>
+} @placeholder {
+<div>product View Section</div>
+} @defer (on viewport) {
+<section id="products" class="products">
+  <h1 class="heading">Related <span>Products</span></h1>
+  <div class="box-container">
+    <div class="box" *ngFor="let eachProduct of products">
+      <img [src]="eachProduct.image" alt="" loading="lazy" />
+      <div class="content">
+        <h3>new model</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <h3 class="price"><span>price: </span> $65000/-</h3>
+        <button class="btn" (click)="checkProduct(eachProduct.id)">
+          Check Out
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+} @placeholder {
+<div>Products Section</div>
+} @defer (on viewport) {
+<section id="contact" class="contact">
+  <h1 class="heading"><span>Product </span> query</h1>
+
+  <div class="row">
+    <form action="">
+      <h3>get in touch</h3>
+      <div class="d-flex justify-content-between align-items-center gap-4">
+        <input
+          disabled
+          class="w-75"
+          type="text"
+          placeholder="Car Name"
+          name="car_name"
+          id="car_name"
+          value="White coloreded Jaguar By Landrover"
+        />
+        <input
+          disabled
+          class="w-75"
+          type="text"
+          placeholder="Car ID"
+          name="car_id"
+          id="car_id"
+          value="2HKYF18413H541936"
+        />
+      </div>
+      <input type="text" placeholder="name" name="name" id="name" />
+      <input type="email" placeholder="email" name="email" id="email-contact" />
+      <input type="tel" placeholder="number" name="number" id="number" />
+      <textarea placeholder="message" name="message" id="message"></textarea>
+      <button type="button" class="btn">send message</button>
+    </form>
+  </div>
+</section>
+} @placeholder {
+<div>Query Section</div>
+}
+<app-footer></app-footer>

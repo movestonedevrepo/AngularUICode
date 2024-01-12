@@ -1,11 +1,15 @@
-<header class="header" [ngClass]="{'active': isVerticalScroll}">
+<header class="header" [ngClass]="{ active: isVerticalScroll }">
   <div id="menu-btn" (click)="onMenuBtnClick()">
     <i class="fas fa-bars" *ngIf="!isMenuVisible"></i>
     <i class="fas fa-times" *ngIf="isMenuVisible"></i>
   </div>
   <a href="#" class="logo"><span>max</span>Wheels</a>
 
-  <nav class="navbar" [ngClass]="{'active': isMenuVisible}" (click)="selectNavOptions()">
+  <nav
+    class="navbar-section"
+    [ngClass]="{ active: isMenuVisible }"
+    (click)="selectNavOptions()"
+  >
     <a class="cursor-pointer" href="#">home</a>
     <a class="cursor-pointer" href="#vehicles">vehicles</a>
     <a class="cursor-pointer" href="#services">services</a>
@@ -14,7 +18,11 @@
     <a class="cursor-pointer" href="#contact">contact</a>
   </nav>
 
-  <div id="login-btn" (click)="onLoginBtnClick()" *ngIf="!getUserName; else loggedInUser">
+  <div
+    id="login-btn"
+    (click)="onLoginBtnClick()"
+    *ngIf="!getUserName; else loggedInUser"
+  >
     <button class="btn">Login</button>
     <span id="login-icon">
       <i class="far fa-user" *ngIf="!isLoginVisible"></i>
@@ -24,7 +32,7 @@
   <ng-template #loggedInUser>
     <label class="loggedin-user" for="loggedin-user">
       <i id="loggedin-user" class="fas fa-user"></i>
-      {{getUserName.toUpperCase()}}
+      {{ getUserName.toUpperCase() }}
     </label>
   </ng-template>
 </header>
