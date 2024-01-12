@@ -848,6 +848,10 @@ input:focus {
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   }
 
+  .product-view {
+    padding-top: 3rem;
+  }
+
   .product-view .col-6 {
     width: 100%;
   }
