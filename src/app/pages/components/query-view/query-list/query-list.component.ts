@@ -17,6 +17,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 export interface PeriodicElement {
   id: number;
@@ -30,6 +31,8 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-query-list',
   templateUrl: './query-list.component.html',
+  standalone: true,
+  imports: [SharedModule],
   animations: [
     trigger('detailExpand', [
       state('collapsed,void', style({ height: '0px', minHeight: '0' })),

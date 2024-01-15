@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WebService } from 'src/app/shared/services/web.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [SharedModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })

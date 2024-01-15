@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-
+import { SharedModule } from 'src/app/shared/shared.module';
+import { QueryListComponent } from './query-list/query-list.component';
 export interface PeriodicElement {
   id: number;
   name: string;
@@ -18,6 +19,8 @@ export interface Tab {
 
 @Component({
   selector: 'app-query-view',
+  standalone: true,
+  imports: [SharedModule, QueryListComponent],
   templateUrl: './query-view.component.html',
 })
 export class QueryViewComponent {

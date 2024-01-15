@@ -10,30 +10,41 @@
     [ngClass]="{ active: isMenuVisible }"
     (click)="selectNavOptions()"
   >
-    <a class="cursor-pointer" href="#">home</a>
-    <a class="cursor-pointer" href="#vehicles">vehicles</a>
-    <a class="cursor-pointer" href="#services">services</a>
-    <a class="cursor-pointer" href="#featured">featured</a>
-    <a class="cursor-pointer" href="#reviews">reviews</a>
-    <a class="cursor-pointer" href="#contact">contact</a>
-    <a class="cursor-pointer" [routerLink]="'/pages/queries'">query</a>
+    <a
+      class="cursor-pointer"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      routerLink="/"
+    >
+      home
+    </a>
+    <a class="cursor-pointer" (click)="onClickAnchor('vehicles')">vehicles</a>
+    <a class="cursor-pointer" (click)="onClickAnchor('services')">services</a>
+    <a class="cursor-pointer" (click)="onClickAnchor('featured')">featured</a>
+    <a class="cursor-pointer" (click)="onClickAnchor('reviews')">reviews</a>
+    <a class="cursor-pointer" (click)="onClickAnchor('contact')">contact</a>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/queries"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      query
+    </a>
   </nav>
 
-  <div
-    id="login-btn"
-    (click)="onLoginBtnClick()"
-    *ngIf="!getUserName; else loggedInUser"
-  >
+  @if (!getUserName) {
+  <div id="login-btn" (click)="onLoginBtnClick()">
     <button class="btn">Login</button>
     <span id="login-icon">
       <i class="far fa-user" *ngIf="!isLoginVisible"></i>
       <i class="fas fa-times" *ngIf="isLoginVisible"></i>
     </span>
   </div>
-  <ng-template #loggedInUser>
-    <label class="loggedin-user" for="loggedin-user">
-      <i id="loggedin-user" class="fas fa-user"></i>
-      {{ getUserName.toUpperCase() }}
-    </label>
-  </ng-template>
+  } @else {
+  <label class="loggedin-user" for="loggedin-user">
+    <i id="loggedin-user" class="fas fa-user"></i>
+    {{ getUserName.toUpperCase() }}
+  </label>
+  }
 </header>

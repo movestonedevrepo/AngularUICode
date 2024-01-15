@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { QueryViewComponent } from './components/query-view/query-view.component';
 
-const routes: Routes = [
+export const PAGES_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
@@ -28,9 +27,3 @@ const routes: Routes = [
     component: LoginComponent,
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class PagesRoutingModule {}

@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,26 +16,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { SwiperDirective } from './utilities/swiper.directive';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
-  imports: [
-    CommonModule,
-    SwiperDirective,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTabsModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, SwiperDirective, HeaderComponent, FooterComponent],
   exports: [
-    HeaderComponent,
+    CommonModule,
     SwiperDirective,
     FormsModule,
     ReactiveFormsModule,
-    FooterComponent,
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
@@ -44,6 +31,9 @@ import { SwiperDirective } from './utilities/swiper.directive';
     MatIconModule,
     MatTabsModule,
     RouterModule,
+    HttpClientModule,
+    HeaderComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {}

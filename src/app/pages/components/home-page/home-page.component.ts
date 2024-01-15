@@ -1,19 +1,16 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
-import {
-  A11y,
-  Mousewheel,
-  Navigation,
-  Pagination,
-  SwiperOptions,
-} from 'swiper';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-home-page',
+  standalone: true,
+  imports: [SharedModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
-  encapsulation: ViewEncapsulation.None,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageComponent {
   contents = [
@@ -143,7 +140,6 @@ export class HomePageComponent {
     },
   ];
   vehicleConfig: SwiperOptions = {
-    modules: [Navigation, Pagination, A11y, Mousewheel],
     autoHeight: true,
     navigation: true,
     pagination: { clickable: true, dynamicBullets: true },
@@ -173,9 +169,7 @@ export class HomePageComponent {
       },
     },
   };
-
   featureConfig: SwiperOptions = {
-    modules: [Pagination, A11y, Mousewheel],
     autoHeight: false,
     navigation: false,
     pagination: { clickable: true, dynamicBullets: true },
@@ -198,9 +192,7 @@ export class HomePageComponent {
       },
     },
   };
-
   reviewConfig: SwiperOptions = {
-    modules: [Pagination, Navigation, A11y, Mousewheel],
     autoHeight: false,
     navigation: false,
     pagination: { clickable: true, dynamicBullets: false },

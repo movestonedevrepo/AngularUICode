@@ -1,39 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
-import {
-  A11y,
-  Mousewheel,
-  Navigation,
-  Pagination,
-  SwiperOptions,
-} from 'swiper';
 
 @Component({
   selector: 'app-product-details',
+  standalone: true,
+  imports: [SharedModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent {
-  vehicleConfig: SwiperOptions = {
-    modules: [Navigation, Pagination, A11y, Mousewheel],
-    autoHeight: false,
-    navigation: false,
-    pagination: false,
-    centeredSlides: true,
-    slidesPerView: 1,
-    spaceBetween: 0,
-    freeMode: true,
-    watchSlidesProgress: true,
-    direction: 'horizontal',
-    loop: true,
-    grabCursor: true,
-    speed: 500,
-    autoplay: {
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-    },
-  };
   images = [
     {
       id: 1,
