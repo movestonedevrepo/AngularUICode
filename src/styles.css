@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root {
   --yellow: #f9d806;
@@ -21,11 +22,90 @@
   transition: all 0.2s linear;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
   scroll-padding-top: 7rem;
   scroll-behavior: smooth;
+  position: relative;
+  min-height: 100%;
+}
+
+.page-container {
+  position: relative;
+  min-height: 97vh;
+}
+
+.content-wrap {
+  min-height: 64vh;
+}
+
+table {
+  width: 100%;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.element-description {
+  padding: 16px;
+}
+
+.element-description-attribution {
+  opacity: 0.5;
+}
+
+input,
+textarea {
+  margin: 0.7rem 0;
+  width: 100%;
+  border: var(--border);
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: var(--black);
+  border-radius: 0.5rem;
+  text-transform: none;
 }
 
 .btn {
@@ -73,7 +153,6 @@ html {
   color: var(--black);
   cursor: pointer;
   text-transform: uppercase;
-  text-decoration: none;
 }
 
 .header .navbar-section a:hover {
@@ -117,10 +196,6 @@ html {
   box-shadow: var(--box-shadow);
 }
 
-section {
-  padding: 2rem 9%;
-}
-
 .home {
   padding-top: 10rem;
   text-align: center;
@@ -147,7 +222,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(16, 16, 16, 0.7);
+  background: rgb(113 110 111);
 }
 
 .login-form-container form {
@@ -166,6 +241,9 @@ section {
   font-size: 3rem;
   text-transform: uppercase;
   padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .login-form-container form .box {
@@ -480,6 +558,7 @@ section {
   color: var(--black);
   text-transform: none;
   padding: 0 2rem;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 .newsletter form button {
@@ -774,6 +853,50 @@ input:focus {
   color: #fff;
 }
 
+.contact .product-details-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white;
+  background-position: center;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  padding: 8px 16px;
+  border-radius: 100%;
+  border: 2px solid black;
+  color: red;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "";
+}
+
+.swiper-pagination-bullet {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+}
+
+.vehicles .vehicles-slider .swiper-button-prev {
+  background-image: url("assets/images/left-arrow.svg");
+}
+
+.vehicles .vehicles-slider .swiper-button-next {
+  background-image: url("assets/images/right-arrow.svg");
+}
+
+.query-list-view {
+  padding-top: 10rem;
+  margin-top: 3rem;
+  overflow-x: hidden;
+}
+
 @media (max-width: 991px) {
   html {
     font-size: 55.5%;
@@ -831,7 +954,7 @@ input:focus {
   }
 
   .products .box-container {
-    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   }
 
   .product-view {
@@ -840,6 +963,10 @@ input:focus {
 
   .product-view .col-6 {
     width: 100%;
+  }
+
+  .mat-mdc-paginator {
+    padding-bottom: 2rem;
   }
 }
 
@@ -862,5 +989,13 @@ input:focus {
 
   .product-view .col-6 {
     width: 100%;
+  }
+
+  .contact .product-details-view {
+    display: block;
+  }
+
+  .mat-mdc-paginator {
+    padding-bottom: 2rem;
   }
 }
