@@ -1,3 +1,4 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   bootstrapApplication,
   provideProtractorTestingSupport,
@@ -11,12 +12,9 @@ import {
   withHashLocation,
   withInMemoryScrolling,
 } from '@angular/router';
+import { appHttpInterceptor } from './app/app-http.interceptor';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES_CONFIG } from './app/app.routes';
-
-// platformBrowserDynamic()
-//   .bootstrapModule(AppComponent)
-//   .catch((err) => console.error(err));
 
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
@@ -28,6 +26,7 @@ const inMemoryScrollingFeature: InMemoryScrollingFeature =
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideHttpClient(withInterceptors([appHttpInterceptor])),
     provideAnimations(),
     provideProtractorTestingSupport(),
     provideRouter(

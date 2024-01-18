@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ContactComponent } from './components/contact/contact.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -25,5 +26,9 @@ export const PAGES_ROUTES: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   },
 ];

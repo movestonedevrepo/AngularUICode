@@ -22,7 +22,14 @@
     <a class="cursor-pointer" (click)="onClickAnchor('services')">services</a>
     <a class="cursor-pointer" (click)="onClickAnchor('featured')">featured</a>
     <a class="cursor-pointer" (click)="onClickAnchor('reviews')">reviews</a>
-    <a class="cursor-pointer" (click)="onClickAnchor('contact')">contact</a>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/contact"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      contact
+    </a>
     <a
       class="cursor-pointer"
       routerLink="/pages/queries"
@@ -35,7 +42,7 @@
 
   @if (!getUserName) {
   <div id="login-btn" (click)="onLoginBtnClick()">
-    <button class="btn">Login</button>
+    <button type="button" class="btn">Login</button>
     <span id="login-icon">
       <i class="far fa-user" *ngIf="!isLoginVisible"></i>
       <i class="fas fa-times" *ngIf="isLoginVisible"></i>

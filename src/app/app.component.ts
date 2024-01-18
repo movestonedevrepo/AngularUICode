@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { register } from 'swiper/element';
+import { register } from 'swiper/element/bundle';
 import { SharedModule } from './shared/shared.module';
 
 register();

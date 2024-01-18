@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root {
   --yellow: #f9d806;
@@ -38,6 +38,21 @@ html {
   min-height: 100%;
 }
 
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: black;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .page-container {
   position: relative;
   min-height: 97vh;
@@ -55,19 +70,19 @@ section {
   padding: 2rem 9%;
 }
 
-tr.detail-row {
-  height: 0;
+mat-row.detail-row {
+  min-height: 0 !important;
 }
 
-tr.element-row:not(.expanded-row):hover {
+mat-row.element-row:not(.expanded-row):hover {
   background: whitesmoke;
 }
 
-tr.element-row:not(.expanded-row):active {
+mat-row.element-row:not(.expanded-row):active {
   background: #efefef;
 }
 
-.element-row td {
+.element-row mat-cell {
   border-bottom-width: 0;
 }
 
@@ -374,6 +389,7 @@ textarea {
 
 .vehicles .vehicles-slider .box {
   text-align: center;
+  margin-bottom: 4rem;
 }
 
 .vehicles .vehicles-slider .box img {
@@ -492,6 +508,7 @@ textarea {
   box-shadow: var(--box-shadow);
   border-color: var(--border);
   padding: 2rem;
+  margin-bottom: 4rem;
   border-radius: 0.5rem;
   height: auto;
 }
@@ -594,6 +611,7 @@ textarea {
   box-shadow: var(--box-shadow);
   border-color: var(--border);
   border-radius: 0.5rem;
+  margin-bottom: 4rem;
   transform: scale(1);
   opacity: 1;
 }
@@ -863,16 +881,22 @@ input:focus {
   gap: 2rem;
 }
 
-.swiper-button-next,
+/* .swiper-button-next,
 .swiper-button-prev {
   background-color: white;
   background-position: center;
-  background-size: 40px;
   background-repeat: no-repeat;
   padding: 8px 16px;
-  border-radius: 100%;
+  border-radius: 50%;
   border: 2px solid black;
   color: red;
+  top: 100px;
+  position: absolute;
+  z-index: 10;
+}
+
+.swiper-button-next {
+  right: 0;
 }
 
 .swiper-button-next::after,
@@ -884,20 +908,184 @@ input:focus {
   width: 40px;
   height: 40px;
   background-color: red;
-}
+} */
 
-.vehicles .vehicles-slider .swiper-button-prev {
+/* .vehicles .vehicles-slider .swiper-button-prev {
   background-image: url("assets/images/left-arrow.svg");
 }
 
 .vehicles .vehicles-slider .swiper-button-next {
   background-image: url("assets/images/right-arrow.svg");
-}
+} */
 
 .query-list-view {
   padding-top: 10rem;
   margin-top: 3rem;
   overflow-x: hidden;
+}
+
+.contact-section {
+  padding-top: 10rem;
+  text-align: center;
+  overflow-x: hidden;
+  background: linear-gradient(rgb(0 0 0 / 0.6), rgba(0, 0, 0, 0.6)),
+    url(./assets/images/car-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  color: white !important;
+}
+
+.contact-section .title h1 {
+  font-size: 6rem;
+  padding: 2rem 0;
+  color: white !important;
+}
+
+.contact-section .contact-view {
+  display: flex;
+  gap: 5rem;
+  justify-content: stretch;
+}
+
+.contact-section .contact-view .contact {
+  width: 60%;
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 2rem;
+  height: auto;
+}
+
+.contact-section .contact-view .contact input {
+  background: #c0c0c0e0;
+}
+
+.contact-section .contact-view .contact button {
+  color: var(--black) !important;
+}
+
+.contact-section .contact-view .contact textarea {
+  background: #c0c0c0e0;
+}
+
+.contact-section .contact-view .contact .heading {
+  color: white;
+  font-size: 4rem;
+}
+
+.contact-section .company-info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: stretch;
+  height: auto;
+}
+
+.contact-section .company-info .about-section {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1.5rem;
+  background-color: #113959;
+  padding: 2rem;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 1rem;
+}
+
+.contact-section .company-info .about-section h2 {
+  color: #fff;
+  font-size: 3rem;
+}
+
+.contact-section .company-info .about-section a {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.contact-section .company-info .about-section a i {
+  background-color: #18b6fa;
+  padding: 1rem;
+  border: 1px solid #18b6fa;
+  border-radius: 50%;
+  width: 4rem;
+  text-align: center;
+  height: 4rem;
+  margin-right: 1rem;
+}
+
+.contact-section .company-info .about-section .social-link {
+  margin-top: 2rem;
+}
+
+.contact-section .company-info .about-section .social-link i {
+  font-size: 4rem;
+  opacity: 0.8;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.contact-section .company-info .map {
+  width: 100%;
+  border: var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  height: 100%;
+}
+
+.conatct-newsletter {
+  padding: 6rem 2rem;
+  background-position: center;
+  text-align: center;
+  background-size: cover;
+  background: #eee;
+}
+
+.conatct-newsletter h1 {
+  font-size: 4rem;
+}
+
+.conatct-newsletter p {
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
+
+.conatct-newsletter form {
+  margin: 1rem auto;
+  max-width: 60rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  border: 1px solid var(--black);
+  border-radius: 5rem;
+}
+
+.conatct-newsletter form input {
+  height: 100%;
+  width: 100%;
+  font-size: 1.7rem;
+  color: var(--black);
+  text-transform: none;
+  padding: 0 2rem;
+  border-right: 1px solid var(--black);
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.conatct-newsletter form button {
+  height: 100%;
+  width: 17rem;
+  font-size: 1.8rem;
+  color: var(--black) !important;
+  background: var(--light-yellow);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--yellow);
+  }
 }
 
 @media (max-width: 991px) {
@@ -971,6 +1159,75 @@ input:focus {
   .mat-mdc-paginator {
     padding-bottom: 2rem;
   }
+
+  .mat-table {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+  /* Enable this to hide header */
+  .mat-table .mat-header-cell {
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+  }
+
+  .mat-table .mat-row:nth-child(even) {
+    background: #ccc;
+  }
+  .mat-table .mat-row:nth-child(odd) {
+    background: #fff;
+  }
+
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    text-align: right;
+    font-weight: bold;
+    height: 30px;
+    margin-bottom: 4%;
+  }
+  .mat-table .mat-cell:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+
+    font-size: 0.85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+  }
+
+  .contact-section .contact-view {
+    display: block;
+  }
+
+  .contact-section .contact-view .contact {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .contact-section .contact-view .company-info {
+    width: 100%;
+  }
 }
 
 @media (max-width: 450px) {
@@ -1000,5 +1257,73 @@ input:focus {
 
   .mat-mdc-paginator {
     padding-bottom: 2rem;
+  }
+
+  .mat-table {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+  /* Enable this to hide header */
+  .mat-table .mat-header-cell {
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+  }
+
+  .mat-table .mat-row:nth-child(even) {
+    background: #ccc;
+  }
+  .mat-table .mat-row:nth-child(odd) {
+    background: #fff;
+  }
+
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    text-align: right;
+    font-weight: bold;
+    height: 30px;
+    margin-bottom: 4%;
+  }
+  .mat-table .mat-cell:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 0.85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+  }
+
+  .contact-section .contact-view {
+    display: block;
+  }
+
+  .contact-section .contact-view .contact {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .contact-section .contact-view .company-info {
+    width: 100%;
   }
 }

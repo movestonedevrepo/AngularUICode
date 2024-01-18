@@ -1,4 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
@@ -10,6 +14,7 @@ import { SwiperOptions } from 'swiper/types';
   imports: [SharedModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
+  encapsulation: ViewEncapsulation.None,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageComponent {
@@ -140,23 +145,23 @@ export class HomePageComponent {
     },
   ];
   vehicleConfig: SwiperOptions = {
-    autoHeight: true,
+    autoHeight: false,
     navigation: true,
     pagination: { clickable: true, dynamicBullets: true },
+    centeredSlidesBounds: true,
     centeredSlides: true,
-    slidesPerView: 1,
+    initialSlide: 2,
+    slidesPerView: 3,
     spaceBetween: 20,
-    freeMode: true,
-    watchSlidesProgress: true,
     direction: 'horizontal',
     loop: true,
     grabCursor: true,
-    speed: 500,
-    autoplay: {
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-      delay: 3000,
-    },
+    speed: 1000,
+    // autoplay: {
+    //   disableOnInteraction: true,
+    //   pauseOnMouseEnter: true,
+    //   delay: 1000,
+    // },
     breakpoints: {
       0: {
         slidesPerView: 1,
@@ -174,7 +179,8 @@ export class HomePageComponent {
     navigation: false,
     pagination: { clickable: true, dynamicBullets: true },
     centeredSlides: true,
-    slidesPerView: 2,
+    slidesPerView: 3,
+    initialSlide: 2,
     spaceBetween: 20,
     grabCursor: true,
     direction: 'horizontal',
@@ -198,6 +204,7 @@ export class HomePageComponent {
     pagination: { clickable: true, dynamicBullets: false },
     centeredSlides: true,
     slidesPerView: 3,
+    initialSlide: 2,
     spaceBetween: 20,
     grabCursor: true,
     direction: 'horizontal',
