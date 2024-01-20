@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 
@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })
-export class ProductDetailsComponent {
-  images = [
+export class ProductDetailsComponent implements OnInit{
+  images:any = [
     {
       id: 1,
       image: `${environment.assestsBasePath}images/vehicle-1.jpg`,
@@ -29,7 +29,7 @@ export class ProductDetailsComponent {
       image: `${environment.assestsBasePath}images/vehicle-5.jpg`,
     },
   ];
-  products = [
+  products:any = [
     {
       id: 1,
       image: `${environment.assestsBasePath}images/vehicle-1.jpg`,
@@ -56,8 +56,23 @@ export class ProductDetailsComponent {
     },
   ];
   selectedImage = this.images[0].image;
+  product:any
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe((data:any) => {
+
+      this.products= data.productDetails.responsePayload.otherProducts;
+      this.images=data.productDetails.responsePayload.productDetails.productPictureDetails;
+      this.product =data.productDetails.responsePayload.productDetails;
+      this.selectedImage = this.images[0].productImageURL;
+
+      
+    })
+  }
+
+  
 
   changeSelectedImage(image: string) {
     this.selectedImage = image;

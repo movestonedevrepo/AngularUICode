@@ -8,27 +8,27 @@
         <div class="small-img-row">
           <div class="small-img-col" *ngFor="let eachImage of images">
             <img
-              [src]="eachImage.image"
+              [src]="eachImage.productImageURL"
               alt="Image-{{ eachImage.id }}"
-              (click)="changeSelectedImage(eachImage.image)"
+              (click)="changeSelectedImage(eachImage.productImageURL)"
             />
           </div>
         </div>
       </div>
       <div class="col-6">
         <p>Product / Car</p>
-        <h1>White coloreded Jaguar By Landrover</h1>
-        <h4>$65000</h4>
-        <select title="Select Size">
+        <h1>{{product.productName}}</h1>
+        <h4>INR{{product.price}}</h4>
+        <!-- <select title="Select Size">
           <option disabled hidden>Select Size</option>
           <option value="XXL">XXL</option>
           <option value="XL">XL</option>
           <option value="Large">Large</option>
           <option value="Medium">Medium</option>
           <option value="Small">Small</option>
-        </select>
-        <input type="number" title="quantity" value="1" />
-        <a href="" class="btn">Add To Cart</a>
+        </select> -->
+        <!-- <input type="number" title="quantity" value="1" />
+        <a href="" class="btn">Add To Cart</a> -->
 
         <h3>Product Details <i class="fa fa-indent"></i></h3>
         <p>
@@ -48,9 +48,9 @@
   <h1 class="heading">Related <span>Products</span></h1>
   <div class="box-container">
     <div class="box" *ngFor="let eachProduct of products">
-      <img [src]="eachProduct.image" alt="" loading="lazy" />
+      <img [src]="eachProduct.imageURL" alt="" loading="lazy" />
       <div class="content">
-        <h3>new model</h3>
+        <h3>{{eachProduct.productName}}</h3>
         <div class="stars">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -58,8 +58,8 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <h3 class="price"><span>price: </span> $65000/-</h3>
-        <button class="btn" (click)="checkProduct(eachProduct.id)">
+        <h3 class="price"><span>price: </span> INR {{eachProduct.price}}</h3>
+        <button class="btn" (click)="checkProduct(eachProduct.productID)">
           Check Out
         </button>
       </div>
