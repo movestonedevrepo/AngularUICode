@@ -10,6 +10,14 @@ export class WebService {
     return sessionStorage.getItem('userName') || '';
   }
 
+  setAuthentication(token:string):void{
+    sessionStorage.setItem('authToken',token);
+
+  }
+
+  getAuthentication():string{
+   return sessionStorage.getItem('authToken') || '';
+  }
   setUserName(name: any): void {
     sessionStorage.setItem('userName', name);
   }

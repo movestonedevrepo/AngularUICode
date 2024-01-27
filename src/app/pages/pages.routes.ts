@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { QueryViewComponent } from './components/query-view/query-view.component';
 import { productSpecResolver } from '../resolvers/product-spec.resolver';
+import { getQueryResolver } from '../resolvers/get-query.resolver';
 
 export const PAGES_ROUTES: Routes = [
   {
@@ -19,6 +20,9 @@ export const PAGES_ROUTES: Routes = [
   {
     path: 'queries',
     component: QueryViewComponent,
+    resolve:{
+      queryData: getQueryResolver
+    }
   },
   {
     path: 'product/:id',
