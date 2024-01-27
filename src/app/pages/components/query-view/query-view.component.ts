@@ -79,7 +79,7 @@ export class QueryViewComponent implements OnInit{
     const headers = new HttpHeaders({'h1':'v1','authorization':`Bearer ${this.webStorage.getAuthentication()}`});
     this.http.post(`${environment.baseUrl}/getQuery`,{filter: this.selectedTab.filterOption},{headers:headers}).subscribe((data:any)=>{
       if(data&&!data.hasError){
-        this.filteredElementData=data.responsePayload;
+        this.filteredElementData=data.responsePayload.queryList;
       }
     });
   }

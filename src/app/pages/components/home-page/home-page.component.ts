@@ -108,8 +108,10 @@ export class HomePageComponent implements OnInit {
     const headers:any = new HttpHeaders({'mode':'no-cors'});
     this.http.get(`${environment.baseUrl}/getHomeDetails`,headers).subscribe((data:any)=>{
 
-      this.contents=data.responsePayload.homeDetails.products;
-      this.testimonials=data.responsePayload.homeDetails.testimonials;
+      const products=data.responsePayload.homeDetails.products;
+      this.contents=[...products,...products];
+      const testimonials= data.responsePayload.homeDetails.testimonials
+      this.testimonials=[...testimonials,...testimonials];
 
     })
   }

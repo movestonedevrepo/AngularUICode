@@ -73,7 +73,7 @@
   <h1 class="heading"><span>Product </span> query</h1>
 
   <div class="row">
-    <form action="">
+    <form [formGroup]="queryForm"  action="">
       <h3>get in touch</h3>
       <div class="product-details-view">
         <input
@@ -82,7 +82,7 @@
           placeholder="Car Name"
           name="car_name"
           id="car_name"
-          value="White coloreded Jaguar By Landrover"
+          [value]="product.productName"
         />
         <input
           disabled
@@ -90,14 +90,15 @@
           placeholder="Car ID"
           name="car_id"
           id="car_id"
-          value="2HKYF18413H541936"
+          [value]="product.productID"
+      
         />
       </div>
-      <input type="text" placeholder="name" name="name" id="name" />
-      <input type="email" placeholder="email" name="email" id="email-contact" />
-      <input type="tel" placeholder="number" name="number" id="number" />
-      <textarea placeholder="message" name="message" id="message"></textarea>
-      <button type="button" class="btn">send message</button>
+      <input   formControlName="queryName" type="text" placeholder="name" name="name" id="name" />
+      <input formControlName="queryEmail" type="email" placeholder="email" name="email" id="email-contact" />
+      <input formControlName="queryPhone" type="tel" placeholder="number" name="number" id="number" />
+      <textarea placeholder="message" formControlName="queryMessage" name="message" id="message"></textarea>
+      <button (click)="sendQuery()" type="button" class="btn">send message</button>
     </form>
   </div>
 </section>
