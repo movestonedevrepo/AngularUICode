@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { WebService } from 'src/app/shared/services/web.service';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [SharedModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
@@ -19,27 +24,33 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private router: Router, private webService: WebService, private http:HttpClient) {}
+  constructor(
+    private webService: WebService,
+    private dialogRef: MatDialogRef<LoginComponent>,
+    private http: HttpClient
+  ) {}
 
-  closeLoginPopup() {
-    this.router.navigate(['pages/home']);
+  closeLoginPopup(result: boolean) {
+    this.dialogRef.close(result);
   }
 
   onLogin() {
     const authPayload = {
-      userID:this.loginForm?.value?.email,
-      password:this.loginForm?.value?.password
-    }
+      userID: this.loginForm?.value?.email,
+      password: this.loginForm?.value?.password,
+    };
     if (this.loginForm.valid) {
-      this.http.post(`${environment.baseUrl}/authenticate`,authPayload).subscribe((data:any)=>{
-        if(!data?.hasError){
-          this.webService.setAuthentication(data.responsePayload.jwtToken);
-          this.webService.setUserName(this.loginForm?.value?.email);
-          this.router.navigate(['pages/queries']);
-        }
-      })
-      
-      this.closeLoginPopup();
+      this.http
+        .post(`${environment.baseUrl}/authenticate`, authPayload)
+        .subscribe((data: any) => {
+          if (!data?.hasError) {
+            this.webService.setAuthentication(data.responsePayload.jwtToken);
+            this.webService.setUserName(this.loginForm?.value?.email);
+            this.closeLoginPopup(true);
+          } else {
+            this.closeLoginPopup(false);
+          }
+        });
     } else {
       this.loginForm.markAllAsTouched();
     }

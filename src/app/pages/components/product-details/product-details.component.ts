@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-product-details',
@@ -13,8 +13,8 @@ import {v4 as uuidv4} from 'uuid';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })
-export class ProductDetailsComponent implements OnInit{
-  images:any = [
+export class ProductDetailsComponent implements OnInit {
+  images: any = [
     {
       id: 1,
       image: `${environment.assestsBasePath}images/vehicle-1.jpg`,
@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit{
       image: `${environment.assestsBasePath}images/vehicle-5.jpg`,
     },
   ];
-  products:any = [
+  products: any = [
     {
       id: 1,
       image: `${environment.assestsBasePath}images/vehicle-1.jpg`,
@@ -59,53 +59,55 @@ export class ProductDetailsComponent implements OnInit{
     },
   ];
   selectedImage = this.images[0].image;
-  product:any;
-  productId:any;
+  product: any;
   queryForm = new FormGroup({
     queryName: new FormControl('', Validators.required),
     queryEmail: new FormControl('', [Validators.required, Validators.email]),
-    queryPhone: new FormControl('',[Validators.required,Validators.pattern(/^[0-9]{10}$/)]),
+    queryPhone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[0-9]{10}$/),
+    ]),
     queryMessage: new FormControl('', Validators.required),
-
   });
 
-  constructor(private router: Router,private activatedRoute: ActivatedRoute, private http:HttpClient) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((data:any)=>{
-        this.productId=data["id"];
-    });
-    this.activatedRoute.data.subscribe((data:any) => {
-
-      this.products= data.productDetails.responsePayload.otherProducts;
-      this.images=data.productDetails.responsePayload.productDetails.productPictureDetails;
-      this.product =data.productDetails.responsePayload.productDetails;
+    this.activatedRoute.data.subscribe((data: any) => {
+      this.products = Array(6)
+        .fill(data.productDetails.responsePayload.otherProducts)
+        .flat();
+      this.images =
+        data.productDetails.responsePayload.productDetails.productPictureDetails;
+      this.product = data.productDetails.responsePayload.productDetails;
       this.selectedImage = this.images[0].productImageURL;
-
-      
-    })
+    });
   }
 
-  sendQuery(){
-
-    const payload={
-      queryID:uuidv4(),
-      queryPhone:this.queryForm.value.queryPhone,
-    queryEmail:this.queryForm.value.queryEmail,
-    queryMessage:`Message from Mr/Ms ${this.queryForm.value.queryName}:  `+this.queryForm.value.queryMessage,
-    forProduct: this.productId
+  sendQuery() {
+    const payload = {
+      queryID: uuidv4(),
+      queryPhone: this.queryForm.value.queryPhone,
+      queryEmail: this.queryForm.value.queryEmail,
+      queryMessage:
+        `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
+        this.queryForm.value.queryMessage,
+      forProduct: this.product.productId,
     };
-    if(this.queryForm.valid){
-      this.http.post(`${environment.baseUrl}/createQuery`,payload).subscribe((data:any)=>{
-        if(!data.hasError){
-          alert("query sent")
-        }
-      });
+    if (this.queryForm.valid) {
+      this.http
+        .post(`${environment.baseUrl}/createQuery`, payload)
+        .subscribe((data: any) => {
+          if (!data.hasError) {
+            alert('query sent');
+          }
+        });
     }
-    
   }
-
-  
 
   changeSelectedImage(image: string) {
     this.selectedImage = image;

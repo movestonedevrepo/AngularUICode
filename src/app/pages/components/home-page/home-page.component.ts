@@ -20,8 +20,8 @@ import { SwiperOptions } from 'swiper/types';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageComponent implements OnInit {
-  contents:any = [];
-  testimonials:any=[];
+  contents: any = [];
+  testimonials: any = [];
 
   vehicleConfig: SwiperOptions = {
     autoHeight: false,
@@ -36,11 +36,11 @@ export class HomePageComponent implements OnInit {
     loop: true,
     grabCursor: true,
     speed: 1000,
-    // autoplay: {
-    //   disableOnInteraction: true,
-    //   pauseOnMouseEnter: true,
-    //   delay: 1000,
-    // },
+    autoplay: {
+      disableOnInteraction: true,
+      pauseOnMouseEnter: true,
+      delay: 1000,
+    },
     breakpoints: {
       0: {
         slidesPerView: 1,
@@ -50,6 +50,32 @@ export class HomePageComponent implements OnInit {
       },
       991: {
         slidesPerView: 3,
+      },
+    },
+  };
+  staticConfig: SwiperOptions = {
+    autoHeight: false,
+    navigation: true,
+    pagination: { clickable: true, dynamicBullets: false },
+    centeredSlidesBounds: true,
+    centeredSlides: true,
+    initialSlide: 2,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    direction: 'horizontal',
+    loop: false,
+    grabCursor: true,
+    // speed: 1000,
+    autoplay: false,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 1,
+      },
+      991: {
+        slidesPerView: 1,
       },
     },
   };
@@ -102,26 +128,22 @@ export class HomePageComponent implements OnInit {
     },
   };
 
-  constructor(private router: Router, private http:HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
-    const headers:any = new HttpHeaders({'mode':'no-cors'});
-    this.http.get(`${environment.baseUrl}/getHomeDetails`,headers).subscribe((data:any)=>{
-
-      const products=data.responsePayload.homeDetails.products;
-      this.contents=[...products,...products];
-      const testimonials= data.responsePayload.homeDetails.testimonials
-      this.testimonials=[...testimonials,...testimonials];
-
-    })
+    const headers: any = new HttpHeaders({ mode: 'no-cors' });
+    this.http
+      .get(`${environment.baseUrl}/getHomeDetails`, headers)
+      .subscribe((data: any) => {
+        this.contents = Array(10)
+          .fill(data.responsePayload.homeDetails.products)
+          .flat();
+        this.testimonials = data.responsePayload.homeDetails.testimonials;
+      });
   }
 
-  getFeatureList(list:any):Array<any>{
-    console.log(list.split(','))
+  getFeatureList(list: any): Array<any> {
     return list.split(',');
-
-
-
   }
 
   checkProduct(index: number) {

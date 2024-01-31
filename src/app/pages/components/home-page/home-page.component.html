@@ -45,12 +45,12 @@
 } @placeholder {
 <div>Icons Section</div>
 } @defer (on viewport) {
-<section *ngIf="contents.length>0" class="vehicles" id="vehicles">
+<section *ngIf="contents.length > 0" class="vehicles" id="vehicles">
   <h1 class="heading">popular <span>vehicles</span></h1>
 
   <swiper-container
     fmSwiper
-    [config]="vehicleConfig"
+    [config]="contents.length > 8 ? vehicleConfig : staticConfig"
     init="false"
     class="vehicles-slider"
   >
@@ -58,18 +58,19 @@
     <swiper-slide class="box">
       <img [src]="eachProduct?.imageURL" alt="image" loading="lazy" />
       <div class="content">
-        <h3>{{eachProduct.productName}}</h3>
-        <div class="price"><span>price: </span> INR{{eachProduct.price}}</div>
+        <h3>{{ eachProduct.productName }}</h3>
+        <div class="price"><span>price: </span> INR{{ eachProduct.price }}</div>
         <p>
-
-          new
-          @for(eachFeature of eachProduct?.features?.split(',');track eachFeature){
-            <span class="fas fa-circle"></span> {{eachFeature}}
+          new @for(eachFeature of eachProduct?.features?.split(',');track
+          eachFeature){
+          <span class="fas fa-circle"></span> {{ eachFeature }}
           }
-          
-        
         </p>
-        <button type="button" class="btn" (click)="checkProduct(eachProduct.productID)">
+        <button
+          type="button"
+          class="btn"
+          (click)="checkProduct(eachProduct.productID)"
+        >
           Check Out
         </button>
       </div>
@@ -142,20 +143,20 @@
 } @placeholder {
 <div>Services Section</div>
 } @defer (on viewport) {
-<!-- <section id="featured" class="featured">
+<section *ngIf="contents.length > 0" id="featured" class="featured">
   <h1 class="heading"><span>featured </span>cars</h1>
 
   <swiper-container
     fmSwiper
-    [config]="featureConfig"
+    [config]="contents.length > 8 ? featureConfig : staticConfig"
     init="false"
     class="featured-slider"
   >
-    @for (eachImage of contents; track eachImage) {
+    @for (eachContent of contents; track eachContent) {
     <swiper-slide class="box">
-      <img [src]="eachImage.image" alt="" loading="lazy" />
+      <img [src]="eachContent?.imageURL" alt="" loading="lazy" />
       <div class="content">
-        <h3>new model</h3>
+        <h3>{{ eachContent.productName }}</h3>
         <div class="stars">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -163,8 +164,12 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <div class="price"><span>price: </span> $65000/-</div>
-        <button type="button" class="btn" (click)="checkProduct(eachImage.id)">
+        <div class="price"><span>price: </span> INR{{ eachContent.price }}</div>
+        <button
+          type="button"
+          class="btn"
+          (click)="checkProduct(eachContent.productID)"
+        >
           Check Out
         </button>
       </div>
@@ -174,15 +179,15 @@
 
   <swiper-container
     fmSwiper
-    [config]="featureConfig"
+    [config]="contents.length > 8 ? featureConfig : staticConfig"
     init="false"
     class="featured-slider"
   >
-    @for (eachImage of contents; track eachImage) {
+    @for (eachContent of contents; track eachContent) {
     <swiper-slide class="box">
-      <img [src]="eachImage.image" alt="" loading="lazy" />
+      <img [src]="eachContent?.imageURL" alt="" loading="lazy" />
       <div class="content">
-        <h3>new model</h3>
+        <h3>{{ eachContent.productName }}</h3>
         <div class="stars">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -190,15 +195,19 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <div class="price"><span>price: </span> $65000/-</div>
-        <button type="button" class="btn" (click)="checkProduct(eachImage.id)">
+        <div class="price"><span>price: </span> INR{{ eachContent.price }}</div>
+        <button
+          type="button"
+          class="btn"
+          (click)="checkProduct(eachContent.productID)"
+        >
           Check Out
         </button>
       </div>
     </swiper-slide>
     }
   </swiper-container>
-</section> -->
+</section>
 } @placeholder {
 <div>Featured Section</div>
 } @defer (on viewport) {
@@ -212,8 +221,8 @@
   <form>
     <input
       type="email"
-      name="email"
-      id="email"
+      name="email-input"
+      id="email-input"
       placeholder="enter your email"
     />
     <button type="button">Submit</button>
@@ -222,7 +231,7 @@
 } @placeholder {
 <div>Newsletter Section</div>
 } @defer (on viewport) {
-<section *ngIf="testimonials.length>0" id="reviews" class="review">
+<section *ngIf="testimonials.length > 0" id="reviews" class="review">
   <h1 class="heading">client's <span>review</span></h1>
 
   <swiper-container
@@ -231,14 +240,14 @@
     init="false"
     class="review-slider"
   >
-  @for(eachTestimonial of testimonials;track eachTestimonial){
+    @for(eachTestimonial of testimonials; track eachTestimonial){
     <swiper-slide class="box">
       <i class="fas fa-user user-icon"></i>
       <div class="content">
         <p>
-         {{eachTestimonial.testimonial}}
+          {{ eachTestimonial.testimonial }}
         </p>
-        <h3>{{eachTestimonial.testimonialAuthor}}</h3>
+        <h3>{{ eachTestimonial.testimonialAuthor }}</h3>
         <div class="stars">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -248,9 +257,9 @@
         </div>
       </div>
     </swiper-slide>
-  }
-    
-    <!-- <swiper-slide class="box">
+    }
+
+    <swiper-slide class="box">
       <i class="fas fa-user user-icon"></i>
       <div class="content">
         <p>
@@ -344,7 +353,7 @@
           <i class="fas fa-star-half-alt"></i>
         </div>
       </div>
-    </swiper-slide> -->
+    </swiper-slide>
   </swiper-container>
 </section>
 } @placeholder {

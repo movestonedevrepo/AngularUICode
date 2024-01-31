@@ -1,12 +1,21 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { LoginComponent } from 'src/app/pages/components/login/login.component';
+import { MatDialogService } from '../../services/mat-dialog.service';
 import { WebService } from '../../services/web.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule, RouterLinkActive],
+  imports: [
+    RouterLink,
+    CommonModule,
+    RouterLinkActive,
+    LoginComponent,
+    MatDialogModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -18,7 +27,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private webService: WebService,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    private matDialogService: MatDialogService
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +60,13 @@ export class HeaderComponent implements OnInit {
   onLoginBtnClick() {
     this.isLoginVisible = !this.isLoginVisible;
     if (this.isLoginVisible) {
-      this.router.navigate(['pages/login']);
+      this.matDialogService
+        .openDialog(LoginComponent)
+        .afterClosed()
+        .subscribe((data) => {
+          if (data) this.router.navigate(['pages/queries']);
+          else this.matDialogService.openDialog();
+        });
     }
   }
 

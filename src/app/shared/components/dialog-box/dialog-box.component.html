@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>{{ data.message }}</div>
+<div mat-dialog-actions>
+  <!-- prettier-ignore -->
+  @for (button of data.buttons; track button; let index = $index) {
+    @if (index < data.buttons!.length - 1) {
+  <button mat-button mat-dialog-close>{{ button }}</button>
+  } @else {
+  <button class="btn" mat-button mat-dialog-close cdkFocusInitial>
+    {{ button }}
+  </button>
+  } }
+</div>

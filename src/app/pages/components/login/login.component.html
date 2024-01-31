@@ -1,11 +1,11 @@
-<section class="login-form-container">
+<div class="login-form-container">
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <label for="user-login">
       User Login
       <i
         class="fas fa-times close-login-form"
         id="user-login"
-        (click)="closeLoginPopup()"
+        (click)="closeLoginPopup(false)"
       ></i>
     </label>
     <input
@@ -31,4 +31,4 @@
     </div>
     <p>don't have an account <a href="#">Create One</a></p>
   </form>
-</section>
+</div>
