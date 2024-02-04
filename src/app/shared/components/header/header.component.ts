@@ -1,8 +1,10 @@
+import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginComponent } from 'src/app/pages/components/login/login.component';
+import { environment } from 'src/environments/environment';
 import { MatDialogService } from '../../services/mat-dialog.service';
 import { WebService } from '../../services/web.service';
 
@@ -15,6 +17,9 @@ import { WebService } from '../../services/web.service';
     RouterLinkActive,
     LoginComponent,
     MatDialogModule,
+    CdkMenuTrigger,
+    CdkMenu,
+    CdkMenuItem,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -22,7 +27,8 @@ import { WebService } from '../../services/web.service';
 export class HeaderComponent implements OnInit {
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
-  isLoginVisible: boolean = false;
+  isUserLoggedIn: boolean = false;
+  logo = `${environment.assestsBasePath}/images/Move_Stone_logo.png`;
 
   constructor(
     private router: Router,
@@ -32,7 +38,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoginVisible = false;
+    this.isUserLoggedIn = this.webService.isUserAuthenticated;
 
     if (window.scrollY > 0) {
       this.isVerticalScroll = true;
@@ -58,23 +64,43 @@ export class HeaderComponent implements OnInit {
   }
 
   onLoginBtnClick() {
-    this.isLoginVisible = !this.isLoginVisible;
-    if (this.isLoginVisible) {
+    if (!this.isUserLoggedIn) {
       this.matDialogService
-        .openDialog(LoginComponent)
+        .openDialog({}, LoginComponent)
         .afterClosed()
         .subscribe((data) => {
-          if (data) this.router.navigate(['pages/queries']);
-          else this.matDialogService.openDialog();
+          if (data) {
+            if (!data.hasError) {
+              this.isUserLoggedIn = this.webService.isUserAuthenticated;
+              this.router.navigate(['pages/queries']);
+            } else
+              this.matDialogService.openDialog({
+                data: {
+                  title: 'Error',
+                  message: data.extendedMessage,
+                  buttons: ['Ok'],
+                },
+              } as MatDialogConfig);
+          }
         });
     }
   }
 
   get getUserName(): string {
-    return this.webService.getUserName();
+    return this.webService.getUserName;
   }
 
   onClickAnchor(elementId: string) {
     this.viewportScroller.scrollToAnchor(elementId);
+  }
+
+  logout() {
+    this.webService.removeAuthentication();
+    this.isUserLoggedIn = this.webService.isUserAuthenticated;
+    this.router.navigate(['pages/home']);
+  }
+
+  navigateToQuery(): void {
+    this.router.navigate(['pages/queries']);
   }
 }

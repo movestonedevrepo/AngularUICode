@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -73,19 +74,26 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private viewportScroller: ViewportScroller
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: any) => {
-      this.products = Array(6)
+      // this.products = data.productDetails.responsePayload.otherProducts;
+      this.products = Array(3)
         .fill(data.productDetails.responsePayload.otherProducts)
         .flat();
       this.images =
         data.productDetails.responsePayload.productDetails.productPictureDetails;
       this.product = data.productDetails.responsePayload.productDetails;
       this.selectedImage = this.images[0].productImageURL;
+      // this.selectedColor =
     });
+  }
+
+  onQueryRaise(elementId: string) {
+    this.viewportScroller.scrollToAnchor(elementId);
   }
 
   sendQuery() {

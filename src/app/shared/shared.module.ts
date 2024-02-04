@@ -1,3 +1,4 @@
+import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { SwiperDirective } from './utilities/swiper.directive';
 
 @NgModule({
-  imports: [CommonModule, SwiperDirective, HeaderComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    SwiperDirective,
+    CdkMenuTrigger,
+    CdkMenu,
+    CdkMenuItem,
+    HeaderComponent,
+    FooterComponent,
+  ],
   exports: [
     CommonModule,
     SwiperDirective,
@@ -36,6 +45,9 @@ import { SwiperDirective } from './utilities/swiper.directive';
     HeaderComponent,
     FooterComponent,
     MatCardModule,
+    CdkMenuTrigger,
+    CdkMenu,
+    CdkMenuItem,
   ],
 })
 export class SharedModule {}

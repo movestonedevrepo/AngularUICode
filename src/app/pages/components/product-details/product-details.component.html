@@ -20,17 +20,23 @@
       <div class="col-6">
         <p>Product / Vehicle</p>
         <h1>{{ product.productName }}</h1>
-        <h4> ₹{{ product.price.split('-')[0] }}-₹{{ product.price.split('-')[1] }}</h4>
-        <!-- <select title="Select Size">
-          <option disabled hidden>Select Size</option>
-          <option value="XXL">XXL</option>
-          <option value="XL">XL</option>
-          <option value="Large">Large</option>
-          <option value="Medium">Medium</option>
-          <option value="Small">Small</option>
-        </select> -->
-        <!-- <input type="number" title="quantity" value="1" />
-        <a href="" class="btn">Add To Cart</a> -->
+        <h4>
+          ₹ {{ product.price.split("-")[0] }} - ₹
+          {{ product.price.split("-")[1] }}
+        </h4>
+
+        <div class="color-section">
+          <h4>Colour</h4>
+          <div class="colors">
+            @for (color of product.colorOptions.split('/'); track color) {
+            <div class="color">{{ color }}</div>
+            }
+          </div>
+        </div>
+        <!-- <input t`ype="number" title="quantity" value="1" /> -->
+        <button type="button" (click)="onQueryRaise('contact')" class="btn">
+          Raise Query
+        </button>
 
         <h3>Product Details <i class="fa fa-indent"></i></h3>
         <p>

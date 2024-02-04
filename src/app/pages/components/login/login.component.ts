@@ -30,7 +30,7 @@ export class LoginComponent {
     private http: HttpClient
   ) {}
 
-  closeLoginPopup(result: boolean) {
+  closeLoginPopup(result?: any) {
     this.dialogRef.close(result);
   }
 
@@ -43,13 +43,11 @@ export class LoginComponent {
       this.http
         .post(`${environment.baseUrl}/authenticate`, authPayload)
         .subscribe((data: any) => {
-          if (!data?.hasError) {
+          if (data && !data.hasError) {
             this.webService.setAuthentication(data.responsePayload.jwtToken);
             this.webService.setUserName(this.loginForm?.value?.email);
-            this.closeLoginPopup(true);
-          } else {
-            this.closeLoginPopup(false);
           }
+          this.closeLoginPopup(data);
         });
     } else {
       this.loginForm.markAllAsTouched();

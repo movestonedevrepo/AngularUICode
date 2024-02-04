@@ -5,11 +5,13 @@ import { environment } from 'src/environments/environment';
 import { WebService } from '../shared/services/web.service';
 
 export const getQueryResolver: ResolveFn<any> = (route, state) => {
-  const http= inject(HttpClient);
-  const webService= inject(WebService)
+  const http = inject(HttpClient);
+  const webService = inject(WebService);
   // const headers = new HttpHeaders();
-  const headers = new HttpHeaders({'h1':'v1','authorization':`Bearer ${webService.getAuthentication()}`});
+  const headers = new HttpHeaders({
+    h1: 'v1',
+    authorization: `Bearer ${webService.getAuthentication}`,
+  });
 
-  return http.post(`${environment.baseUrl}/getQuery`,{},{headers});
-  
+  return http.post(`${environment.baseUrl}/getQuery`, {}, { headers });
 };

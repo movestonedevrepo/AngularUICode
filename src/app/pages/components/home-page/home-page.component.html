@@ -59,7 +59,9 @@
       <img [src]="eachProduct?.imageURL" alt="image" loading="lazy" />
       <div class="content">
         <h3>{{ eachProduct.productName }}</h3>
-        <div class="price"><span>price: </span> INR{{ eachProduct.price }}</div>
+        <div class="price">
+          <span>price: </span> INR {{ eachProduct.price }}
+        </div>
         <p>
           new @for(eachFeature of eachProduct?.features?.split(',');track
           eachFeature){
@@ -164,7 +166,9 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <div class="price"><span>price: </span> INR{{ eachContent.price }}</div>
+        <div class="price">
+          <span>price: </span> INR {{ eachContent.price }}
+        </div>
         <button
           type="button"
           class="btn"
@@ -195,7 +199,9 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <div class="price"><span>price: </span> INR{{ eachContent.price }}</div>
+        <div class="price">
+          <span>price: </span> INR {{ eachContent.price }}
+        </div>
         <button
           type="button"
           class="btn"
@@ -211,14 +217,14 @@
 } @placeholder {
 <div>Featured Section</div>
 } @defer (on viewport) {
-<!-- <section id="newsletter" class="newsletter">
+<section id="newsletter" class="newsletter">
   <h1>subscribe for latest updates</h1>
 
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste consequatur
     molestias quo.
   </p>
-  <form >
+  <form>
     <input
       type="email"
       name="email-input"
@@ -227,7 +233,7 @@
     />
     <button type="button">Submit</button>
   </form>
-</section> -->
+</section>
 } @placeholder {
 <div>Newsletter Section</div>
 } @defer (on viewport) {
@@ -373,11 +379,37 @@
 
     <form [formGroup]="queryForm" action="">
       <h3>get in touch</h3>
-      <input  formControlName="queryName" type="text" placeholder="name" name="name" id="name" />
-      <input  formControlName="queryEmail" type="email" placeholder="email" name="email" id="email-contact" />
-      <input   formControlName="queryPhone" formControlName="queryPhone" type="number" placeholder="number" name="number" id="number" />
-      <textarea formControlName="queryMessage"  placeholder="message" name="message" id="message"></textarea>
-      <button (click)="sendQuery()" type="button" class="btn">send message</button>
+      <input
+        formControlName="queryName"
+        type="text"
+        placeholder="name"
+        name="name"
+        id="name"
+      />
+      <input
+        formControlName="queryEmail"
+        type="email"
+        placeholder="email"
+        name="email"
+        id="email-contact"
+      />
+      <input
+        formControlName="queryPhone"
+        formControlName="queryPhone"
+        type="number"
+        placeholder="number"
+        name="number"
+        id="number"
+      />
+      <textarea
+        formControlName="queryMessage"
+        placeholder="message"
+        name="message"
+        id="message"
+      ></textarea>
+      <button (click)="sendQuery()" type="button" class="btn">
+        send message
+      </button>
     </form>
   </div>
 </section>

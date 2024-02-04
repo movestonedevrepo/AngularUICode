@@ -7,12 +7,14 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { DialogData } from 'src/app/models/dialog-data';
 
 @Component({
   selector: 'app-dialog-box',
   standalone: true,
   imports: [
+    MatIconModule,
     MatButtonModule,
     MatDialogActions,
     MatDialogClose,

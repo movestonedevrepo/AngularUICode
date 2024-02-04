@@ -3,7 +3,9 @@
     <i class="fas fa-bars" *ngIf="!isMenuVisible"></i>
     <i class="fas fa-times" *ngIf="isMenuVisible"></i>
   </div>
-  <a href="#" class="logo"><span>MOVE</span>Stone</a>
+  <a href="#" class="logo">
+    <img [src]="logo" alt="MoveStone" />
+  </a>
 
   <nav
     class="navbar-section"
@@ -30,28 +32,42 @@
     >
       contact
     </a>
-    <a
-      class="cursor-pointer"
-      routerLink="/pages/queries"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-    >
-      query
-    </a>
   </nav>
 
-  @if (!getUserName) {
+  @if (!isUserLoggedIn && !getUserName) {
   <div id="login-btn" (click)="onLoginBtnClick()">
     <button type="button" class="btn">Login</button>
     <span id="login-icon">
-      <i class="far fa-user" *ngIf="!isLoginVisible"></i>
-      <i class="fas fa-times" *ngIf="isLoginVisible"></i>
+      <i class="far fa-user"></i>
     </span>
   </div>
   } @else {
-  <label class="loggedin-user" for="loggedin-user">
+  <label class="loggedin-user" for="loggedin-user" [cdkMenuTriggerFor]="menu">
     <i id="loggedin-user" class="fas fa-user"></i>
-    {{ getUserName.toUpperCase() }}
   </label>
+  <ng-template #menu>
+    <div class="loggedin-menu" cdkMenu>
+      <div class="loggedin-menu-item menu-heading">
+        {{ getUserName.toUpperCase() }}
+      </div>
+      <button
+        type="button"
+        class="loggedin-menu-item"
+        cdkMenuItem
+        (click)="logout()"
+      >
+        Logout
+      </button>
+      <button
+        type="button"
+        class="loggedin-menu-item"
+        cdkMenuItem
+        (click)="navigateToQuery()"
+      >
+        Check Queries
+      </button>
+    </div>
+  </ng-template>
+
   }
 </header>

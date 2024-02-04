@@ -3,6 +3,7 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 :root {
   --yellow: #f9d806;
@@ -46,6 +47,10 @@ html {
 
 ::-ms-input-placeholder {
   color: black;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 input::-webkit-outer-spin-button,
@@ -129,18 +134,18 @@ textarea {
 
 .btn {
   display: inline-block;
-  margin-top: 1rem;
-  border-radius: 0.5rem;
-  background: var(--light-yellow);
-  color: var(--black);
-  font-weight: 500;
-  font-size: 1.7rem;
-  cursor: pointer;
-  padding: 0.8rem 3rem;
+  margin-top: 1rem !important;
+  border-radius: 0.5rem !important;
+  background: var(--light-yellow) !important;
+  color: var(--black) !important;
+  font-weight: 500 !important;
+  font-size: 1.7rem !important;
+  cursor: pointer !important;
+  padding: 0.8rem 3rem !important;
 }
 
 .btn:hover {
-  background: var(--yellow);
+  background: var(--yellow) !important;
 }
 
 .header {
@@ -162,8 +167,11 @@ textarea {
   font-weight: bolder;
 }
 
-.header .logo span {
-  color: var(--yellow);
+.header .logo img {
+  width: 70px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
 }
 
 .header .navbar-section a {
@@ -760,6 +768,33 @@ textarea {
   padding: 2rem 0;
 }
 
+.product-view .color-section {
+  margin-bottom: 10px;
+}
+
+.product-view .color-section h4 {
+  margin-bottom: 5px;
+}
+
+.product-view .color-section .colors {
+  display: flex;
+  gap: 2rem;
+}
+
+.product-view .color-section .color {
+  padding: 2rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.product-view .color-section .color:hover {
+  opacity: 1;
+  font-weight: 600;
+  border-color: var(--black);
+}
+
 .product-view p {
   color: var(--light-color);
   font-size: 1.5rem;
@@ -1189,6 +1224,67 @@ input:focus {
   }
 }
 
+.loggedin-menu {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 180px;
+  max-width: 280px;
+  background-color: rgba(255, 255, 255);
+  padding: 6px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+}
+
+.loggedin-menu-item {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  min-width: 64px;
+  padding: 0 16px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.loggedin-menu-item:hover {
+  background-color: rgb(208, 208, 208);
+}
+
+.loggedin-menu-item:active {
+  background-color: rgb(170, 170, 170);
+}
+
+.loggedin-standalone-item {
+  background-color: rgb(239, 239, 239);
+}
+
+.loggedin-standalone-item:hover {
+  background-color: rgb(208, 208, 208);
+}
+
+.loggedin-standalone-item[aria-expanded="true"] {
+  background-color: rgb(208, 208, 208);
+}
+
+.dialog-content {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-content .error-logo mat-icon {
+  color: red;
+  font-size: 76px;
+  width: 76px;
+  height: 76px;
+}
+
+.dialog-content .error-logo h4 {
+  font-size: 24px;
+}
+
 @media (max-width: 991px) {
   html {
     font-size: 55.5%;
@@ -1219,14 +1315,6 @@ input:focus {
     margin: 2rem;
     font-size: 2rem;
     display: block;
-  }
-
-  .header #login-btn i {
-    display: block;
-  }
-
-  .header #login-btn .btn {
-    display: none;
   }
 
   #menu-btn {
@@ -1336,6 +1424,10 @@ input:focus {
     font-size: 50%;
   }
 
+  .home h1 {
+    margin-top: 2rem;
+  }
+
   .services .box-container {
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   }
@@ -1367,6 +1459,14 @@ input:focus {
 
   .mat-table caption {
     font-size: 1em;
+  }
+
+  .header #login-btn i {
+    display: block;
+  }
+
+  .header #login-btn .btn {
+    display: none;
   }
 
   /* Enable this to hide header */

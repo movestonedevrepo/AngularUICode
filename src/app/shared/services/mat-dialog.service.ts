@@ -25,8 +25,8 @@ export class MatDialogService {
   constructor(private dialog: MatDialog) {}
 
   openDialog(
-    component: any = DialogBoxComponent,
-    dialogConfig?: MatDialogConfig
+    dialogConfig?: MatDialogConfig,
+    component: any = DialogBoxComponent
   ): MatDialogRef<any> {
     this.dialogRef = this.dialog.open(component, {
       ...this.dialogConfig,
