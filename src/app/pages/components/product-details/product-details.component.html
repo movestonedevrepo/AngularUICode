@@ -18,9 +18,9 @@
         </div>
       </div>
       <div class="col-6">
-        <p>Product / Car</p>
+        <p>Product / Vehicle</p>
         <h1>{{ product.productName }}</h1>
-        <h4>INR{{ product.price }}</h4>
+        <h4> ₹{{ product.price.split('-')[0] }}-₹{{ product.price.split('-')[1] }}</h4>
         <!-- <select title="Select Size">
           <option disabled hidden>Select Size</option>
           <option value="XXL">XXL</option>

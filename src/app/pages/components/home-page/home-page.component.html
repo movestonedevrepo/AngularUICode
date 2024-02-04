@@ -211,14 +211,14 @@
 } @placeholder {
 <div>Featured Section</div>
 } @defer (on viewport) {
-<section id="newsletter" class="newsletter">
+<!-- <section id="newsletter" class="newsletter">
   <h1>subscribe for latest updates</h1>
 
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste consequatur
     molestias quo.
   </p>
-  <form>
+  <form >
     <input
       type="email"
       name="email-input"
@@ -227,7 +227,7 @@
     />
     <button type="button">Submit</button>
   </form>
-</section>
+</section> -->
 } @placeholder {
 <div>Newsletter Section</div>
 } @defer (on viewport) {
@@ -371,13 +371,13 @@
       referrerpolicy="no-referrer-when-downgrade"
     ></iframe>
 
-    <form action="">
+    <form [formGroup]="queryForm" action="">
       <h3>get in touch</h3>
-      <input type="text" placeholder="name" name="name" id="name" />
-      <input type="email" placeholder="email" name="email" id="email-contact" />
-      <input type="number" placeholder="number" name="number" id="number" />
-      <textarea placeholder="message" name="message" id="message"></textarea>
-      <button type="button" class="btn">send message</button>
+      <input  formControlName="queryName" type="text" placeholder="name" name="name" id="name" />
+      <input  formControlName="queryEmail" type="email" placeholder="email" name="email" id="email-contact" />
+      <input   formControlName="queryPhone" formControlName="queryPhone" type="number" placeholder="number" name="number" id="number" />
+      <textarea formControlName="queryMessage"  placeholder="message" name="message" id="message"></textarea>
+      <button (click)="sendQuery()" type="button" class="btn">send message</button>
     </form>
   </div>
 </section>

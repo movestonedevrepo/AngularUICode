@@ -5,10 +5,12 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { SwiperOptions } from 'swiper/types';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-home-page',
@@ -103,6 +105,15 @@ export class HomePageComponent implements OnInit {
       },
     },
   };
+  queryForm = new FormGroup({
+    queryName: new FormControl('', Validators.required),
+    queryEmail: new FormControl('', [Validators.required, Validators.email]),
+    queryPhone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[0-9]{10}$/),
+    ]),
+    queryMessage: new FormControl('', Validators.required),
+  });
   reviewConfig: SwiperOptions = {
     autoHeight: false,
     navigation: false,
@@ -141,6 +152,27 @@ export class HomePageComponent implements OnInit {
         this.testimonials = data.responsePayload.homeDetails.testimonials;
       });
   }
+
+  sendQuery() {
+    const payload = {
+      queryID: uuidv4(),
+      queryPhone: ""+this.queryForm.value.queryPhone,
+      queryEmail: this.queryForm.value.queryEmail,
+      queryMessage:
+        `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
+        this.queryForm.value.queryMessage,
+    };
+    if (this.queryForm.valid) {
+      this.http
+        .post(`${environment.baseUrl}/createQuery`, payload)
+        .subscribe((data: any) => {
+          if (!data.hasError) {
+            alert('query sent');
+          }
+        });
+    }
+  }
+
 
   getFeatureList(list: any): Array<any> {
     return list.split(',');
