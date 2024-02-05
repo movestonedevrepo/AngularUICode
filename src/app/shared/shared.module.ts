@@ -13,8 +13,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
+import { DiaplayImagesComponent } from './components/diaplay-images/diaplay-images.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoaderComponent } from './components/loader/loader.component';
 import { SwiperDirective } from './utilities/swiper.directive';
 
 @NgModule({
@@ -26,8 +28,13 @@ import { SwiperDirective } from './utilities/swiper.directive';
     CdkMenuItem,
     HeaderComponent,
     FooterComponent,
+    LoaderComponent,
+    DiaplayImagesComponent,
   ],
   exports: [
+    HeaderComponent,
+    FooterComponent,
+    LoaderComponent,
     CommonModule,
     SwiperDirective,
     FormsModule,
@@ -42,8 +49,6 @@ import { SwiperDirective } from './utilities/swiper.directive';
     MatTabsModule,
     RouterModule,
     HttpClientModule,
-    HeaderComponent,
-    FooterComponent,
     MatCardModule,
     CdkMenuTrigger,
     CdkMenu,

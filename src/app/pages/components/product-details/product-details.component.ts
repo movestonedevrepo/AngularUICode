@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CONSTANTS } from 'src/app/constants/constants';
+import { ImageDiaplyModel } from 'src/app/models/image-display-model';
+import { DiaplayImagesComponent } from 'src/app/shared/components/diaplay-images/diaplay-images.component';
+import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { v4 as uuidv4 } from 'uuid';
@@ -70,11 +74,15 @@ export class ProductDetailsComponent implements OnInit {
     ]),
     queryMessage: new FormControl('', Validators.required),
   });
+  allproductImages: any;
+  colors: any = Object.entries(CONSTANTS.colors);
+  selectedColor: any = this.colors[0][0];
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
+    private dialogService: MatDialogService,
     private viewportScroller: ViewportScroller
   ) {}
 
@@ -85,15 +93,36 @@ export class ProductDetailsComponent implements OnInit {
         .fill(data.productDetails.responsePayload.otherProducts)
         .flat();
       this.images =
+        data.productDetails.responsePayload.productDetails.productPictureDetails.slice(
+          0,
+          3
+        );
+      this.allproductImages =
         data.productDetails.responsePayload.productDetails.productPictureDetails;
       this.product = data.productDetails.responsePayload.productDetails;
       this.selectedImage = this.images[0].productImageURL;
       // this.selectedColor =
+      console.log(this.colors);
     });
   }
 
   onQueryRaise(elementId: string) {
     this.viewportScroller.scrollToAnchor(elementId);
+  }
+
+  showAllImages() {
+    this.dialogService.openDialog(
+      {
+        width: '70vw',
+        height: '500px',
+        data: { imagesToDisplay: this.allproductImages } as ImageDiaplyModel,
+      },
+      DiaplayImagesComponent
+    );
+  }
+
+  changeSelectedColor(color: any) {
+    this.selectedColor = color;
   }
 
   sendQuery() {

@@ -15,6 +15,7 @@
               (click)="changeSelectedImage(eachImage.productImageURL)"
             />
           </div>
+          <a class="view-more" (click)="showAllImages()">View All</a>
         </div>
       </div>
       <div class="col-6">
@@ -26,10 +27,14 @@
         </h4>
 
         <div class="color-section">
-          <h4>Colour</h4>
+          <h4>Colour: {{ selectedColor }}</h4>
           <div class="colors">
-            @for (color of product.colorOptions.split('/'); track color) {
-            <div class="color">{{ color }}</div>
+            @for (eachColor of colors; track eachColor) {
+            <div
+              class="color"
+              [ngStyle]="{ background: eachColor[1] }"
+              (mouseover)="changeSelectedColor(eachColor[0])"
+            ></div>
             }
           </div>
         </div>
@@ -137,7 +142,10 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <h3 class="price"><span>price: </span> INR {{ eachProduct.price }}</h3>
+        <h3 class="price">
+          <span>price: </span> ₹ {{ eachProduct.price.split("-")[0] }} - ₹
+          {{ eachProduct.price.split("-")[1] }}
+        </h3>
         <button class="btn" (click)="checkProduct(eachProduct.productID)">
           Check Out
         </button>

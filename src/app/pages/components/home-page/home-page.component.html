@@ -7,7 +7,7 @@
     src="../../../../assets/images/Home_Car_Collection.png"
     alt=""
   />
-  <a href="#" class="btn home-parallax" data-speed="7">Explore Cars</a>
+  <a href="#" class="btn home-parallax" data-speed="7">Explore Products</a>
 </section>
 } @placeholder {
 <div>Home Section</div>
@@ -60,7 +60,9 @@
       <div class="content">
         <h3>{{ eachProduct.productName }}</h3>
         <div class="price">
-          <span>price: </span> INR {{ eachProduct.price }}
+          <span>price: </span>
+          ₹ {{ eachProduct.price.split("-")[0] }} - ₹
+          {{ eachProduct.price.split("-")[1] }}
         </div>
         <p>
           new @for(eachFeature of eachProduct?.features?.split(',');track
@@ -167,7 +169,8 @@
           <i class="fas fa-star-half-alt"></i>
         </div>
         <div class="price">
-          <span>price: </span> INR {{ eachContent.price }}
+          <span>price: </span> ₹ {{ eachContent.price.split("-")[0] }} - ₹
+          {{ eachContent.price.split("-")[1] }}
         </div>
         <button
           type="button"
@@ -200,7 +203,8 @@
           <i class="fas fa-star-half-alt"></i>
         </div>
         <div class="price">
-          <span>price: </span> INR {{ eachContent.price }}
+          <span>price: </span> ₹ {{ eachContent.price.split("-")[0] }} - ₹
+          {{ eachContent.price.split("-")[1] }}
         </div>
         <button
           type="button"

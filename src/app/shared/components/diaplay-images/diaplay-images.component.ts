@@ -33,11 +33,22 @@ export class DiaplayImagesComponent implements OnInit {
     centeredSlidesBounds: true,
     centeredSlides: true,
     initialSlide: 2,
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 20,
     direction: 'horizontal',
     loop: true,
     grabCursor: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      991: {
+        slidesPerView: 3,
+      },
+    },
   };
 
   ngOnInit(): void {
