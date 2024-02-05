@@ -1,0 +1,16 @@
+@if (imagesToDisplay && diaplayConfig) {
+<div class="vehicle-images">
+  <swiper-container
+    fmSwiper
+    [config]="diaplayConfig"
+    init="false"
+    class="image-slider"
+  >
+    @for (eachImage of imagesToDisplay; track eachImage) {
+    <swiper-slide class="box">
+      <img [src]="eachImage?.productImageURL" alt="image" loading="lazy" />
+    </swiper-slide>
+    }
+  </swiper-container>
+</div>
+}
