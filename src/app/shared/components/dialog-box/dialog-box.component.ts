@@ -24,7 +24,14 @@ import { DialogData } from 'src/app/models/dialog-data';
   templateUrl: './dialog-box.component.html',
 })
 export class DialogBoxComponent implements OnInit {
+  title = 'Error';
+  message = 'Oops!! Something Went Wrong';
+  buttons = ['Ok'];
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.title = this.data.title ?? this.title;
+    this.message = this.data.message ?? this.message;
+    this.buttons = this.data.buttons ?? this.buttons;
+  }
 }

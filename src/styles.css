@@ -1495,6 +1495,16 @@ input:focus {
       width: 100%;
     }
   }
+
+  .vehicle-images {
+    margin: 4rem 2rem;
+  }
+
+  .cdk-overlay-pane {
+    width: 100% !important;
+    height: 80% !important;
+    max-width: 100% !important;
+  }
 }
 
 @media (max-width: 450px) {
@@ -1530,83 +1540,11 @@ input:focus {
     padding-bottom: 2rem;
   }
 
-  .mat-table {
-    border: 0;
-    vertical-align: middle;
-  }
-
-  .mat-table caption {
-    font-size: 1em;
-  }
-
   .header #login-btn i {
     display: block;
   }
 
   .header #login-btn .btn {
     display: none;
-  }
-
-  /* Enable this to hide header */
-  .mat-table .mat-header-cell {
-    border: 10px solid;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  .mat-table .mat-row {
-    border-bottom: 5px solid #ddd;
-    display: block;
-  }
-
-  .mat-table .mat-row:nth-child(even) {
-    background: #ccc;
-  }
-  .mat-table .mat-row:nth-child(odd) {
-    background: #fff;
-  }
-
-  .mat-table .mat-cell {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: 1em;
-    text-align: right;
-    font-weight: bold;
-    height: 30px;
-    margin-bottom: 4%;
-  }
-  .mat-table .mat-cell:before {
-    content: attr(data-label);
-    float: left;
-    text-transform: uppercase;
-    font-weight: normal;
-    font-size: 0.85em;
-  }
-  .mat-table .mat-cell:last-child {
-    border-bottom: 0;
-  }
-  .mat-table .mat-cell:first-child {
-    margin-top: 4%;
-  }
-
-  .contact-section .contact-view {
-    display: block;
-  }
-
-  .contact-section .contact-view .contact {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .contact-section .contact-view .company-info {
-    width: 100%;
-  }
-
-  .vehicle-images {
-    margin: 4rem 2rem;
   }
 }

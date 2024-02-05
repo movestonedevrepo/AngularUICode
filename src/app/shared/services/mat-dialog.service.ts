@@ -28,14 +28,10 @@ export class MatDialogService {
     dialogConfig?: MatDialogConfig,
     component: any = DialogBoxComponent
   ): MatDialogRef<any> {
-    this.dialogRef = this.dialog.open(component, {
-      ...this.dialogConfig,
-      ...dialogConfig,
-    });
-
-    this.dialogRef.afterClosed().subscribe((response: any) => {
-      console.log(response);
-    });
+    this.dialogRef = this.dialog.open(
+      component,
+      Object.assign(this.dialogConfig, dialogConfig)
+    );
 
     return this.dialogRef;
   }

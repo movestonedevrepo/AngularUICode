@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class WebService {
-  constructor() {}
-
   get getUserName(): string {
     return sessionStorage.getItem('userName') || '';
   }
@@ -24,11 +22,16 @@ export class WebService {
 
   get isUserAuthenticated(): boolean {
     const authToken = this.getAuthentication;
-    return authToken !== '';
+    const userName = this.getUserName;
+    return authToken !== '' && userName !== '';
   }
 
   removeAuthentication(): void {
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('userName');
+  }
+
+  logout(): void {
+    this.removeAuthentication();
   }
 }

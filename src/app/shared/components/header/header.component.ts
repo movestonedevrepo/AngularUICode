@@ -1,7 +1,7 @@
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginComponent } from 'src/app/pages/components/login/login.component';
 import { environment } from 'src/environments/environment';
@@ -27,7 +27,6 @@ import { WebService } from '../../services/web.service';
 export class HeaderComponent implements OnInit {
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
-  isUserLoggedIn: boolean = false;
   logo = `${environment.assestsBasePath}/images/Move_Stone_logo.png`;
 
   constructor(
@@ -38,8 +37,6 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isUserLoggedIn = this.webService.isUserAuthenticated;
-
     if (window.scrollY > 0) {
       this.isVerticalScroll = true;
     } else {
@@ -53,6 +50,10 @@ export class HeaderComponent implements OnInit {
         this.isVerticalScroll = false;
       }
     };
+  }
+
+  get isUserLoggedIn(): boolean {
+    return this.webService.isUserAuthenticated;
   }
 
   onMenuBtnClick() {
@@ -69,18 +70,8 @@ export class HeaderComponent implements OnInit {
         .openDialog({}, LoginComponent)
         .afterClosed()
         .subscribe((data) => {
-          if (data) {
-            if (!data.hasError) {
-              this.isUserLoggedIn = this.webService.isUserAuthenticated;
-              this.router.navigate(['pages/queries']);
-            } else
-              this.matDialogService.openDialog({
-                data: {
-                  title: 'Error',
-                  message: data.extendedMessage,
-                  buttons: ['Ok'],
-                },
-              } as MatDialogConfig);
+          if (data && !data.hasError) {
+            this.router.navigate(['pages/queries']);
           }
         });
     }
@@ -96,7 +87,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.webService.removeAuthentication();
-    this.isUserLoggedIn = this.webService.isUserAuthenticated;
     this.router.navigate(['pages/home']);
   }
 

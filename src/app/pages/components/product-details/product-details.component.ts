@@ -88,21 +88,11 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: any) => {
-      // this.products = data.productDetails.responsePayload.otherProducts;
-      this.products = Array(3)
-        .fill(data.productDetails.responsePayload.otherProducts)
-        .flat();
-      this.images =
-        data.productDetails.responsePayload.productDetails.productPictureDetails.slice(
-          0,
-          3
-        );
-      this.allproductImages =
-        data.productDetails.responsePayload.productDetails.productPictureDetails;
-      this.product = data.productDetails.responsePayload.productDetails;
+      this.products = Array(3).fill(data.otherProducts).flat();
+      this.images = data.productDetails.productPictureDetails.slice(0, 3);
+      this.allproductImages = data.productDetails.productPictureDetails;
+      this.product = data.productDetails;
       this.selectedImage = this.images[0].productImageURL;
-      // this.selectedColor =
-      console.log(this.colors);
     });
   }
 
@@ -113,8 +103,8 @@ export class ProductDetailsComponent implements OnInit {
   showAllImages() {
     this.dialogService.openDialog(
       {
-        width: '70vw',
-        height: '500px',
+        width: 'auto',
+        height: '600px',
         data: { imagesToDisplay: this.allproductImages } as ImageDiaplyModel,
       },
       DiaplayImagesComponent
