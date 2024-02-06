@@ -15,7 +15,7 @@ class ProductSpecResolver {
       .post(`${environment.baseUrl}/getProductDetails`, {
         productID: route.params['id'],
       })
-      .pipe(map((data: any) => data.productDetails.responsePayload));
+      .pipe(map((data: any) => data.responsePayload));
   }
 }
 

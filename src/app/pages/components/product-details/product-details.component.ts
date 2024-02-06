@@ -37,32 +37,7 @@ export class ProductDetailsComponent implements OnInit {
       image: `${environment.assestsBasePath}images/vehicle-5.jpg`,
     },
   ];
-  products: any = [
-    {
-      id: 1,
-      image: `${environment.assestsBasePath}images/vehicle-1.jpg`,
-    },
-    {
-      id: 2,
-      image: `${environment.assestsBasePath}images/vehicle-2.jpg`,
-    },
-    {
-      id: 3,
-      image: `${environment.assestsBasePath}images/vehicle-4.jpg`,
-    },
-    {
-      id: 4,
-      image: `${environment.assestsBasePath}images/vehicle-5.jpg`,
-    },
-    {
-      id: 5,
-      image: `${environment.assestsBasePath}images/vehicle-1.jpg`,
-    },
-    {
-      id: 6,
-      image: `${environment.assestsBasePath}images/vehicle-2.jpg`,
-    },
-  ];
+
   selectedImage = this.images[0].image;
   product: any;
   queryForm = new FormGroup({
@@ -77,6 +52,7 @@ export class ProductDetailsComponent implements OnInit {
   allproductImages: any;
   colors: any = Object.entries(CONSTANTS.colors);
   selectedColor: any = this.colors[0][0];
+  otherProducts!: any[];
 
   constructor(
     private router: Router,
@@ -88,10 +64,11 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: any) => {
-      this.products = Array(3).fill(data.otherProducts).flat();
-      this.images = data.productDetails.productPictureDetails.slice(0, 3);
-      this.allproductImages = data.productDetails.productPictureDetails;
-      this.product = data.productDetails;
+      this.product = data.productDetails.productDetails;
+      const otherProducts = data.productDetails.otherProducts;
+      this.otherProducts = Array(3).fill(otherProducts).flat();
+      this.images = this.product.productPictureDetails.slice(0, 3);
+      this.allproductImages = this.product.productPictureDetails;
       this.selectedImage = this.images[0].productImageURL;
     });
   }

@@ -69,16 +69,23 @@
       </div>
       <div class="feature feature-1">
         <mat-card class="example-card">
-          <!-- <h1>Technology</h1>
-          <p>
-            Advanced features. Upgraded riding experience. Enabled by MOVEStone.
-          </p> -->
           <img mat-card-image />
+          <div class="desc">
+            <h1>Battery and Charger Details</h1>
+            <p>Battery : {{ product.battery }}</p>
+            <p>Body Dimension : <br />{{ product.bodyDimension }}</p>
+            <p>Break Type : {{ product.breakType }}</p>
+          </div>
         </mat-card>
       </div>
       <div class="feature feature-2">
         <mat-card class="example-card">
           <img mat-card-image />
+          <div class="desc">
+            <h1>Lights and Mileage Details</h1>
+            <p>HeadLight: {{ product.headLight }}</p>
+            <p>Mileage: {{ product.mileage }}</p>
+          </div>
         </mat-card>
       </div>
     </div>
@@ -86,16 +93,37 @@
       <div class="feature feature-3">
         <mat-card class="example-card">
           <img mat-card-image />
+          <div class="desc">
+            <h1>Electrical Items Details</h1>
+            <p>Controller : {{ product.controller }}</p>
+            <p>Converter : {{ product.converter }}</p>
+          </div>
         </mat-card>
       </div>
       <div class="feature feature-4">
         <mat-card class="example-card">
           <img mat-card-image />
+          <div class="desc">
+            <h1>Wheels and Roof Details</h1>
+            <P>Rim : {{ product.rim }} </P>
+            <P>Tyre Diameter : {{ product.tyreDiameter }} </P>
+            <P>Tyre Type : {{ product.tyreType }} </P>
+          </div>
         </mat-card>
       </div>
       <div class="feature feature-5">
         <mat-card class="example-card">
           <img mat-card-image />
+          <div class="desc">
+            <h1>
+              Steating Capacity <br />
+              and <br />
+              Suspension Details
+            </h1>
+            <P>Seating Capacity : {{ product.seatingCapacity }} </P>
+            <P>Shocker : {{ product.shocker }} </P>
+            <P>Side Cover : <br />{{ product.sideCover }} </P>
+          </div>
         </mat-card>
       </div>
     </div>
@@ -103,6 +131,11 @@
       <div class="feature feature-6">
         <mat-card class="example-card">
           <img mat-card-image />
+          <div class="desc">
+            <h1>Charger and Roof Details</h1>
+            <p>Charger : {{ product.charger }}</p>
+            <P>Roof : {{ product.roof }} </P>
+          </div>
         </mat-card>
       </div>
       <div class="feature feature-7">
@@ -120,6 +153,16 @@
       <div class="feature feature-8">
         <mat-card class="example-card">
           <img mat-card-image />
+          <div class="desc">
+            <h1>
+              About Motor <br />
+              and <br />
+              Weight Distribution
+            </h1>
+            <P>Weight Without Battery : {{ product.weightWithoutBattery }} </P>
+            <p>Motor: {{ product.motor }}</p>
+            <P>Wiper : {{ product.wiper }} </P>
+          </div>
         </mat-card>
       </div>
     </div>
@@ -131,7 +174,7 @@
 <section id="products" class="products">
   <h1 class="heading">Related <span>Products</span></h1>
   <div class="box-container">
-    <div class="box" *ngFor="let eachProduct of products">
+    <div class="box" *ngFor="let eachProduct of otherProducts">
       <img [src]="eachProduct.imageURL" alt="" loading="lazy" />
       <div class="content">
         <h3>{{ eachProduct.productName }}</h3>

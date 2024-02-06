@@ -954,44 +954,81 @@ input:focus {
   }
   .feature-1 {
     height: 40rem;
+    color: white;
     img {
+      /* background: #b1edb1; */
       background-image: url("./assets/images/SEN_9380.webp");
+      filter: brightness(0.5);
       background-size: cover;
+    }
+    .desc {
+      top: 35%;
+      left: 50%;
     }
   }
   .feature-2 {
     height: 30rem;
+    color: white;
     img {
       background-image: url("./assets/images/SEN_9333.webp");
+      filter: brightness(0.5);
       background-size: cover;
+    }
+    .desc {
+      top: 35%;
+      left: 50%;
     }
   }
   .feature-3 {
     height: 20rem;
+    color: white;
     img {
       background-image: url("./assets/images/SEN_9314.webp");
+      filter: brightness(0.5);
       background-size: cover;
+    }
+    .desc {
+      top: 45%;
+      left: 50%;
     }
   }
   .feature-4 {
     height: 50rem;
+    color: white;
     img {
       background-image: url("./assets/images/SEN_9395.webp");
+      filter: brightness(0.5);
       background-size: cover;
+    }
+    .desc {
+      top: 25%;
+      left: 50%;
     }
   }
   .feature-5 {
     height: 30rem;
+    color: white;
     img {
       background-image: url("./assets/images/SEN_9330.webp");
+      filter: brightness(0.5);
       background-size: cover;
+    }
+    .desc {
+      top: 45%;
+      left: 50%;
     }
   }
   .feature-6 {
     height: 30rem;
+    color: white;
     img {
       background-image: url("./assets/images/SEN_9386.webp");
+      filter: brightness(0.5);
       background-size: cover;
+    }
+    .desc {
+      top: 35%;
+      left: 50%;
     }
   }
   .feature-7 {
@@ -1001,33 +1038,56 @@ input:focus {
       background-size: cover;
     }
     .desc {
-      position: absolute;
       top: 65%;
       left: 50%;
-      width: 80%;
-      transform: translate(-50%, -50%);
       > h1 {
         font-size: 28px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 116%;
-        letter-spacing: -0.64px;
+        font-weight: 500;
       }
 
       > p {
-        font-size: 15px;
-        font-style: normal;
+        font-size: 14px;
         font-weight: 400;
-        line-height: 140%;
-        margin: 8px 0 0 0;
       }
     }
   }
   .feature-8 {
     height: 50rem;
+    color: white;
     img {
       background-image: url("./assets/images/SEN_9388.webp");
+      filter: brightness(0.5);
       background-size: cover;
+    }
+    .desc {
+      top: 35%;
+      left: 50%;
+
+      > h1 {
+        margin-bottom: 4rem;
+      }
+    }
+  }
+
+  .desc {
+    position: absolute;
+    width: 80%;
+    transform: translate(-50%, -50%);
+    > h1 {
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 116%;
+      letter-spacing: -0.64px;
+      margin-bottom: 2rem;
+    }
+
+    > p {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%;
+      margin: 8px 0 0 0;
     }
   }
 }
