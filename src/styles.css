@@ -1404,13 +1404,68 @@ input:focus {
   transform: scale(1);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 850px) {
   html {
     font-size: 55.5%;
   }
 
   .header {
     padding: 1rem 2rem;
+  }
+
+  .product-feature .box-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .product-feature .box-container .features {
+    width: 100%;
+
+    .feature {
+      width: 100%;
+      height: 30rem;
+    }
+    .intro {
+      height: auto;
+      text-align: center;
+      width: 100%;
+    }
+
+    .feature-1 {
+      .desc {
+        top: 45%;
+        left: 50%;
+      }
+    }
+    .feature-4 {
+      .desc {
+        top: 45%;
+        left: 50%;
+      }
+    }
+    .feature-5 {
+      .desc {
+        top: 55%;
+        left: 50%;
+      }
+    }
+    .feature-6 {
+      .desc {
+        top: 45%;
+        left: 50%;
+      }
+    }
+
+    .feature-8 {
+      .desc {
+        top: 50%;
+        left: 50%;
+
+        > h1 {
+          margin-bottom: 2rem;
+        }
+      }
+    }
   }
 }
 
@@ -1535,25 +1590,6 @@ input:focus {
 
   .contact-section .contact-view .company-info {
     width: 100%;
-  }
-
-  .product-feature .box-container {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .product-feature .box-container .features {
-    width: 100%;
-
-    .feature {
-      width: 100%;
-      height: 30rem;
-    }
-    .intro {
-      height: auto;
-      text-align: center;
-      width: 100%;
-    }
   }
 
   .vehicle-images {
