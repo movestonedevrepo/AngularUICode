@@ -1404,7 +1404,7 @@ input:focus {
   transform: scale(1);
 }
 
-@media (max-width: 850px) {
+@media (max-width: 991px) {
   html {
     font-size: 55.5%;
   }
@@ -1412,7 +1412,9 @@ input:focus {
   .header {
     padding: 1rem 2rem;
   }
+}
 
+@media (max-width: 850px) {
   .product-feature .box-container {
     flex-direction: column;
     gap: 2rem;
@@ -1431,29 +1433,21 @@ input:focus {
       width: 100%;
     }
 
-    .feature-1 {
-      .desc {
-        top: 45%;
-        left: 50%;
-      }
+    .feature-1 .desc {
+      top: 45%;
+      left: 50%;
     }
-    .feature-4 {
-      .desc {
-        top: 45%;
-        left: 50%;
-      }
+    .feature-4 .desc {
+      top: 45%;
+      left: 50%;
     }
-    .feature-5 {
-      .desc {
-        top: 55%;
-        left: 50%;
-      }
+    .feature-5 .desc {
+      top: 55%;
+      left: 50%;
     }
-    .feature-6 {
-      .desc {
-        top: 45%;
-        left: 50%;
-      }
+    .feature-6 .desc {
+      top: 45%;
+      left: 50%;
     }
 
     .feature-8 {
@@ -1594,12 +1588,6 @@ input:focus {
 
   .vehicle-images {
     margin: 4rem 2rem;
-  }
-
-  .cdk-overlay-pane {
-    width: 100% !important;
-    height: 80% !important;
-    max-width: 100% !important;
   }
 }
 

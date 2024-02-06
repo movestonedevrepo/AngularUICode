@@ -78,10 +78,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   showAllImages() {
+    console.log(window.screen.width);
+
     this.dialogService.openDialog(
       {
-        width: 'auto',
-        height: '600px',
+        width: window.screen.width <= 750 ? '100%' : 'auto',
+        height: window.screen.width <= 750 ? '80%' : '600px',
+        maxWidth: window.screen.width <= 750 ? '100%' : 'auto',
         data: { imagesToDisplay: this.allproductImages } as ImageDiaplyModel,
       },
       DiaplayImagesComponent
