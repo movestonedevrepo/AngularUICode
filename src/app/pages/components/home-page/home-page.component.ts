@@ -10,6 +10,8 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
+import { DialogData } from 'src/app/models/dialog-data';
+import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { SwiperOptions } from 'swiper/types';
@@ -24,7 +26,7 @@ import { v4 as uuidv4 } from 'uuid';
   encapsulation: ViewEncapsulation.None,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomePageComponent implements OnInit , AfterViewInit{
+export class HomePageComponent implements OnInit, AfterViewInit {
   contents: any = [];
   testimonials: any = [];
 
@@ -45,28 +47,23 @@ export class HomePageComponent implements OnInit , AfterViewInit{
     private activatedRoute: ActivatedRoute,
     private viewportScroller: ViewportScroller,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private dialogService: MatDialogService
   ) {}
 
   ngAfterViewInit(): void {
-    this.activatedRoute.queryParams
-      .subscribe((params:any) => {
-        console.log(params); // { order: "popular" }
-        if(params.target){
-
-          setTimeout(()=>{
-            this.viewportScroller.scrollToAnchor(params.target)
-          },1600)
-
-          
-
-        }
-
-        // this.order = params.order;
-
-        // console.log(this.order); // popular
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      console.log(params); // { order: "popular" }
+      if (params.target) {
+        setTimeout(() => {
+          this.viewportScroller.scrollToAnchor(params.target);
+        }, 1600);
       }
-    );
+
+      // this.order = params.order;
+
+      // console.log(this.order); // popular
+    });
   }
 
   ngOnInit(): void {
@@ -92,9 +89,15 @@ export class HomePageComponent implements OnInit , AfterViewInit{
       this.http
         .post(`${environment.baseUrl}/createQuery`, payload)
         .subscribe((data: any) => {
-          if (!data.hasError) {
-            alert('query sent');
-          }
+          this.dialogService.openDialog({
+            data: {
+              title: data.hasError ? 'Error' : 'Success',
+              type: data.hasError ? 'error' : 'success',
+              message: data.hasError
+                ? data.extendedMessage
+                : 'Query raised successfully',
+            } as DialogData,
+          });
         });
     }
   }

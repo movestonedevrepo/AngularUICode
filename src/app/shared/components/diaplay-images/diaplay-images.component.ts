@@ -19,8 +19,6 @@ import { SwiperDirective } from '../../utilities/swiper.directive';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DiaplayImagesComponent implements OnInit {
-  // @Input() imagesToDisplay!: Array<any>;
-  // @Input() diaplayConfig!: SwiperOptions;
   diaplayConfig!: SwiperOptions;
   imagesToDisplay!: Array<any>;
 
@@ -54,5 +52,9 @@ export class DiaplayImagesComponent implements OnInit {
   ngOnInit(): void {
     this.diaplayConfig = this.data.diaplayConfig ?? this.vehicleConfig;
     this.imagesToDisplay = Array(2).fill(this.data.imagesToDisplay).flat();
+  }
+
+  get screenWidth(): number {
+    return window.screen.width;
   }
 }

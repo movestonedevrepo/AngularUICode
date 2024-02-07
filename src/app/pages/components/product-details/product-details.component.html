@@ -71,10 +71,10 @@
         <mat-card class="example-card">
           <img mat-card-image />
           <div class="desc">
-            <h1>Battery and Charger Details</h1>
-            <p>Battery : {{ product.battery }}</p>
-            <p>Body Dimension : <br />{{ product.bodyDimension }}</p>
-            <p>Break Type : {{ product.breakType }}</p>
+            <h1>Wheels and Roof</h1>
+            <P><b>Rim</b> : {{ product.rim }} </P>
+            <P><b>Tyre Diameter</b> : {{ product.tyreDiameter }} </P>
+            <P><b>Tyre Type</b> : {{ product.tyreType }} </P>
           </div>
         </mat-card>
       </div>
@@ -82,9 +82,9 @@
         <mat-card class="example-card">
           <img mat-card-image />
           <div class="desc">
-            <h1>Lights and Mileage Details</h1>
-            <p>HeadLight: {{ product.headLight }}</p>
-            <p>Mileage: {{ product.mileage }}</p>
+            <h1>Lights and Mileage</h1>
+            <p><b>HeadLight</b> : {{ product.headLight }}</p>
+            <p><b>Mileage</b> : {{ product.mileage }} Km+</p>
           </div>
         </mat-card>
       </div>
@@ -94,9 +94,9 @@
         <mat-card class="example-card">
           <img mat-card-image />
           <div class="desc">
-            <h1>Electrical Items Details</h1>
-            <p>Controller : {{ product.controller }}</p>
-            <p>Converter : {{ product.converter }}</p>
+            <h1>Electrical Items</h1>
+            <p><b>Controller</b> : {{ product.controller }}</p>
+            <p><b>Converter</b> : {{ product.converter }}</p>
           </div>
         </mat-card>
       </div>
@@ -104,10 +104,21 @@
         <mat-card class="example-card">
           <img mat-card-image />
           <div class="desc">
-            <h1>Wheels and Roof Details</h1>
-            <P>Rim : {{ product.rim }} </P>
-            <P>Tyre Diameter : {{ product.tyreDiameter }} </P>
-            <P>Tyre Type : {{ product.tyreType }} </P>
+            <h1>Battery and Dimention</h1>
+            <p><b>Battery</b> : {{ product.battery }}</p>
+            <p>
+              <b>Length</b> :
+              {{ product.bodyDimension.split("-")[0].slice(0, -1) }}
+            </p>
+            <p>
+              <b>Width</b> :
+              {{ product.bodyDimension.split("-")[1].slice(0, -1) }}
+            </p>
+            <p>
+              <b>Height</b> :
+              {{ product.bodyDimension.split("-")[2].slice(0, -2) }}
+            </p>
+            <p><b>Type</b> : {{ product.breakType }}</p>
           </div>
         </mat-card>
       </div>
@@ -115,13 +126,9 @@
         <mat-card class="example-card">
           <img mat-card-image />
           <div class="desc">
-            <h1>
-              Steating Capacity <br />
-              and <br />
-              Suspension Details
-            </h1>
-            <P>Seating Capacity : {{ product.seatingCapacity }} </P>
-            <P>Side Cover : <br />{{ product.sideCover }} </P>
+            <h1>Seating and Suspension</h1>
+            <P><b>Seating Capacity</b> : {{ product.seatingCapacity }} </P>
+            <P><b>Side Cover</b> : <br />{{ product.sideCover }} </P>
           </div>
         </mat-card>
       </div>
@@ -131,10 +138,10 @@
         <mat-card class="example-card">
           <img mat-card-image />
           <div class="desc">
-            <h1>Charger and Roof Details</h1>
-            <p>Charger : {{ product.charger }}</p>
-            <P>Roof : {{ product.roof }} </P>
-            <P>Shocker : {{ product.shocker }} </P>
+            <h1>Charger and Roof</h1>
+            <p><b>Charger</b> : {{ product.charger }}</p>
+            <P><b>Roof</b> : {{ product.roof }} </P>
+            <P><b>Shocker</b> : {{ product.shocker }} </P>
           </div>
         </mat-card>
       </div>
@@ -143,10 +150,7 @@
           <img mat-card-image />
           <div class="desc">
             <h1>Energy Insights</h1>
-            <p>
-              Understand your vehicle's energy usage. Follow the tips to improve
-              its range
-            </p>
+            <p>Understand your vehicle's energy usage.</p>
           </div>
         </mat-card>
       </div>
@@ -155,13 +159,15 @@
           <img mat-card-image />
           <div class="desc">
             <h1>
-              About Motor <br />
-              and <br />
-              Weight Distribution
+              Motor and Weight <br />
+              Distribution
             </h1>
-            <P>Weight Without Battery : {{ product.weightWithoutBattery }} </P>
-            <p>Motor: {{ product.motor }}</p>
-            <P>Wiper : {{ product.wiper }} </P>
+            <P
+              ><b>Weight (Without Battery)</b> :
+              {{ product.weightWithoutBattery }} KG apx.
+            </P>
+            <p><b>Motor</b> : {{ product.motor }}</p>
+            <P><b>Wiper</b> : {{ product.wiper }} </P>
           </div>
         </mat-card>
       </div>
@@ -226,26 +232,26 @@
       <input
         formControlName="queryName"
         type="text"
-        placeholder="name"
+        placeholder="Enter Your Name"
         name="name"
         id="name"
       />
       <input
         formControlName="queryEmail"
         type="email"
-        placeholder="email"
+        placeholder="Enter Your Email"
         name="email"
         id="email-contact"
       />
       <input
         formControlName="queryPhone"
         type="tel"
-        placeholder="number"
+        placeholder="Enter Your Number"
         name="number"
         id="number"
       />
       <textarea
-        placeholder="message"
+        placeholder="Type your Message"
         formControlName="queryMessage"
         name="message"
         id="message"

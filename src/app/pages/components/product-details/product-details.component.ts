@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
+import { DialogData } from 'src/app/models/dialog-data';
 import { ImageDiaplyModel } from 'src/app/models/image-display-model';
 import { DiaplayImagesComponent } from 'src/app/shared/components/diaplay-images/diaplay-images.component';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
@@ -78,8 +79,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   showAllImages() {
-    console.log(window.screen.width);
-
     this.dialogService.openDialog(
       {
         width: window.screen.width <= 750 ? '100%' : 'auto',
@@ -109,9 +108,15 @@ export class ProductDetailsComponent implements OnInit {
       this.http
         .post(`${environment.baseUrl}/createQuery`, payload)
         .subscribe((data: any) => {
-          if (!data.hasError) {
-            alert('query sent');
-          }
+          this.dialogService.openDialog({
+            data: {
+              title: data.hasError ? 'Error' : 'Success',
+              type: data.hasError ? 'error' : 'success',
+              message: data.hasError
+                ? data.extendedMessage
+                : 'Query raised successfully',
+            } as DialogData,
+          });
         });
     }
   }

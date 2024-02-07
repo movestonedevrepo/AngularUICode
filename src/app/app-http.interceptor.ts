@@ -1,13 +1,21 @@
-import { HttpHandlerFn, HttpRequest, HttpResponse } from '@angular/common/http';
+import {
+  HttpEvent,
+  HttpHandlerFn,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, map } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { DialogData } from './models/dialog-data';
 import { LoaderService } from './shared/services/loader.service';
 import { MatDialogService } from './shared/services/mat-dialog.service';
 import { WebService } from './shared/services/web.service';
 
-export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn) {
+export function appHttpInterceptor(
+  req: HttpRequest<any>,
+  next: HttpHandlerFn
+): Observable<HttpEvent<any>> {
   const webService = inject(WebService);
   const loaderService = inject(LoaderService);
   const router = inject(Router);
@@ -23,7 +31,7 @@ export function appHttpInterceptor(req: HttpRequest<any>, next: HttpHandlerFn) {
     .pipe(
       catchError((error: any) => {
         loaderService.setLoading(false, req.url);
-        if (error.status === 401) logout(webService, router);
+        if (error) if (error.status === 401) logout(webService, router);
         matDialogService.openDialog({
           data: { message: error.error.extendedMessage } as DialogData,
         });

@@ -20,7 +20,14 @@
     >
       home
     </a>
-    <a class="cursor-pointer" (click)="onClickAnchor('vehicles')">vehicles</a>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/products"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      vehicles
+    </a>
     <a class="cursor-pointer" (click)="onClickAnchor('services')">services</a>
     <a class="cursor-pointer" (click)="onClickAnchor('reviews')">reviews</a>
     <a

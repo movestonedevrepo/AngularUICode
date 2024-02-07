@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 
 :root {
   --yellow: #f9d806;
@@ -91,6 +93,16 @@ mat-row.element-row:not(.expanded-row):active {
 
 .element-row mat-cell {
   border-bottom-width: 0;
+}
+
+mat-cell:nth-child(3),
+mat-header-cell:nth-child(3) {
+  flex: 0 0 10%;
+}
+
+mat-cell:nth-child(5),
+mat-header-cell:nth-child(5) {
+  flex: 0 0 10%;
 }
 
 .element-detail {
@@ -954,11 +966,13 @@ input:focus {
   }
   .feature-1 {
     height: 40rem;
-    color: white;
     img {
-      /* background: #b1edb1; */
-      background-image: url("./assets/images/SEN_9380.webp");
-      filter: brightness(0.5);
+      background: linear-gradient(
+        0deg,
+        rgba(235, 236, 235, 1) 0%,
+        rgba(191, 181, 158, 1) 100%
+      );
+
       background-size: cover;
     }
     .desc {
@@ -968,10 +982,56 @@ input:focus {
   }
   .feature-2 {
     height: 30rem;
-    color: white;
     img {
-      background-image: url("./assets/images/SEN_9333.webp");
-      filter: brightness(0.5);
+      background-image: url("./assets/images/SEN_9390.webp");
+      background-size: cover;
+    }
+    .desc {
+      top: 62%;
+      left: 50%;
+
+      > h1 {
+        font-size: 26px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      > p {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+  .feature-3 {
+    height: 25rem;
+    img {
+      background-image: url("./assets/images/SEN_9391.webp");
+      background-size: cover;
+    }
+    .desc {
+      top: 65%;
+      left: 50%;
+
+      > h1 {
+        font-size: 28px;
+        font-weight: 500;
+      }
+
+      > p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 140%;
+      }
+    }
+  }
+  .feature-4 {
+    height: 45rem;
+    img {
+      background: linear-gradient(
+        0deg,
+        rgba(235, 236, 235, 1) 0%,
+        rgba(196, 177, 174, 1) 100%
+      );
       background-size: cover;
     }
     .desc {
@@ -979,38 +1039,14 @@ input:focus {
       left: 50%;
     }
   }
-  .feature-3 {
-    height: 20rem;
-    color: white;
-    img {
-      background-image: url("./assets/images/SEN_9314.webp");
-      filter: brightness(0.5);
-      background-size: cover;
-    }
-    .desc {
-      top: 45%;
-      left: 50%;
-    }
-  }
-  .feature-4 {
-    height: 50rem;
-    color: white;
-    img {
-      background-image: url("./assets/images/SEN_9395.webp");
-      filter: brightness(0.5);
-      background-size: cover;
-    }
-    .desc {
-      top: 25%;
-      left: 50%;
-    }
-  }
   .feature-5 {
     height: 30rem;
-    color: white;
     img {
-      background-image: url("./assets/images/SEN_9330.webp");
-      filter: brightness(0.5);
+      background: linear-gradient(
+        0deg,
+        rgba(235, 236, 235, 1) 0%,
+        rgba(202, 183, 162, 1) 100%
+      );
       background-size: cover;
     }
     .desc {
@@ -1020,10 +1056,13 @@ input:focus {
   }
   .feature-6 {
     height: 30rem;
-    color: white;
     img {
-      background-image: url("./assets/images/SEN_9386.webp");
-      filter: brightness(0.5);
+      background: linear-gradient(
+        0deg,
+        rgba(235, 236, 235, 1) 0%,
+        rgba(180, 173, 163, 1) 100%
+      );
+
       background-size: cover;
     }
     .desc {
@@ -1032,7 +1071,7 @@ input:focus {
     }
   }
   .feature-7 {
-    height: 20rem;
+    height: 25rem;
     img {
       background-image: url("./assets/images/SEN_9389.webp");
       background-size: cover;
@@ -1052,11 +1091,15 @@ input:focus {
     }
   }
   .feature-8 {
-    height: 50rem;
+    height: 45rem;
     color: white;
     img {
-      background-image: url("./assets/images/SEN_9388.webp");
-      filter: brightness(0.5);
+      background: linear-gradient(
+        0deg,
+        rgba(206, 206, 206, 1) 0%,
+        rgba(156, 156, 156, 1) 28%,
+        rgba(93, 93, 93, 1) 100%
+      );
       background-size: cover;
     }
     .desc {
@@ -1080,14 +1123,23 @@ input:focus {
       line-height: 116%;
       letter-spacing: -0.64px;
       margin-bottom: 2rem;
+      white-space: nowrap;
     }
 
     > p {
-      font-size: 18px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 500;
-      line-height: 140%;
+      line-height: 160%;
       margin: 8px 0 0 0;
+
+      > b {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 160%;
+        margin: 8px 0 0 0;
+      }
     }
   }
 }
@@ -1345,7 +1397,19 @@ input:focus {
   color: red;
   font-size: 76px;
   width: 76px;
+  margin-bottom: 2rem;
   height: 76px;
+}
+
+.dialog-content .success-logo mat-icon {
+  font-size: 70px;
+  color: white;
+  width: 70px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  height: 70px;
+  border: 1px solid green;
+  background: green;
 }
 
 .dialog-content .error-logo h4 {
@@ -1402,6 +1466,26 @@ input:focus {
 .vehicle-images .image-slider .swiper-slide-active img {
   opacity: 1;
   transform: scale(1);
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+
+  align-items: center;
+  justify-content: center;
+  padding: 50px 8%;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 991px) {
@@ -1630,5 +1714,19 @@ input:focus {
 
   .header #login-btn .btn {
     display: none;
+  }
+
+  .product-feature .box-container .features {
+    .feature-4 .desc {
+      top: 50%;
+      left: 46%;
+    }
+    .feature-5 .desc {
+      top: 45%;
+      left: 42%;
+    }
+    .feature-8 {
+      color: black;
+    }
   }
 }

@@ -1,8 +1,14 @@
 <h1 mat-dialog-title>{{ title }}</h1>
 <div mat-dialog-content class="dialog-content">
+  @if (type === 'error') {
   <div class="error-logo">
     <mat-icon class="material-symbols-outlined"> error </mat-icon>
   </div>
+  } @else if (type === 'success') {
+  <div class="success-logo">
+    <mat-icon class="material-symbols-outlined"> check </mat-icon>
+  </div>
+  }
   <h4>{{ message }}</h4>
 </div>
 <div mat-dialog-actions>

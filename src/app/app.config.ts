@@ -1,4 +1,9 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
@@ -24,6 +29,7 @@ export const APP_CONFIG = {
   providers: [
     provideHttpClient(withInterceptors([appHttpInterceptor])),
     provideAnimations(),
+    importProvidersFrom(HttpClientModule),
     provideProtractorTestingSupport(),
     provideRouter(
       APP_ROUTES_CONFIG,

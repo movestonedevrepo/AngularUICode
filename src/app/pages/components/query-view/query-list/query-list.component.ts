@@ -51,13 +51,12 @@ export class QueryListComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() ELEMENT_DATA!: Array<PeriodicElement>;
 
   displayedColumns: string[] = ['id', 'Email', 'Phone', 'Message'];
-  keyExpansion:any={
-    id:'queryID',
-    Email:'queryEmail',
-    Phone:'queryPhone',
-    Message:'queryMessage'
-
-  }
+  keyExpansion: any = {
+    id: 'queryID',
+    Email: 'queryEmail',
+    Phone: 'queryPhone',
+    Message: 'queryMessage',
+  };
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: PeriodicElement | null;
   dataSource!: MatTableDataSource<PeriodicElement>;
