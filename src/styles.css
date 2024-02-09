@@ -195,6 +195,10 @@ textarea {
   text-transform: uppercase;
 }
 
+.header .navbar-section a .nav-login-btn {
+  display: none;
+}
+
 .header .navbar-section a:hover {
   color: var(--yellow);
 }
@@ -1566,7 +1570,11 @@ input:focus {
     display: block;
     margin: 2rem;
     font-size: 2rem;
+  }
+
+  .header .navbar-section a .nav-login-btn {
     display: block;
+    width: 100%;
   }
 
   #menu-btn {
@@ -1708,13 +1716,18 @@ input:focus {
     padding-bottom: 2rem;
   }
 
+  .header #login-btn .btn {
+    display: none;
+  }
+
   .header #login-btn i {
     display: block;
   }
 
-  .header #login-btn .btn {
-    display: none;
-  }
+  /* ::ng-deep .loggedin-menu {
+    background: green;
+    width: 100%;
+  } */
 
   .product-feature .box-container .features {
     .feature-4 .desc {

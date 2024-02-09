@@ -38,6 +38,11 @@
     >
       contact
     </a>
+    @if (!isUserLoggedIn && !getUserName) {
+    <a id="nav-login-btn" (click)="onLoginBtnClick()">
+      <button type="button" class="nav-login-btn btn">Login</button>
+    </a>
+    }
   </nav>
 
   @if (!isUserLoggedIn && !getUserName) {

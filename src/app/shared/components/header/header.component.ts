@@ -67,7 +67,13 @@ export class HeaderComponent implements OnInit {
   onLoginBtnClick() {
     if (!this.isUserLoggedIn) {
       this.matDialogService
-        .openDialog({}, LoginComponent)
+        .openDialog(
+          {
+            width: 'auto',
+            maxWidth: 'auto',
+          },
+          LoginComponent
+        )
         .afterClosed()
         .subscribe((data) => {
           if (data && !data.hasError) {
@@ -82,14 +88,12 @@ export class HeaderComponent implements OnInit {
   }
 
   onClickAnchor(elementId: string) {
-    console.log(this.router.url)
-    if(this.router.url.includes("/home")){
+    console.log(this.router.url);
+    if (this.router.url.includes('/home')) {
       this.viewportScroller.scrollToAnchor(elementId);
+    } else {
+      this.router.navigate(['/home'], { queryParams: { target: elementId } });
     }
-    else{
-      this.router.navigate(['/home'],  { queryParams: { target: elementId } })
-    }
-   
   }
 
   logout() {
