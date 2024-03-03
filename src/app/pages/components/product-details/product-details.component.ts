@@ -95,16 +95,16 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   sendQuery() {
-    const payload = {
-      queryID: uuidv4(),
-      queryPhone: this.queryForm.value.queryPhone,
-      queryEmail: this.queryForm.value.queryEmail,
-      queryMessage:
-        `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
-        this.queryForm.value.queryMessage,
-      forProduct: this.product.productId,
-    };
     if (this.queryForm.valid) {
+      const payload = {
+        queryID: uuidv4(),
+        queryPhone: this.queryForm.value.queryPhone,
+        queryEmail: this.queryForm.value.queryEmail,
+        queryMessage:
+          `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
+          this.queryForm.value.queryMessage,
+        forProduct: this.product.productId,
+      };
       this.http
         .post(`${environment.baseUrl}/createQuery`, payload)
         .subscribe((data: any) => {
@@ -118,6 +118,8 @@ export class ProductDetailsComponent implements OnInit {
             } as DialogData,
           });
         });
+    } else {
+      this.queryForm.markAllAsTouched();
     }
   }
 
