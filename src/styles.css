@@ -1521,6 +1521,16 @@ input:focus {
 }
 
 @media (max-width: 900px) {
+  .header .logo .icon {
+    width: 60px;
+    height: 30px;
+  }
+
+  .header .logo .brand {
+    width: 150px;
+    height: 30px;
+  }
+
   .product-feature .box-container {
     flex-direction: column;
     gap: 2rem;
@@ -1566,6 +1576,13 @@ input:focus {
         }
       }
     }
+  }
+}
+
+@media (max-width: 825px) {
+  .header .logo .brand {
+    width: 130px;
+    height: 30px;
   }
 }
 
@@ -1703,6 +1720,19 @@ input:focus {
   .vehicle-images {
     margin: 4rem 2rem;
   }
+
+  .product-feature .box-container .features .feature {
+    img {
+      background: linear-gradient(
+        0deg,
+        rgba(190, 244, 252, 1) 0%,
+        rgba(154, 246, 255, 1) 28%,
+        rgba(169, 234, 255, 1) 100%
+      );
+
+      background-size: cover;
+    }
+  }
 }
 
 @media (max-width: 450px) {
@@ -1747,10 +1777,6 @@ input:focus {
   }
 
   .product-feature .box-container .features {
-    .feature > img {
-      background: pink;
-      background-size: cover;
-    }
     .feature-4 .desc {
       top: 50%;
       left: 46%;
@@ -1762,5 +1788,17 @@ input:focus {
     .feature-8 {
       color: black;
     }
+  }
+}
+
+@media (max-width: 380px) {
+  .header .logo .icon {
+    width: 60px;
+    height: 30px;
+  }
+
+  .header .logo .brand {
+    width: 150px;
+    height: 30px;
   }
 }
