@@ -77,15 +77,15 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   sendQuery() {
-    const payload = {
-      queryID: uuidv4(),
-      queryPhone: '' + this.queryForm.value.queryPhone,
-      queryEmail: this.queryForm.value.queryEmail,
-      queryMessage:
-        `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
-        this.queryForm.value.queryMessage,
-    };
     if (this.queryForm.valid) {
+      const payload = {
+        queryID: uuidv4(),
+        queryPhone: '' + this.queryForm.value.queryPhone,
+        queryEmail: this.queryForm.value.queryEmail,
+        queryMessage:
+          `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
+          this.queryForm.value.queryMessage,
+      };
       this.http
         .post(`${environment.baseUrl}/createQuery`, payload)
         .subscribe((data: any) => {
@@ -99,6 +99,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
             } as DialogData,
           });
         });
+    } else {
+      this.queryForm.markAllAsTouched();
     }
   }
 

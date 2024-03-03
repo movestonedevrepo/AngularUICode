@@ -10,6 +10,9 @@
 :root {
   --yellow: #f9d806;
   --light-yellow: #ffee80;
+  --green: #079022;
+  --white: white;
+  --light-green: #4dff71;
   --black: #130f40;
   --light-color: #666;
   --border-color: rgba(0, 0, 0, 0.1);
@@ -40,6 +43,25 @@ html {
   scroll-behavior: smooth;
   position: relative;
   min-height: 100%;
+}
+
+textarea {
+  height: 15rem !important;
+  resize: none !important;
+}
+
+mat-error {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}
+
+.mat-input {
+  width: 100%;
 }
 
 ::placeholder {
@@ -133,7 +155,7 @@ mat-header-cell:nth-child(5) {
   opacity: 0.5;
 }
 
-input,
+/* input,
 textarea {
   margin: 0.7rem 0;
   width: 100%;
@@ -143,14 +165,14 @@ textarea {
   color: var(--black);
   border-radius: 0.5rem;
   text-transform: none;
-}
+} */
 
 .btn {
   display: inline-block;
   margin-top: 1rem !important;
   border-radius: 0.5rem !important;
-  background: var(--light-yellow) !important;
-  color: var(--black) !important;
+  background: var(--green) !important;
+  color: var(--white) !important;
   font-weight: 500 !important;
   font-size: 1.7rem !important;
   cursor: pointer !important;
@@ -158,7 +180,8 @@ textarea {
 }
 
 .btn:hover {
-  background: var(--yellow) !important;
+  background: var(--light-green) !important;
+  color: var(--black) !important;
 }
 
 .header {
@@ -178,13 +201,18 @@ textarea {
   font-size: 3rem;
   color: var(--black);
   font-weight: bolder;
-}
-
-.header .logo img {
-  width: 70px;
-  height: 60px;
   margin: 0;
   padding: 0;
+}
+
+.header .logo .icon {
+  width: 85px;
+  height: 50px;
+}
+
+.header .logo .brand {
+  width: 200px;
+  height: 50px;
 }
 
 .header .navbar-section a {
@@ -392,11 +420,10 @@ textarea {
 }
 
 .heading span {
-  position: relative;
-  z-index: 0;
+  color: var(--green);
 }
 
-.heading span::before {
+/* .heading span::before {
   content: "";
   position: absolute;
   bottom: 1rem;
@@ -404,9 +431,8 @@ textarea {
   height: 100%;
   width: 100%;
   z-index: -1;
-  background: var(--yellow);
   clip-path: polygon(0 90%, 100% 80%, 100% 100%, 0% 100%);
-}
+} */
 
 .vehicles .vehicles-slider {
   padding-bottom: 5rem;
@@ -610,12 +636,14 @@ textarea {
   height: 100%;
   width: 17rem;
   font-size: 1.8rem;
-  color: var(--black);
-  background: var(--light-yellow);
+  color: var(--white);
+  font-weight: 600;
+  background: var(--green);
   cursor: pointer;
 
   &:hover {
-    background: var(--yellow);
+    background: var(--light-green);
+    color: var(--black);
   }
 }
 
@@ -694,7 +722,7 @@ textarea {
   text-align: center;
 }
 
-.contact .row form input,
+/* .contact .row form input,
 textarea {
   margin: 0.7rem 0;
   width: 100%;
@@ -704,12 +732,7 @@ textarea {
   color: var(--black);
   border-radius: 0.5rem;
   text-transform: none;
-}
-
-.contact .row form textarea {
-  height: 15rem;
-  resize: none;
-}
+} */
 
 .contact .row form h3 {
   color: var(--black);
@@ -737,6 +760,7 @@ textarea {
   display: block;
   color: var(--light-color);
   padding: 1rem 0;
+  text-transform: none;
 }
 
 .footer .box-container .box a i {
@@ -968,6 +992,9 @@ input:focus {
     height: 30rem;
     width: 100%;
   }
+  .desc {
+    padding: 10px;
+  }
   .feature-1 {
     height: 40rem;
     img {
@@ -997,7 +1024,6 @@ input:focus {
       > h1 {
         font-size: 26px;
         font-weight: 500;
-        white-space: nowrap;
       }
 
       > p {
@@ -1127,7 +1153,6 @@ input:focus {
       line-height: 116%;
       letter-spacing: -0.64px;
       margin-bottom: 2rem;
-      white-space: nowrap;
     }
 
     > p {
@@ -1184,87 +1209,74 @@ input:focus {
 }
 
 .contact-section {
-  padding-top: 5rem;
   text-align: center;
-  overflow-x: hidden;
-  background: linear-gradient(rgb(0 0 0 / 0.6), rgba(0, 0, 0, 0.6)),
-    url(./assets/images/car-background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: center;
-  color: white !important;
+}
+
+.contact-section .title {
+  margin-bottom: 2rem;
 }
 
 .contact-section .title h1 {
   font-size: 6rem;
   padding: 2rem 0;
-  color: white !important;
+}
+
+.contact-section .contact {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+.contact-section .contact .heading {
+  font-size: 4rem;
 }
 
 .contact-section .contact-view {
   display: flex;
   gap: 5rem;
-  justify-content: stretch;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
-.contact-section .contact-view .contact {
-  width: 60%;
-  border: 1px solid white;
-  border-radius: 1rem;
-  padding: 2rem;
-  height: auto;
-}
-
-.contact-section .contact-view .contact input {
-  background: #c0c0c0e0;
-}
-
-.contact-section .contact-view .contact button {
-  color: var(--black) !important;
-}
-
-.contact-section .contact-view .contact textarea {
-  background: #c0c0c0e0;
-}
-
-.contact-section .contact-view .contact .heading {
-  color: white;
-  font-size: 4rem;
-}
-
-.contact-section .company-info {
-  width: 40%;
+.contact-section .contact-view .about-section {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: stretch;
-  height: auto;
-}
-
-.contact-section .company-info .about-section {
-  display: flex;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 1.5rem;
   background-color: #113959;
   padding: 2rem;
-  justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   border-radius: 1rem;
+  width: 50%;
 }
 
-.contact-section .company-info .about-section h2 {
+.contact-section .contact-view .about-section h2 {
   color: #fff;
-  font-size: 3rem;
+  font-size: 4rem;
+  text-align: center;
 }
 
-.contact-section .company-info .about-section a {
-  color: #fff;
+.contact-section .contact-view .about-section th {
+  color: #19bf36;
   font-size: 2rem;
+  width: 50%;
+  padding: 2rem;
 }
 
-.contact-section .company-info .about-section a i {
+.contact-section .contact-view .about-section td {
+  color: #fff;
+  font-size: 1.5rem;
+  width: 50%;
+}
+
+.contact-section .contact-view .about-section td a {
+  color: #fff;
+  font-size: 1.5rem;
+  text-transform: none;
+  display: block;
+}
+
+.contact-section .contact-view .about-section td a i {
   background-color: #18b6fa;
   padding: 1rem;
   border: 1px solid #18b6fa;
@@ -1275,18 +1287,23 @@ input:focus {
   margin-right: 1rem;
 }
 
-.contact-section .company-info .about-section .social-link {
+.contact-section .contact-view .about-section .social-link {
   margin-top: 2rem;
 }
 
-.contact-section .company-info .about-section .social-link i {
+.contact-section .contact-view .about-section .social-link i {
   font-size: 4rem;
   opacity: 0.8;
   margin-right: 2rem;
   cursor: pointer;
+  color: var(--white);
 }
 
-.contact-section .company-info .map {
+.contact-section .contact-view .map-section {
+  width: 50%;
+}
+
+.contact-section .contact-view .map-section .map {
   width: 100%;
   border: var(--border);
   border-radius: 1rem;
@@ -1294,7 +1311,7 @@ input:focus {
   height: 100%;
 }
 
-.conatct-newsletter {
+.contact-newsletter {
   padding: 6rem 2rem;
   background-position: center;
   text-align: center;
@@ -1302,16 +1319,16 @@ input:focus {
   background: #eee;
 }
 
-.conatct-newsletter h1 {
+.contact-newsletter h1 {
   font-size: 4rem;
 }
 
-.conatct-newsletter p {
+.contact-newsletter p {
   font-size: 1.5rem;
   padding: 1rem 0;
 }
 
-.conatct-newsletter form {
+.contact-newsletter form {
   margin: 1rem auto;
   max-width: 60rem;
   height: 5rem;
@@ -1323,7 +1340,7 @@ input:focus {
   border-radius: 5rem;
 }
 
-.conatct-newsletter form input {
+.contact-newsletter form input {
   height: 100%;
   width: 100%;
   font-size: 1.7rem;
@@ -1334,16 +1351,17 @@ input:focus {
   border-radius: 0.5rem 0 0 0.5rem;
 }
 
-.conatct-newsletter form button {
+.contact-newsletter form button {
   height: 100%;
   width: 17rem;
   font-size: 1.8rem;
-  color: var(--black) !important;
-  background: var(--light-yellow);
+  color: var(--white) !important;
+  background: var(--green);
   cursor: pointer;
 
   &:hover {
-    background: var(--yellow);
+    background: var(--light-green);
+    color: var(--white) !important;
   }
 }
 
@@ -1412,8 +1430,8 @@ input:focus {
   border-radius: 50%;
   margin-bottom: 2rem;
   height: 70px;
-  border: 1px solid green;
-  background: green;
+  border: 1px solid var(--light-green);
+  background: var(--light-green);
 }
 
 .dialog-content .error-logo h4 {
@@ -1502,7 +1520,7 @@ input:focus {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .product-feature .box-container {
     flex-direction: column;
     gap: 2rem;
@@ -1666,15 +1684,19 @@ input:focus {
   }
 
   .contact-section .contact-view {
-    display: block;
+    flex-direction: column;
   }
 
-  .contact-section .contact-view .contact {
+  .contact-section .contact {
     width: 100%;
     margin-bottom: 2rem;
   }
 
-  .contact-section .contact-view .company-info {
+  .contact-section .contact-view .about-section {
+    width: 100%;
+  }
+
+  .contact-section .contact-view .map-section {
     width: 100%;
   }
 
@@ -1724,12 +1746,11 @@ input:focus {
     display: block;
   }
 
-  /* ::ng-deep .loggedin-menu {
-    background: green;
-    width: 100%;
-  } */
-
   .product-feature .box-container .features {
+    .feature > img {
+      background: pink;
+      background-size: cover;
+    }
     .feature-4 .desc {
       top: 50%;
       left: 46%;

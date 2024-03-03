@@ -75,6 +75,7 @@
             <P><b>Rim</b> : {{ product.rim }} </P>
             <P><b>Tyre Diameter</b> : {{ product.tyreDiameter }} </P>
             <P><b>Tyre Type</b> : {{ product.tyreType }} </P>
+            <p><b>Type</b> : {{ product.breakType }}</p>
           </div>
         </mat-card>
       </div>
@@ -118,7 +119,6 @@
               <b>Height</b> :
               {{ product.bodyDimension.split("-")[2].slice(0, -2) }}
             </p>
-            <p><b>Type</b> : {{ product.breakType }}</p>
           </div>
         </mat-card>
       </div>

@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
   logo = `${environment.assestsBasePath}/images/Move_Stone_logo.png`;
+  brand = `${environment.assestsBasePath}/images/Move_Stone_brand.png`;
 
   constructor(
     private router: Router,

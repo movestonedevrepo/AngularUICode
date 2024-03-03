@@ -311,40 +311,77 @@
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+    >
+    </iframe>
 
-    <form [formGroup]="queryForm" action="">
+    <form [formGroup]="queryForm">
       <h3>get in touch</h3>
-      <input
-        formControlName="queryName"
-        type="text"
-        placeholder="Enter your name"
-        name="name"
-        id="name"
-      />
-      <input
-        formControlName="queryEmail"
-        type="email"
-        placeholder="Enter your email"
-        name="email"
-        id="email-contact"
-      />
-      <input
-        formControlName="queryPhone"
-        formControlName="queryPhone"
-        type="number"
-        placeholder="Enter phone number"
-        name="number"
-        id="number"
-      />
-      <textarea
-        formControlName="queryMessage"
-        placeholder="Type your message"
-        name="message"
-        id="message"
-      ></textarea>
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          formControlName="queryName"
+          type="text"
+          placeholder="Enter your name"
+          name="name"
+          id="name"
+          required
+        />
+        <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="queryEmail"
+          type="email"
+          placeholder="Enter your email"
+          name="email"
+          id="email-contact"
+          required
+        />
+        <mat-error *ngIf="queryForm.get('queryEmail')?.hasError('required')">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Number</mat-label>
+        <input
+          matInput
+          formControlName="queryPhone"
+          type="number"
+          placeholder="Enter phone number"
+          name="number"
+          id="number"
+          required
+        />
+        <mat-error *ngIf="queryForm.get('queryPhone')?.hasError('required')">
+          Number is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Message</mat-label>
+        <textarea
+          matInput
+          formControlName="queryMessage"
+          placeholder="Type your message"
+          name="message"
+          id="message"
+          required
+        >
+        </textarea>
+        <mat-error *ngIf="queryForm.get('queryMessage')?.hasError('required')">
+          Message is required
+        </mat-error>
+      </mat-form-field>
+
       <button (click)="sendQuery()" type="button" class="btn">
-        send message
+        Send Query
       </button>
     </form>
   </div>
