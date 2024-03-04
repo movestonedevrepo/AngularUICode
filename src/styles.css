@@ -639,11 +639,13 @@ textarea {
   color: var(--white);
   font-weight: 600;
   background: var(--green);
+  border: 1px solid var(--green);
   cursor: pointer;
 
   &:hover {
     background: var(--light-green);
     color: var(--black);
+    border: 1px solid var(--light-green);
   }
 }
 
