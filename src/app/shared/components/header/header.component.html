@@ -30,9 +30,9 @@
       vehicles
     </a>
     <a class="cursor-pointer" (click)="onClickAnchor('services')">services</a>
-    <a class="cursor-pointer" (click)="onClickAnchor('reviews')">reviews</a>
+    <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">reviews</a>
     <a
-      class="cursor-pointer"
+      class="cursor-pointer last-child"
       routerLink="/pages/contact"
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
@@ -40,14 +40,14 @@
       contact
     </a>
     @if (!isUserLoggedIn && !getUserName) {
-    <a id="nav-login-btn" (click)="onLoginBtnClick()">
-      <button type="button" class="nav-login-btn btn">Login</button>
+    <a id="nav-login-btn" class="nav-login-btn" (click)="onLoginBtnClick()">
+      <button type="button" class="btn">Login</button>
     </a>
     }
   </nav>
 
   @if (!isUserLoggedIn && !getUserName) {
-  <div id="login-btn" (click)="onLoginBtnClick()">
+  <div id="login-btn" class="login-btn" (click)="onLoginBtnClick()">
     <button type="button" class="btn">Login</button>
     <span id="login-icon">
       <i class="far fa-user"></i>

@@ -15,7 +15,7 @@
   --light-green: #4dff71;
   --black: #130f40;
   --light-color: #666;
-  --border-color: rgba(0, 0, 0, 0.1);
+  --border-color: rgb(69, 69, 69);
   --border: 0.1rem solid rgba(0, 0, 0, 0.1);
   --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
@@ -194,7 +194,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 9%;
+  padding: 2rem 3rem;
 }
 
 .header .logo {
@@ -215,15 +215,27 @@ textarea {
   height: 50px;
 }
 
+.navbar-section {
+  min-width: 45%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .header .navbar-section a {
-  font-size: 1.7rem;
-  margin: 0 1rem;
+  font-size: 2rem;
+  /* padding: 0 5rem;
+  border-right: 1px solid var(--border-color); */
   color: var(--black);
   cursor: pointer;
   text-transform: uppercase;
 }
 
-.header .navbar-section a .nav-login-btn {
+.header .navbar-section .last-child {
+  border-right: none;
+}
+
+.header .navbar-section .nav-login-btn {
   display: none;
 }
 
@@ -232,7 +244,7 @@ textarea {
 }
 
 .header .btn {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 .header #login-btn i {
@@ -558,7 +570,7 @@ textarea {
 .featured .featured-slider .box {
   text-align: center;
   box-shadow: var(--box-shadow);
-  border-color: var(--border);
+  border: 1px solid var(--border-color);
   padding: 2rem;
   margin-bottom: 4rem;
   border-radius: 0.5rem;
@@ -1583,14 +1595,8 @@ input:focus {
 }
 
 @media (max-width: 825px) {
-  .header .logo .brand {
-    width: 130px;
-    height: 30px;
-  }
-}
-
-@media (max-width: 750px) {
   .header .navbar-section {
+    display: block;
     position: absolute;
     top: 99%;
     left: 0;
@@ -1610,8 +1616,11 @@ input:focus {
     font-size: 2rem;
   }
 
-  .header .navbar-section a .nav-login-btn {
+  .header .navbar-section .nav-login-btn {
     display: block;
+  }
+
+  .header .navbar-section .nav-login-btn button {
     width: 100%;
   }
 
@@ -1623,6 +1632,13 @@ input:focus {
     transform: rotate(180deg);
   }
 
+  .header .logo .brand {
+    width: 130px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 750px) {
   section {
     padding: 2rem;
   }
