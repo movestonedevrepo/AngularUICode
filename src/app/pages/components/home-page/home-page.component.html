@@ -96,50 +96,53 @@
   <div class="box-container">
     <div class="box">
       <i class="fas fa-car"></i>
-      <h3>car selling</h3>
+      <h3>Electric Rickshaw Sales</h3>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse,
-        deserunt.
+        Visit nearest movestone outlet to buy e-rickshaw in Kolkata. Also you
+        can put enquiry here, our sales person will call you.
       </p>
     </div>
     <div class="box">
       <i class="fas fa-tools"></i>
-      <h3>parts repair</h3>
+      <h3>Spare Parts Sales</h3>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse,
-        deserunt.
+        We sale only genuine and branded products with high end warranty. Check
+        our products catalogue or visit offline.
       </p>
     </div>
     <div class="box">
       <i class="fas fa-car-crash"></i>
-      <h3>car insurance</h3>
+      <h3>Full Insurance</h3>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse,
-        deserunt.
+        Our Partner Insurance Company covers EVs from any potential financial
+        loss or damage in case of events like accidents.
       </p>
     </div>
     <div class="box">
       <i class="fas fa-battery"></i>
-      <h3>battery replacement</h3>
+      <h3>Battery Replacement</h3>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse,
-        deserunt.
+        Replace your old battery with original OEM batteries of your choice and
+        sell old batteries at one place.
       </p>
     </div>
     <div class="box">
       <i class="fas fa-gas-pump"></i>
-      <h3>Oil Change</h3>
+      <h3>Become a Dealer</h3>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse,
-        deserunt.
+        We would like you to be a part of our future forward journey. Please
+        contact our office or fill form on this link to apply for movestone
+        India Dealerships
       </p>
     </div>
     <div class="box">
       <i class="fas fa-headset"></i>
       <h3>24/7 support</h3>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse,
-        deserunt.
+        Regardless of whether you have to get a tyre changed, need an expert
+        look into the electric vehicle’s motor/battery, etc. You can reach out
+        to us at any time and avail yourself of the spot assistance for diverse
+        situations.
       </p>
     </div>
   </div>
@@ -295,8 +298,151 @@
 } @placeholder {
 <div>Reviews Section</div>
 } @defer (on viewport) {
-<section id="contact" class="contact">
+<section id="contact-section" class="contact-section">
   <h1 class="heading"><span>contact </span> us</h1>
+
+  <div class="contact">
+    <form [formGroup]="queryForm">
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          formControlName="queryName"
+          type="text"
+          placeholder="Enter your name"
+          name="name"
+          id="name"
+          required
+        />
+        <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="queryEmail"
+          type="email"
+          placeholder="Enter your email"
+          name="email"
+          id="email-contact"
+          required
+        />
+        <mat-error *ngIf="queryForm.get('queryEmail')?.hasError('required')">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Number</mat-label>
+        <input
+          matInput
+          formControlName="queryPhone"
+          type="number"
+          placeholder="Enter phone number"
+          name="number"
+          id="number"
+          required
+        />
+        <mat-error *ngIf="queryForm.get('queryPhone')?.hasError('required')">
+          Number is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-input">
+        <mat-label>Message</mat-label>
+        <textarea
+          matInput
+          formControlName="queryMessage"
+          placeholder="Type your message"
+          name="message"
+          id="message"
+          required
+        >
+        </textarea>
+        <mat-error *ngIf="queryForm.get('queryMessage')?.hasError('required')">
+          Message is required
+        </mat-error>
+      </mat-form-field>
+
+      <button (click)="sendQuery()" type="button" class="btn">
+        Send Query
+      </button>
+    </form>
+  </div>
+  <div class="contact-view">
+    <div class="about-section">
+      <h2>Contact Info</h2>
+
+      <table class="about-table">
+        <tr>
+          <th>Office Location</th>
+          <th>Factory Location</th>
+        </tr>
+        <tr>
+          <td>
+            Ground Floor, 24/1,Shop No. - 6, Shantikunj, Onkarmal Jatia Road,
+            Howrah, West Bengal, 711103
+          </td>
+          <td>
+            Unit No. - UTA0045,0044,0036,0035, Utsab Park, Bhagabatipur, Chatur
+            Bhujkhati, Sankrail, Howrah, West Bengal, 711313
+          </td>
+        </tr>
+        <tr>
+          <th>Sales department</th>
+          <th>Service department</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="email:abcd&#64;gmail.com"> abcd&#64;gmail.com </a>
+            <a href="tel:7605083988">7605083988</a>
+          </td>
+          <td>
+            <a href="email:abcd&#64;gmail.com"> abcd&#64;gmail.com </a>
+            <a href="tel:9007350740">9007350740</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Purchase department</th>
+          <th>Complaint</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="email:abcd&#64;gmail.com"> abcd&#64;gmail.com </a>
+            <a href="tel:7605083985">7605083985</a>
+          </td>
+          <td>
+            <a href="email:abcd&#64;gmail.com"> abcd&#64;gmail.com </a>
+            <a href="tel:9804267746">9804267746</a>
+          </td>
+        </tr>
+      </table>
+
+      <div class="social-link">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin"></i>
+      </div>
+    </div>
+    <div class="map-section">
+      <div class="map">
+        <iframe
+          class="map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235850.8115155397!2d88.1828891054038!3d22.535343793821482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1701868996187!5m2!1sen!2sin"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section id="contact" class="contact">
 
   <div class="row">
     <iframe
@@ -379,7 +525,7 @@
       </button>
     </form>
   </div>
-</section>
+</section> -->
 } @placeholder {
 <div>Contact Section</div>
 }
