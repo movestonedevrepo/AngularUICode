@@ -89,7 +89,7 @@
   </swiper-container>
 </section>
 } @placeholder {
-<div>Vehicles Section</div>
+<div id="vehicles-section">Vehicles Section</div>
 } @defer (on viewport) {
 <section id="services" class="services">
   <h1 class="heading">our <span>services</span></h1>
@@ -441,91 +441,6 @@
     </div>
   </div>
 </section>
-
-<!-- <section id="contact" class="contact">
-
-  <div class="row">
-    <iframe
-      class="map"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235850.8115155397!2d88.1828891054038!3d22.535343793821482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1701868996187!5m2!1sen!2sin"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    >
-    </iframe>
-
-    <form [formGroup]="queryForm">
-      <h3>get in touch</h3>
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Name</mat-label>
-        <input
-          matInput
-          formControlName="queryName"
-          type="text"
-          placeholder="Enter your name"
-          name="name"
-          id="name"
-          required
-        />
-        <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">
-          Name is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          formControlName="queryEmail"
-          type="email"
-          placeholder="Enter your email"
-          name="email"
-          id="email-contact"
-          required
-        />
-        <mat-error *ngIf="queryForm.get('queryEmail')?.hasError('required')">
-          Email is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Number</mat-label>
-        <input
-          matInput
-          formControlName="queryPhone"
-          type="number"
-          placeholder="Enter phone number"
-          name="number"
-          id="number"
-          required
-        />
-        <mat-error *ngIf="queryForm.get('queryPhone')?.hasError('required')">
-          Number is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Message</mat-label>
-        <textarea
-          matInput
-          formControlName="queryMessage"
-          placeholder="Type your message"
-          name="message"
-          id="message"
-          required
-        >
-        </textarea>
-        <mat-error *ngIf="queryForm.get('queryMessage')?.hasError('required')">
-          Message is required
-        </mat-error>
-      </mat-form-field>
-
-      <button (click)="sendQuery()" type="button" class="btn">
-        Send Query
-      </button>
-    </form>
-  </div>
-</section> -->
 } @placeholder {
 <div>Contact Section</div>
 }

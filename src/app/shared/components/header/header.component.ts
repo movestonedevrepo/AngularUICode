@@ -93,7 +93,9 @@ export class HeaderComponent implements OnInit {
     if (this.router.url.includes('/home')) {
       this.viewportScroller.scrollToAnchor(elementId);
     } else {
-      this.router.navigate(['/home'], { queryParams: { target: elementId } });
+      this.router.navigate(['pages/home'], {
+        queryParams: { target: elementId },
+      });
     }
   }
 
