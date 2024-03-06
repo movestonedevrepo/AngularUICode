@@ -98,7 +98,7 @@ export class ProductDetailsComponent implements OnInit {
     if (this.queryForm.valid) {
       const payload = {
         queryID: uuidv4(),
-        queryPhone: this.queryForm.value.queryPhone,
+        queryPhone: this.queryForm.value.queryPhone+"",
         queryEmail: this.queryForm.value.queryEmail,
         queryMessage:
           `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
