@@ -51,6 +51,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     private dialogService: MatDialogService
   ) {}
 
+  ngOnInit(): void {
+    if (window.screen.width <= 500) this.vehicleConfig.navigation = false;
+    const productDetails = this.activatedRoute.snapshot.data['productDetails'];
+    this.contents = Array(10).fill(productDetails.products).flat();
+    this.testimonials = productDetails.testimonials;
+  }
+
   ngAfterViewInit(): void {
     this.activatedRoute.queryParams.subscribe((params: any) => {
       console.log(params); // { order: "popular" }
@@ -59,21 +66,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
           this.viewportScroller.scrollToAnchor(params.target);
         }, 1600);
       }
-
-      // this.order = params.order;
-
-      // console.log(this.order); // popular
     });
-  }
-
-  ngOnInit(): void {
-    const productDetails = this.activatedRoute.snapshot.data['productDetails'];
-    this.contents = Array(10).fill(productDetails.products).flat();
-    this.testimonials = productDetails.testimonials;
-    // const headers: any = new HttpHeaders({ mode: 'no-cors' });
-    // this.http
-    //   .get(`${environment.baseUrl}/getHomeDetails`, headers)
-    //   .subscribe((data: any) => {});
   }
 
   sendQuery() {

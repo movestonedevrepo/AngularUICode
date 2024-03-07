@@ -1525,6 +1525,85 @@ input:focus {
   height: 100%;
 }
 
+.swiper-button-next > svg,
+.swiper-button-prev > svg {
+  width: 70% !important;
+  height: 70% !important;
+}
+
+@media (max-width: 1163px) {
+  .header .navbar-section a {
+    font-size: 16px;
+  }
+
+  .product-feature .box-container .features {
+    .intro {
+      > h1 {
+        font-size: 40px;
+      }
+
+      > p {
+        font-size: 14px;
+      }
+    }
+
+    .feature .desc {
+      > h1 {
+        font-size: 20px;
+      }
+
+      > p {
+        font-size: 14px;
+
+        > b {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .feature-1 .desc {
+      top: 45%;
+      left: 50%;
+    }
+
+    .feature-3 .desc {
+      top: 45%;
+      left: 60%;
+    }
+
+    .feature-4 .desc {
+      top: 45%;
+      left: 50%;
+    }
+
+    .feature-5 .desc {
+      top: 55%;
+      left: 50%;
+    }
+
+    .feature-6 .desc {
+      top: 45%;
+      left: 50%;
+    }
+
+    .feature-7 .desc {
+      top: 50%;
+      left: 55%;
+    }
+
+    .feature-8 {
+      .desc {
+        top: 50%;
+        left: 50%;
+
+        > h1 {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 991px) {
   html {
     font-size: 55.5%;
@@ -1622,6 +1701,11 @@ input:focus {
 
   .header .navbar-section .nav-login-btn button {
     width: 100%;
+  }
+
+  .home {
+    padding-top: 0;
+    background: #c3e7c5;
   }
 
   #menu-btn {
@@ -1741,6 +1825,16 @@ input:focus {
   }
 
   .product-feature .box-container .features .feature {
+    .desc {
+      top: 50%;
+      left: 50%;
+      color: black;
+
+      > h1 {
+        white-space: nowrap;
+      }
+    }
+
     img {
       background: linear-gradient(
         0deg,
@@ -1796,16 +1890,18 @@ input:focus {
   }
 
   .product-feature .box-container .features {
-    .feature-4 .desc {
-      top: 50%;
-      left: 46%;
-    }
-    .feature-5 .desc {
-      top: 45%;
-      left: 42%;
-    }
-    .feature-8 {
-      color: black;
+    .feature .desc {
+      > h1 {
+        font-size: 20px;
+      }
+
+      > p {
+        font-size: 16px;
+
+        > b {
+          font-size: 14px;
+        }
+      }
     }
   }
 }
@@ -1819,5 +1915,24 @@ input:focus {
   .header .logo .brand {
     width: 150px;
     height: 30px;
+  }
+
+  .product-feature .box-container .features {
+    .feature .desc {
+      top: 50%;
+      left: 50%;
+
+      > h1 {
+        font-size: 16px;
+      }
+
+      > p {
+        font-size: 10px;
+
+        > b {
+          font-size: 12px;
+        }
+      }
+    }
   }
 }

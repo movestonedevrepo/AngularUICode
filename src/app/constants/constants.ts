@@ -7,6 +7,9 @@ export const CONSTANTS = {
     'SEA GREEN': '#2E8B57',
   },
 
+  subscriptionText:
+    'Help us reach you with the latest updates on our amazing products by providing us with your email.',
+
   featureConfig: {
     autoHeight: false,
     navigation: false,

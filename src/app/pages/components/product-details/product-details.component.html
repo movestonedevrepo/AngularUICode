@@ -21,10 +21,6 @@
       <div class="col-6">
         <p>Product / Vehicle</p>
         <h1>{{ product.productName }}</h1>
-        <h4>
-          ₹ {{ product.price.split("-")[0] }} - ₹
-          {{ product.price.split("-")[1] }}
-        </h4>
 
         <div class="color-section">
           <h4>Colour: {{ selectedColor }}</h4>
@@ -189,10 +185,6 @@
           <i class="fas fa-star"></i>
           <i class="fas fa-star-half-alt"></i>
         </div>
-        <h3 class="price">
-          <span>price: </span> ₹ {{ eachProduct.price.split("-")[0] }} - ₹
-          {{ eachProduct.price.split("-")[1] }}
-        </h3>
         <button class="btn" (click)="checkProduct(eachProduct.productID)">
           Check Out
         </button>
