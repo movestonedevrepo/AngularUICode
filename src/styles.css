@@ -296,12 +296,13 @@ textarea {
   padding-top: 5rem;
   text-align: center;
   overflow-x: hidden;
+  background-color: var(--blue);
 }
 
 .home h1 {
   font-size: 7.5vw;
   text-transform: uppercase;
-  color: var(--black);
+  color: var(--white);
 }
 
 .home img {
@@ -1779,7 +1780,6 @@ input:focus {
 
   .home {
     padding-top: 0;
-    background: #c3e7c5;
   }
 
   #menu-btn {
