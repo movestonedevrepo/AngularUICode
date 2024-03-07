@@ -1,4 +1,4 @@
-<header class="header" [ngClass]="{ active: isVerticalScroll }">
+<header class="header navbar-dark" [ngClass]="{ active: isVerticalScroll }">
   <div id="menu-btn" (click)="onMenuBtnClick()">
     <i class="fas fa-bars" *ngIf="!isMenuVisible"></i>
     <i class="fas fa-times" *ngIf="isMenuVisible"></i>
@@ -7,7 +7,7 @@
     <div class="icon">
       <img [src]="logo" alt="MoveStone" />
     </div>
-    <img [src]="brand" class="brand" alt="brand" />
+    <!-- <img [src]="brand" class="brand" alt="brand" /> -->
   </a>
 
   <nav

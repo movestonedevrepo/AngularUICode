@@ -11,6 +11,7 @@
   --yellow: #f9d806;
   --light-yellow: #ffee80;
   --green: #079022;
+  --blue: #001d34;
   --white: white;
   --light-green: #4dff71;
   --black: #130f40;
@@ -190,11 +191,11 @@ textarea {
   left: 0;
   right: 0;
   z-index: 999;
-  background: #000000;
+  background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 3rem;
+  padding: 0.5rem 4rem;
 }
 
 .header .logo {
@@ -210,16 +211,17 @@ textarea {
 
 .header .logo .icon {
   text-align: center;
-  width: 55px;
-  height: 55px;
+  width: 80px;
+  height: 70px;
   /* border: 1px solid black;
   border-radius: 50%;
   background-color: black; */
 }
 
 .header .logo .icon img {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 70px;
+  background-color: var(--blue);
 }
 
 .header .logo .brand {
@@ -1682,13 +1684,13 @@ input:focus {
 
 @media (max-width: 900px) {
   .header .logo .icon {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 60px;
   }
 
   .header .logo .icon img {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 60px;
   }
 
   .header .logo .brand {
@@ -1762,6 +1764,7 @@ input:focus {
 
   .header .navbar-section a {
     display: block;
+    color: var(--black);
     margin: 2rem;
     font-size: 2rem;
   }
@@ -1781,6 +1784,7 @@ input:focus {
 
   #menu-btn {
     display: block;
+    color: var(--white);
   }
 
   #menu-btn.fa-times #login-icon.fa-times {
@@ -1958,6 +1962,7 @@ input:focus {
 
   .header #login-btn i {
     display: block;
+    color: var(--white);
   }
 
   .product-feature .box-container .features {
