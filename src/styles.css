@@ -1550,7 +1550,7 @@ input:focus {
   left: 0;
   right: 0;
   z-index: 999;
-  background: #000000;
+  background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: space-around;
