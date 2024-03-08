@@ -87,7 +87,7 @@ input::-webkit-inner-spin-button {
 .page-container {
   position: relative;
   min-height: 97vh;
-  margin-top: 9rem;
+  margin-top: 8rem;
 }
 
 .content-wrap {
@@ -750,18 +750,6 @@ textarea {
   text-align: center;
 }
 
-/* .contact .row form input,
-textarea {
-  margin: 0.7rem 0;
-  width: 100%;
-  border: var(--border);
-  padding: 1rem;
-  font-size: 1.6rem;
-  color: var(--black);
-  border-radius: 0.5rem;
-  text-transform: none;
-} */
-
 .contact .row form h3 {
   color: var(--black);
   font-size: 2.2rem;
@@ -769,7 +757,7 @@ textarea {
 
 .footer {
   background: var(--light-yellow);
-  margin-bottom: 8vh;
+  padding-bottom: 10vh;
 }
 
 .footer .box-container {
@@ -1571,6 +1559,18 @@ input:focus {
 }
 
 .last-footer .social-link {
+  i {
+    margin-bottom: 2px;
+  }
+  .fa-phone {
+    display: inline-block;
+    border-radius: 50%;
+    background: var(--light-green);
+    font-size: 14px;
+    box-shadow: 0 0 2px #888;
+    padding: 0.5em 0.6em;
+    color: var(--white) !important;
+  }
   .fa-facebook {
     color: #316ff6 !important;
   }
@@ -1590,8 +1590,10 @@ input:focus {
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .fa-linkedin {
-    color: #0077b5 !important;
+  .fa-whatsapp {
+    color: #fff;
+    background: linear-gradient(#25d366, #25d366) 14% 84%/16% 16% no-repeat,
+      radial-gradient(#25d366 60%, transparent 0);
   }
 }
 
@@ -1782,6 +1784,15 @@ input:focus {
     padding-top: 0;
   }
 
+  .header #login-btn .btn {
+    display: none;
+  }
+
+  .header #login-btn i {
+    display: block;
+    color: var(--white);
+  }
+
   #menu-btn {
     display: block;
     color: var(--white);
@@ -1954,15 +1965,6 @@ input:focus {
 
   .mat-mdc-paginator {
     padding-bottom: 2rem;
-  }
-
-  .header #login-btn .btn {
-    display: none;
-  }
-
-  .header #login-btn i {
-    display: block;
-    color: var(--white);
   }
 
   .product-feature .box-container .features {

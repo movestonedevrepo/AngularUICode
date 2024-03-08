@@ -1,13 +1,5 @@
 <section id="footer" class="footer">
   <div class="box-container">
-    <!-- <div class="box">
-      <h3>Our Offices</h3>
-      <a href="#"><i class="fas fa-location-dot"></i> </a>
-      <a href="#"><i class="fas fa-location-dot"></i> France</a>
-      <a href="#"><i class="fas fa-location-dot"></i> Africa</a>
-      <a href="#"><i class="fas fa-location-dot"></i> Australia</a>
-      <a href="#"><i class="fas fa-location-dot"></i> Russia</a>
-    </div> -->
     <div class="box">
       <h3>Quick Links</h3>
       <a href="#"><i class="fas fa-arrow-right"></i> Home</a>
@@ -49,7 +41,8 @@
 
       <a href="#">
         <i class="fas fa-location-dot"></i>
-        Unit No- 01, 16th Floor,  IMAGINE TECH PARK, Plot No – 6, Block- DP,  Sector-V, Salt Lake, Kolkata- 700091
+        Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP,
+        Sector-V, Salt Lake, Kolkata- 700091
       </a>
       <h3>Factory</h3>
       <a href="#">
@@ -62,28 +55,28 @@
 </section>
 
 <section id="last-footer" class="last-footer">
-  <div class="social-link">
+  <a href="tel:{{ phoneNumber }}" class="social-link">
+    <label for="fa-phone">
+      <i id="fa-phone" class="fa-solid fa-phone"></i>
+      <span>Call</span>
+    </label>
+  </a>
+  <a [href]="facebookID" class="social-link">
     <label for="fa-facebook">
       <i id="fa-facebook" class="fa-brands fa-facebook"></i>
       <span>Facebook</span>
     </label>
-  </div>
-  <div class="social-link">
-    <label for="fa-twitter">
-      <i id="fa-twitter" class="fab fa-twitter"></i>
-      <span>Twitter</span>
-    </label>
-  </div>
-  <div class="social-link">
+  </a>
+  <a [href]="instagramID" class="social-link">
     <label for="fa-instagram">
       <i id="fa-instagram" class="fab fa-instagram"></i>
       <span>Instagram</span>
     </label>
-  </div>
-  <div class="social-link">
-    <label for="fa-linkedin">
-      <i id="fa-linkedin" class="fab fa-linkedin"></i>
-      <span>Linked In</span>
+  </a>
+  <a href="//api.whatsapp.com/send?phone={{ phoneNumber }}" class="social-link">
+    <label for="fa-whatsapp">
+      <i id="fa-whatsapp" class="fa-brands fa-whatsapp"></i>
+      <span>Whatsapp</span>
     </label>
-  </div>
+  </a>
 </section>

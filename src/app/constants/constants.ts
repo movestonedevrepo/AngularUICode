@@ -10,6 +10,10 @@ export const CONSTANTS = {
   subscriptionText:
     'Help us reach you with the latest updates on our amazing products by providing us with your email.',
 
+  phoneNumber: '919831317367',
+  facebookID: 'http://facebook.com/Movestoneservicespvtltd',
+  instagramID: 'http://instagram.com/movestoneevehicle',
+
   featureConfig: {
     autoHeight: false,
     navigation: false,
