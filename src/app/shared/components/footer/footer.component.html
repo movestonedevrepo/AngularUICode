@@ -2,45 +2,71 @@
   <div class="box-container">
     <div class="box" id="quick-links">
       <h3>Quick Links</h3>
-      <a href="#"><i class="fas fa-arrow-right"></i> Home</a>
-      <a href="#vehicles"><i class="fas fa-arrow-right"></i> Vehicles</a>
-      <a href="#services"><i class="fas fa-arrow-right"></i> Services</a>
-      <a href="#featured"><i class="fas fa-arrow-right"></i> Featured</a>
-      <a href="#reviews"><i class="fas fa-arrow-right"></i> Reviews</a>
-      <a href="#contact"><i class="fas fa-arrow-right"></i> Contact</a>
+      <a
+        class="cursor-pointer"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        routerLink="/"
+      >
+        <i class="fas fa-arrow-right"></i> Home
+      </a>
+      <a
+        class="cursor-pointer"
+        routerLink="/pages/products"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        <i class="fas fa-arrow-right"></i> Products
+      </a>
+      <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
+        <i class="fas fa-arrow-right"></i> Services
+      </a>
+      <a class="cursor-pointer" (click)="onClickAnchor('banner')">
+        <i class="fas fa-arrow-right"></i> Featured
+      </a>
+      <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
+        <i class="fas fa-arrow-right"></i> Reviews
+      </a>
+      <a
+        class="cursor-pointer"
+        routerLink="/pages/contact"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        <i class="fas fa-arrow-right"></i> Contact
+      </a>
     </div>
     <div class="box" id="contacts">
       <h3>Contacts</h3>
-      <a href="#"><i class="fas fa-phone"></i> 9831317367</a>
-      <a href="#"><i class="fas fa-phone"></i> 7595823939</a>
-      <a href="email: movestoneservicespvtltd&#64;gmail.com">
+      <a href="tel:9831317367"><i class="fas fa-phone"></i>9831317367</a>
+      <a href="tel:7595823939"><i class="fas fa-phone"></i>7595823939</a>
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=movestoneservicespvtltd&#64;gmail.com"
+      >
         <i class="fas fa-envelope"></i>
         movestoneservicespvtltd&#64;gmail.com
       </a>
-      <a href="#">
+      <a href="https://maps.google.com/?q=HOWRAH, WEST BENGAL, 711103">
         <i class="fas fa-location-dot"></i> HOWRAH, WEST BENGAL, 711103
       </a>
     </div>
 
     <div class="box" id="locations">
       <h3>Head Office</h3>
-      <a href="#">
+      <a href="https://maps.google.com/?q={{ officeLocation.headOffice }}">
         <i class="fas fa-location-dot"></i>
-        Ground Floor, 24/1,Shop No. - 6, Shantikunj, Onkarmal Jatia Road,
-        Howrah, West Bengal, 711103
+        {{ officeLocation.headOffice }}
       </a>
-      <h3>Corporate Office</h3>
 
-      <a href="#">
+      <h3>Corporate Office</h3>
+      <a href="https://maps.google.com/?q={{ officeLocation.corporateOffice }}">
         <i class="fas fa-location-dot"></i>
-        Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP,
-        Sector-V, Salt Lake, Kolkata- 700091
+        {{ officeLocation.corporateOffice }}
       </a>
       <h3>Factory</h3>
-      <a href="#">
+      <a href="https://maps.google.com/?q={{ officeLocation.factory }}">
         <i class="fas fa-location-dot"></i>
-        Unit No. - UTA0045,0044,0036,0035, Utsab Park, Bhagabatipur, Chatur
-        Bhujkhati, Sankrail, Howrah, West Bengal, 711313
+        {{ officeLocation.factory }}
       </a>
     </div>
   </div>

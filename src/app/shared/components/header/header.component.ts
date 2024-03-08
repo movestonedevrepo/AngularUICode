@@ -89,7 +89,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onClickAnchor(elementId: string) {
-    console.log(this.router.url);
     if (this.router.url.includes('/home')) {
       this.viewportScroller.scrollToAnchor(elementId);
     } else {

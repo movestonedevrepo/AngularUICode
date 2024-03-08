@@ -14,6 +14,16 @@ export const CONSTANTS = {
   facebookID: 'http://facebook.com/Movestoneservicespvtltd',
   instagramID: 'http://instagram.com/movestoneevehicle',
 
+  officeLocation: {
+    headOffice:
+      'Ground Floor, 24/1,Shop No. - 6, Shantikunj, Onkarmal Jatia Road, Howrah, West Bengal, 711103',
+
+    corporateOffice:
+      'Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP, Sector-V, Salt Lake, Kolkata- 700091',
+    factory:
+      'Unit No. - UTA0045,0044,0036,0035, Utsab Park, Bhagabatipur, Chatur Bhujkhati, Sankrail, Howrah, West Bengal, 711313',
+  },
+
   featureConfig: {
     autoHeight: false,
     navigation: false,

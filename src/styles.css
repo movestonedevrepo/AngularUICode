@@ -88,7 +88,7 @@ input::-webkit-inner-spin-button {
 .page-container {
   position: relative;
   min-height: 97vh;
-  margin-top: 8rem;
+  margin-top: 7rem;
 }
 
 .content-wrap {
@@ -576,6 +576,10 @@ textarea {
   color: #fff;
 }
 
+.featured {
+  padding-top: 5rem;
+}
+
 .featured .featured-slider {
   padding: 1rem;
   padding-bottom: 4rem;
@@ -774,12 +778,12 @@ textarea {
 
 .footer {
   background: var(--light-yellow);
-  padding-bottom: 10vh;
+  padding-bottom: 12vh;
 }
 
 .footer .box-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   gap: 1.5rem;
 }
 
@@ -807,7 +811,7 @@ textarea {
 }
 
 .cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .product-view {
@@ -1298,15 +1302,22 @@ input:focus {
   padding: 2rem;
 }
 
+.contact-section .contact-view .about-section tr {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .contact-section .contact-view .about-section td {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 14px;
   width: 50%;
+  white-space: break-spaces;
+  padding: 4px;
 }
 
 .contact-section .contact-view .about-section td a {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 14px;
   text-transform: none;
   display: block;
 }
@@ -1561,7 +1572,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 2rem 3rem;
+  padding: 1.5rem 3rem;
   border: 1px solid var(--border-color);
 }
 
@@ -1799,7 +1810,7 @@ input:focus {
   }
 
   .home {
-    padding-top: 0;
+    padding-top: 4rem;
   }
 
   .header #login-btn .btn {
@@ -1823,6 +1834,10 @@ input:focus {
   .header .logo .brand {
     width: 130px;
     height: 30px;
+  }
+
+  .footer .box-container {
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
   }
 }
 
@@ -1958,7 +1973,7 @@ input:focus {
   }
 
   .home h1 {
-    margin-top: 2rem;
+    font-size: 5rem;
   }
 
   .services .box-container {
@@ -2006,14 +2021,18 @@ input:focus {
 }
 
 @media (max-width: 380px) {
+  .home h1 {
+    font-size: 4rem;
+  }
+
   .header .logo .icon {
     width: 40px;
     height: 40px;
   }
 
   .header .logo .icon img {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 40px;
   }
 
   .header .logo .brand {

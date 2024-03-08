@@ -29,7 +29,8 @@ import { v4 as uuidv4 } from 'uuid';
 export class HomePageComponent implements OnInit, AfterViewInit {
   contents: any = [];
   testimonials: any = [];
-
+  facebookID = CONSTANTS.facebookID;
+  instagramID = CONSTANTS.instagramID;
   vehicleConfig = CONSTANTS.vehicleConfig as SwiperOptions;
   reviewConfig = CONSTANTS.reviewConfig as SwiperOptions;
   staticConfig = CONSTANTS.staticConfig as SwiperOptions;

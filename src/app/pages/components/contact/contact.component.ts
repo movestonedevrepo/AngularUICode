@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -19,6 +20,8 @@ export class ContactComponent {
     private dialogService: MatDialogService
   ) {}
 
+  facebookID = CONSTANTS.facebookID;
+  instagramID = CONSTANTS.instagramID;
   queryForm = new FormGroup({
     queryName: new FormControl('', Validators.required),
     queryEmail: new FormControl('', [Validators.required, Validators.email]),
