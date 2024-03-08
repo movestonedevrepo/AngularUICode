@@ -208,9 +208,9 @@
             matInput
             disabled
             type="text"
-            placeholder="Car Name"
-            name="car_name"
-            id="car_name"
+            placeholder="Vehicle Name"
+            name="vehicle_name"
+            id="vehicle_name"
             [value]="product.productName"
           />
         </mat-form-field>
@@ -220,9 +220,9 @@
             matInput
             disabled
             type="text"
-            placeholder="Car ID"
-            name="car_id"
-            id="car_id"
+            placeholder="Vehicle ID"
+            name="vehicle_id"
+            id="vehicle_id"
             [value]="product.productID"
           />
           <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">

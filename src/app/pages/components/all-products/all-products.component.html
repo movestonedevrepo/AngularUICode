@@ -13,6 +13,12 @@
       <img [src]="eachContent?.imageURL" alt="" loading="lazy" />
       <div class="content">
         <h3>{{ eachContent.productName }}</h3>
+        <p>
+          new @for(eachFeature of eachContent?.features?.split(',');track
+          eachFeature){
+          <span class="fas fa-circle"></span> {{ eachFeature }}
+          }
+        </p>
         <div class="stars">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
