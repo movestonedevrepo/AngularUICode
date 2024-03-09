@@ -8,12 +8,17 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { QueryViewComponent } from './components/query-view/query-view.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 export const PAGES_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home',
+  },
+  {
+    path:'about',
+    component:AboutUsComponent
   },
   {
     path: 'home',
