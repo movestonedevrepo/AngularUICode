@@ -29,6 +29,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class HomePageComponent implements OnInit, AfterViewInit {
   contents: any = [];
   testimonials: any = [];
+  emailNewsLetter:any='';
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
   vehicleConfig = CONSTANTS.vehicleConfig as SwiperOptions;
@@ -59,6 +60,31 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.testimonials = productDetails.testimonials;
   }
 
+  submitEmailForNewsLetter():void{
+
+   
+
+    const payload = {emailID:this.emailNewsLetter};
+    this.http
+    .post(`${environment.baseUrl}/submitEmails`, payload)
+    .subscribe((data: any) => {
+      if(data.hasError){
+        this.dialogService.openDialog({
+          data: {
+            title: data.hasError ? 'Error' : 'Success',
+            type: data.hasError ? 'error' : 'success',
+            message: data.hasError
+              ? data.extendedMessage
+              : 'Query raised successfully',
+          } as DialogData,
+        });
+      }
+      
+    });
+    
+
+  }
+
   ngAfterViewInit(): void {
     this.activatedRoute.queryParams.subscribe((params: any) => {
       console.log(params); // { order: "popular" }
@@ -80,22 +106,27 @@ export class HomePageComponent implements OnInit, AfterViewInit {
           `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
           this.queryForm.value.queryMessage,
       };
-      this.http
-        .post(`${environment.baseUrl}/createQuery`, payload)
-        .subscribe((data: any) => {
-          this.dialogService.openDialog({
-            data: {
-              title: data.hasError ? 'Error' : 'Success',
-              type: data.hasError ? 'error' : 'success',
-              message: data.hasError
-                ? data.extendedMessage
-                : 'Query raised successfully',
-            } as DialogData,
-          });
-        });
+      this.submitQuery(payload);
+     
     } else {
       this.queryForm.markAllAsTouched();
     }
+  }
+
+  submitQuery(payload:any){
+    this.http
+    .post(`${environment.baseUrl}/createQuery`, payload)
+    .subscribe((data: any) => {
+      this.dialogService.openDialog({
+        data: {
+          title: data.hasError ? 'Error' : 'Success',
+          type: data.hasError ? 'error' : 'success',
+          message: data.hasError
+            ? data.extendedMessage
+            : 'Query raised successfully',
+        } as DialogData,
+      });
+    });
   }
 
   getFeatureList(list: any): Array<any> {

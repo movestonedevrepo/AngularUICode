@@ -1245,7 +1245,14 @@ input:focus {
 
 .query-list-view {
   padding-top: 5rem;
-  overflow-x: hidden;
+  overflow-x: hidden; 
+}
+
+.download-btn{
+  padding: 2rem;
+  display: flex;
+  
+  justify-content: flex-end;
 }
 
 .contact-section {

@@ -123,11 +123,12 @@
   <form>
     <input
       type="email"
+      [(ngModel)]="emailNewsLetter"
       name="email-input"
       id="email-input"
       placeholder="enter your email"
     />
-    <button type="button">Submit</button>
+    <button (click)="submitEmailForNewsLetter()" type="button">Submit</button>
   </form>
 </section>
 } @placeholder {
