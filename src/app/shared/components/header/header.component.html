@@ -37,12 +37,20 @@
       reviews
     </a>
     <a
-      class="cursor-pointer last-child"
+      class="cursor-pointer"
       routerLink="/pages/contact"
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
     >
       contact
+    </a>
+    <a
+      class="cursor-pointer last-child"
+      routerLink="/pages/about"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      about
     </a>
     @if (!isUserLoggedIn && !getUserName) {
     <a id="nav-login-btn" class="nav-login-btn" (click)="onLoginBtnClick()">
