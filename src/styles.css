@@ -990,6 +990,7 @@ input:focus {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .product-feature .box-container .features {
@@ -1216,6 +1217,32 @@ input:focus {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
   height: 100%;
+}
+
+.product-feature .box-container .features-table .feature-header {
+  padding: 2rem;
+  border: var(--border);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-feature .box-container .features-table .feature-header:first-child {
+  width: 60%;
+}
+
+.product-feature .box-container .features-table .feature-header:last-child {
+  width: 40%;
+}
+
+.product-feature .box-container .features-table .feature-body {
+  padding: 2rem;
+  border: var(--border);
+  font-size: 12px;
+}
+
+.product-feature .box-container .features-table .feature-item {
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .query-list-view {
@@ -2517,6 +2544,10 @@ input:focus {
 
       background-size: cover;
     }
+  }
+
+  .product-feature .box-container .table-2 {
+    display: none;
   }
 }
 

@@ -54,6 +54,7 @@ export class ProductDetailsComponent implements OnInit {
   colors: any = Object.entries(CONSTANTS.colors);
   selectedColor: any = this.colors[0][0];
   otherProducts!: any[];
+  productFeatures: any = CONSTANTS.productFeatures;
 
   constructor(
     private router: Router,
@@ -72,6 +73,14 @@ export class ProductDetailsComponent implements OnInit {
       this.allproductImages = this.product.productPictureDetails;
       this.selectedImage = this.images[0].productImageURL;
     });
+  }
+
+  get getProductFeatures(): string[] {
+    return Object.keys(this.productFeatures);
+  }
+
+  get getScreenWidth(): number {
+    return window.screen.width;
   }
 
   onQueryRaise(elementId: string) {
@@ -98,7 +107,7 @@ export class ProductDetailsComponent implements OnInit {
     if (this.queryForm.valid) {
       const payload = {
         queryID: uuidv4(),
-        queryPhone: this.queryForm.value.queryPhone+"",
+        queryPhone: this.queryForm.value.queryPhone + '',
         queryEmail: this.queryForm.value.queryEmail,
         queryMessage:
           `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +

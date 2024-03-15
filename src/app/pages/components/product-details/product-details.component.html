@@ -54,7 +54,7 @@
 <section id="product-feature" class="product-feature">
   <h1 class="heading"><span>Product</span> Features</h1>
   <div class="box-container">
-    <div class="features">
+    <!-- <div class="features">
       <div class="intro">
         <h1>Technology</h1>
         <p>
@@ -165,7 +165,60 @@
           </div>
         </mat-card>
       </div>
-    </div>
+    </div> -->
+    <ng-container *ngIf="getScreenWidth >= 750; else showFullTable">
+      <table class="features-table mat-elevation-z8 table-1">
+        <tr>
+          <th class="feature-header">Item</th>
+          <th class="feature-header">{{ product.productName }}</th>
+        </tr>
+        <tr
+          *ngFor="
+            let eachProductFeature of getProductFeatures.slice(
+              0,
+              getProductFeatures.length / 2
+            )
+          "
+        >
+          <th class="feature-body feature-item">
+            {{ productFeatures[eachProductFeature] }}
+          </th>
+          <th class="feature-body">{{ product[eachProductFeature] }}</th>
+        </tr>
+      </table>
+      <table class="features-table mat-elevation-z8 table-2">
+        <tr>
+          <th class="feature-header">Item</th>
+          <th class="feature-header">{{ product.productName }}</th>
+        </tr>
+        <tr
+          *ngFor="
+            let eachProductFeature of getProductFeatures.slice(
+              getProductFeatures.length / 2
+            )
+          "
+        >
+          <th class="feature-body feature-item">
+            {{ productFeatures[eachProductFeature] }}
+          </th>
+          <th class="feature-body">{{ product[eachProductFeature] }}</th>
+        </tr>
+      </table>
+    </ng-container>
+    <ng-template #showFullTable>
+      <table class="features-table mat-elevation-z8 table-1">
+        <tr>
+          <th class="feature-header">Item</th>
+          <th class="feature-header">{{ product.productName }}</th>
+        </tr>
+        <tr *ngFor="let eachProductFeature of getProductFeatures">
+          <th class="feature-body feature-item">
+            {{ productFeatures[eachProductFeature] }}
+          </th>
+          <th class="feature-body">{{ product[eachProductFeature] }}</th>
+        </tr>
+      </table>
+    </ng-template>
   </div>
 </section>
 } @placeholder {

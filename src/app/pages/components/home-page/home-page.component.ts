@@ -29,7 +29,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class HomePageComponent implements OnInit, AfterViewInit {
   contents: any = [];
   testimonials: any = [];
-  emailNewsLetter:any='';
+  emailNewsLetter: any = '';
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
   vehicleConfig = CONSTANTS.vehicleConfig as SwiperOptions;
@@ -60,29 +60,23 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.testimonials = productDetails.testimonials;
   }
 
-  submitEmailForNewsLetter():void{
-
-   
-
-    const payload = {emailID:this.emailNewsLetter};
+  submitEmailForNewsLetter(): void {
+    const payload = { emailID: this.emailNewsLetter };
     this.http
-    .post(`${environment.baseUrl}/submitEmails`, payload)
-    .subscribe((data: any) => {
-      if(data.hasError){
-        this.dialogService.openDialog({
-          data: {
-            title: data.hasError ? 'Error' : 'Success',
-            type: data.hasError ? 'error' : 'success',
-            message: data.hasError
-              ? data.extendedMessage
-              : 'Query raised successfully',
-          } as DialogData,
-        });
-      }
-      
-    });
-    
-
+      .post(`${environment.baseUrl}/submitEmails`, payload)
+      .subscribe((data: any) => {
+        if (data.hasError) {
+          this.dialogService.openDialog({
+            data: {
+              title: data.hasError ? 'Error' : 'Success',
+              type: data.hasError ? 'error' : 'success',
+              message: data.hasError
+                ? data.extendedMessage
+                : 'Query raised successfully',
+            } as DialogData,
+          });
+        }
+      });
   }
 
   ngAfterViewInit(): void {
@@ -107,26 +101,25 @@ export class HomePageComponent implements OnInit, AfterViewInit {
           this.queryForm.value.queryMessage,
       };
       this.submitQuery(payload);
-     
     } else {
       this.queryForm.markAllAsTouched();
     }
   }
 
-  submitQuery(payload:any){
+  submitQuery(payload: any) {
     this.http
-    .post(`${environment.baseUrl}/createQuery`, payload)
-    .subscribe((data: any) => {
-      this.dialogService.openDialog({
-        data: {
-          title: data.hasError ? 'Error' : 'Success',
-          type: data.hasError ? 'error' : 'success',
-          message: data.hasError
-            ? data.extendedMessage
-            : 'Query raised successfully',
-        } as DialogData,
+      .post(`${environment.baseUrl}/createQuery`, payload)
+      .subscribe((data: any) => {
+        this.dialogService.openDialog({
+          data: {
+            title: data.hasError ? 'Error' : 'Success',
+            type: data.hasError ? 'error' : 'success',
+            message: data.hasError
+              ? data.extendedMessage
+              : 'Query raised successfully',
+          } as DialogData,
+        });
       });
-    });
   }
 
   getFeatureList(list: any): Array<any> {
