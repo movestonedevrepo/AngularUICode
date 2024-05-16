@@ -44,6 +44,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     ]),
     queryMessage: new FormControl('', Validators.required),
   });
+  assetPath = environment.assestsBasePath;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -56,7 +57,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (window.screen.width <= 500) this.vehicleConfig.navigation = false;
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
-    this.contents = Array(10).fill(productDetails.products).flat();
+    this.contents = Array(3).fill(productDetails.products).flat();
     this.testimonials = productDetails.testimonials;
   }
 

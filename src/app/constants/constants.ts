@@ -75,22 +75,17 @@ export const CONSTANTS = {
   },
   vehicleConfig: {
     autoHeight: false,
-    navigation: true,
+    navigation: false,
     pagination: { clickable: true, dynamicBullets: true },
     centeredSlidesBounds: true,
     centeredSlides: true,
-    initialSlide: 2,
+    initialSlide: 1,
     slidesPerView: 3,
     spaceBetween: 20,
     direction: 'horizontal',
-    loop: true,
+    loop: false,
     grabCursor: true,
     speed: 1000,
-    autoplay: {
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-      delay: 1000,
-    },
     breakpoints: {
       0: {
         slidesPerView: 1,
