@@ -24,6 +24,14 @@
         home
       </a>
       <a
+        class="cursor-pointer last-child"
+        routerLink="/pages/about"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        about
+      </a>
+      <a
         class="cursor-pointer"
         routerLink="/pages/products"
         routerLinkActive="active"
@@ -43,15 +51,7 @@
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
       >
-        contact
-      </a>
-      <a
-        class="cursor-pointer last-child"
-        routerLink="/pages/about"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
-        about
+        contact us
       </a>
       @if (!isUserLoggedIn && !getUserName) {
       <a id="nav-login-btn" class="nav-login-btn" (click)="onLoginBtnClick()">
@@ -96,5 +96,25 @@
     </ng-template>
 
     }
+  </div>
+  <div class="hero-content">
+    <div class="carousel">
+      <button class="carousel-button left">
+        <img src="{{ assetPath }}/Homepage/header-arrow.png" alt="" />
+      </button>
+      <div class="hero-text">
+        <div class="d-flex align-items-center gap-3">
+          <h1>ZERO</h1>
+          <h2>Pollution,</h2>
+        </div>
+        <div class="d-flex justify-content-end gap-3">
+          <p>ZERO</p>
+          <span>Hassle.</span>
+        </div>
+      </div>
+      <button class="carousel-button right">
+        <img src="{{ assetPath }}/Homepage/header-arrow1.png" alt="" />
+      </button>
+    </div>
   </div>
 </header>

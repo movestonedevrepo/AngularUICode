@@ -44,7 +44,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     ]),
     queryMessage: new FormControl('', Validators.required),
   });
-  assetPath = environment.assestsBasePath;
+  assetPath = `${environment.assestsBasePath}images/Homepage`;
 
   constructor(
     private activatedRoute: ActivatedRoute,

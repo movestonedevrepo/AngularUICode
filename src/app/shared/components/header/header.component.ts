@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   isVerticalScroll: boolean = false;
   logo = `${environment.assestsBasePath}images/Move_Stone_logo.png`;
   brand = `${environment.assestsBasePath}images/Move_Stone_brand.png`;
+  assetPath = `${environment.assestsBasePath}images`;
 
   constructor(
     private router: Router,
