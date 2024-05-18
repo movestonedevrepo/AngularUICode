@@ -87,9 +87,9 @@
         <div class="content-text">
           <h3>{{ eachProduct.productName }}</h3>
           <p>
-            @for(eachFeature of eachProduct?.features?.split(',');track
+            @for(eachFeature of eachProduct?.features?.split(','); track
             eachFeature){
-            <span class="fas fa-circle"></span> {{ eachFeature }}
+            <span class="border-end border-white">{{ eachFeature }}</span>
             }
           </p>
         </div>
