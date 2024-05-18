@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 @defer (on viewport) {
 <section id="product-view" class="product-view">
   <div class="small-container">
@@ -54,118 +56,6 @@
 <section id="product-feature" class="product-feature">
   <h1 class="heading"><span>Product</span> Features</h1>
   <div class="box-container">
-    <!-- <div class="features">
-      <div class="intro">
-        <h1>Technology</h1>
-        <p>
-          Advanced features. Upgraded riding experience. Enabled by MOVEStone.
-        </p>
-      </div>
-      <div class="feature feature-1">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>Wheels and Roof</h1>
-            <P><b>Rim</b> : {{ product.rim }} </P>
-            <P><b>Tyre Diameter</b> : {{ product.tyreDiameter }} </P>
-            <P><b>Tyre Type</b> : {{ product.tyreType }} </P>
-            <p><b>Type</b> : {{ product.breakType }}</p>
-          </div>
-        </mat-card>
-      </div>
-      <div class="feature feature-2">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>Lights and Mileage</h1>
-            <p><b>HeadLight</b> : {{ product.headLight }}</p>
-            <p><b>Mileage</b> : {{ product.mileage }} Km+</p>
-          </div>
-        </mat-card>
-      </div>
-    </div>
-    <div class="features">
-      <div class="feature feature-3">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>Electrical Items</h1>
-            <p><b>Controller</b> : {{ product.controller }}</p>
-            <p><b>Converter</b> : {{ product.converter }}</p>
-          </div>
-        </mat-card>
-      </div>
-      <div class="feature feature-4">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>Battery and Dimention</h1>
-            <p><b>Battery</b> : {{ product.battery }}</p>
-            <p>
-              <b>Length</b> :
-              {{ product.bodyDimension.split("-")[0].slice(0, -1) }}
-            </p>
-            <p>
-              <b>Width</b> :
-              {{ product.bodyDimension.split("-")[1].slice(0, -1) }}
-            </p>
-            <p>
-              <b>Height</b> :
-              {{ product.bodyDimension.split("-")[2].slice(0, -2) }}
-            </p>
-          </div>
-        </mat-card>
-      </div>
-      <div class="feature feature-5">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>Seating and Suspension</h1>
-            <P><b>Seating Capacity</b> : {{ product.seatingCapacity }} </P>
-            <P><b>Side Cover</b> : <br />{{ product.sideCover }} </P>
-          </div>
-        </mat-card>
-      </div>
-    </div>
-    <div class="features">
-      <div class="feature feature-6">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>Charger and Roof</h1>
-            <p><b>Charger</b> : {{ product.charger }}</p>
-            <P><b>Roof</b> : {{ product.roof }} </P>
-            <P><b>Shocker</b> : {{ product.shocker }} </P>
-          </div>
-        </mat-card>
-      </div>
-      <div class="feature feature-7">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>Energy Insights</h1>
-            <p>Understand your vehicle's energy usage.</p>
-          </div>
-        </mat-card>
-      </div>
-      <div class="feature feature-8">
-        <mat-card class="example-card">
-          <img mat-card-image />
-          <div class="desc">
-            <h1>
-              Motor and Weight <br />
-              Distribution
-            </h1>
-            <P
-              ><b>Weight (Without Battery)</b> :
-              {{ product.weightWithoutBattery }} KG apx.
-            </P>
-            <p><b>Motor</b> : {{ product.motor }}</p>
-            <P><b>Wiper</b> : {{ product.wiper }} </P>
-          </div>
-        </mat-card>
-      </div>
-    </div> -->
     <ng-container *ngIf="getScreenWidth >= 750; else showFullTable">
       <table class="features-table mat-elevation-z8 table-1">
         <tr>
