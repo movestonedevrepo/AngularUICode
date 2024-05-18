@@ -1,8 +1,9 @@
-.car-collection {
-  background-image: url(../../../../assets/images/Home_Car_Collection.png);
-  background-color: #ffffff; /* Used if the image is unavailable */
-  height: 500px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+::ng-deep .mat-form-field-underline {
+  display: none;
+  background: none;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled,
+::ng-deep .mat-form-field-outline {
+  opacity: 0;
 }

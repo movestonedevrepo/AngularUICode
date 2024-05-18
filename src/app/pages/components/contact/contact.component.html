@@ -1,20 +1,24 @@
-@defer (on viewport) {
-<section id="contact-section" class="contact-section">
-  <div class="title">
-    <h1 class="heading">Get In <span>Touch</span></h1>
-  </div>
+<app-header></app-header>
 
+@defer (on viewport) {
+<div id="contact-section" class="contact-section">
   <div class="contact">
-    <form [formGroup]="queryForm">
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Name</mat-label>
+    <form [formGroup]="queryForm" class="contact-form">
+      <div class="heading">Need a special deal?</div>
+      <div class="heading">Contact us</div>
+      <!-- <label class="custom-field two">
+          <input type="url" placeholder="&nbsp;" />
+          <span class="placeholder">Enter URL</span>
+        </label> -->
+      <mat-form-field class="mat-input">
         <input
           matInput
           formControlName="queryName"
           type="text"
-          placeholder="Enter your name"
+          placeholder="Name"
           name="name"
           id="name"
+          class="mat-input"
           required
         />
         <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">
@@ -22,7 +26,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="mat-input">
+      <mat-form-field class="mat-input">
         <mat-label>Email</mat-label>
         <input
           matInput
@@ -38,7 +42,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="mat-input">
+      <mat-form-field class="mat-input">
         <mat-label>Number</mat-label>
         <input
           matInput
@@ -54,7 +58,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="mat-input">
+      <mat-form-field class="mat-input">
         <mat-label>Message</mat-label>
         <textarea
           matInput
@@ -76,65 +80,6 @@
     </form>
   </div>
   <div class="contact-view">
-    <div class="about-section">
-      <h2>Contact Info</h2>
-
-      <table class="about-table">
-        <tr>
-          <th>Office Location</th>
-          <th>Factory Location</th>
-        </tr>
-        <tr>
-          <td>
-            Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP,
-            Sector-V, Salt Lake, Kolkata- 700091
-          </td>
-          <td>
-            Unit No. - UTA0045,0044,0036,0035, Utsab Park, Bhagabatipur, Chatur
-            Bhujkhati, Sankrail, Howrah, West Bengal, 711313
-          </td>
-        </tr>
-        <tr>
-          <th>Sales department</th>
-          <th>Service department</th>
-        </tr>
-        <tr>
-          <td>
-            <a href="tel:7605083988">7605083988</a>
-          </td>
-          <td>
-            <a href="tel:9007350740">9007350740</a>
-          </td>
-        </tr>
-        <tr>
-          <th>Purchase department</th>
-          <th>Complaint</th>
-        </tr>
-        <tr>
-          <td>
-            <a href="tel:7605083985">7605083985</a>
-          </td>
-          <td>
-            <a href="tel:9804267746">9804267746</a>
-          </td>
-        </tr>
-      </table>
-
-      <div class="social-link">
-        <a [href]="facebookID">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a [href]="instagramID">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-    </div>
     <div class="map-section">
       <div class="map">
         <iframe
@@ -146,8 +91,90 @@
         ></iframe>
       </div>
     </div>
+    <div class="about-section">
+      <div class="mb-5">
+        <div class="heading">
+          <img id="office-location" src="{{ assetPath }}/location.png" alt="" />
+          <h1>Office Location</h1>
+        </div>
+        <p>
+          Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP,
+          Sector-V, Salt Lake, Kolkata- 700091
+        </p>
+      </div>
+      <div class="mb-5">
+        <div class="heading">
+          <img id="office-location" src="{{ assetPath }}/location.png" alt="" />
+          <h1>Factory Location</h1>
+        </div>
+        <p>
+          Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP,
+          Sector-V, Salt Lake, Kolkata- 700091
+        </p>
+      </div>
+      <div class="first-contact">
+        <div class="contact-number">
+          <h2>Sales department</h2>
+          <a href="tel:7605083988">
+            <span class="contact-initials">
+              (M):
+              <img src="{{ assetPath }}/call.png" alt="" />
+            </span>
+            7605083988
+          </a>
+        </div>
+        <div class="contact-number">
+          <h2>Service department</h2>
+          <a href="tel:9007350740">
+            <span class="contact-initials">
+              (M):
+              <img src="{{ assetPath }}/call.png" alt="" />
+            </span>
+            9007350740
+          </a>
+        </div>
+      </div>
+      <div class="second-contact">
+        <div class="contact-number">
+          <h2>Purchase department</h2>
+          <a href="tel:7605083985">
+            <span class="contact-initials">
+              (M):
+              <img src="{{ assetPath }}/call.png" alt="" />
+            </span>
+            7605083985
+          </a>
+        </div>
+        <div class="contact-number">
+          <h2>Complaint department</h2>
+          <a href="tel:9804267746"
+            ><span class="contact-initials">
+              (M):
+              <img src="{{ assetPath }}/call.png" alt="" />
+            </span>
+            9804267746
+          </a>
+        </div>
+      </div>
+
+      <div class="social-link">
+        <h2>Follow us on :</h2>
+        <a [href]="facebookID">
+          <img src="{{ assetPath }}/fb.png" alt="" />
+        </a>
+        <a href="">
+          <img src="{{ assetPath }}/twitter.png" alt="" />
+        </a>
+        <a [href]="instagramID">
+          <img src="{{ assetPath }}/intra.png" alt="" />
+        </a>
+        <a href="">
+          <img src="{{ assetPath }}/linkdin.png" alt="" />
+        </a>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 } @placeholder {
 <div>Contact Section</div>
 } @defer (on viewport) {

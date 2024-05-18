@@ -31,6 +31,7 @@ export class ContactComponent {
     ]),
     queryMessage: new FormControl('', Validators.required),
   });
+  assetPath = `${environment.assestsBasePath}images/Homepage`;
 
   sendQuery(): void {
     if (this.queryForm.valid) {

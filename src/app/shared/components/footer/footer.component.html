@@ -1,76 +1,52 @@
 <section id="footer" class="footer">
-  <div class="box-container">
-    <div class="box" id="quick-links">
-      <h3>Quick Links</h3>
-      <a
-        class="cursor-pointer"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        routerLink="/"
-      >
-        <i class="fas fa-arrow-right"></i> Home
-      </a>
-      <a
-        class="cursor-pointer"
-        routerLink="/pages/products"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
-        <i class="fas fa-arrow-right"></i> Products
-      </a>
-      <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
-        <i class="fas fa-arrow-right"></i> Services
-      </a>
-      <a class="cursor-pointer" (click)="onClickAnchor('banner')">
-        <i class="fas fa-arrow-right"></i> Featured
-      </a>
-      <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
-        <i class="fas fa-arrow-right"></i> Reviews
-      </a>
-      <a
-        class="cursor-pointer"
-        routerLink="/pages/contact"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
-        <i class="fas fa-arrow-right"></i> Contact
-      </a>
-    </div>
-    <div class="box" id="contacts">
-      <h3>Contacts</h3>
-      <a href="tel:9831317367"><i class="fas fa-phone"></i>9831317367</a>
-      <a href="tel:7595823939"><i class="fas fa-phone"></i>7595823939</a>
-      <a
-        href="https://mail.google.com/mail/?view=cm&fs=1&to=movestoneservicespvtltd&#64;gmail.com"
-      >
-        <i class="fas fa-envelope"></i>
-        movestoneservicespvtltd&#64;gmail.com
-      </a>
-      <a href="https://maps.google.com/?q=HOWRAH, WEST BENGAL, 711103">
-        <i class="fas fa-location-dot"></i> HOWRAH, WEST BENGAL, 711103
-      </a>
-    </div>
-
-    <div class="box" id="locations">
-      <h3>Head Office</h3>
-      <a href="https://maps.google.com/?q={{ officeLocation.headOffice }}">
-        <i class="fas fa-location-dot"></i>
-        {{ officeLocation.headOffice }}
-      </a>
-
-      <h3>Corporate Office</h3>
-      <a href="https://maps.google.com/?q={{ officeLocation.corporateOffice }}">
-        <i class="fas fa-location-dot"></i>
-        {{ officeLocation.corporateOffice }}
-      </a>
-      <h3>Factory</h3>
-      <a href="https://maps.google.com/?q={{ officeLocation.factory }}">
-        <i class="fas fa-location-dot"></i>
-        {{ officeLocation.factory }}
-      </a>
-    </div>
-    </div>
-
+  <nav class="footer-section">
+    <a
+      class="cursor-pointer"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      routerLink="/"
+    >
+      home
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/about"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      about
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/products"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      products
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
+      services
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
+      reviews
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/contact"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      contact us
+    </a>
+  </nav>
+  <div class="footer-link">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita, illum!
+  </div>
 </section>
 
 <section id="last-footer" class="last-footer">
