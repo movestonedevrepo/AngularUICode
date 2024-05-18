@@ -570,7 +570,6 @@ mat-header-cell:nth-child(5) {
 
 .vehicles .vehicles-slider .box .content p {
   font-size: 1rem;
-  border-top: var(--border);
   color: var(--white);
   margin-bottom: 0 !important;
 }

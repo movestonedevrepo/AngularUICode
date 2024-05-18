@@ -87,7 +87,7 @@
         <div class="content-text">
           <h3>{{ eachProduct.productName }}</h3>
           <p>
-            new @for(eachFeature of eachProduct?.features?.split(',');track
+            @for(eachFeature of eachProduct?.features?.split(',');track
             eachFeature){
             <span class="fas fa-circle"></span> {{ eachFeature }}
             }
@@ -107,7 +107,7 @@
   </swiper-container>
 </section>
 } @placeholder {
-<div id="vehicles-section">Vehicles Section</div>
+<div id="vehicles-section">featured items</div>
 } @defer (on viewport) {
 <section id="services" class="services">
   <h1 class="heading" id="services-heading">
