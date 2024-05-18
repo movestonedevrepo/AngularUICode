@@ -21,6 +21,7 @@ export class AllProductsComponent implements OnInit {
   featureConfig = CONSTANTS.featureConfig as SwiperOptions;
   staticConfig = CONSTANTS.staticConfig as SwiperOptions;
   contents!: any[];
+  pageLength: number = 9;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
@@ -31,5 +32,12 @@ export class AllProductsComponent implements OnInit {
 
   checkProduct(index: number) {
     this.router.navigate(['pages/product/' + index]);
+  }
+
+  get getNumberOfPages(): number {
+    if (this.contents.length > 0) {
+      return Math.round(this.contents.length / this.pageLength);
+    }
+    return 0;
   }
 }

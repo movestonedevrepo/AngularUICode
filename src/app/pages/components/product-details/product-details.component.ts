@@ -68,10 +68,9 @@ export class ProductDetailsComponent implements OnInit {
     this.activatedRoute.data.subscribe((data: any) => {
       this.product = data.productDetails.productDetails;
       this.otherProducts = data.productDetails.otherProducts;
-      // this.otherProducts = Array(3).fill(otherProducts).flat();
-      this.images = this.product.productPictureDetails.slice(0, 3);
-      this.allproductImages = this.product.productPictureDetails;
-      this.selectedImage = this.images[0].productImageURL;
+      this.images = this.product?.productPictureDetails.slice(0, 3);
+      this.allproductImages = this.product?.productPictureDetails;
+      this.selectedImage = this.images[0]?.productImageURL;
     });
   }
 

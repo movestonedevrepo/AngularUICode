@@ -14,6 +14,7 @@
   --blue: #193766;
   --dark-blue: #001c34;
   --light-blue: #52a2e3;
+  --grey: #dfdfdf;
   --white: white;
   --light-green: #4dff71;
   --black: #130f40;
@@ -1828,6 +1829,135 @@ input:focus {
 
 .dialog-content .error-logo h4 {
   font-size: 24px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px;
+  text-align: center;
+  transition: transform 0.3s;
+  margin-bottom: 4rem;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  border-bottom: 1px solid #f4f4f4;
+  background: var(--grey);
+}
+
+.product-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.product-info h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 70%;
+}
+
+.product-info p {
+  margin: 10px 0;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 70%;
+}
+
+.details-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 15px 0;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.green {
+  background-color: green;
+}
+.black {
+  background-color: black;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.pagination a {
+  color: #007bff;
+  float: left;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 6px 22px;
+  text-decoration: none;
+  background: #e4e9fe;
+  transition: background-color 0.3s;
+  border: 1px solid #e4e9fe;
+  border-radius: 5px;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination .forward {
+  background-color: #fff;
+  color: #007bff;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 3px 20px;
 }
 
 .mat-loader {
