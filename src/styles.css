@@ -362,7 +362,8 @@ mat-header-cell:nth-child(5) {
   display: none;
 }
 
-.header .navbar-section a:hover {
+.header .navbar-section a:hover,
+.product:hover {
   color: var(--yellow);
 }
 

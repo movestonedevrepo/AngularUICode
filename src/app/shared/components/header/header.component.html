@@ -13,16 +13,13 @@
       </div>
     </a>
 
-    <nav
-      class="navbar-section"
-      [ngClass]="{ active: isMenuVisible }"
-      (click)="selectNavOptions($event)"
-    >
+    <nav class="navbar-section" [ngClass]="{ active: isMenuVisible }">
       <a
         class="cursor-pointer"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         routerLink="/"
+        (click)="selectNavOptions($event)"
       >
         home
       </a>
@@ -31,6 +28,7 @@
         routerLink="/pages/about"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
+        (click)="selectNavOptions($event)"
       >
         about
       </a>
@@ -38,7 +36,7 @@
         class="cursor-pointer product"
         [matMenuTriggerFor]="menu"
         #menuTrigger="matMenuTrigger"
-        (mouseenter)="menuTrigger.openMenu()"
+        (click)="menuTrigger.openMenu()"
       >
         products
       </div>
@@ -50,16 +48,20 @@
             [routerLink]="eachProductItem.routerLink"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
+            (click)="selectNavOptions($event)"
           >
             {{ eachProductItem.name }}
           </a>
           }
         </span>
       </mat-menu>
-      <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
+      <a
+        class="cursor-pointer"
+        (click)="onClickAnchor('vehicles-content', $event)"
+      >
         services
       </a>
-      <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
+      <a class="cursor-pointer" (click)="onClickAnchor('newsletter', $event)">
         reviews
       </a>
       <a
@@ -67,6 +69,7 @@
         routerLink="/pages/contact"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
+        (click)="selectNavOptions($event)"
       >
         contact us
       </a>

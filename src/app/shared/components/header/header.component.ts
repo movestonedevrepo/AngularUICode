@@ -104,7 +104,7 @@ export class HeaderComponent implements OnInit {
     return this.webService.getUserName;
   }
 
-  onClickAnchor(elementId: string) {
+  onClickAnchor(elementId: string, event: any) {
     if (this.router.url.includes('/home')) {
       this.viewportScroller.scrollToAnchor(elementId);
     } else {
@@ -112,6 +112,7 @@ export class HeaderComponent implements OnInit {
         queryParams: { target: elementId },
       });
     }
+    this.selectNavOptions(event);
   }
 
   logout() {
