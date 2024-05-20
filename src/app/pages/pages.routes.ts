@@ -28,6 +28,13 @@ export const PAGES_ROUTES: Routes = [
     },
   },
   {
+    path: 'products',
+    component: AllProductsComponent,
+    resolve: {
+      productDetails: homeDetailsResolver,
+    },
+  },
+  {
     path: 'products/:id',
     component: AllProductsComponent,
     resolve: {
