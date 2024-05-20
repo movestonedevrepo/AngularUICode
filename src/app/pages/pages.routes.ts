@@ -28,7 +28,7 @@ export const PAGES_ROUTES: Routes = [
     },
   },
   {
-    path: 'products',
+    path: 'products/:id',
     component: AllProductsComponent,
     resolve: {
       productDetails: homeDetailsResolver,

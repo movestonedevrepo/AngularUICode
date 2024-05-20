@@ -1,36 +1,39 @@
-<app-header></app-header>
-
-@defer (on viewport) {
-<section *ngIf="contents.length > 0" id="products" class="products">
-  @for (content of contents; track content) {
-  <div class="product-card">
-    <img [src]="content.imageURL" [alt]="content.productName" />
-    <div class="product-info">
-      <h2>{{ content.productName }}</h2>
-      <p>
-        new @for(eachFeature of content?.features?.split(','); track $index) {
-        {{ eachFeature }}
-        @if ($index < content?.features.length) {
-        <span>&#187;</span>
-        } }
-      </p>
-      <div class="d-flex align-items-center justify-content-between">
-        <button
-          class="details-button"
-          (click)="checkProduct(content.productID)"
-        >
-          Details
-        </button>
-        <div class="color-options">
-          <span class="color-dot red"></span>
-          <span class="color-dot blue"></span>
-          <span class="color-dot green"></span>
-          <span class="color-dot black"></span>
+@defer () {
+<div class="products-banner">
+  <div class="hero-content">
+    <div class="carousel">
+      <button class="carousel-button left">
+        <img src="{{ assetPath }}/header-arrow.png" alt="" />
+      </button>
+      <!-- <div class="hero-text">
+        <div class="d-flex align-items-center gap-3">
+          <h1>ZERO</h1>
+          <h2>Pollution,</h2>
         </div>
-      </div>
+        <div class="d-flex justify-content-end gap-3">
+          <p>ZERO</p>
+          <span>Hassle.</span>
+        </div>
+      </div> -->
+      <button class="carousel-button right">
+        <img src="{{ assetPath }}/header-arrow1.png" alt="" />
+      </button>
     </div>
   </div>
+</div>
+} @placeholder {
+<div>Banner Section</div>
+} @defer (on viewport) {
+<section *ngIf="contents.length > 0" id="products" class="products">
+  @for (content of contents; track content) {
+  <app-product-card
+    [content]="content"
+    (checkProductEvent)="checkProduct($event)"
+  ></app-product-card>
   }
+
+  <app-magnify></app-magnify>
+
   <div class="pagination">
     <div *ngFor="let item of [].constructor(getNumberOfPages); let i = index">
       <a href="#">{{ i + 1 }}</a>

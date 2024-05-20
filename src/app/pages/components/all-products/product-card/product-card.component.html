@@ -1,0 +1,33 @@
+<div class="product-card">
+  <div class="image" (click)="magnifyCard()">
+    <img [src]="content.imageURL" [alt]="content.productName" />
+    <div class="icon">
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+  <div class="product-info">
+    <h2>{{ content.productName }}</h2>
+    <p>
+      @for(eachFeature of content?.features?.split(','); track $index) {
+      {{ eachFeature }}
+      @if ($index < content?.features.length) {
+      <span>&#187;</span>
+      } }
+    </p>
+    <div class="d-flex align-items-center justify-content-between">
+      <button
+        type="button"
+        class="details-button"
+        (click)="checkProduct(content.productID)"
+      >
+        Details
+      </button>
+      <div class="color-options">
+        <span class="color-dot red"></span>
+        <span class="color-dot blue"></span>
+        <span class="color-dot green"></span>
+        <span class="color-dot black"></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -42,9 +42,10 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       Validators.required,
       Validators.pattern(/^[0-9]{10}$/),
     ]),
-    queryMessage: new FormControl('', Validators.required),
+    queryMessage: new FormControl(''),
   });
   assetPath = `${environment.assestsBasePath}images/Homepage`;
+  currentIndex = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,

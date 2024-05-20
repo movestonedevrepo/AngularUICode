@@ -2,6 +2,7 @@ import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginComponent } from 'src/app/pages/components/login/login.component';
 import { environment } from 'src/environments/environment';
@@ -20,6 +21,7 @@ import { WebService } from '../../services/web.service';
     CdkMenuTrigger,
     CdkMenu,
     CdkMenuItem,
+    MatMenuModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -27,9 +29,22 @@ import { WebService } from '../../services/web.service';
 export class HeaderComponent implements OnInit {
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
+  selectedItem = 'home';
   logo = `${environment.assestsBasePath}images/Move_Stone_logo.png`;
   brand = `${environment.assestsBasePath}images/Move_Stone_brand.png`;
   assetPath = `${environment.assestsBasePath}images`;
+  itemsToDisplayInProducts = [
+    {
+      id: 'eRikshaw',
+      name: 'E Rikshaw',
+      routerLink: '/pages/products/eRikshaw',
+    },
+    {
+      id: 'loader',
+      name: 'Loader',
+      routerLink: '/pages/products/loader',
+    },
+  ];
 
   constructor(
     private router: Router,
@@ -44,7 +59,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isVerticalScroll = false;
     }
-
     window.onscroll = () => {
       if (window.scrollY > 0) {
         this.isVerticalScroll = true;
@@ -62,7 +76,8 @@ export class HeaderComponent implements OnInit {
     this.isMenuVisible = !this.isMenuVisible;
   }
 
-  selectNavOptions() {
+  selectNavOptions(event: any) {
+    this.selectedItem = event?.target?.text?.trim();
     this.isMenuVisible = false;
   }
 

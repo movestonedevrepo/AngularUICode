@@ -1,57 +1,84 @@
-<app-header></app-header>
-
-@defer (on viewport) {
+@defer () {
+<div class="home-banner">
+  <div class="hero-content">
+    <div class="carousel">
+      <button
+        type="button"
+        title="carousel-left-button"
+        class="carousel-button left"
+      >
+        <img src="{{ assetPath }}/header-arrow.png" alt="" />
+      </button>
+      <!-- <div class="hero-text">
+        <div class="d-flex align-items-center gap-3">
+          <h1>ZERO</h1>
+          <h2>Pollution,</h2>
+        </div>
+        <div class="d-flex justify-content-end gap-3">
+          <p>ZERO</p>
+          <span>Hassle.</span>
+        </div>
+      </div> -->
+      <button
+        type="button"
+        title="carousel-right-button"
+        class="carousel-button right"
+      >
+        <img src="{{ assetPath }}/header-arrow1.png" alt="" />
+      </button>
+    </div>
+  </div>
+</div>
+} @placeholder {
+<div>Banner Section</div>
+} @defer (on viewport) {
 <section class="about-us" id="about-us">
   <h1 class="heading">
     <div class="underline"></div>
     <span>About </span> us
   </h1>
-  <div class="d-flex gap-5">
-    <div>
-      <div class="about-us-image">
-        <img src="{{ assetPath }}/pic1.png" alt="" />
-      </div>
+  <div class="about-us-body">
+    <div class="about-us-image">
+      <img src="{{ assetPath }}/pic1.png" alt="" />
     </div>
-    <div>
-      <div class="about-us-text d-grid gap-5">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt eum ullam
-        voluptatum ab delectus ipsa. Corporis, error fuga. Vitae, obcaecati
-        dignissimos! Cupiditate eos aliquid ad in consequatur atque fuga, ex
-        saepe animi, odio laboriosam quisquam sequi ipsum, ut nesciunt. Dolorum
-        architecto ducimus at. Quae quo explicabo odit ut, maxime expedita
-        suscipit nobis blanditiis aperiam magni id tempore, dignissimos
-        distinctio enim officiis, voluptatibus voluptas! Ullam expedita dolore
-        eveniet accusamus. Accusantium modi, cumque ipsum aperiam unde dicta
-        commodi fuga facilis deserunt officiis aspernatur voluptas beatae
-        consectetur ipsa eaque non quidem nisi eius exercitationem at vero
-        voluptatibus tenetur laboriosam dignissimos. Vel, doloribus debitis!
+    <div class="about-us-text d-grid gap-5">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt eum ullam
+      voluptatum ab delectus ipsa. Corporis, error fuga. Vitae, obcaecati
+      dignissimos! Cupiditate eos aliquid ad in consequatur atque fuga, ex saepe
+      animi, odio laboriosam quisquam sequi ipsum, ut nesciunt. Dolorum
+      architecto ducimus at. Quae quo explicabo odit ut, maxime expedita
+      suscipit nobis blanditiis aperiam magni id tempore, dignissimos distinctio
+      enim officiis, voluptatibus voluptas! Ullam expedita dolore eveniet
+      accusamus. Accusantium modi, cumque ipsum aperiam unde dicta commodi fuga
+      facilis deserunt officiis aspernatur voluptas beatae consectetur ipsa
+      eaque non quidem nisi eius exercitationem at vero voluptatibus tenetur
+      laboriosam dignissimos. Vel, doloribus debitis!
 
-        <div class="d-grid gap-2">
-          <div>
-            <img src="{{ assetPath }}/arrow-sm.png" alt="" />
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
-            harum.
-          </div>
-          <div>
-            <img src="{{ assetPath }}/arrow-sm.png" alt="" />
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
-            harum.
-          </div>
-          <div>
-            <img src="{{ assetPath }}/arrow-sm.png" alt="" />
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
-            harum.
-          </div>
-          <div>
-            <img src="{{ assetPath }}/arrow-sm.png" alt="" />
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
-            harum.
-          </div>
-          <div>
-            <img src="{{ assetPath }}/arrow-sm.png" alt="" />
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
-            harum.
-          </div>
+      <div class="d-grid gap-2">
+        <div>
+          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
+          harum.
+        </div>
+        <div>
+          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
+          harum.
+        </div>
+        <div>
+          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
+          harum.
+        </div>
+        <div>
+          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
+          harum.
+        </div>
+        <div>
+          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
+          harum.
         </div>
       </div>
     </div>
@@ -66,24 +93,29 @@
     <h2 class="heading text-white text-uppercase">Featured Items</h2>
 
     <div class="hex-container">
-      <button class="hexagon">
+      <button class="hexagon product-button-prev">
         <img src="{{ assetPath }}/arrow-yellow.png" alt="" />
       </button>
-      <button class="hexagon">
+      <button class="hexagon product-button-next">
         <img src="{{ assetPath }}/arrow-yellow1.png" alt="" />
       </button>
     </div>
   </div>
 
   <swiper-container
+    #featureItems
     fmSwiper
     [config]="contents.length > 8 ? vehicleConfig : staticConfig"
     init="false"
     class="vehicles-slider"
   >
-    @for (eachProduct of contents; track eachProduct) {
+    @for (eachProduct of contents; track $index) {
     <swiper-slide class="box">
-      <div id="vehicles-content" class="content">
+      <div
+        id="vehicles-content-{{ $index }}"
+        class="content"
+        [ngClass]="{ active: $index === currentIndex }"
+      >
         <div class="content-text">
           <h3>{{ eachProduct.productName }}</h3>
           <p>
@@ -98,7 +130,7 @@
           class="feature-btn btn"
           (click)="checkProduct(eachProduct.productID)"
         >
-          Check Out
+          Details
         </button>
       </div>
       <img [src]="eachProduct?.imageURL" alt="image" loading="lazy" />
@@ -310,75 +342,80 @@
     <form [formGroup]="queryForm" class="contact-form">
       <div class="heading">Need a special deal?</div>
       <div class="heading">Contact us</div>
-      <!-- <label class="custom-field two">
-        <input type="url" placeholder="&nbsp;" />
-        <span class="placeholder">Enter URL</span>
-      </label> -->
-      <mat-form-field class="mat-input">
+      <label class="input-field">
         <input
-          matInput
-          formControlName="queryName"
           type="text"
-          placeholder="Name"
+          formControlName="queryName"
+          placeholder="Your Name"
           name="name"
           id="name"
-          class="mat-input"
           required
         />
-        <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">
-          Name is required
-        </mat-error>
-      </mat-form-field>
+        <div class="error-message">
+          <ng-container
+            *ngIf="
+              queryForm.get('queryName')?.touched &&
+              queryForm.get('queryName')?.hasError('required')
+            "
+          >
+            Name is required
+          </ng-container>
+        </div>
+      </label>
 
-      <mat-form-field class="mat-input">
-        <mat-label>Email</mat-label>
+      <label class="input-field">
         <input
-          matInput
           formControlName="queryEmail"
           type="email"
-          placeholder="Enter your email"
+          placeholder="Your Email"
           name="email"
           id="email-contact"
           required
         />
-        <mat-error *ngIf="queryForm.get('queryEmail')?.hasError('required')">
-          Email is required
-        </mat-error>
-      </mat-form-field>
+        <div class="error-message">
+          <ng-container
+            *ngIf="
+              queryForm.get('queryEmail')?.touched &&
+              queryForm.get('queryEmail')?.hasError('required')
+            "
+          >
+            Email is required
+          </ng-container>
+        </div>
+      </label>
 
-      <mat-form-field class="mat-input">
-        <mat-label>Number</mat-label>
+      <label class="input-field">
         <input
-          matInput
           formControlName="queryPhone"
           type="number"
-          placeholder="Enter phone number"
           name="number"
+          placeholder="Your Number"
           id="number"
           required
         />
-        <mat-error *ngIf="queryForm.get('queryPhone')?.hasError('required')">
-          Number is required
-        </mat-error>
-      </mat-form-field>
+        <div class="error-message">
+          <ng-container
+            *ngIf="
+              queryForm.get('queryPhone')?.touched &&
+              queryForm.get('queryPhone')?.hasError('required')
+            "
+          >
+            Number is required
+          </ng-container>
+        </div>
+      </label>
 
-      <mat-form-field class="mat-input">
-        <mat-label>Message</mat-label>
+      <label class="input-field">
         <textarea
-          matInput
           formControlName="queryMessage"
-          placeholder="Type your message"
+          placeholder="Your Message (Optional)"
           name="message"
           id="message"
-          required
         >
         </textarea>
-        <mat-error *ngIf="queryForm.get('queryMessage')?.hasError('required')">
-          Message is required
-        </mat-error>
-      </mat-form-field>
+      </label>
 
-      <button (click)="sendQuery()" type="button" class="btn">
+      <button (click)="sendQuery()" type="button" class="contact-btn btn">
         Send Query
       </button>
     </form>
@@ -462,7 +499,7 @@
       </div>
 
       <div class="social-link">
-        <h2>Follow us on :</h2>
+        <div>Follow us on :</div>
         <a [href]="facebookID">
           <img src="{{ assetPath }}/fb.png" alt="" />
         </a>

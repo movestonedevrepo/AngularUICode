@@ -1,3 +1,5 @@
+import { Navigation, Pagination } from 'swiper/modules';
+
 export const CONSTANTS = {
   colors: {
     GRAY: '#808080',
@@ -74,14 +76,19 @@ export const CONSTANTS = {
     },
   },
   vehicleConfig: {
+    modules: [Navigation, Pagination],
     autoHeight: false,
-    navigation: false,
     pagination: { clickable: true, dynamicBullets: true },
     centeredSlidesBounds: true,
     centeredSlides: true,
     initialSlide: 1,
     slidesPerView: 3,
     spaceBetween: 20,
+    // Navigation arrows
+    navigation: {
+      nextEl: '.product-button-next',
+      prevEl: '.product-button-prev',
+    },
     direction: 'horizontal',
     loop: false,
     grabCursor: true,

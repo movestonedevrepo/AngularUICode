@@ -17,6 +17,7 @@ import { DiaplayImagesComponent } from './components/diaplay-images/diaplay-imag
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MagnifyComponent } from './components/magnify/magnify.component';
 import { SwiperDirective } from './utilities/swiper.directive';
 
 @NgModule({
@@ -30,11 +31,13 @@ import { SwiperDirective } from './utilities/swiper.directive';
     FooterComponent,
     LoaderComponent,
     DiaplayImagesComponent,
+    MagnifyComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
+    MagnifyComponent,
     CommonModule,
     SwiperDirective,
     FormsModule,

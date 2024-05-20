@@ -1,10 +1,13 @@
-<header class="header navbar-dark" [ngClass]="{ active: isVerticalScroll }">
+<header
+  class="header navbar-dark"
+  [ngClass]="{ 'header-active': isVerticalScroll }"
+>
   <div class="header-menu">
     <div id="menu-btn" (click)="onMenuBtnClick()">
       <i class="fas fa-bars" *ngIf="!isMenuVisible"></i>
       <i class="fas fa-times" *ngIf="isMenuVisible"></i>
     </div>
-    <a href="#" class="logo">
+    <a href="#">
       <div class="icon">
         <img [src]="logo" alt="MoveStone" />
       </div>
@@ -13,7 +16,7 @@
     <nav
       class="navbar-section"
       [ngClass]="{ active: isMenuVisible }"
-      (click)="selectNavOptions()"
+      (click)="selectNavOptions($event)"
     >
       <a
         class="cursor-pointer"
@@ -31,14 +34,28 @@
       >
         about
       </a>
-      <a
-        class="cursor-pointer"
-        routerLink="/pages/products"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
+      <div
+        class="cursor-pointer product"
+        [matMenuTriggerFor]="menu"
+        #menuTrigger="matMenuTrigger"
+        (mouseenter)="menuTrigger.openMenu()"
       >
         products
-      </a>
+      </div>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <span (mouseleave)="menuTrigger.closeMenu()" class="cursor-pointer">
+          @for (eachProductItem of itemsToDisplayInProducts; track $index) {
+          <a
+            mat-menu-item
+            [routerLink]="eachProductItem.routerLink"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            {{ eachProductItem.name }}
+          </a>
+          }
+        </span>
+      </mat-menu>
       <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
         services
       </a>
@@ -55,15 +72,15 @@
       </a>
       @if (!isUserLoggedIn && !getUserName) {
       <a id="nav-login-btn" class="nav-login-btn" (click)="onLoginBtnClick()">
-        <button type="button" class="btn">Login</button>
+        <img src="{{ assetPath }}/Homepage/login.png" alt="" />
       </a>
       }
     </nav>
 
     @if (!isUserLoggedIn && !getUserName) {
     <div id="login-btn" class="login-btn" (click)="onLoginBtnClick()">
-      <button type="button" class="btn">Login</button>
-      <span id="login-icon">
+      <img src="{{ assetPath }}/Homepage/login.png" alt="" />
+      <span id="login-icon" class="login-icon">
         <i class="far fa-user"></i>
       </span>
     </div>
@@ -96,25 +113,5 @@
     </ng-template>
 
     }
-  </div>
-  <div class="hero-content">
-    <div class="carousel">
-      <button class="carousel-button left">
-        <img src="{{ assetPath }}/Homepage/header-arrow.png" alt="" />
-      </button>
-      <div class="hero-text">
-        <div class="d-flex align-items-center gap-3">
-          <h1>ZERO</h1>
-          <h2>Pollution,</h2>
-        </div>
-        <div class="d-flex justify-content-end gap-3">
-          <p>ZERO</p>
-          <span>Hassle.</span>
-        </div>
-      </div>
-      <button class="carousel-button right">
-        <img src="{{ assetPath }}/Homepage/header-arrow1.png" alt="" />
-      </button>
-    </div>
   </div>
 </header>
