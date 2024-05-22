@@ -32,9 +32,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   emailNewsLetter: any = '';
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
-  vehicleConfig = CONSTANTS.vehicleConfig as SwiperOptions;
-  reviewConfig = CONSTANTS.reviewConfig as SwiperOptions;
-  staticConfig = CONSTANTS.staticConfig as SwiperOptions;
+  vehicleConfig: SwiperOptions = CONSTANTS.vehicleConfig;
   queryForm = new FormGroup({
     queryName: new FormControl('', Validators.required),
     queryEmail: new FormControl('', [Validators.required, Validators.email]),

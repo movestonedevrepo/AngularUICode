@@ -93,10 +93,18 @@
     <h2 class="heading text-white text-uppercase">Featured Items</h2>
 
     <div class="hex-container">
-      <button class="hexagon product-button-prev">
+      <button
+        type="button"
+        title="product-button-prev"
+        class="hexagon product-button-prev"
+      >
         <img src="{{ assetPath }}/arrow-yellow.png" alt="" />
       </button>
-      <button class="hexagon product-button-next">
+      <button
+        type="button"
+        title="product-button-next"
+        class="hexagon product-button-next"
+      >
         <img src="{{ assetPath }}/arrow-yellow1.png" alt="" />
       </button>
     </div>
@@ -105,7 +113,7 @@
   <swiper-container
     #featureItems
     fmSwiper
-    [config]="contents.length > 8 ? vehicleConfig : staticConfig"
+    [config]="vehicleConfig"
     init="false"
     class="vehicles-slider"
   >
@@ -500,16 +508,16 @@
 
       <div class="social-link">
         <div>Follow us on :</div>
-        <a [href]="facebookID">
+        <a title="fb" [href]="facebookID">
           <img src="{{ assetPath }}/fb.png" alt="" />
         </a>
-        <a href="">
+        <a title="twitter" href="">
           <img src="{{ assetPath }}/twitter.png" alt="" />
         </a>
-        <a [href]="instagramID">
+        <a title="intra" [href]="instagramID">
           <img src="{{ assetPath }}/intra.png" alt="" />
         </a>
-        <a href="">
+        <a title="linkdin" href="">
           <img src="{{ assetPath }}/linkdin.png" alt="" />
         </a>
       </div>

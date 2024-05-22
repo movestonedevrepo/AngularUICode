@@ -891,7 +891,7 @@ mat-header-cell:nth-child(5) {
 }
 
 .testimonial .testimonial-content .testimonial-text {
-  width: 60%;
+  width: 50%;
 }
 
 .testimonial .testimonial-content .testimonial-text h4 {
@@ -1633,6 +1633,7 @@ input:focus {
 .contact-section .contact-view .about-section .social-link div {
   font-size: 18px;
   font-weight: 600;
+  white-space: nowrap;
   color: var(--white);
   text-transform: uppercase;
 }
@@ -2727,9 +2728,74 @@ input:focus {
   .header .header-menu {
     padding: 0;
   }
+}
 
-  .header .login-btn img {
-    display: none;
+@media (max-width: 900px) {
+  .header .logo .icon {
+    width: 70px;
+    height: 60px;
+  }
+
+  .header .logo .icon img {
+    width: 70px;
+    height: 60px;
+  }
+
+  .header .logo .brand {
+    width: 150px;
+    height: 30px;
+  }
+
+  .product-feature .box-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .product-feature .box-container .features {
+    width: 100%;
+
+    .feature {
+      width: 100%;
+      height: 30rem;
+    }
+    .intro {
+      height: auto;
+      text-align: center;
+      width: 100%;
+    }
+
+    .feature-1 .desc {
+      top: 45%;
+      left: 50%;
+    }
+    .feature-4 .desc {
+      top: 45%;
+      left: 50%;
+    }
+    .feature-5 .desc {
+      top: 55%;
+      left: 50%;
+    }
+    .feature-6 .desc {
+      top: 45%;
+      left: 50%;
+    }
+
+    .feature-8 {
+      .desc {
+        top: 50%;
+        left: 50%;
+
+        > h1 {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+
+  .about-us .heading,
+  .services .heading {
+    justify-content: center;
   }
 
   .home-banner {
@@ -2813,70 +2879,6 @@ input:focus {
   }
 }
 
-@media (max-width: 900px) {
-  .header .logo .icon {
-    width: 70px;
-    height: 60px;
-  }
-
-  .header .logo .icon img {
-    width: 70px;
-    height: 60px;
-  }
-
-  .header .logo .brand {
-    width: 150px;
-    height: 30px;
-  }
-
-  .product-feature .box-container {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .product-feature .box-container .features {
-    width: 100%;
-
-    .feature {
-      width: 100%;
-      height: 30rem;
-    }
-    .intro {
-      height: auto;
-      text-align: center;
-      width: 100%;
-    }
-
-    .feature-1 .desc {
-      top: 45%;
-      left: 50%;
-    }
-    .feature-4 .desc {
-      top: 45%;
-      left: 50%;
-    }
-    .feature-5 .desc {
-      top: 55%;
-      left: 50%;
-    }
-    .feature-6 .desc {
-      top: 45%;
-      left: 50%;
-    }
-
-    .feature-8 {
-      .desc {
-        top: 50%;
-        left: 50%;
-
-        > h1 {
-          margin-bottom: 2rem;
-        }
-      }
-    }
-  }
-}
-
 @media (max-width: 825px) {
   .header .navbar-section {
     display: block;
@@ -2923,6 +2925,10 @@ input:focus {
     font-size: 2.5rem;
     cursor: pointer;
     color: var(--white);
+  }
+
+  .header .login-btn img {
+    display: none;
   }
 
   #menu-btn {
@@ -3028,6 +3034,10 @@ input:focus {
 
   .products .product-card {
     width: 205px !important;
+  }
+
+  .magnify-card img {
+    width: 100% !important;
   }
 }
 
@@ -3274,10 +3284,6 @@ input:focus {
     height: 50% !important;
     padding: 0px 4%;
   }
-
-  .magnify-card img {
-    width: 100% !important;
-  }
 }
 
 @media (max-width: 380px) {
@@ -3323,5 +3329,9 @@ input:focus {
   .second-contact {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .contact-section .contact-view .about-section {
+    padding: 2rem;
   }
 }

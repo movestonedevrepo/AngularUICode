@@ -1,4 +1,5 @@
 import { Navigation, Pagination } from 'swiper/modules';
+import { SwiperOptions } from 'swiper/types';
 
 export const CONSTANTS = {
   colors: {
@@ -13,8 +14,8 @@ export const CONSTANTS = {
     'Help us reach you with the latest updates on our amazing products by providing us with your email.',
 
   phoneNumber: '919831317367',
-  facebookID: 'http://facebook.com/Movestoneservicespvtltd',
-  instagramID: 'http://instagram.com/movestoneevehicle',
+  facebookID: 'https://facebook.com/Movestoneservicespvtltd',
+  instagramID: 'https://instagram.com/movestoneevehicle',
 
   officeLocation: {
     headOffice:
@@ -26,55 +27,6 @@ export const CONSTANTS = {
       'Unit No. - UTA0045,0044,0036,0035, Utsab Park, Bhagabatipur, Chatur Bhujkhati, Sankrail, Howrah, West Bengal, 711313',
   },
 
-  featureConfig: {
-    autoHeight: false,
-    navigation: false,
-    pagination: { clickable: true, dynamicBullets: true },
-    centeredSlides: true,
-    slidesPerView: 3,
-    initialSlide: 2,
-    spaceBetween: 20,
-    grabCursor: true,
-    direction: 'horizontal',
-    loop: true,
-    autoplay: false,
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      740: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-    },
-  },
-  staticConfig: {
-    autoHeight: false,
-    navigation: true,
-    pagination: { clickable: true, dynamicBullets: false },
-    centeredSlidesBounds: true,
-    centeredSlides: true,
-    initialSlide: 2,
-    slidesPerView: 3,
-    spaceBetween: 20,
-    direction: 'horizontal',
-    loop: false,
-    grabCursor: true,
-    autoplay: false,
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 1,
-      },
-      991: {
-        slidesPerView: 1,
-      },
-    },
-  },
   vehicleConfig: {
     modules: [Navigation, Pagination],
     autoHeight: false,
@@ -84,51 +36,34 @@ export const CONSTANTS = {
     initialSlide: 1,
     slidesPerView: 3,
     spaceBetween: 20,
-    // Navigation arrows
-    navigation: {
-      nextEl: '.product-button-next',
-      prevEl: '.product-button-prev',
-    },
     direction: 'horizontal',
     loop: false,
     grabCursor: true,
-    speed: 1000,
     breakpoints: {
       0: {
         slidesPerView: 1,
+        navigation: {
+          nextEl: '.product-button-next',
+          prevEl: '.product-button-prev',
+        },
       },
       768: {
         slidesPerView: 2,
+        navigation: {
+          nextEl: '.product-button-next',
+          prevEl: '.product-button-prev',
+        },
       },
       991: {
         slidesPerView: 3,
+        navigation: {
+          nextEl: '.product-button-next',
+          prevEl: '.product-button-prev',
+        },
       },
     },
-  },
-  reviewConfig: {
-    autoHeight: false,
-    navigation: false,
-    pagination: { clickable: true, dynamicBullets: false },
-    centeredSlides: true,
-    slidesPerView: 3,
-    initialSlide: 2,
-    spaceBetween: 20,
-    grabCursor: true,
-    direction: 'horizontal',
-    loop: true,
-    autoplay: false,
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      740: {
-        slidesPerView: 2,
-      },
-      991: {
-        slidesPerView: 3,
-      },
-    },
-  },
+  } as SwiperOptions,
+
   productFeatures: {
     battery: 'BATTERY',
     bodyDimension: 'BODY DIMENSION',

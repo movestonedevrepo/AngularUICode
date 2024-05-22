@@ -5,10 +5,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CONSTANTS } from 'src/app/constants/constants';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
-import { SwiperOptions } from 'swiper/types';
 import { ProductCardComponent } from './product-card/product-card.component';
 
 @Component({
@@ -20,8 +18,6 @@ import { ProductCardComponent } from './product-card/product-card.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AllProductsComponent implements OnInit {
-  featureConfig = CONSTANTS.featureConfig as SwiperOptions;
-  staticConfig = CONSTANTS.staticConfig as SwiperOptions;
   contents!: any[];
   pageLength: number = 9;
   assetPath = `${environment.assestsBasePath}images/Homepage`;
