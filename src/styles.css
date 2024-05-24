@@ -55,7 +55,7 @@ html {
   scroll-padding-top: 7rem;
   scroll-behavior: smooth;
   position: relative;
-  min-height: 100%;
+  /* min-height: 100%; */
 }
 
 textarea {
@@ -148,15 +148,11 @@ textarea {
 .vertical {
   border-left: 1px solid var(--white);
   border-right: 1px solid var(--white);
+  min-height: 18px;
 }
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-}
-
-.page-container {
-  position: relative;
-  min-height: 97vh;
 }
 
 .content-wrap {
@@ -256,6 +252,20 @@ mat-header-cell:nth-child(5) {
   text-align: center;
 }
 
+.product-footer-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("src/assets/images/Product Page/product_page_bg2.jpg") center
+    center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 70vh;
+}
+
 .carousel {
   position: relative;
   display: flex;
@@ -271,6 +281,72 @@ mat-header-cell:nth-child(5) {
   cursor: pointer;
   height: 50px;
   transition: background-color 0.3s ease;
+}
+
+.product-footer-banner {
+  position: relative;
+  width: 100%;
+}
+
+.product-footer-banner img {
+  width: 100%;
+  height: auto;
+}
+
+.product-footer-banner-text {
+  position: absolute;
+  top: 42%;
+  left: 20%;
+  text-align: left;
+  transform: translate(-50%, -50%);
+}
+
+.product-footer-banner-text div {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.product-footer-banner-text div {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.product-footer-banner-text .button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 5rem;
+}
+
+.product-footer-banner-text .phone-button {
+  padding: 7px 12px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  background-color: #f3f4f8 !important;
+  color: #0046ff !important;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-footer-banner-text .phone-button .icon {
+  padding-right: 10px;
+  border-right: 2px solid #0046ff;
+}
+
+.product-footer-banner-text .contact-button {
+  padding: 7px 25px;
+  background-color: transparent !important;
+  color: var(--white) !important;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--white);
+  border-radius: 10px;
 }
 
 .rickshaw-image {
@@ -311,7 +387,7 @@ mat-header-cell:nth-child(5) {
 .header {
   background: transparent;
   position: fixed;
-  z-index: 1000;
+  z-index: 999;
   width: 100vw;
 }
 
@@ -320,7 +396,7 @@ mat-header-cell:nth-child(5) {
 }
 
 .header .header-menu {
-  padding: 1rem 6rem;
+  padding: 1rem 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -347,7 +423,7 @@ mat-header-cell:nth-child(5) {
 
 .header .navbar-section a,
 .product {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: var(--white);
   cursor: pointer;
@@ -365,6 +441,15 @@ mat-header-cell:nth-child(5) {
 .header .navbar-section a:hover,
 .product:hover {
   color: var(--yellow);
+}
+
+.header .navbar-section .nav-option-active:after {
+  content: "";
+  display: block;
+  height: 8px;
+  background-image: url(src/assets/images/Homepage/h-menu-bg.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 
 .header .btn {
@@ -424,22 +509,22 @@ mat-header-cell:nth-child(5) {
 
 .home-banner {
   position: relative;
-  background-image: url("src/assets/images/Homepage/header-banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
   color: white;
+  background-image: url("src/assets/images/Homepage/header-banner.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 80vh;
 }
 
 .products-banner {
   position: relative;
-  background-image: url("src/assets/images/Homepage/header-banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
   color: white;
+  background-image: url("src/assets/images/Product Page/Product_page_banner.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 70vh;
 }
 
 .login-form-container {
@@ -981,8 +1066,15 @@ mat-header-cell:nth-child(5) {
 }
 
 .footer {
+  position: fixed;
+  height: 16rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
   background: var(--blue);
   text-align: center;
+  padding-top: 2rem;
 }
 
 .footer .footer-section {
@@ -1001,6 +1093,7 @@ mat-header-cell:nth-child(5) {
 .footer .footer-link {
   color: var(--white);
   margin-top: 20px;
+  margin-bottom: 2rem;
   font-size: 1.2rem;
   text-transform: uppercase;
 }
@@ -1506,6 +1599,7 @@ input:focus {
 
 .contact-section {
   display: flex;
+  margin-bottom: 16rem;
 }
 
 .contact-section .contact {
@@ -1783,10 +1877,15 @@ input:focus {
 }
 
 .products {
+  margin-bottom: 16rem;
+}
+
+.products .products-part {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3rem;
 }
 
 .product-card {
@@ -1794,7 +1893,7 @@ input:focus {
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 380px;
+  width: 350px;
   text-align: center;
   transition: transform 0.3s;
   margin-bottom: 4rem;
@@ -1811,7 +1910,7 @@ input:focus {
   height: 100%;
 }
 
-.product-card .image img {
+.product-card .image .product-image {
   width: 100%;
   max-width: 100%;
   height: auto;
@@ -1821,21 +1920,14 @@ input:focus {
 
 .product-card .icon {
   position: absolute;
-  width: 50px;
-  height: 50px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
-  font-size: 2rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 50%;
 }
 
-.product-card .image:hover img {
+.product-card .image:hover .product-image {
   filter: brightness(50%);
 }
 
@@ -1952,6 +2044,7 @@ input:focus {
   display: flex;
   justify-content: center;
   margin: auto;
+  margin-bottom: 4rem;
 }
 
 .pagination a {
@@ -1966,6 +2059,7 @@ input:focus {
   border: 1px solid #e4e9fe;
   border-radius: 5px;
   margin: 0 4px;
+  cursor: pointer;
 }
 
 .pagination a.active {
@@ -1974,16 +2068,20 @@ input:focus {
   border: 1px solid #007bff;
 }
 
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
-}
-
 .pagination .forward {
-  background-color: #fff;
+  background-color: transparent;
   color: #007bff;
+  border: 1px solid #007bff;
+  cursor: pointer;
   font-size: 2rem;
   font-weight: 500;
+  letter-spacing: -5px;
+  text-decoration: none;
   padding: 3px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 4px;
 }
 
 .mat-loader {
@@ -2065,11 +2163,6 @@ input:focus {
 }
 
 .last-footer {
-  position: sticky;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  z-index: 1000;
   background: var(--dark-blue);
   display: flex;
   align-items: center;
@@ -2638,6 +2731,11 @@ input:focus {
   .products .product-card {
     width: 280px !important;
   }
+
+  .product-footer-banner-text {
+    top: 45%;
+    left: 23%;
+  }
 }
 
 @media (max-width: 1163px) {
@@ -2713,6 +2811,15 @@ input:focus {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .product-footer-banner-text {
+    top: 46%;
+    left: 25%;
+  }
+
+  .product-footer-banner-text .button-container {
+    margin-top: 2rem;
+  }
 }
 
 @media (max-width: 991px) {
@@ -2727,6 +2834,15 @@ input:focus {
 
   .header .header-menu {
     padding: 0;
+  }
+
+  .product-footer-banner-text {
+    top: 45%;
+    left: 25%;
+  }
+
+  .product-footer-banner-text div {
+    font-size: 28px;
   }
 }
 
@@ -3039,6 +3155,19 @@ input:focus {
   .magnify-card img {
     width: 100% !important;
   }
+
+  .product-footer-banner-text {
+    top: 45%;
+    left: 28%;
+  }
+
+  .product-footer-banner-text div {
+    font-size: 28px;
+  }
+
+  .product-footer-banner-text .button-container {
+    margin-top: 1rem;
+  }
 }
 
 @media (max-width: 750px) {
@@ -3158,6 +3287,10 @@ input:focus {
     display: none;
   }
 
+  .footer {
+    height: 13rem !important;
+  }
+
   .footer .footer-section {
     display: none;
   }
@@ -3173,7 +3306,7 @@ input:focus {
   }
 
   .footer .footer-link {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
 }
 
@@ -3193,7 +3326,11 @@ input:focus {
 
   .products-banner {
     background-size: cover;
-    height: 48vh;
+    height: 35vh;
+  }
+
+  .products .product-footer-banner {
+    display: none;
   }
 
   .services .box-container {

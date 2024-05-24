@@ -29,10 +29,10 @@ import { WebService } from '../../services/web.service';
 export class HeaderComponent implements OnInit {
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
-  selectedItem = 'home';
   logo = `${environment.assestsBasePath}images/Move_Stone_logo.png`;
   brand = `${environment.assestsBasePath}images/Move_Stone_brand.png`;
   assetPath = `${environment.assestsBasePath}images`;
+  selectedItem!: string;
   itemsToDisplayInProducts = [
     {
       id: 'eRikshaw',
@@ -66,6 +66,11 @@ export class HeaderComponent implements OnInit {
         this.isVerticalScroll = false;
       }
     };
+
+    this.selectedItem =
+      environment.selectedHeaderItem !== ''
+        ? 'home'
+        : environment.selectedHeaderItem;
   }
 
   get isUserLoggedIn(): boolean {
@@ -76,8 +81,9 @@ export class HeaderComponent implements OnInit {
     this.isMenuVisible = !this.isMenuVisible;
   }
 
-  selectNavOptions(event: any) {
-    this.selectedItem = event?.target?.text?.trim();
+  selectNavOptions(headerName: string) {
+    this.selectedItem = headerName?.trim();
+    environment.selectedHeaderItem = this.selectedItem;
     this.isMenuVisible = false;
   }
 

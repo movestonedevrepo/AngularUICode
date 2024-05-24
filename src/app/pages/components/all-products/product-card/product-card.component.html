@@ -1,8 +1,12 @@
 <div class="product-card">
   <div class="image" (click)="magnifyCard()">
-    <img [src]="content.imageURL" [alt]="content.productName" />
+    <img
+      class="product-image"
+      [src]="content.imageURL"
+      [alt]="content.productName"
+    />
     <div class="icon">
-      <i class="fas fa-search"></i>
+      <img src="{{ assetPath }}/search.png" alt="" />
     </div>
   </div>
   <div class="product-info">
@@ -10,8 +14,8 @@
     <p>
       @for(eachFeature of content?.features?.split(','); track $index) {
       {{ eachFeature }}
-      @if ($index < content?.features.length) {
-      <span>&#187;</span>
+      @if ($index < content?.features?.split(',').length - 1) {
+      <img src="{{ assetPath }}/arrow.jpg" alt="" />
       } }
     </p>
     <div class="d-flex align-items-center justify-content-between">

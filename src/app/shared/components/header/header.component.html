@@ -17,29 +17,35 @@
       <a
         class="cursor-pointer"
         routerLinkActive="active"
+        [ngClass]="{ 'nav-option-active': selectedItem === 'home' }"
         ariaCurrentWhenActive="page"
         routerLink="/"
-        (click)="selectNavOptions($event)"
+        (click)="selectNavOptions('home')"
       >
         home
       </a>
+      <div class="vertical"></div>
       <a
         class="cursor-pointer"
         routerLink="/pages/about"
         routerLinkActive="active"
+        [ngClass]="{ 'nav-option-active': selectedItem === 'about' }"
         ariaCurrentWhenActive="page"
-        (click)="selectNavOptions($event)"
+        (click)="selectNavOptions('about')"
       >
         about
       </a>
+      <div class="vertical"></div>
       <div
         class="cursor-pointer product"
         [matMenuTriggerFor]="menu"
+        [ngClass]="{ 'nav-option-active': selectedItem === 'products' }"
         #menuTrigger="matMenuTrigger"
         (click)="menuTrigger.openMenu()"
       >
         products
       </div>
+      <div class="vertical"></div>
       <mat-menu #menu="matMenu" [overlapTrigger]="false">
         <span (mouseleave)="menuTrigger.closeMenu()" class="cursor-pointer">
           @for (eachProductItem of itemsToDisplayInProducts; track $index) {
@@ -48,7 +54,7 @@
             [routerLink]="eachProductItem.routerLink"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
-            (click)="selectNavOptions($event)"
+            (click)="selectNavOptions('products')"
           >
             {{ eachProductItem.name }}
           </a>
@@ -57,19 +63,27 @@
       </mat-menu>
       <a
         class="cursor-pointer"
-        (click)="onClickAnchor('vehicles-content', $event)"
+        [ngClass]="{ 'nav-option-active': selectedItem === 'services' }"
+        (click)="onClickAnchor('vehicles-content', 'services')"
       >
         services
       </a>
-      <a class="cursor-pointer" (click)="onClickAnchor('newsletter', $event)">
+      <div class="vertical"></div>
+      <a
+        class="cursor-pointer"
+        [ngClass]="{ 'nav-option-active': selectedItem === 'reviews' }"
+        (click)="onClickAnchor('newsletter', 'reviews')"
+      >
         reviews
       </a>
+      <div class="vertical"></div>
       <a
         class="cursor-pointer"
         routerLink="/pages/contact"
+        [ngClass]="{ 'nav-option-active': selectedItem === 'contact us' }"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
-        (click)="selectNavOptions($event)"
+        (click)="selectNavOptions('contact us')"
       >
         contact us
       </a>

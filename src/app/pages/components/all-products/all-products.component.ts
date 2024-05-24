@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   Component,
@@ -20,24 +21,51 @@ import { ProductCardComponent } from './product-card/product-card.component';
 export class AllProductsComponent implements OnInit {
   contents!: any[];
   pageLength: number = 9;
-  assetPath = `${environment.assestsBasePath}images/Homepage`;
+  currentPage = 0;
+  assetPath = `${environment.assestsBasePath}images/Product Page`;
   selectedImage: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   ngOnInit(): void {
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
-    this.contents = Array(10).fill(productDetails.products).flat();
+    // this.contents = productDetails.products;
+    this.contents = Array(5).fill(productDetails.products).flat();
   }
 
   checkProduct(productId: any) {
     this.router.navigate(['pages/product/' + productId]);
   }
 
+  setIndex(pageIndex: number) {
+    this.currentPage = pageIndex;
+    this.viewportScroller.scrollToAnchor('products');
+  }
+
+  nextPage() {
+    this.currentPage = this.currentPage + 1;
+    this.viewportScroller.scrollToAnchor('products');
+  }
+
   get getNumberOfPages(): number {
     if (this.contents.length > 0) {
-      return Math.round(this.contents.length / this.pageLength);
+      return Math.ceil(this.contents.length / this.pageLength);
     }
     return 0;
+  }
+
+  get getContents(): any[] {
+    if (this.getNumberOfPages > 1) {
+      return this.contents.slice(
+        this.currentPage * this.pageLength,
+        this.currentPage * this.pageLength + this.pageLength
+      );
+    } else {
+      return this.contents;
+    }
   }
 }
