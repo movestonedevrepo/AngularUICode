@@ -48,8 +48,10 @@ export class AllProductsComponent implements OnInit {
   }
 
   nextPage() {
-    this.currentPage = this.currentPage + 1;
-    this.viewportScroller.scrollToAnchor('products');
+    if (this.currentPage < this.getNumberOfPages - 1) {
+      this.currentPage = this.currentPage + 1;
+      this.viewportScroller.scrollToAnchor('products');
+    }
   }
 
   get getNumberOfPages(): number {
