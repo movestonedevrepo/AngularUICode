@@ -17,7 +17,9 @@
       <a
         class="cursor-pointer"
         routerLinkActive="active"
-        [ngClass]="{ 'nav-option-active': selectedItem === 'home' }"
+        [ngClass]="{
+          'nav-option-active': globalVeriable.selectedPage === 'home'
+        }"
         ariaCurrentWhenActive="page"
         routerLink="/"
         (click)="selectNavOptions('home')"
@@ -29,7 +31,9 @@
         class="cursor-pointer"
         routerLink="/pages/about"
         routerLinkActive="active"
-        [ngClass]="{ 'nav-option-active': selectedItem === 'about' }"
+        [ngClass]="{
+          'nav-option-active': globalVeriable.selectedPage === 'about'
+        }"
         ariaCurrentWhenActive="page"
         (click)="selectNavOptions('about')"
       >
@@ -39,7 +43,9 @@
       <div
         class="cursor-pointer product"
         [matMenuTriggerFor]="menu"
-        [ngClass]="{ 'nav-option-active': selectedItem === 'products' }"
+        [ngClass]="{
+          'nav-option-active': globalVeriable.selectedPage === 'products'
+        }"
         #menuTrigger="matMenuTrigger"
         (click)="menuTrigger.openMenu()"
       >
@@ -63,16 +69,20 @@
       </mat-menu>
       <a
         class="cursor-pointer"
-        [ngClass]="{ 'nav-option-active': selectedItem === 'services' }"
-        (click)="onClickAnchor('vehicles-content', 'services')"
+        [ngClass]="{
+          'nav-option-active': globalVeriable.selectedPage === 'services'
+        }"
+        (click)="onClickAnchor('services', 'services')"
       >
         services
       </a>
       <div class="vertical"></div>
       <a
         class="cursor-pointer"
-        [ngClass]="{ 'nav-option-active': selectedItem === 'reviews' }"
-        (click)="onClickAnchor('newsletter', 'reviews')"
+        [ngClass]="{
+          'nav-option-active': globalVeriable.selectedPage === 'reviews'
+        }"
+        (click)="onClickAnchor('reviews', 'reviews')"
       >
         reviews
       </a>
@@ -80,7 +90,9 @@
       <a
         class="cursor-pointer"
         routerLink="/pages/contact"
-        [ngClass]="{ 'nav-option-active': selectedItem === 'contact us' }"
+        [ngClass]="{
+          'nav-option-active': globalVeriable.selectedPage === 'contact us'
+        }"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         (click)="selectNavOptions('contact us')"

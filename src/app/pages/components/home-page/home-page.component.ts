@@ -13,6 +13,7 @@ import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
 import { environment } from 'src/environments/environment';
 import { SwiperOptions } from 'swiper/types';
 import { v4 as uuidv4 } from 'uuid';
@@ -58,6 +59,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
     this.contents = Array(3).fill(productDetails.products).flat();
     this.testimonials = productDetails.testimonials;
+    GlobalVariable.selectedPage = 'home';
   }
 
   submitEmailForNewsLetter(): void {

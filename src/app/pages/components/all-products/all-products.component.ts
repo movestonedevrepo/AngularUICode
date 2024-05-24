@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
 import { environment } from 'src/environments/environment';
 import { ProductCardComponent } from './product-card/product-card.component';
 
@@ -33,8 +34,8 @@ export class AllProductsComponent implements OnInit {
 
   ngOnInit(): void {
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
-    // this.contents = productDetails.products;
     this.contents = Array(5).fill(productDetails.products).flat();
+    GlobalVariable.selectedPage = 'products';
   }
 
   checkProduct(productId: any) {

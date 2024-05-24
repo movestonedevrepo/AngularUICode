@@ -119,11 +119,7 @@
   >
     @for (eachProduct of contents; track $index) {
     <swiper-slide class="box">
-      <div
-        id="vehicles-content-{{ $index }}"
-        class="content"
-        [ngClass]="{ active: $index === currentIndex }"
-      >
+      <div id="vehicles-content-{{ $index }}" class="content">
         <div class="content-text">
           <h3>{{ eachProduct.productName }}</h3>
           <p>
@@ -282,7 +278,7 @@
 } @placeholder {
 <div>Services Section</div>
 } @defer (on viewport) {
-<section class="our-team">
+<section id="our-team" class="our-team">
   <h1>Our Team</h1>
   <div class="team-members">
     <div class="team-member">
