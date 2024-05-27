@@ -30,7 +30,10 @@ export const CONSTANTS = {
   vehicleConfig: {
     modules: [Navigation, Pagination],
     autoHeight: false,
-    pagination: { clickable: true, dynamicBullets: true },
+    pagination: {
+      clickable: true,
+      dynamicBullets: false,
+    },
     centeredSlidesBounds: true,
     centeredSlides: false,
     initialSlide: 0,

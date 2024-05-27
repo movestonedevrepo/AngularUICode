@@ -35,7 +35,8 @@
 <section class="about-us" id="about-us">
   <h1 class="heading">
     <div class="underline"></div>
-    <span>About </span> us
+    <span>About </span>
+    <p>us</p>
   </h1>
   <div class="about-us-body">
     <div class="about-us-image">
@@ -89,66 +90,69 @@
 <div id="abount-us-section">About Us</div>
 } @defer (on viewport) {
 <section *ngIf="contents.length > 0" class="vehicles" id="vehicles">
-  <div class="d-flex justify-content-between">
-    <h2 class="heading text-white text-uppercase">Featured Items</h2>
+  <div class="featured-item">
+    <div class="d-flex justify-content-between">
+      <h2 class="heading text-white text-uppercase">Featured Items</h2>
 
-    <div class="hex-container">
-      <button
-        type="button"
-        title="product-button-prev"
-        class="hexagon product-button-prev"
-      >
-        <img src="{{ assetPath }}/arrow-yellow.png" alt="" />
-      </button>
-      <button
-        type="button"
-        title="product-button-next"
-        class="hexagon product-button-next"
-      >
-        <img src="{{ assetPath }}/arrow-yellow1.png" alt="" />
-      </button>
-    </div>
-  </div>
-
-  <swiper-container
-    #featureItems
-    fmSwiper
-    [config]="vehicleConfig"
-    init="false"
-    class="vehicles-slider"
-  >
-    @for (eachProduct of contents; track $index) {
-    <swiper-slide class="box">
-      <div id="vehicles-content-{{ $index }}" class="content">
-        <div class="content-text">
-          <h3>{{ eachProduct.productName }}</h3>
-          <p>
-            @for(eachFeature of eachProduct?.features?.split(','); track
-            eachFeature){
-            <span class="border-end border-white">{{ eachFeature }}</span>
-            }
-          </p>
-        </div>
+      <div class="hex-container">
         <button
           type="button"
-          class="feature-btn btn"
-          (click)="checkProduct(eachProduct.productID)"
+          title="product-button-prev"
+          class="hexagon product-button-prev"
         >
-          Details
+          <img src="{{ assetPath }}/arrow-yellow.png" alt="" />
+        </button>
+        <button
+          type="button"
+          title="product-button-next"
+          class="hexagon product-button-next"
+        >
+          <img src="{{ assetPath }}/arrow-yellow1.png" alt="" />
         </button>
       </div>
-      <img [src]="eachProduct?.imageURL" alt="image" loading="lazy" />
-    </swiper-slide>
-    }
-  </swiper-container>
+    </div>
+
+    <swiper-container
+      #featureItems
+      fmSwiper
+      [config]="vehicleConfig"
+      init="false"
+      class="vehicles-slider"
+    >
+      @for (eachProduct of contents; track $index) {
+      <swiper-slide class="box">
+        <div id="vehicles-content-{{ $index }}" class="content">
+          <div class="content-text">
+            <h3>{{ eachProduct.productName }}</h3>
+            <p>
+              @for(eachFeature of eachProduct?.features?.split(','); track
+              eachFeature){
+              <span class="border-end border-white">{{ eachFeature }}</span>
+              }
+            </p>
+          </div>
+          <button
+            type="button"
+            class="feature-btn btn"
+            (click)="checkProduct(eachProduct.productID)"
+          >
+            Details
+          </button>
+        </div>
+        <img [src]="eachProduct?.imageURL" alt="image" loading="lazy" />
+      </swiper-slide>
+      }
+    </swiper-container>
+  </div>
 </section>
 } @placeholder {
 <div id="vehicles-section">featured items</div>
 } @defer (on viewport) {
 <section id="services" class="services">
-  <h1 class="heading" id="services-heading">
+  <h1 class="heading services-heading" id="services-heading">
     <div class="underline"></div>
-    Our <span> services</span>
+    <p>Our</p>
+    <span> services</span>
   </h1>
   <div class="content">
     <div class="image-container">
@@ -289,12 +293,6 @@
     </div>
     <div class="team-member">
       <img src="{{ assetPath }}/team3.jpg" alt="Jerome Bell" />
-    </div>
-    <div class="team-member">
-      <img src="{{ assetPath }}/team4.jpg" alt="Arlene McCoy" />
-    </div>
-    <div class="team-member">
-      <img src="{{ assetPath }}/team5.jpg" alt="Jenny Wilson" />
     </div>
   </div>
 </section>

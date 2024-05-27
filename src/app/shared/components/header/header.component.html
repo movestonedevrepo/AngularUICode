@@ -40,7 +40,7 @@
         about
       </a>
       <div class="vertical"></div>
-      <div
+      <span
         class="cursor-pointer product"
         [matMenuTriggerFor]="menu"
         [ngClass]="{
@@ -50,23 +50,9 @@
         (click)="menuTrigger.openMenu()"
       >
         products
-      </div>
+        <span class="material-symbols-outlined"> keyboard_arrow_down </span>
+      </span>
       <div class="vertical"></div>
-      <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <span (mouseleave)="menuTrigger.closeMenu()" class="cursor-pointer">
-          @for (eachProductItem of itemsToDisplayInProducts; track $index) {
-          <a
-            mat-menu-item
-            [routerLink]="eachProductItem.routerLink"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            (click)="selectNavOptions('products')"
-          >
-            {{ eachProductItem.name }}
-          </a>
-          }
-        </span>
-      </mat-menu>
       <a
         class="cursor-pointer"
         [ngClass]="{
@@ -99,11 +85,6 @@
       >
         contact us
       </a>
-      @if (!isUserLoggedIn && !getUserName) {
-      <a id="nav-login-btn" class="nav-login-btn" (click)="onLoginBtnClick()">
-        <img src="{{ assetPath }}/Homepage/login.png" alt="" />
-      </a>
-      }
     </nav>
 
     @if (!isUserLoggedIn && !getUserName) {
@@ -143,4 +124,19 @@
 
     }
   </div>
+  <mat-menu #menu="matMenu" class="productMenu" [overlapTrigger]="false">
+    <span (mouseleave)="menuTrigger.closeMenu()" class="cursor-pointer">
+      @for (eachProductItem of itemsToDisplayInProducts; track $index) {
+      <a
+        mat-menu-item
+        [routerLink]="eachProductItem.routerLink"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        (click)="selectNavOptions('products')"
+      >
+        {{ eachProductItem.name }}
+      </a>
+      }
+    </span>
+  </mat-menu>
 </header>
