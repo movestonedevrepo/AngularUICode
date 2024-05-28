@@ -131,4 +131,14 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   checkProduct(index: number) {
     this.router.navigate(['pages/product/' + index]);
   }
+
+  onClickAnchor(elementId: string) {
+    if (this.router.url.includes('/home')) {
+      this.viewportScroller.scrollToAnchor(elementId);
+    } else {
+      this.router.navigate(['pages/home'], {
+        queryParams: { target: elementId },
+      });
+    }
+  }
 }

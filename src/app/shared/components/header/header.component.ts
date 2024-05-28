@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
     },
   ];
   globalVeriable = GlobalVariable;
+  isProductMenuVisiable: boolean = false;
 
   constructor(
     private router: Router,
@@ -123,5 +124,9 @@ export class HeaderComponent implements OnInit {
 
   navigateToQuery(): void {
     this.router.navigate(['pages/queries']);
+  }
+
+  openProductMenu(): void {
+    this.isProductMenuVisiable = true;
   }
 }

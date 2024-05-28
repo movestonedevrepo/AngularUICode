@@ -54,6 +54,16 @@ export class AllProductsComponent implements OnInit {
     }
   }
 
+  onClickAnchor(elementId: string) {
+    if (this.router.url.includes('/home')) {
+      this.viewportScroller.scrollToAnchor(elementId);
+    } else {
+      this.router.navigate(['pages/home'], {
+        queryParams: { target: elementId },
+      });
+    }
+  }
+
   get getNumberOfPages(): number {
     if (this.contents.length > 0) {
       return Math.ceil(this.contents.length / this.pageLength);

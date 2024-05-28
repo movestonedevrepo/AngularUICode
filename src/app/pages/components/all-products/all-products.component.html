@@ -45,3 +45,53 @@
 } @placeholder {
 <div>Featured Section</div>
 }
+<div id="home-footer" class="footer">
+  <nav class="footer-section">
+    <a
+      class="cursor-pointer"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      routerLink="/"
+    >
+      home
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/about"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      about
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/products"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      products
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
+      services
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
+      reviews
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/contact"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      contact us
+    </a>
+  </nav>
+  <div class="footer-link">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita, illum!
+  </div>
+</div>

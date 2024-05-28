@@ -20,14 +20,4 @@ export class FooterComponent {
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
   officeLocation = CONSTANTS.officeLocation;
-
-  onClickAnchor(elementId: string) {
-    if (this.router.url.includes('/home')) {
-      this.viewportScroller.scrollToAnchor(elementId);
-    } else {
-      this.router.navigate(['pages/home'], {
-        queryParams: { target: elementId },
-      });
-    }
-  }
 }

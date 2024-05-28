@@ -56,28 +56,38 @@
       laboriosam dignissimos. Vel, doloribus debitis!
 
       <div class="d-grid gap-2">
-        <div>
-          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+        <div class="d-flex gap-2 align-items-center">
+          <span class="about-us-icon material-symbols-outlined">
+            task_alt
+          </span>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
           harum.
         </div>
-        <div>
-          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+        <div class="d-flex gap-2 align-items-center">
+          <span class="about-us-icon material-symbols-outlined">
+            task_alt
+          </span>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
           harum.
         </div>
-        <div>
-          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+        <div class="d-flex gap-2 align-items-center">
+          <span class="about-us-icon material-symbols-outlined">
+            task_alt
+          </span>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
           harum.
         </div>
-        <div>
-          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+        <div class="d-flex gap-2 align-items-center">
+          <span class="about-us-icon material-symbols-outlined">
+            task_alt
+          </span>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
           harum.
         </div>
-        <div>
-          <img src="{{ assetPath }}/arrow-sm.png" alt="" />
+        <div class="d-flex gap-2 align-items-center">
+          <span class="about-us-icon material-symbols-outlined">
+            task_alt
+          </span>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate,
           harum.
         </div>
@@ -89,9 +99,9 @@
 } @placeholder {
 <div id="abount-us-section">About Us</div>
 } @defer (on viewport) {
-<section *ngIf="contents.length > 0" class="vehicles" id="vehicles">
+<div *ngIf="contents.length > 0" class="vehicles" id="vehicles">
   <div class="featured-item">
-    <div class="d-flex justify-content-between">
+    <div class="featured-item-heading">
       <h2 class="heading text-white text-uppercase">Featured Items</h2>
 
       <div class="hex-container">
@@ -139,12 +149,18 @@
             Details
           </button>
         </div>
-        <img [src]="eachProduct?.imageURL" alt="image" loading="lazy" />
+        <img
+          [src]="eachProduct?.imageURL"
+          alt="image"
+          class="vehicle-image"
+          loading="lazy"
+        />
       </swiper-slide>
+      <!-- <img src="{{ assetPath }}/line-featured.png" alt="" /> -->
       }
     </swiper-container>
   </div>
-</section>
+</div>
 } @placeholder {
 <div id="vehicles-section">featured items</div>
 } @defer (on viewport) {
@@ -521,3 +537,53 @@
 } @placeholder {
 <div>Contact Section</div>
 }
+<div id="home-footer" class="footer">
+  <nav class="footer-section">
+    <a
+      class="cursor-pointer"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      routerLink="/"
+    >
+      home
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/about"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      about
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/products"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      products
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
+      services
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
+      reviews
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/contact"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      contact us
+    </a>
+  </nav>
+  <div class="footer-link">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita, illum!
+  </div>
+</div>
