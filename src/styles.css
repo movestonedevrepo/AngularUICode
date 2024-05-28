@@ -766,9 +766,19 @@ mat-header-cell:nth-child(5) {
   margin-bottom: 0;
 }
 
-.vehicles .vehicles-slider .box {
+.vehicles .vehicles-slider .feature-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 4rem;
-  border: 1px solid rgb(207, 205, 205);
+  gap: 5px;
+}
+
+.vehicles .vehicles-slider .feature-box .feature-box-pagination {
+  height: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .vehicles .vehicles-slider .box .vehicle-image {

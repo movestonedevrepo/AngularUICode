@@ -130,33 +130,39 @@
       class="vehicles-slider"
     >
       @for (eachProduct of contents; track $index) {
-      <swiper-slide class="box">
-        <div id="vehicles-content-{{ $index }}" class="content">
-          <div class="content-text">
-            <h3>{{ eachProduct.productName }}</h3>
-            <p>
-              @for(eachFeature of eachProduct?.features?.split(','); track
-              eachFeature){
-              <span class="border-end border-white">{{ eachFeature }}</span>
-              }
-            </p>
+      <swiper-slide class="feature-box">
+        <div class="box">
+          <div id="vehicles-content-{{ $index }}" class="content">
+            <div class="content-text">
+              <h3>{{ eachProduct.productName }}</h3>
+              <p>
+                @for(eachFeature of eachProduct?.features?.split(','); track
+                eachFeature){
+                <span class="border-end border-white">{{ eachFeature }}</span>
+                }
+              </p>
+            </div>
+            <button
+              type="button"
+              class="feature-btn btn"
+              (click)="checkProduct(eachProduct.productID)"
+            >
+              Details
+            </button>
           </div>
-          <button
-            type="button"
-            class="feature-btn btn"
-            (click)="checkProduct(eachProduct.productID)"
-          >
-            Details
-          </button>
+          <img
+            [src]="eachProduct?.imageURL"
+            alt="image"
+            class="vehicle-image"
+            loading="lazy"
+          />
         </div>
         <img
-          [src]="eachProduct?.imageURL"
-          alt="image"
-          class="vehicle-image"
-          loading="lazy"
+          src="{{ assetPath }}/line-featured.png"
+          class="feature-box-pagination"
+          alt=""
         />
       </swiper-slide>
-      <!-- <img src="{{ assetPath }}/line-featured.png" alt="" /> -->
       }
     </swiper-container>
   </div>
