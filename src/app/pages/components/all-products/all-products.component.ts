@@ -34,7 +34,7 @@ export class AllProductsComponent implements OnInit {
 
   ngOnInit(): void {
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
-    this.contents = Array(5).fill(productDetails.products).flat();
+    this.contents = Array(5).fill(productDetails?.products).flat();
     GlobalVariable.selectedPage = 'products';
   }
 

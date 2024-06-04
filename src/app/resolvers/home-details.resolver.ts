@@ -9,5 +9,5 @@ export const homeDetailsResolver: ResolveFn<boolean> = (route, state) => {
   const headers: any = new HttpHeaders({ mode: 'no-cors' });
   return http
     .get(`${environment.baseUrl}/getHomeDetails`, headers)
-    .pipe(map((data: any) => data.responsePayload.homeDetails));
+    .pipe(map((data: any) => data?.responsePayload?.homeDetails));
 };

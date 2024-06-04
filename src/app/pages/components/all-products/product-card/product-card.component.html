@@ -2,15 +2,15 @@
   <div class="image" (click)="magnifyCard()">
     <img
       class="product-image"
-      [src]="content.imageURL"
-      [alt]="content.productName"
+      [src]="content?.imageURL"
+      [alt]="content?.productName"
     />
     <div class="icon">
       <img src="{{ assetPath }}/search.png" alt="" />
     </div>
   </div>
   <div class="product-info">
-    <h2>{{ content.productName }}</h2>
+    <h2>{{ content?.productName }}</h2>
     <p>
       @for(eachFeature of content?.features?.split(','); track $index) {
       {{ eachFeature }}
@@ -22,7 +22,7 @@
       <button
         type="button"
         class="details-button"
-        (click)="checkProduct(content.productID)"
+        (click)="checkProduct(content?.productID)"
       >
         Details
       </button>
