@@ -14,6 +14,7 @@ import { DialogData } from 'src/app/models/dialog-data';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
+import ALLCONSTANTS from 'src/constants/all-constants';
 import { environment } from 'src/environments/environment';
 import { SwiperOptions } from 'swiper/types';
 import { v4 as uuidv4 } from 'uuid';
@@ -45,6 +46,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   });
   assetPath = `${environment.assestsBasePath}images/Homepage`;
   currentIndex = 0;
+  aboutUsConstant: any = ALLCONSTANTS.ABOUTUS;
 
   constructor(
     private activatedRoute: ActivatedRoute,
