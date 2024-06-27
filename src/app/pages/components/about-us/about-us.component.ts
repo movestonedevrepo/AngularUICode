@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-about-us',
@@ -60,4 +61,21 @@ export class AboutUsComponent {
         ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
     },
   ];
+  assetPath = `${environment.assestsBasePath}images/About`;
+  productAssetPath = `${environment.assestsBasePath}images/Product Page`;
+
+  constructor(
+    private router: Router,
+    private viewportScroller: ViewportScroller
+  ) {}
+
+  onClickAnchor(elementId: string) {
+    if (this.router.url.includes('/home')) {
+      this.viewportScroller.scrollToAnchor(elementId);
+    } else {
+      this.router.navigate(['pages/home'], {
+        queryParams: { target: elementId },
+      });
+    }
+  }
 }
