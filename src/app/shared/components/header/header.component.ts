@@ -1,14 +1,22 @@
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  Component,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { CONSTANTS } from 'src/app/constants/constants';
 import { LoginComponent } from 'src/app/pages/components/login/login.component';
 import { environment } from 'src/environments/environment';
+import { SwiperOptions } from 'swiper/types';
 import { MatDialogService } from '../../services/mat-dialog.service';
 import { WebService } from '../../services/web.service';
 import { GlobalVariable } from '../../utilities/global-veriables';
+import { SwiperDirective } from '../../utilities/swiper.directive';
 
 @Component({
   selector: 'app-header',
@@ -22,17 +30,19 @@ import { GlobalVariable } from '../../utilities/global-veriables';
     CdkMenuTrigger,
     CdkMenu,
     CdkMenuItem,
+    SwiperDirective,
     MatMenuModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
+  encapsulation: ViewEncapsulation.None,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HeaderComponent implements OnInit {
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
-  logo = `${environment.assestsBasePath}images/Move_Stone_logo.png`;
-  brand = `${environment.assestsBasePath}images/Move_Stone_brand.png`;
-  assetPath = `${environment.assestsBasePath}images`;
+  assetPath = `${environment.assestsBasePath}images/Header`;
+  bannerConfig: SwiperOptions = CONSTANTS.bannerConfig;
   itemsToDisplayInProducts = [
     {
       id: 'eRikshaw',
@@ -47,6 +57,11 @@ export class HeaderComponent implements OnInit {
   ];
   globalVeriable = GlobalVariable;
   isProductMenuVisiable: boolean = false;
+  bannerContents = [
+    `${environment.assestsBasePath}images/Header/header-image.jpg`,
+    `${environment.assestsBasePath}images/Header/header-image.jpg`,
+    `${environment.assestsBasePath}images/Header/header-image.jpg`,
+  ];
 
   constructor(
     private router: Router,

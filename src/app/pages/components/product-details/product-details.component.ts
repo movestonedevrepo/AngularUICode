@@ -5,8 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
-import { ImageDiaplyModel } from 'src/app/models/image-display-model';
-import { DiaplayImagesComponent } from 'src/app/shared/components/diaplay-images/diaplay-images.component';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
@@ -20,26 +18,8 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent implements OnInit {
-  images: any = [
-    {
-      id: 1,
-      image: `${environment.assestsBasePath}images/vehicle-1.jpg`,
-    },
-    {
-      id: 2,
-      image: `${environment.assestsBasePath}images/vehicle-2.jpg`,
-    },
-    {
-      id: 3,
-      image: `${environment.assestsBasePath}images/vehicle-4.jpg`,
-    },
-    {
-      id: 4,
-      image: `${environment.assestsBasePath}images/vehicle-5.jpg`,
-    },
-  ];
-
-  selectedImage = this.images[0].image;
+  images!: Array<any>;
+  selectedImage: any;
   product: any;
   queryForm = new FormGroup({
     queryName: new FormControl('', Validators.required),
@@ -50,11 +30,11 @@ export class ProductDetailsComponent implements OnInit {
     ]),
     queryMessage: new FormControl('', Validators.required),
   });
-  allproductImages: any;
   colors: any = Object.entries(CONSTANTS.colors);
   selectedColor: any = this.colors[0][0];
   otherProducts!: any[];
   productFeatures: any = CONSTANTS.productFeatures;
+  assetPath = `${environment.assestsBasePath}images/Product Page`;
 
   constructor(
     private router: Router,
@@ -68,8 +48,7 @@ export class ProductDetailsComponent implements OnInit {
     this.activatedRoute.data.subscribe((data: any) => {
       this.product = data.productDetails.productDetails;
       this.otherProducts = data.productDetails.otherProducts;
-      this.images = this.product?.productPictureDetails.slice(0, 3);
-      this.allproductImages = this.product?.productPictureDetails;
+      this.images = this.product?.productPictureDetails;
       this.selectedImage = this.images[0]?.productImageURL;
     });
   }
@@ -84,18 +63,6 @@ export class ProductDetailsComponent implements OnInit {
 
   onQueryRaise(elementId: string) {
     this.viewportScroller.scrollToAnchor(elementId);
-  }
-
-  showAllImages() {
-    this.dialogService.openDialog(
-      {
-        width: window.screen.width <= 750 ? '100%' : 'auto',
-        height: window.screen.width <= 750 ? '80%' : '600px',
-        maxWidth: window.screen.width <= 750 ? '100%' : 'auto',
-        data: { imagesToDisplay: this.allproductImages } as ImageDiaplyModel,
-      },
-      DiaplayImagesComponent
-    );
   }
 
   changeSelectedColor(color: any) {
@@ -138,5 +105,15 @@ export class ProductDetailsComponent implements OnInit {
   checkProduct(index: number) {
     this.router.navigate(['pages/product/' + index]);
     document.getElementById('product-view')?.scrollIntoView();
+  }
+
+  onClickAnchor(elementId: string) {
+    if (this.router.url.includes('/home')) {
+      this.viewportScroller.scrollToAnchor(elementId);
+    } else {
+      this.router.navigate(['pages/home'], {
+        queryParams: { target: elementId },
+      });
+    }
   }
 }

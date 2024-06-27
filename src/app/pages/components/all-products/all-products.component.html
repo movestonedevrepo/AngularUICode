@@ -1,8 +1,4 @@
-@defer () {
-<div id="products-banner" class="products-banner"></div>
-} @placeholder {
-<div>Banner Section</div>
-} @defer (on viewport) {
+@defer (on viewport) {
 <section *ngIf="contents.length > 0" id="products" class="products">
   <div class="products-part">
     @for (content of getContents; track content) {
@@ -91,7 +87,5 @@
       contact us
     </a>
   </nav>
-  <div class="footer-link">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita, illum!
-  </div>
+  <div class="footer-link">WWW.MOVESTONE.COM</div>
 </div>

@@ -1,20 +1,54 @@
-@defer (on viewport) {
-<section id="product-view" class="product-view">
-  <div class="small-container">
-    <div class="row">
-      <div class="col-6">
-        <div class="image-display">
-          <img [src]="selectedImage" alt="Image" />
+@if (product && images && images.length > 0 && selectedImage) {
+<section id="product-page">
+  @defer (on viewport) {
+  <div class="product-view">
+    <div class="product-image">
+      <img [src]="selectedImage" alt="Image" />
+      <div class="color-options">
+        <span class="color-dot red"></span>
+        <span class="color-dot blue"></span>
+        <span class="color-dot green"></span>
+        <span class="color-dot black"></span>
+      </div>
+      <div class="small-img-row">
+        @for (eachImage of images; track eachImage) {
+        <div class="small-img-col">
+          <img
+            [src]="eachImage.productImageURL"
+            alt="Image-{{ eachImage.id }}"
+            (click)="changeSelectedImage(eachImage.productImageURL)"
+          />
         </div>
+        }
+      </div>
+    </div>
+    <h1 class="product-name">{{ product.productName }}</h1>
+    <h3>SPECIFICATION</h3>
 
-        <div class="small-img-row">
-          <div class="small-img-col" *ngFor="let eachImage of images">
-            <img
-              [src]="eachImage.productImageURL"
-              alt="Image-{{ eachImage.id }}"
-              (click)="changeSelectedImage(eachImage.productImageURL)"
-            />
+    <div id="product-feature" class="product-feature">
+      <div class="features-table">
+        <div class="feature-header">
+          <div class="left-part feature-header-item">Item</div>
+          <div class="right-part feature-header-item">
+            {{ product.productName }}
           </div>
+        </div>
+        <div
+          class="feature-body"
+          *ngFor="let eachProductFeature of getProductFeatures"
+        >
+          <div class="left-part feature-header-item">
+            {{ productFeatures[eachProductFeature] }}
+          </div>
+          <div class="right-part feature-body-item">
+            {{ product[eachProductFeature] }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="small-container">
+      <div class="row">
+        <div class="col-6">
           <a class="view-more" (click)="showAllImages()">View All</a>
         </div>
       </div>
@@ -34,7 +68,6 @@
             }
           </div>
         </div>
-        <!-- <input t`ype="number" title="quantity" value="1" /> -->
         <button type="button" (click)="onQueryRaise('contact')" class="btn">
           Raise Query
         </button>
@@ -45,202 +78,80 @@
           features, reliability and mileage.
         </p>
       </div>
-    </div>
+    </div> -->
   </div>
-</section>
-} @placeholder {
-<div>product View Section</div>
-}@defer (on viewport) {
-<section id="product-feature" class="product-feature">
-  <h1 class="heading"><span>Product</span> Features</h1>
-  <div class="box-container">
-    <ng-container *ngIf="getScreenWidth >= 750; else showFullTable">
-      <table class="features-table mat-elevation-z8 table-1">
-        <tr>
-          <th class="feature-header">Item</th>
-          <th class="feature-header">{{ product.productName }}</th>
-        </tr>
-        <tr
-          *ngFor="
-            let eachProductFeature of getProductFeatures.slice(
-              0,
-              getProductFeatures.length / 2
-            )
-          "
-        >
-          <th class="feature-body feature-item">
-            {{ productFeatures[eachProductFeature] }}
-          </th>
-          <th class="feature-body">{{ product[eachProductFeature] }}</th>
-        </tr>
-      </table>
-      <table class="features-table mat-elevation-z8 table-2">
-        <tr>
-          <th class="feature-header">Item</th>
-          <th class="feature-header">{{ product.productName }}</th>
-        </tr>
-        <tr
-          *ngFor="
-            let eachProductFeature of getProductFeatures.slice(
-              getProductFeatures.length / 2
-            )
-          "
-        >
-          <th class="feature-body feature-item">
-            {{ productFeatures[eachProductFeature] }}
-          </th>
-          <th class="feature-body">{{ product[eachProductFeature] }}</th>
-        </tr>
-      </table>
-    </ng-container>
-    <ng-template #showFullTable>
-      <table class="features-table mat-elevation-z8 table-1">
-        <tr>
-          <th class="feature-header">Item</th>
-          <th class="feature-header">{{ product.productName }}</th>
-        </tr>
-        <tr *ngFor="let eachProductFeature of getProductFeatures">
-          <th class="feature-body feature-item">
-            {{ productFeatures[eachProductFeature] }}
-          </th>
-          <th class="feature-body">{{ product[eachProductFeature] }}</th>
-        </tr>
-      </table>
-    </ng-template>
-  </div>
-</section>
-} @placeholder {
-<div>Products Section</div>
-} @defer (on viewport) {
-<section id="products" class="products">
-  <h1 class="heading">Related <span>Products</span></h1>
-  <div class="box-container">
-    <div class="box" *ngFor="let eachProduct of otherProducts">
-      <img [src]="eachProduct.imageURL" alt="" loading="lazy" />
-      <div class="content">
-        <h3>{{ eachProduct.productName }}</h3>
-        <div class="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-        <button class="btn" (click)="checkProduct(eachProduct.productID)">
-          Check Out
-        </button>
+  } @placeholder {
+  <div>product View Section</div>
+  }@defer (on viewport) {
+  <div class="product-footer-banner">
+    <img src="{{ assetPath }}/product_page_bg2.jpg" alt="" />
+    <div class="product-footer-banner-text">
+      <div>Have any question</div>
+      <div>about us?</div>
+      <div class="button-container">
+        <a href="tel:7605083988" class="phone-button">
+          <img
+            src="{{ assetPath }}/product_page_contact.jpg"
+            class="icon"
+            alt=""
+          />
+          7605083988
+        </a>
+        <a href="#" class="contact-button"> Contact Us </a>
       </div>
     </div>
   </div>
+  } @placeholder {
+  <div>Product Banner Section</div>
+  }
 </section>
-} @placeholder {
-<div>Products Section</div>
-} @defer (on viewport) {
-<section id="contact" class="contact">
-  <h1 class="heading"><span>Product </span> query</h1>
-
-  <div class="row">
-    <form [formGroup]="queryForm">
-      <h3>get in touch</h3>
-      <div class="product-details-view">
-        <mat-form-field appearance="outline" class="mat-input">
-          <mat-label>Name</mat-label>
-          <input
-            matInput
-            disabled
-            type="text"
-            placeholder="Vehicle Name"
-            name="vehicle_name"
-            id="vehicle_name"
-            [value]="product.productName"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="mat-input">
-          <mat-label>Name</mat-label>
-          <input
-            matInput
-            disabled
-            type="text"
-            placeholder="Vehicle ID"
-            name="vehicle_id"
-            id="vehicle_id"
-            [value]="product.productID"
-          />
-          <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">
-            Name is required
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Name</mat-label>
-        <input
-          matInput
-          formControlName="queryName"
-          type="text"
-          placeholder="Enter your name"
-          name="name"
-          id="name"
-          required
-        />
-        <mat-error *ngIf="queryForm.get('queryName')?.hasError('required')">
-          Name is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          formControlName="queryEmail"
-          type="email"
-          placeholder="Enter your email"
-          name="email"
-          id="email-contact"
-          required
-        />
-        <mat-error *ngIf="queryForm.get('queryEmail')?.hasError('required')">
-          Email is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Number</mat-label>
-        <input
-          matInput
-          formControlName="queryPhone"
-          type="number"
-          placeholder="Enter phone number"
-          name="number"
-          id="number"
-          required
-        />
-        <mat-error *ngIf="queryForm.get('queryPhone')?.hasError('required')">
-          Number is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="mat-input">
-        <mat-label>Message</mat-label>
-        <textarea
-          matInput
-          formControlName="queryMessage"
-          placeholder="Type your message"
-          name="message"
-          id="message"
-          required
-        >
-        </textarea>
-        <mat-error *ngIf="queryForm.get('queryMessage')?.hasError('required')">
-          Message is required
-        </mat-error>
-      </mat-form-field>
-
-      <button (click)="sendQuery()" type="button" class="btn">
-        Send Query
-      </button>
-    </form>
-  </div>
-</section>
-} @placeholder {
-<div>Query Section</div>
 }
+
+<div id="home-footer" class="footer">
+  <nav class="footer-section">
+    <a
+      class="cursor-pointer"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      routerLink="/"
+    >
+      home
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/about"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      about
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/products"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      products
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
+      services
+    </a>
+    <div class="vertical"></div>
+    <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
+      reviews
+    </a>
+    <div class="vertical"></div>
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/contact"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      contact us
+    </a>
+  </nav>
+  <div class="footer-link">WWW.MOVESTONE.COM</div>
+</div>

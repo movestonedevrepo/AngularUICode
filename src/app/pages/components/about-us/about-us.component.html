@@ -1,22 +1,4 @@
-@defer () {
-<div id="about-banner" class="about-banner">
-  <div class="hero-content">
-    <div class="carousel">
-      <div class="hero-text">
-        <div class="d-flex align-items-center gap-5">
-          <h1 class="d-flex color-white align-items-baseline">
-            <span class="underline"></span>
-            About
-          </h1>
-          <h1 class="color-yellow">US</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-} @placeholder {
-<div>Banner Section</div>
-} @defer (on viewport) {
+@defer (on viewport) {
 <div *ngIf="true" id="about-us" class="about-us">
   <div class="section-1">
     <img src="{{ assetPath }}/about-pic.jpg" alt="" />
