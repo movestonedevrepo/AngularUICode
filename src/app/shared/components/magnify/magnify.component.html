@@ -1,15 +1,5 @@
 <div class="magnify-overlay" *ngIf="isVisible" (click)="closeMagnify()">
   <div class="magnify-card" (click)="$event.stopPropagation()">
-    <img
-      [src]="magnifiedContent.imageURL"
-      [alt]="magnifiedContent.productName"
-    />
-    <!-- <div class="magnified-product-info">
-      <h2>{{ magnifiedContent.productName }}</h2>
-      @for(eachFeature of magnifiedContent?.features?.split(','); track $index)
-      {
-      <p>{{ eachFeature }}</p>
-      }
-    </div> -->
+    <img [src]="magnifiedContent" alt="Magnified Image" />
   </div>
 </div>

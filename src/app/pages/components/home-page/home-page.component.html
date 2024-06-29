@@ -260,11 +260,8 @@
 } @placeholder {
 <div>Team Section</div>
 } @defer (on viewport) {
-<section
-  *ngIf="testimonials && testimonials.length > 0"
-  id="reviews"
-  class="testimonial"
->
+<!-- *ngIf="testimonials && testimonials.length > 0" -->
+<section id="reviews" class="testimonial" *ngIf="false">
   <div class="testimonial-content">
     <div class="testimonial-text">
       <h4>Our Testimonial</h4>

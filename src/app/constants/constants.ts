@@ -37,7 +37,7 @@ export const CONSTANTS = {
     centeredSlidesBounds: true,
     centeredSlides: false,
     initialSlide: 0,
-    slidesPerView: 3,
+    slidesPerView: 2,
     spaceBetween: 20,
     direction: 'horizontal',
     loop: false,
@@ -77,7 +77,11 @@ export const CONSTANTS = {
     slidesPerView: 1,
     spaceBetween: 0,
     direction: 'horizontal',
-    autoplay: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
     speed: 1000,
     loop: true,
     grabCursor: true,
@@ -102,6 +106,36 @@ export const CONSTANTS = {
           nextEl: '#carousel-right-button',
           prevEl: '#carousel-left-button',
         },
+      },
+    },
+  } as SwiperOptions,
+
+  productConfig: {
+    autoHeight: false,
+    pagination: false,
+    centeredSlidesBounds: false,
+    centeredSlides: false,
+    initialSlide: 0,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    direction: 'horizontal',
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    speed: 1000,
+    loop: true,
+    grabCursor: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 1,
+      },
+      991: {
+        slidesPerView: 1,
       },
     },
   } as SwiperOptions,

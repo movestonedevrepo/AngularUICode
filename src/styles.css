@@ -748,11 +748,7 @@ mat-header-cell:nth-child(5) {
 .vehicles {
   background-color: var(--blue);
   margin-top: 61px;
-  padding: 3rem 61px;
-}
-
-.vehicles .featured-item {
-  height: 441px;
+  padding: 3rem 61px 1rem 61px;
 }
 
 .vehicles .featured-item .featured-item-heading {
@@ -770,7 +766,7 @@ mat-header-cell:nth-child(5) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
   gap: 5px;
 }
 
@@ -1590,7 +1586,7 @@ select {
 .contact-section .contact-view .about-section .first-contact,
 .second-contact {
   .contact-number h2 {
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
     white-space: nowrap;
   }
@@ -1626,7 +1622,7 @@ select {
   align-items: center;
   text-transform: uppercase;
   gap: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
 .contact-section .contact-view .about-section .social-link div {
@@ -1812,6 +1808,11 @@ select {
   height: 60%;
 }
 
+.product-card .image .product-slider {
+  height: 100%;
+  width: 100%;
+}
+
 .product-card .image .product-image {
   width: 100%;
   height: 100%;
@@ -1834,6 +1835,7 @@ select {
 
 .product-card .image:hover .icon {
   opacity: 1;
+  z-index: 10;
 }
 
 .magnify-overlay {
@@ -2829,10 +2831,6 @@ select {
     font-size: 3em;
   }
 
-  .carousel {
-    gap: 5em !important;
-  }
-
   .hero-text h1 {
     font-size: 5em;
   }
@@ -3049,6 +3047,10 @@ select {
   .about-us .product-footer-banner-text {
     top: 45%;
     left: 25%;
+  }
+
+  .carousel {
+    display: none;
   }
 }
 
@@ -3605,11 +3607,9 @@ select {
   .product-info p {
     font-size: 15px;
   }
-}
 
-@media (max-width: 425px) {
-  .home-banner {
-    min-height: 82vh;
+  .hexagon img {
+    width: 90% !important;
   }
 }
 
