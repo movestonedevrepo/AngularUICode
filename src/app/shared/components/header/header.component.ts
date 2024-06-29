@@ -3,6 +3,7 @@ import { CommonModule, ViewportScroller } from '@angular/common';
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   Component,
+  Input,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
@@ -17,6 +18,7 @@ import { MatDialogService } from '../../services/mat-dialog.service';
 import { WebService } from '../../services/web.service';
 import { GlobalVariable } from '../../utilities/global-veriables';
 import { SwiperDirective } from '../../utilities/swiper.directive';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +26,7 @@ import { SwiperDirective } from '../../utilities/swiper.directive';
   imports: [
     RouterLink,
     CommonModule,
+    FormsModule,
     RouterLinkActive,
     LoginComponent,
     MatDialogModule,
@@ -39,6 +42,8 @@ import { SwiperDirective } from '../../utilities/swiper.directive';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HeaderComponent implements OnInit {
+  @Input() bannerImages!: Array<any>;
+
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
   assetPath = `${environment.assestsBasePath}images/Header`;
@@ -57,11 +62,6 @@ export class HeaderComponent implements OnInit {
   ];
   globalVeriable = GlobalVariable;
   isProductMenuVisiable: boolean = false;
-  bannerContents = [
-    `${environment.assestsBasePath}images/Header/header-image.jpg`,
-    `${environment.assestsBasePath}images/Header/header-image.jpg`,
-    `${environment.assestsBasePath}images/Header/header-image.jpg`,
-  ];
 
   constructor(
     private router: Router,

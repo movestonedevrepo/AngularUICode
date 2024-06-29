@@ -5,19 +5,15 @@
     <div class="product-image">
       <img [src]="selectedImage" alt="Image" />
       <div class="color-options">
-        <span class="color-dot red"></span>
-        <span class="color-dot blue"></span>
-        <span class="color-dot green"></span>
-        <span class="color-dot black"></span>
+        @for(eachColor of product.colorOptions.split(','); track eachColor) {
+        <span class="color-dot" [ngStyle]="{'background-color': eachColor}" (click)="changeSelectedColor(eachColor)"></span>
+        }
       </div>
       <div class="small-img-row">
-        @for (eachImage of images; track eachImage) {
+        @for (eachImage of images; track $index) {
         <div class="small-img-col">
-          <img
-            [src]="eachImage.productImageURL"
-            alt="Image-{{ eachImage.id }}"
-            (click)="changeSelectedImage(eachImage.productImageURL)"
-          />
+          <img [src]="eachImage" alt="Image-{{ $index }}"
+            (click)="changeSelectedImage(eachImage.productImageURL)" />
         </div>
         }
       </div>
@@ -33,10 +29,9 @@
             {{ product.productName }}
           </div>
         </div>
-        <div
-          class="feature-body"
-          *ngFor="let eachProductFeature of getProductFeatures"
-        >
+        @for(eachProductFeature of getProductFeatures; track eachProductFeature) {
+        @if(product[eachProductFeature]) {
+        <div class="feature-body">
           <div class="left-part feature-header-item">
             {{ productFeatures[eachProductFeature] }}
           </div>
@@ -44,6 +39,8 @@
             {{ product[eachProductFeature] }}
           </div>
         </div>
+        }
+        }
       </div>
     </div>
   </div>
@@ -57,11 +54,7 @@
       <div>about us?</div>
       <div class="button-container">
         <a href="tel:7605083988" class="phone-button">
-          <img
-            src="{{ assetPath }}/product_page_contact.jpg"
-            class="icon"
-            alt=""
-          />
+          <img src="{{ assetPath }}/product_page_contact.jpg" class="icon" alt="" />
           7605083988
         </a>
         <a href="#" class="contact-button"> Contact Us </a>
@@ -76,30 +69,15 @@
 
 <div id="home-footer" class="footer">
   <nav class="footer-section">
-    <a
-      class="cursor-pointer"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-      routerLink="/"
-    >
+    <a class="cursor-pointer" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/">
       home
     </a>
     <div class="vertical"></div>
-    <a
-      class="cursor-pointer"
-      routerLink="/pages/about"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-    >
+    <a class="cursor-pointer" routerLink="/pages/about" routerLinkActive="active" ariaCurrentWhenActive="page">
       about
     </a>
     <div class="vertical"></div>
-    <a
-      class="cursor-pointer"
-      routerLink="/pages/products"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-    >
+    <a class="cursor-pointer" routerLink="/pages/products" routerLinkActive="active" ariaCurrentWhenActive="page">
       products
     </a>
     <div class="vertical"></div>
@@ -111,12 +89,7 @@
       reviews
     </a>
     <div class="vertical"></div>
-    <a
-      class="cursor-pointer"
-      routerLink="/pages/contact"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-    >
+    <a class="cursor-pointer" routerLink="/pages/contact" routerLinkActive="active" ariaCurrentWhenActive="page">
       contact us
     </a>
   </nav>

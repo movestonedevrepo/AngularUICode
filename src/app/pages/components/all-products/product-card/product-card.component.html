@@ -1,29 +1,13 @@
 <div class="product-card">
   <div class="image" (click)="magnifyCard()">
-    <swiper-container
-      fmSwiper
-      [config]="productConfig"
-      class="product-slider"
-      init="false"
-      (swiperslidechange)="onSlideChange($event)"
-    >
-      @for (eachProduct of productContents; track eachProduct) {
+    <swiper-container #productSwiper fmSwiper [config]="productConfig" class="product-slider" init="false">
+      @for (eachProduct of content?.productPictureDetails; track eachProduct) {
       <swiper-slide>
-        <img
-          [src]="eachProduct"
-          alt="image"
-          class="product-image"
-          loading="lazy"
-        />
+        <img [src]="eachProduct?.productImageURL" alt="image" class="product-image" loading="lazy" />
       </swiper-slide>
       }
     </swiper-container>
 
-    <!-- <img
-      class="product-image"
-      [src]="content?.imageURL"
-      [alt]="content?.productName"
-    /> -->
     <div class="icon">
       <img src="{{ assetPath }}/search.png" alt="" />
     </div>
@@ -32,24 +16,22 @@
     <h2>{{ content?.productName }}</h2>
     <p>
       @for(eachFeature of content?.features?.split(','); track $index) {
-      {{ eachFeature }}
-      @if ($index < content?.features?.split(',').length - 1) {
-      <img src="{{ assetPath }}/arrow.jpg" alt="" />
-      } }
+        {{ eachFeature }}
+        @if ($index < content?.features?.split(',').length - 1) 
+          { 
+            <img src="{{ assetPath }}/arrow.jpg" alt="" />
+          } 
+      }
     </p>
     <div class="d-flex align-items-center justify-content-between">
-      <button
-        type="button"
-        class="details-button"
-        (click)="checkProduct(content?.productID)"
-      >
+      <button type="button" class="details-button" (click)="checkProduct(content?.productID)">
         Details
       </button>
       <div class="color-options">
-        <span class="color-dot red"></span>
-        <span class="color-dot blue"></span>
-        <span class="color-dot green"></span>
-        <span class="color-dot black"></span>
+        @for(eachColor of content.colorOptions.split(','); track eachColor) {
+        <span class="color-dot" [ngStyle]="{'background-color': eachColor}"
+          (click)="changeSelectedColor(eachColor)"></span>
+        }
       </div>
     </div>
   </div>

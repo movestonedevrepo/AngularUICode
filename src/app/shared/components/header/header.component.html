@@ -139,16 +139,17 @@
   </div>
 </header>
 
-<div class="header-banner">
-  <div class="banner">
-    <div class="hero-content">
+@if(bannerImages && bannerImages.length > 0) {
+  <div class="header-banner">
+    <div class="banner">
+      <div class="hero-content">
       <div class="carousel">
         <button
           type="button"
           id="carousel-left-button"
           title="carousel-left-button"
           class="carousel-button left"
-        >
+          >
           <img src="{{ assetPath }}/header-arrow.png" alt="" />
         </button>
         <button
@@ -162,18 +163,19 @@
       </div>
     </div>
     <swiper-container
-      #featureItems
-      fmSwiper
-      [config]="bannerConfig"
-      init="false"
+    #featureItems
+    fmSwiper
+    [config]="bannerConfig"
+    init="false"
     >
-      @for (eachContent of bannerContents; track $index) {
+    @for (eachContent of bannerImages; track eachContent) {
       <swiper-slide>
-        <img [src]="eachContent" alt="image" class="banner-image" />
+        <img [src]="eachContent.attribute1" alt="image" class="banner-image" />
       </swiper-slide>
-      }
+    }
     </swiper-container>
   </div>
-
+  
   <!-- <img [src]="pageBanner" alt="image" class="banner-image" loading="lazy" /> -->
 </div>
+}

@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
@@ -30,9 +32,7 @@ export class ProductDetailsComponent implements OnInit {
     ]),
     queryMessage: new FormControl('', Validators.required),
   });
-  colors: any = Object.entries(CONSTANTS.colors);
-  selectedColor: any = this.colors[0][0];
-  otherProducts!: any[];
+  selectedColor!: string;
   productFeatures: any = CONSTANTS.productFeatures;
   assetPath = `${environment.assestsBasePath}images/Product Page`;
 
@@ -41,15 +41,17 @@ export class ProductDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private dialogService: MatDialogService,
-    private viewportScroller: ViewportScroller
-  ) {}
+    private viewportScroller: ViewportScroller,
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: any) => {
       this.product = data.productDetails.productDetails;
-      this.otherProducts = data.productDetails.otherProducts;
-      this.images = this.product?.productPictureDetails;
-      this.selectedImage = this.images[0]?.productImageURL;
+
+      if (this.product.colorOptions) {
+        this.selectedColor = this.colorOption(0);
+        this.getProductImages();
+      }
     });
   }
 
@@ -67,6 +69,28 @@ export class ProductDetailsComponent implements OnInit {
 
   changeSelectedColor(color: any) {
     this.selectedColor = color;
+    this.getProductImages();
+  }
+
+  getProductImages(): void {
+    this.getImagesByColor(this.product.productID, this.selectedColor).subscribe((data: any) => {
+      if (data && !data.hasError) {
+        this.images = data.responsePayload?.pictures;
+        this.selectedImage = this.images[0];
+      }
+    })
+  }
+
+  getImagesByColor(productID: string, productColorHex: string): Observable<any> {
+    const postBody = {
+      productID,
+      productColorHex
+    }
+    return this.http.post(`${environment.baseUrl}/getImageByColor`, postBody);
+  }
+
+  colorOption(index: number): string {
+    return this.product.colorOptions.split(',')[index];
   }
 
   sendQuery() {
