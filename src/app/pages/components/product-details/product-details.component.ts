@@ -42,7 +42,8 @@ export class ProductDetailsComponent implements OnInit {
     private http: HttpClient,
     private dialogService: MatDialogService,
     private viewportScroller: ViewportScroller,
-  ) { }
+    private loader: LoaderService
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: any) => {
@@ -73,19 +74,29 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductImages(): void {
-    this.getImagesByColor(this.product.productID, this.selectedColor).subscribe((data: any) => {
-      if (data && !data.hasError) {
-        this.images = data.responsePayload?.pictures;
-        this.selectedImage = this.images[0];
+    this.loader.setLoading(true, `${environment.baseUrl}/getImageByColor`);
+    this.getImagesByColor(this.product.productID, this.selectedColor).subscribe(
+      (data: any) => {
+        if (data && !data.hasError) {
+          this.images = data.responsePayload?.pictures;
+          this.selectedImage = this.images[0];
+          this.loader.setLoading(
+            false,
+            `${environment.baseUrl}/getImageByColor`
+          );
+        }
       }
-    })
+    );
   }
 
-  getImagesByColor(productID: string, productColorHex: string): Observable<any> {
+  getImagesByColor(
+    productID: string,
+    productColorHex: string
+  ): Observable<any> {
     const postBody = {
       productID,
-      productColorHex
-    }
+      productColorHex,
+    };
     return this.http.post(`${environment.baseUrl}/getImageByColor`, postBody);
   }
 

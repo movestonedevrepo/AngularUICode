@@ -3304,6 +3304,7 @@ select {
   }
 
   .product-view img {
+    width: 100%;
     margin-bottom: 0rem;
   }
 
