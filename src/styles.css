@@ -386,6 +386,7 @@ mat-header-cell:nth-child(5) {
   position: fixed;
   z-index: 999;
   width: 100vw;
+  top: 0;
 }
 
 .header-active {
@@ -1270,7 +1271,7 @@ mat-header-cell:nth-child(5) {
 
 .product-view img {
   width: 70%;
-  margin-bottom: -4rem;
+  margin-bottom: -2rem;
 }
 
 .product-view .product-image {
@@ -3300,6 +3301,18 @@ select {
 
   .product-footer-banner-text .contact-button {
     font-size: 14px;
+  }
+
+  .product-view img {
+    margin-bottom: 0rem;
+  }
+
+  .header {
+    background: #243c6a;
+  }
+
+  .header-banner {
+    margin-top: 12.1rem;
   }
 }
 
