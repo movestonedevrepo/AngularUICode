@@ -1,6 +1,7 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,57 +11,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.css',
 })
-export class AboutUsComponent {
-  teamMembers = [
-    {
-      image:
-        'https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw40.png',
-      name: ' Roger Rubin',
-      position: 'Lorem ipsum',
-      about:
-        ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-    },
-    {
-      image:
-        'https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw42.png',
-      name: ' Roger Rubin',
-      position: 'Lorem ipsum',
-      about:
-        ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-    },
-    {
-      image:
-        'https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw41.png',
-      name: ' Roger Rubin',
-      position: 'Lorem ipsum',
-      about:
-        ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-    },
-    {
-      image:
-        'https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw41.png',
-      name: ' Roger Rubin',
-      position: 'Lorem ipsum',
-      about:
-        ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-    },
-    {
-      image:
-        'https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw40.png',
-      name: ' Roger Rubin',
-      position: 'Lorem ipsum',
-      about:
-        ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-    },
-    {
-      image:
-        'https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/aw42.png',
-      name: ' Roger Rubin',
-      position: 'Lorem ipsum',
-      about:
-        ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna',
-    },
-  ];
+export class AboutUsComponent implements OnInit {
   assetPath = `${environment.assestsBasePath}images/About`;
   productAssetPath = `${environment.assestsBasePath}images/Product Page`;
 
@@ -68,6 +19,10 @@ export class AboutUsComponent {
     private router: Router,
     private viewportScroller: ViewportScroller
   ) {}
+
+  ngOnInit(): void {
+    GlobalVariable.selectedPage = 'about';
+  }
 
   onClickAnchor(elementId: string) {
     if (this.router.url.includes('/home')) {

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
 import { environment } from 'src/environments/environment';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,7 +15,7 @@ import { v4 as uuidv4 } from 'uuid';
   imports: [SharedModule],
   templateUrl: './contact.component.html',
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private dialogService: MatDialogService
@@ -32,6 +33,10 @@ export class ContactComponent {
     queryMessage: new FormControl('', Validators.required),
   });
   assetPath = `${environment.assestsBasePath}images/Homepage`;
+
+  ngOnInit(): void {
+    GlobalVariable.selectedPage = 'contact us';
+  }
 
   sendQuery(): void {
     if (this.queryForm.valid) {

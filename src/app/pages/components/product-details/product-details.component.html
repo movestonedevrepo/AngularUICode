@@ -7,11 +7,13 @@
       <img [src]="selectedImage" alt="Image" />
       <div class="color-options">
         @for(eachColor of product.colorOptions.split(','); track eachColor) {
+        <!-- [ngClass]="{ 'selected-color': selectedColor === eachColor }" -->
         <span
           class="color-dot"
           [ngStyle]="{ 'background-color': eachColor }"
           (click)="changeSelectedColor(eachColor)"
-        ></span>
+        >
+        </span>
         }
       </div>
       } @if (images && images.length > 0) {
