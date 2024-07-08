@@ -2744,6 +2744,7 @@ select {
   align-items: stretch;
   justify-content: space-between;
   gap: 3rem;
+  margin-bottom: 3rem;
 }
 
 .contact-page-section .contact-view .contact-info {
@@ -2757,6 +2758,9 @@ select {
 .contact-page-section .contact-view .contact-info h1 {
   text-transform: uppercase;
   padding: 6px;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .contact-page-section .contact-view .contact-info h1 span {
@@ -2798,12 +2802,6 @@ select {
 .contact-page-section .contact-view .map-section .map {
   width: 100%;
   height: 100%;
-}
-
-.contact-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 
 @media (max-width: 1260px) {
@@ -3405,6 +3403,32 @@ select {
   .header-banner {
     margin-top: 11rem;
   }
+
+  .contact-page-section form {
+    padding: 0;
+    margin-bottom: 5rem;
+  }
+
+  .contact-page-section .contact-form {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-page-section .contact-view {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .contact-page-section .contact-view {
+    .contact-info,
+    .map-section {
+      width: 100%;
+    }
+  }
+
+  .contact-footer {
+    position: unset;
+  }
 }
 
 @media (max-width: 750px) {
@@ -3525,11 +3549,15 @@ select {
   }
 
   .footer {
-    height: 11rem !important;
+    height: 8rem !important;
   }
 
   .footer .footer-section {
     display: none;
+  }
+
+  .footer .footer-link {
+    padding: 0;
   }
 
   .team-members {
@@ -3664,8 +3692,8 @@ select {
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
   }
 
-  .about-section {
-    padding: 5rem 3rem;
+  .contact-section .contact-view .about-section {
+    padding: 5rem 3rem 2rem 3rem;
   }
 
   .about-section .description-section {
@@ -3689,16 +3717,6 @@ select {
 
   .about-section .image-column .inner-column:before {
     display: none;
-  }
-
-  .about-section .image-column .image-2 img,
-  .about-section .image-column .image-1 img {
-    width: 100%;
-  }
-
-  .contact-section .contact-view .about-section {
-    padding: 5rem;
-    padding-bottom: 0;
   }
 
   .products .product-card {
@@ -3730,6 +3748,14 @@ select {
 
   .hexagon img {
     width: 90% !important;
+  }
+
+  .contact-page-section .contact-view .contact-info .contact-info-table {
+    flex-direction: column;
+  }
+
+  .contact-info-table .table-content {
+    width: 100%;
   }
 }
 
