@@ -1,11 +1,13 @@
 @defer (on viewport) {
-<section *ngIf="contents.length > 0" id="products" class="products">
+<section id="products" class="products">
+  @if (contents && contents.length > 0) {
   <div class="products-part">
     @for (content of getContents; track content) {
     <app-product-card
       [content]="content"
       (checkProductEvent)="checkProduct($event)"
-    ></app-product-card>
+    >
+    </app-product-card>
     }
   </div>
   <app-magnify></app-magnify>
@@ -18,6 +20,7 @@
     </div>
     <div class="forward" (click)="nextPage()">>></div>
   </div>
+  }
 
   <div class="product-footer-banner">
     <img src="{{ assetPath }}/product_page_bg2.jpg" alt="" />

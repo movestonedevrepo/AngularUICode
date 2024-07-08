@@ -24,18 +24,11 @@ export const PAGES_ROUTES: Routes = [
     path: 'home',
     component: HomePageComponent,
     resolve: {
-      productDetails: homeDetailsResolver,
+      // productDetails: homeDetailsResolver,
     },
   },
   {
     path: 'products',
-    component: AllProductsComponent,
-    resolve: {
-      productDetails: homeDetailsResolver,
-    },
-  },
-  {
-    path: 'products/:id',
     component: AllProductsComponent,
     resolve: {
       productDetails: homeDetailsResolver,

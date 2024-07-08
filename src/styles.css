@@ -61,11 +61,11 @@ html {
   scroll-padding-top: 7rem;
   scroll-behavior: smooth;
   position: relative;
-  /* min-height: 100%; */
 }
 
 textarea {
   resize: none !important;
+  text-transform: none !important;
 }
 
 mat-error {
@@ -1598,26 +1598,27 @@ select {
 
 .contact-section .contact-view .about-section .first-contact,
 .second-contact {
-  .contact-number a {
-    color: var(--white);
-    font-size: 19px;
+  .contact-number .contact-initials {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    gap: 5px;
+
+    > span {
+      color: var(--yellow);
+    }
+    > img {
+      color: var(--yellow);
+      width: 17px;
+      height: 17px;
+    }
   }
 }
 
 .contact-section .contact-view .about-section .first-contact,
 .second-contact {
-  .contact-number a .contact-initials {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    color: var(--yellow);
-
-    > img {
-      width: 17px;
-      height: 17px;
-    }
+  .contact-number .contact-initials a {
+    color: var(--white);
+    font-size: 19px;
   }
 }
 
@@ -1646,7 +1647,7 @@ select {
 
 .contact-section .contact-view .map-section {
   width: 100%;
-  height: 100%;
+  height: 30rem;
 }
 
 .contact-section .contact-view .map-section .map {
@@ -2705,20 +2706,104 @@ select {
   left: 23%;
 }
 
-@media (max-width: 1920px) {
-  .home-banner {
-    background-size: cover;
-  }
+.contact-page-section form {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 0 10rem 5rem 10rem;
 }
 
-@media (max-width: 1440px) {
-  .home-banner {
-    height: 89rem;
-  }
+.contact-page-section .contact-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
+  align-items: center;
+}
 
-  .products-banner {
-    height: 65rem;
-  }
+.contact-page-section .contact-form .form-group {
+  width: 100%;
+}
+
+.contact-page-section .contact-form .form-group .mat-input {
+  width: 100%;
+}
+
+.contact-page-section .contact-form .form-group label {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.contact-page-section .contact-message {
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+}
+
+.contact-page-section .contact-view {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.contact-page-section .contact-view .contact-info {
+  border: 1px solid var(--black);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 50%;
+}
+
+.contact-page-section .contact-view .contact-info h1 {
+  text-transform: uppercase;
+  padding: 6px;
+}
+
+.contact-page-section .contact-view .contact-info h1 span {
+  text-transform: uppercase;
+  color: var(--green);
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.contact-page-section .contact-view .contact-info .contact-info-table {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.contact-info-table .table-content {
+  width: 50%;
+  border-right: 1px solid var(--black);
+}
+
+.contact-info-table .table-content h4 {
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 5px;
+}
+
+.contact-info-table .table-content p {
+  padding: 6px;
+}
+
+.contact-page-section .contact-view .map-section {
+  width: 50%;
+  height: auto;
+}
+
+.contact-page-section .contact-view .map-section .map {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 @media (max-width: 1260px) {

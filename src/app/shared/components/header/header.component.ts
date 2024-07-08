@@ -7,6 +7,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -18,7 +19,6 @@ import { MatDialogService } from '../../services/mat-dialog.service';
 import { WebService } from '../../services/web.service';
 import { GlobalVariable } from '../../utilities/global-veriables';
 import { SwiperDirective } from '../../utilities/swiper.directive';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -52,12 +52,10 @@ export class HeaderComponent implements OnInit {
     {
       id: 'eRikshaw',
       name: 'E Rikshaw',
-      routerLink: '/pages/products/eRikshaw',
     },
     {
       id: 'loader',
       name: 'Loader',
-      routerLink: '/pages/products/loader',
     },
   ];
   globalVeriable = GlobalVariable;

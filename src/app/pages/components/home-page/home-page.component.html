@@ -260,8 +260,11 @@
 } @placeholder {
 <div>Team Section</div>
 } @defer (on viewport) {
-<!-- *ngIf="testimonials && testimonials.length > 0" -->
-<section id="reviews" class="testimonial" *ngIf="false">
+<section
+  id="reviews"
+  class="testimonial"
+  *ngIf="testimonials && testimonials.length > 0"
+>
   <div class="testimonial-content">
     <div class="testimonial-text">
       <h4>Our Testimonial</h4>
@@ -403,8 +406,7 @@
           <h1>Office Location</h1>
         </div>
         <p>
-          Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP,
-          Sector-V, Salt Lake, Kolkata- 700091
+          {{ officeLocation.corporateOffice }}
         </p>
       </div>
       <div class="mb-5">
@@ -413,22 +415,25 @@
           <h1>Factory Location</h1>
         </div>
         <p>
-          Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP,
-          Sector-V, Salt Lake, Kolkata- 700091
+          {{ officeLocation.factory }}
         </p>
       </div>
       <div class="first-contact">
         <div class="contact-number">
           <h2>Sales department</h2>
-          <a href="tel:7605083988">
-            <span class="contact-initials">
-              (M):
-              <img src="{{ assetPath }}/call.png" alt="" />
-            </span>
-            7605083988
-          </a>
+          <span class="contact-initials">
+            <span>(M):</span>
+            <img src="{{ assetPath }}/call.png" alt="" />
+            <a href="tel:{{ salesDepartmentNum1 }}">
+              {{ salesDepartmentNum1 }}
+            </a>
+            <span> / </span>
+            <a href="tel:{{ salesDepartmentNum2 }}">
+              {{ salesDepartmentNum2 }}
+            </a>
+          </span>
         </div>
-        <div class="contact-number">
+        <!-- <div class="contact-number">
           <h2>Service department</h2>
           <a href="tel:9007350740">
             <span class="contact-initials">
@@ -437,9 +442,9 @@
             </span>
             9007350740
           </a>
-        </div>
+        </div> -->
       </div>
-      <div class="second-contact">
+      <!-- <div class="second-contact">
         <div class="contact-number">
           <h2>Purchase department</h2>
           <a href="tel:7605083985">
@@ -460,7 +465,7 @@
             9804267746
           </a>
         </div>
-      </div>
+      </div> -->
 
       <div class="social-link">
         <div>Follow us on :</div>

@@ -34,6 +34,9 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
   vehicleConfig: SwiperOptions = CONSTANTS.vehicleConfig;
+  salesDepartmentNum1 = CONSTANTS.salesDepartmentNumber1;
+  salesDepartmentNum2 = CONSTANTS.salesDepartmentNumber2;
+  officeLocation = CONSTANTS.officeLocation;
   queryForm = new FormGroup({
     queryName: new FormControl('', Validators.required),
     queryEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -58,7 +61,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (window.screen.width <= 500) this.vehicleConfig.navigation = false;
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
-    this.contents = Array(3).fill(productDetails?.products).flat();
+    this.contents = productDetails?.products;
     this.testimonials = productDetails?.testimonials;
     GlobalVariable.selectedPage = 'home';
   }

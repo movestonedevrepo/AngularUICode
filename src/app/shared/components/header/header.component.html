@@ -1,6 +1,8 @@
 <header
   class="header navbar-dark"
-  [ngClass]="{ 'header-active': isVerticalScroll }"
+  [ngClass]="{
+    'header-active': isVerticalScroll || !bannerImages
+  }"
 >
   <div class="header-menu">
     <div id="menu-btn" (click)="onMenuBtnClick()">
@@ -52,10 +54,12 @@
           <span class="material-symbols-outlined"> keyboard_arrow_down </span>
         </span>
         <div class="dropdown-content mat-elevation-z8">
-          @for (eachProductItem of itemsToDisplayInProducts; track $index) {
+          @for (eachProductItem of itemsToDisplayInProducts; track
+          eachProductItem) {
           <a
             mat-menu-item
-            [routerLink]="eachProductItem.routerLink"
+            routerLink="/pages/products"
+            [queryParams]="{ product: eachProductItem.id }"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
             (click)="selectNavOptions('products')"

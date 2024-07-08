@@ -14,6 +14,8 @@ export const CONSTANTS = {
     'Help us reach you with the latest updates on our amazing products by providing us with your email.',
 
   phoneNumber: '919831317367',
+  salesDepartmentNumber1: '9007704148',
+  salesDepartmentNumber2: '9831317367',
   facebookID: 'https://facebook.com/Movestoneservicespvtltd',
   instagramID: 'https://instagram.com/movestoneevehicle',
 
@@ -22,9 +24,9 @@ export const CONSTANTS = {
       'Ground Floor, 24/1,Shop No. - 6, Shantikunj, Onkarmal Jatia Road, Howrah, West Bengal, 711103',
 
     corporateOffice:
-      'Unit No- 01, 16th Floor, IMAGINE TECH PARK, Plot No – 6, Block- DP, Sector-V, Salt Lake, Kolkata- 700091',
+      'Unit No- 01, 16th Floor, IMAGINE TECH PARK, Block- DP, Sector-V, College More, Salt Lake, Kolkata - 700091',
     factory:
-      'Unit No. - UTA0045,0044,0036,0035, Utsab Park, Bhagabatipur, Chatur Bhujkhati, Sankrail, Howrah, West Bengal, 711313',
+      'Unit No. - UTA0045,0044,0036,0035, Utsab Park, Bhagabatipur, Chatur Bhujkhati, Sankrail, Howrah, West Bengal, PIN - 711313',
   },
 
   vehicleConfig: {

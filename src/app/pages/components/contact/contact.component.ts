@@ -1,6 +1,8 @@
+import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
@@ -18,15 +20,18 @@ import { v4 as uuidv4 } from 'uuid';
 export class ContactComponent implements OnInit {
   constructor(
     private http: HttpClient,
-    private dialogService: MatDialogService
+    private dialogService: MatDialogService,
+    private viewportScroller: ViewportScroller,
+    private router: Router
   ) {}
 
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
   queryForm = new FormGroup({
-    queryName: new FormControl('', Validators.required),
-    queryEmail: new FormControl('', [Validators.required, Validators.email]),
-    queryPhone: new FormControl('', [
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    number: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[0-9]{10}$/),
     ]),
@@ -40,13 +45,13 @@ export class ContactComponent implements OnInit {
 
   sendQuery(): void {
     if (this.queryForm.valid) {
+      const name = `${this.queryForm.value.firstName} ${this.queryForm.value.lastName}`;
       const payload = {
         queryID: uuidv4(),
-        queryPhone: '' + this.queryForm.value.queryPhone,
-        queryEmail: this.queryForm.value.queryEmail,
+        queryPhone: '' + this.queryForm.value.number,
+        queryEmail: this.queryForm.value.email,
         queryMessage:
-          `Message from Mr/Ms ${this.queryForm.value.queryName}:  ` +
-          this.queryForm.value.queryMessage,
+          `Message from Mr/Ms ${name}:  ` + this.queryForm.value.queryMessage,
       };
       this.http
         .post(`${environment.baseUrl}/createQuery`, payload)
@@ -63,6 +68,16 @@ export class ContactComponent implements OnInit {
         });
     } else {
       this.queryForm.markAllAsTouched();
+    }
+  }
+
+  onClickAnchor(elementId: string) {
+    if (this.router.url.includes('/home')) {
+      this.viewportScroller.scrollToAnchor(elementId);
+    } else {
+      this.router.navigate(['pages/home'], {
+        queryParams: { target: elementId },
+      });
     }
   }
 }
