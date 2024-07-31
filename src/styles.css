@@ -797,9 +797,11 @@ mat-header-cell:nth-child(5) {
   background-color: #00000049;
 }
 
-.vehicles .vehicles-slider .swiper-slide-active .content {
-  background-color: var(--light-blue) !important;
-  color: var(--white) !important;
+.vehicles .vehicles-slider .box:hover {
+  .content {
+    background-color: var(--light-blue) !important;
+    color: var(--white) !important;
+  }
 }
 
 .swiper-pagination-bullet {
@@ -2678,7 +2680,7 @@ select {
 
 .about-us .section-1 {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 4rem;
   width: 95%;
@@ -2687,6 +2689,27 @@ select {
 
 .about-us .section-1 img {
   width: 100%;
+}
+
+.about-us .section-1 .icat-logo {
+  width: 6%;
+  margin-bottom: 9px;
+}
+
+.about-us .about-top-heading {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.about-us .about-heading {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.about-us .about-underline {
+  text-decoration: underline;
 }
 
 .about-us .section-1-text {
@@ -2759,7 +2782,7 @@ select {
   text-transform: uppercase;
   padding: 6px;
   font-size: 2.5rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -2767,7 +2790,7 @@ select {
   text-transform: uppercase;
   color: var(--green);
   font-size: 2.5rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
 }
 

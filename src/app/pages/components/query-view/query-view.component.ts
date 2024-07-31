@@ -1,13 +1,14 @@
+import { ViewportScroller } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import xlsx from 'json-as-xlsx';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 import { WebService } from 'src/app/shared/services/web.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { QueryListComponent } from './query-list/query-list.component';
-import xlsx from "json-as-xlsx"
-import { LoaderService } from 'src/app/shared/services/loader.service';
 
 export interface Tab {
   name: string;
@@ -23,7 +24,8 @@ export interface Tab {
   templateUrl: './query-view.component.html',
 })
 export class QueryViewComponent implements OnInit {
-  emailList:any;
+  emailList: any;
+  productAssetPath = `${environment.assestsBasePath}images/Product Page`;
   tabs: Array<Tab> = [
     {
       name: 'All',
@@ -58,7 +60,9 @@ export class QueryViewComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private loaderService: LoaderService,
-    private webStorage: WebService
+    private webStorage: WebService,
+    private router: Router,
+    private viewportScroller: ViewportScroller
   ) {}
 
   ngOnInit(): void {
@@ -68,64 +72,51 @@ export class QueryViewComponent implements OnInit {
     });
   }
 
-  downloadExcel():void{
-
+  downloadExcel(): void {
     const headers = new HttpHeaders({
       h1: 'v1',
       authorization: `Bearer ${this.webStorage.getAuthentication}`,
     });
-    const url= `${environment.baseUrl}/getEmailsForNewsletter`
-    this.http
-      .get(
-       url,{headers}
-      )
-      .subscribe((data: any) => {
-        if (data && !data?.hasError) {
-          this.emailList = data.responsePayload;
-          this.loaderService.setLoading(true,url);
+    const url = `${environment.baseUrl}/getEmailsForNewsletter`;
+    this.http.get(url, { headers }).subscribe((data: any) => {
+      if (data && !data?.hasError) {
+        this.emailList = data.responsePayload;
+        this.loaderService.setLoading(true, url);
 
-          
-          setTimeout(()=>{
+        setTimeout(() => {
+          this.download(data.responsePayload);
+          this.loaderService.setLoading(false, url);
+          this.emailList = [];
+        }, 1500);
 
-            this.download(data.responsePayload);
-            this.loaderService.setLoading(false, url);
-            this.emailList=[]
-          },1500)
-       
-          /* pass here the table id */
-        }
-      });
-    
+        /* pass here the table id */
+      }
+    });
   }
 
-  download(jsonData:any):void{
-  
-
+  download(jsonData: any): void {
     let data = [
       {
-        sheet: "Emails",
+        sheet: 'Emails',
         columns: [
-          { label: "Email", value: "emailID" }, // Top level data
-
+          { label: 'Email', value: 'emailID' }, // Top level data
         ],
-        content: jsonData.map((eachData:any)=>{
-          return {emailID:eachData}
+        content: jsonData.map((eachData: any) => {
+          return { emailID: eachData };
         }),
       },
-     
-    ]
-    
+    ];
+
     let settings = {
-      fileName: "all-emails", // Name of the resulting spreadsheet
+      fileName: 'all-emails', // Name of the resulting spreadsheet
       extraLength: 3, // A bigger number means that columns will be wider
-      writeMode: "writeFile", // The available parameters are 'WriteFile' and 'write'. This setting is optional. Useful in such cases https://docs.sheetjs.com/docs/solutions/output#example-remote-file
+      writeMode: 'writeFile', // The available parameters are 'WriteFile' and 'write'. This setting is optional. Useful in such cases https://docs.sheetjs.com/docs/solutions/output#example-remote-file
       writeOptions: {}, // Style options from https://docs.sheetjs.com/docs/api/write-options
       RTL: true, // Display the columns from right-to-left (the default value is false)
-    }
-    
-    xlsx(data, settings)
-  }
+    };
 
+    xlsx(data, settings);
+  }
 
   changeTableData(event: MatTabChangeEvent) {
     this.tabs.forEach((eachTab: any) => (eachTab.isSelected = false));
@@ -151,5 +142,15 @@ export class QueryViewComponent implements OnInit {
           this.filteredElementData = data.responsePayload.queryList;
         }
       });
+  }
+
+  onClickAnchor(elementId: string) {
+    if (this.router.url.includes('/home')) {
+      this.viewportScroller.scrollToAnchor(elementId);
+    } else {
+      this.router.navigate(['pages/home'], {
+        queryParams: { target: elementId },
+      });
+    }
   }
 }

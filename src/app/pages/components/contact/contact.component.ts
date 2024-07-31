@@ -27,6 +27,9 @@ export class ContactComponent implements OnInit {
 
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
+  salesDepartmentNum1 = CONSTANTS.salesDepartmentNumber1;
+  salesDepartmentNum2 = CONSTANTS.salesDepartmentNumber2;
+  officeLocation = CONSTANTS.officeLocation;
   queryForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
