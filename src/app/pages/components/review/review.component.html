@@ -1,56 +1,54 @@
 <app-header [isBannerPresent]="bannerImages && bannerImages.length > 0">
 </app-header>
-
 <app-banner [bannerImages]="bannerImages"></app-banner>
 
 @defer (on viewport) {
-<section id="products" class="products">
-  @if (contents && contents.length > 0) {
-  <div class="products-part">
-    @for (content of getContents; track content) {
-    <app-product-card
-      [content]="content"
-      (checkProductEvent)="checkProduct($event)"
-    >
-    </app-product-card>
-    }
-  </div>
-  <app-magnify></app-magnify>
-
-  <div class="pagination">
-    <div *ngFor="let item of [].constructor(getNumberOfPages); let i = index">
-      <a (click)="setIndex(i)" [ngClass]="{ active: currentPage === i }">
-        {{ i + 1 }}
-      </a>
-    </div>
-    <div class="forward" (click)="nextPage()">>></div>
-  </div>
-  }
-
-  <div class="product-footer-banner">
-    <img src="{{ assetPath }}/product_page_bg2.jpg" alt="" />
-    <div class="product-footer-banner-text">
-      <div>Have any question</div>
-      <div>about us?</div>
-      <div class="button-container">
-        <a href="tel:7605083988" class="phone-button">
-          <img
-            src="{{ assetPath }}/product_page_contact.jpg"
-            class="icon"
-            alt=""
-          />
-          7605083988
-        </a>
-        <a href="#" class="contact-button"> Contact Us </a>
+<section
+  id="reviews"
+  class="testimonial review-testimonials"
+  *ngIf="testimonials && testimonials.length > 0"
+>
+  <div class="testimonial-content">
+    <div class="testimonial-text">
+      <h4>Our Testimonial</h4>
+      <div class="underscore"></div>
+      <h2>What Client’s Says</h2>
+      <p>
+        The other hand we denounce with righteous indignation and dislike men
+        who are so beguiled and demoralized by the charms of pleasure moment.
+        Dislike men who are so beguiled and demoralized by the charms of
+        pleasure.
+      </p>
+      <div class="client-info">
+        <img
+          class="client-image"
+          src="{{ assetPath }}/person.png"
+          alt="Teodoro D. Williams"
+        />
+        <div>
+          <h3>Teodoro D. Williams</h3>
+          <p>Web Developer</p>
+        </div>
+        <div class="navigation">
+          <span>
+            <img src="{{ assetPath }}/arrow-testimonials-1.jpg" alt="" />
+          </span>
+          <span>
+            <img src="{{ assetPath }}/arrow-testimonials-2.jpg" alt="" />
+          </span>
+        </div>
       </div>
+    </div>
+    <div class="testimonial-image">
+      <img src="{{ assetPath }}/testimonials-pic.jpg" alt="Client Image" />
     </div>
   </div>
 </section>
 } @placeholder {
-<div>Featured Section</div>
+<div>Reviews Section</div>
 }
 
-<div id="products-footer" class="footer">
+<div id="review-footer" class="footer">
   <nav class="footer-section">
     <a
       class="cursor-pointer"

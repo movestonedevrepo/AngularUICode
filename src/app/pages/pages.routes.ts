@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { getConfigResolver } from '../resolvers/get-config.resolver';
 import { getQueryResolver } from '../resolvers/get-query.resolver';
 import { homeDetailsResolver } from '../resolvers/home-details.resolver';
 import { productSpecResolver } from '../resolvers/product-spec.resolver';
@@ -9,6 +10,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { QueryViewComponent } from './components/query-view/query-view.component';
+import { ReviewComponent } from './components/review/review.component';
+import { ServicesComponent } from './components/services/services.component';
 
 export const PAGES_ROUTES: Routes = [
   {
@@ -19,19 +22,39 @@ export const PAGES_ROUTES: Routes = [
   {
     path: 'about',
     component: AboutUsComponent,
+    resolve: {
+      banners: getConfigResolver,
+    },
   },
   {
     path: 'home',
     component: HomePageComponent,
     resolve: {
       productDetails: homeDetailsResolver,
+      banners: getConfigResolver,
     },
   },
   {
-    path: 'products',
+    path: 'reviews',
+    component: ReviewComponent,
+    resolve: {
+      reviewDetails: homeDetailsResolver,
+      banners: getConfigResolver,
+    },
+  },
+  {
+    path: 'services',
+    component: ServicesComponent,
+    resolve: {
+      banners: getConfigResolver,
+    },
+  },
+  {
+    path: 'products/:id',
     component: AllProductsComponent,
     resolve: {
       productDetails: homeDetailsResolver,
+      banners: getConfigResolver,
     },
   },
   {
@@ -55,5 +78,8 @@ export const PAGES_ROUTES: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
+    resolve: {
+      banners: getConfigResolver,
+    },
   },
 ];

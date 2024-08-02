@@ -1,3 +1,6 @@
+<app-header [isBannerPresent]="bannerImages && bannerImages.length > 0">
+</app-header>
+<app-banner [bannerImages]="bannerImages"></app-banner>
 @defer (on viewport) {
 <section class="home-about-us" id="home-about-us">
   <h1 class="heading">
@@ -36,7 +39,7 @@
   </div>
 </section>
 } @placeholder {
-<div id="abount-us-section">About Us</div>
+<div id="abount-us-section">Why We</div>
 } @defer (on viewport) {
 <div *ngIf="contents && contents.length > 0" class="vehicles" id="vehicles">
   <div class="featured-item">
@@ -107,7 +110,7 @@
   </div>
 </div>
 } @placeholder {
-<div id="vehicles-section">About us</div>
+<div id="our-products-section">Our Products</div>
 } @defer (on viewport) {
 <section id="services" class="services">
   <h1 class="heading services-heading" id="services-heading">
@@ -241,7 +244,7 @@
   </div>
 </section>
 } @placeholder {
-<div>Services Section</div>
+<div id="services-section">Services Section</div>
 } @defer (on viewport) {
 <section id="our-team" class="our-team">
   <h1>Key People</h1>
@@ -258,7 +261,7 @@
   </div>
 </section>
 } @placeholder {
-<div>Team Section</div>
+<div id="team-section">Team Section</div>
 } @defer (on viewport) {
 <section
   id="reviews"
@@ -302,7 +305,7 @@
   </div>
 </section>
 } @placeholder {
-<div>Reviews Section</div>
+<div id="review-section">Reviews Section</div>
 } @defer (on viewport) {
 <div id="contact-section" class="contact-section">
   <div class="contact">
@@ -486,8 +489,9 @@
   </div>
 </div>
 } @placeholder {
-<div>Contact Section</div>
+<div id="contact-section">Contact Section</div>
 }
+
 <div id="home-footer" class="footer">
   <nav class="footer-section">
     <a
@@ -517,11 +521,21 @@
       products
     </a>
     <div class="vertical"></div>
-    <a class="cursor-pointer" (click)="onClickAnchor('vehicles-content')">
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/services"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
       services
     </a>
     <div class="vertical"></div>
-    <a class="cursor-pointer" (click)="onClickAnchor('newsletter')">
+    <a
+      class="cursor-pointer"
+      routerLink="/pages/reviews"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
       reviews
     </a>
     <div class="vertical"></div>

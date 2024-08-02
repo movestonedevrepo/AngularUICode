@@ -1,8 +1,7 @@
-import { ViewportScroller } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import xlsx from 'json-as-xlsx';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { WebService } from 'src/app/shared/services/web.service';
@@ -60,9 +59,7 @@ export class QueryViewComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private loaderService: LoaderService,
-    private webStorage: WebService,
-    private router: Router,
-    private viewportScroller: ViewportScroller
+    private webStorage: WebService
   ) {}
 
   ngOnInit(): void {
@@ -142,15 +139,5 @@ export class QueryViewComponent implements OnInit {
           this.filteredElementData = data.responsePayload.queryList;
         }
       });
-  }
-
-  onClickAnchor(elementId: string) {
-    if (this.router.url.includes('/home')) {
-      this.viewportScroller.scrollToAnchor(elementId);
-    } else {
-      this.router.navigate(['pages/home'], {
-        queryParams: { target: elementId },
-      });
-    }
   }
 }

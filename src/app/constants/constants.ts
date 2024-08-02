@@ -121,11 +121,11 @@ export const CONSTANTS = {
     slidesPerView: 1,
     spaceBetween: 0,
     direction: 'horizontal',
-    autoplay: {
-      delay: 2000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
+    // autoplay: {
+    //   delay: 2000,
+    //   disableOnInteraction: false,
+    //   pauseOnMouseEnter: true,
+    // },
     speed: 1000,
     loop: true,
     grabCursor: true,

@@ -1,6 +1,5 @@
-import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
 
 @Component({
@@ -11,11 +10,6 @@ import { CONSTANTS } from 'src/app/constants/constants';
   styleUrl: './footer.component.css',
 })
 export class FooterComponent {
-  constructor(
-    private router: Router,
-    private viewportScroller: ViewportScroller
-  ) {}
-
   phoneNumber = CONSTANTS.phoneNumber;
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;

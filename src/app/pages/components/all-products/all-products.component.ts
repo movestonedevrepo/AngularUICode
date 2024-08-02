@@ -25,6 +25,7 @@ export class AllProductsComponent implements OnInit {
   currentPage = 0;
   assetPath = `${environment.assestsBasePath}images/Product Page`;
   selectedImage: any;
+  bannerImages!: Array<any>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,6 +35,8 @@ export class AllProductsComponent implements OnInit {
 
   ngOnInit(): void {
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
+    this.bannerImages =
+      this.activatedRoute.snapshot.data['banners']?.responsePayload;
     this.contents = productDetails?.products;
     GlobalVariable.selectedPage = 'products';
   }
@@ -51,16 +54,6 @@ export class AllProductsComponent implements OnInit {
     if (this.currentPage < this.getNumberOfPages - 1) {
       this.currentPage = this.currentPage + 1;
       this.viewportScroller.scrollToAnchor('products');
-    }
-  }
-
-  onClickAnchor(elementId: string) {
-    if (this.router.url.includes('/home')) {
-      this.viewportScroller.scrollToAnchor(elementId);
-    } else {
-      this.router.navigate(['pages/home'], {
-        queryParams: { target: elementId },
-      });
     }
   }
 

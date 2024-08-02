@@ -1,7 +1,5 @@
-import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {
-  AfterViewInit,
   CUSTOM_ELEMENTS_SCHEMA,
   Component,
   OnInit,
@@ -27,7 +25,7 @@ import { v4 as uuidv4 } from 'uuid';
   encapsulation: ViewEncapsulation.None,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomePageComponent implements OnInit, AfterViewInit {
+export class HomePageComponent implements OnInit {
   contents: any = [];
   testimonials: any = [];
   emailNewsLetter: any = '';
@@ -49,10 +47,10 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   assetPath = `${environment.assestsBasePath}images/Homepage`;
   currentIndex = 0;
   aboutUsConstant = CONSTANTS.ABOUT_US;
+  bannerImages!: Array<any>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private viewportScroller: ViewportScroller,
     private router: Router,
     private http: HttpClient,
     private dialogService: MatDialogService
@@ -61,6 +59,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (window.screen.width <= 500) this.vehicleConfig.navigation = false;
     const productDetails = this.activatedRoute.snapshot.data['productDetails'];
+    this.bannerImages =
+      this.activatedRoute.snapshot.data['banners']?.responsePayload;
     this.contents = productDetails?.products;
     this.testimonials = productDetails?.testimonials;
     GlobalVariable.selectedPage = 'home';
@@ -83,17 +83,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
           });
         }
       });
-  }
-
-  ngAfterViewInit(): void {
-    this.activatedRoute.queryParams.subscribe((params: any) => {
-      console.log(params); // { order: "popular" }
-      if (params.target) {
-        setTimeout(() => {
-          this.viewportScroller.scrollToAnchor(params.target);
-        }, 1600);
-      }
-    });
   }
 
   sendQuery() {
@@ -134,15 +123,5 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   checkProduct(index: number) {
     this.router.navigate(['pages/product/' + index]);
-  }
-
-  onClickAnchor(elementId: string) {
-    if (this.router.url.includes('/home')) {
-      this.viewportScroller.scrollToAnchor(elementId);
-    } else {
-      this.router.navigate(['pages/home'], {
-        queryParams: { target: elementId },
-      });
-    }
   }
 }

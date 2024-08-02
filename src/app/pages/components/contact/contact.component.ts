@@ -1,8 +1,7 @@
-import { ViewportScroller } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
@@ -18,13 +17,6 @@ import { v4 as uuidv4 } from 'uuid';
   templateUrl: './contact.component.html',
 })
 export class ContactComponent implements OnInit {
-  constructor(
-    private http: HttpClient,
-    private dialogService: MatDialogService,
-    private viewportScroller: ViewportScroller,
-    private router: Router
-  ) {}
-
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
   salesDepartmentNum1 = CONSTANTS.salesDepartmentNumber1;
@@ -41,9 +33,18 @@ export class ContactComponent implements OnInit {
     queryMessage: new FormControl('', Validators.required),
   });
   assetPath = `${environment.assestsBasePath}images/Homepage`;
+  bannerImages!: Array<any>;
+
+  constructor(
+    private http: HttpClient,
+    private dialogService: MatDialogService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     GlobalVariable.selectedPage = 'contact us';
+    this.bannerImages =
+      this.activatedRoute.snapshot.data['banners']?.responsePayload;
   }
 
   sendQuery(): void {
@@ -71,16 +72,6 @@ export class ContactComponent implements OnInit {
         });
     } else {
       this.queryForm.markAllAsTouched();
-    }
-  }
-
-  onClickAnchor(elementId: string) {
-    if (this.router.url.includes('/home')) {
-      this.viewportScroller.scrollToAnchor(elementId);
-    } else {
-      this.router.navigate(['pages/home'], {
-        queryParams: { target: elementId },
-      });
     }
   }
 }

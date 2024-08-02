@@ -1,12 +1,6 @@
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
-import { CommonModule, ViewportScroller } from '@angular/common';
-import {
-  CUSTOM_ELEMENTS_SCHEMA,
-  Component,
-  Input,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
@@ -38,11 +32,9 @@ import { SwiperDirective } from '../../utilities/swiper.directive';
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  encapsulation: ViewEncapsulation.None,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HeaderComponent implements OnInit {
-  @Input() bannerImages!: Array<any>;
+  @Input() isBannerPresent = false;
 
   isMenuVisible: boolean = false;
   isVerticalScroll: boolean = false;
@@ -64,7 +56,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private webService: WebService,
-    private viewportScroller: ViewportScroller,
     private matDialogService: MatDialogService
   ) {}
 
@@ -117,17 +108,6 @@ export class HeaderComponent implements OnInit {
 
   get getUserName(): string {
     return this.webService.getUserName;
-  }
-
-  onClickAnchor(elementId: string, event: any) {
-    if (this.router.url.includes('/home')) {
-      this.viewportScroller.scrollToAnchor(elementId);
-    } else {
-      this.router.navigate(['pages/home'], {
-        queryParams: { target: elementId },
-      });
-    }
-    this.selectNavOptions(event);
   }
 
   logout() {

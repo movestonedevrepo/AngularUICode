@@ -13,6 +13,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
+import { BannerComponent } from './components/banner/banner.component';
 import { DiaplayImagesComponent } from './components/diaplay-images/diaplay-images.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -32,12 +33,14 @@ import { SwiperDirective } from './utilities/swiper.directive';
     LoaderComponent,
     DiaplayImagesComponent,
     MagnifyComponent,
+    BannerComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
     MagnifyComponent,
+    BannerComponent,
     CommonModule,
     SwiperDirective,
     FormsModule,
