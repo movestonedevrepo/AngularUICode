@@ -1448,9 +1448,17 @@ select {
   gap: 2rem;
 }
 
+.product-feature {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .product-feature .features-table {
   border: 1px solid var(--border-color);
   border-radius: 10px;
+  width: 49%;
 }
 
 .product-feature .features-table .feature-header,
@@ -1466,11 +1474,11 @@ select {
 }
 
 .product-feature .features-table .left-part {
-  width: 70%;
+  width: 55%;
 }
 
 .product-feature .features-table .right-part {
-  width: 30%;
+  width: 45%;
   border-left: 1px solid var(--border-color);
 }
 
@@ -3633,11 +3641,36 @@ select {
   .about-us .section-1 {
     margin: 2rem;
   }
+
+  .product-feature {
+    flex-direction: column;
+  }
+
+  .product-feature .features-table {
+    width: 100%;
+  }
 }
 
 @media (max-width: 650px) {
   .product-footer-banner {
-    display: none;
+    position: unset;
+  }
+
+  .product-footer-banner-text {
+    position: unset;
+    transform: unset;
+    margin-bottom: 2rem;
+  }
+
+  .product-footer-banner-text div {
+    color: var(--black);
+  }
+
+  .product-footer-banner-text .contact-button {
+    background-color: #f3f4f8 !important;
+    color: #0046ff !important;
+    border: 1px solid var(--white);
+    border-radius: 10px;
   }
 
   .vehicles {

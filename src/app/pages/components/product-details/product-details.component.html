@@ -35,32 +35,75 @@
     <h3>SPECIFICATION</h3>
 
     <div id="product-feature" class="product-feature">
-      <div class="features-table">
-        <div class="feature-header">
-          <div class="left-part feature-header-item">Item</div>
-          <div class="right-part feature-header-item">
-            {{ product.productName }}
+      <ng-container *ngIf="getScreenWidth >= 750; else showFullTable">
+        <div class="features-table">
+          <div class="feature-header">
+            <div class="left-part feature-header-item">Item</div>
+            <div class="right-part feature-header-item">
+              {{ product.productName }}
+            </div>
           </div>
+          @for(eachProductFeature of getProductFeatures.slice( 0,
+          getProductFeatures.length / 2 ); track eachProductFeature) {
+          @if(product[eachProductFeature]) {
+          <div class="feature-body">
+            <div class="left-part feature-header-item">
+              {{ productFeatures[eachProductFeature] }}
+            </div>
+            <div class="right-part feature-body-item">
+              {{ product[eachProductFeature] }}
+            </div>
+          </div>
+          } }
         </div>
-        @for(eachProductFeature of getProductFeatures; track eachProductFeature)
-        { @if(product[eachProductFeature]) {
-        <div class="feature-body">
-          <div class="left-part feature-header-item">
-            {{ productFeatures[eachProductFeature] }}
+        <div class="features-table">
+          <div class="feature-header">
+            <div class="left-part feature-header-item">Item</div>
+            <div class="right-part feature-header-item">
+              {{ product.productName }}
+            </div>
           </div>
-          <div class="right-part feature-body-item">
-            {{ product[eachProductFeature] }}
+          @for(eachProductFeature of getProductFeatures.slice(
+          getProductFeatures.length / 2 ); track eachProductFeature) {
+          @if(product[eachProductFeature]) {
+          <div class="feature-body">
+            <div class="left-part feature-header-item">
+              {{ productFeatures[eachProductFeature] }}
+            </div>
+            <div class="right-part feature-body-item">
+              {{ product[eachProductFeature] }}
+            </div>
           </div>
+          } }
         </div>
-        } }
-      </div>
+      </ng-container>
+      <ng-template #showFullTable>
+        <div class="features-table">
+          <div class="feature-header">
+            <div class="left-part feature-header-item">Item</div>
+            <div class="right-part feature-header-item">
+              {{ product.productName }}
+            </div>
+          </div>
+          @for(eachProductFeature of getProductFeatures; track
+          eachProductFeature) { @if(product[eachProductFeature]) {
+          <div class="feature-body">
+            <div class="left-part feature-header-item">
+              {{ productFeatures[eachProductFeature] }}
+            </div>
+            <div class="right-part feature-body-item">
+              {{ product[eachProductFeature] }}
+            </div>
+          </div>
+          } }
+        </div>
+      </ng-template>
     </div>
   </div>
   } @placeholder {
   <div>product View Section</div>
   }@defer (on viewport) {
   <div class="product-footer-banner">
-    <img src="{{ assetPath }}/product_page_bg2.jpg" alt="" />
     <div class="product-footer-banner-text">
       <div>Have any question</div>
       <div>about us?</div>
@@ -76,6 +119,8 @@
         <a href="#" class="contact-button"> Contact Us </a>
       </div>
     </div>
+
+    <img src="{{ assetPath }}/product_page_bg2.jpg" alt="" />
   </div>
   } @placeholder {
   <div>Product Banner Section</div>
