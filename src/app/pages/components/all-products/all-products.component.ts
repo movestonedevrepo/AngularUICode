@@ -2,10 +2,12 @@ import { ViewportScroller } from '@angular/common';
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   Component,
+  OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
 import { environment } from 'src/environments/environment';
@@ -19,13 +21,14 @@ import { ProductCardComponent } from './product-card/product-card.component';
   encapsulation: ViewEncapsulation.None,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AllProductsComponent implements OnInit {
+export class AllProductsComponent implements OnInit, OnDestroy {
   contents!: any[];
   pageLength: number = 9;
   currentPage = 0;
   assetPath = `${environment.assestsBasePath}images/Product Page`;
   selectedImage: any;
   bannerImages!: Array<any>;
+  paramSubscriber!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,11 +37,17 @@ export class AllProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const productDetails = this.activatedRoute.snapshot.data['productDetails'];
-    this.bannerImages =
-      this.activatedRoute.snapshot.data['banners']?.responsePayload;
-    this.contents = productDetails?.products;
     GlobalVariable.selectedPage = 'products';
+    this.paramSubscriber = this.activatedRoute.paramMap.subscribe(
+      (queryParams: ParamMap) => {
+        // do something with the query params
+        const productDetails =
+          this.activatedRoute.snapshot.data['productDetails'];
+        this.contents = productDetails?.products;
+        this.bannerImages =
+          this.activatedRoute.snapshot.data['banners']?.responsePayload;
+      }
+    );
   }
 
   checkProduct(productId: any) {
@@ -73,5 +82,9 @@ export class AllProductsComponent implements OnInit {
     } else {
       return this.contents;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.paramSubscriber.unsubscribe();
   }
 }

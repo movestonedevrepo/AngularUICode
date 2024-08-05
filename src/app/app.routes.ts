@@ -13,9 +13,6 @@ export const APP_ROUTES_CONFIG: Routes = [
   },
   {
     path: '**',
-    loadComponent: () =>
-      import('./pages/components/home-page/home-page.component').then(
-        (m) => m.HomePageComponent
-      ),
+    redirectTo: 'pages',
   },
 ];

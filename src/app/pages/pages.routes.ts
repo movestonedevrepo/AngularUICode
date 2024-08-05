@@ -82,4 +82,8 @@ export const PAGES_ROUTES: Routes = [
       banners: getConfigResolver,
     },
   },
+  {
+    path: '**',
+    redirectTo: 'home',
+  },
 ];

@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { BannerComponent } from './components/banner/banner.component';
+import { ContactFooterComponent } from './components/contact-footer/contact-footer.component';
 import { DiaplayImagesComponent } from './components/diaplay-images/diaplay-images.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -34,6 +35,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     DiaplayImagesComponent,
     MagnifyComponent,
     BannerComponent,
+    ContactFooterComponent,
   ],
   exports: [
     HeaderComponent,
@@ -41,6 +43,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     LoaderComponent,
     MagnifyComponent,
     BannerComponent,
+    ContactFooterComponent,
     CommonModule,
     SwiperDirective,
     FormsModule,

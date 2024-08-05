@@ -34,7 +34,6 @@ export class ProductDetailsComponent implements OnInit {
   });
   selectedColor!: string;
   productFeatures: any = CONSTANTS.productFeatures;
-  assetPath = `${environment.assestsBasePath}images/Product Page`;
 
   constructor(
     private router: Router,
