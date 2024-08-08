@@ -36,35 +36,29 @@ export const CONSTANTS = {
       clickable: true,
       dynamicBullets: false,
     },
-    centeredSlidesBounds: true,
-    centeredSlides: false,
     initialSlide: 0,
-    slidesPerView: 2,
-    spaceBetween: 20,
+    speed: 1000,
+    spaceBetween: 50,
+    slidesPerView: 3,
+    slidesPerGroup: 1,
     direction: 'horizontal',
     loop: false,
     grabCursor: true,
     breakpoints: {
       0: {
         slidesPerView: 1,
-        navigation: {
-          nextEl: '.product-button-next',
-          prevEl: '.product-button-prev',
-        },
+        slidesPerGroup: 1,
+        spaceBetween: 24,
       },
       768: {
         slidesPerView: 2,
-        navigation: {
-          nextEl: '.product-button-next',
-          prevEl: '.product-button-prev',
-        },
+        spaceBetween: 24,
+        slidesPerGroup: 1,
       },
       991: {
         slidesPerView: 3,
-        navigation: {
-          nextEl: '.product-button-next',
-          prevEl: '.product-button-prev',
-        },
+        spaceBetween: 32,
+        slidesPerGroup: 1,
       },
     },
   } as SwiperOptions,
@@ -121,11 +115,11 @@ export const CONSTANTS = {
     slidesPerView: 1,
     spaceBetween: 0,
     direction: 'horizontal',
-    // autoplay: {
-    //   delay: 2000,
-    //   disableOnInteraction: false,
-    //   pauseOnMouseEnter: true,
-    // },
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
     speed: 1000,
     loop: true,
     grabCursor: true,
@@ -139,6 +133,22 @@ export const CONSTANTS = {
       991: {
         slidesPerView: 1,
       },
+    },
+  } as SwiperOptions,
+
+  testimonialConfig: {
+    modules: [Navigation],
+    autoHeight: false,
+    freeMode: false,
+    shortSwipes: false,
+    pagination: false,
+    centeredSlides: false,
+    slidesPerView: 1,
+    direction: 'horizontal',
+    grabCursor: true,
+    navigation: {
+      nextEl: '#testimonial-right-button',
+      prevEl: '#testimonial-left-button',
     },
   } as SwiperOptions,
 
@@ -181,7 +191,7 @@ export const CONSTANTS = {
   ABOUT_US: [
     '“Move Stone” is a well known Brand of E-Rickshaw in India.',
     'The Company is manufacturing E-Rickshaw since Aug’2020.',
-    'We are selling our products in West Bengal, Bihar, Assam, Tripura, Jharkhand, Uttar Pradesh, Chhattisgarh, Madhya Pradesh & Orissa, a part of mentioned states we are planning to supply shortly in Maharashtra & Rajasthan.',
+    'We are selling our products in West Bengal, Bihar, Assam, Tripura, Jharkhand, Uttar Pradesh, Chhattisgarh, Madhya Pradesh & Orissa, apart of mentioned states we are planning to supply shortly in Maharashtra & Rajasthan.',
     'We are an iCAT (International Centre for Automation Technology) approved E-rickshaw manufacturing company incorporated with the intention to address the robust growth potential of E-vehicle market in India.',
     'We are manufacturing E-Rickshaw and planning enter in Electric Two-wheeler segment in coming days.',
     'Our manufacturing unit is situated at Utsav Park, Bhagbatipur, Chatur Bhujkathi, Sankrail, Howrah- 711313.',

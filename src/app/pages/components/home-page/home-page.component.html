@@ -41,7 +41,11 @@
 } @placeholder {
 <div id="abount-us-section">Why We</div>
 } @defer (on viewport) {
-<div *ngIf="contents && contents.length > 0" class="vehicles" id="vehicles">
+<div
+  *ngIf="productDetails?.products?.length > 0"
+  class="vehicles"
+  id="vehicles"
+>
   <div class="featured-item">
     <div class="featured-item-heading">
       <h2 class="heading text-white text-uppercase">Our Products</h2>
@@ -50,12 +54,14 @@
         <button
           type="button"
           title="product-button-prev"
+          id="product-button-prev"
           class="hexagon product-button-prev"
         >
           <img src="{{ assetPath }}/arrow-yellow.png" alt="" />
         </button>
         <button
           type="button"
+          id="product-button-next"
           title="product-button-next"
           class="hexagon product-button-next"
         >
@@ -65,13 +71,12 @@
     </div>
 
     <swiper-container
-      #featureItems
       fmSwiper
       [config]="vehicleConfig"
       init="false"
       class="vehicles-slider"
     >
-      @for (eachProduct of contents; track $index) {
+      @for (eachProduct of productDetails.products; track $index) {
       <swiper-slide class="feature-box">
         <div class="box">
           <div id="vehicles-content-{{ $index }}" class="content">
@@ -266,38 +271,39 @@
 <section
   id="reviews"
   class="testimonial"
-  *ngIf="testimonials && testimonials.length > 0"
+  *ngIf="productDetails?.testimonials?.length > 0"
 >
   <div class="testimonial-content">
     <div class="testimonial-text">
       <h4>Our Testimonial</h4>
       <div class="underscore"></div>
-      <h2>What Client’s Says</h2>
-      <p>
-        The other hand we denounce with righteous indignation and dislike men
-        who are so beguiled and demoralized by the charms of pleasure moment.
-        Dislike men who are so beguiled and demoralized by the charms of
-        pleasure.
-      </p>
-      <div class="client-info">
-        <img
-          class="client-image"
-          src="{{ assetPath }}/person.png"
-          alt="Teodoro D. Williams"
-        />
-        <div>
-          <h3>Teodoro D. Williams</h3>
-          <p>Web Developer</p>
-        </div>
+      <div class="d-flex align-items-center justify-content-between">
+        <h2>What Client’s Says</h2>
         <div class="navigation">
-          <span>
+          <span id="testimonial-left-button" title="testimonial-left-button">
             <img src="{{ assetPath }}/arrow-testimonials-1.jpg" alt="" />
           </span>
-          <span>
+          <span id="testimonial-right-button" title="testimonial-right-button">
             <img src="{{ assetPath }}/arrow-testimonials-2.jpg" alt="" />
           </span>
         </div>
       </div>
+
+      <swiper-container fmSwiper [config]="testimonialConfig" init="false">
+        @for (eachReview of productDetails.testimonials; track eachReview) {
+        <swiper-slide class="swiper">
+          <p>{{ eachReview.testimonial }}</p>
+          <div class="client-info">
+            <img
+              class="client-image"
+              [src]="eachReview.imageURL"
+              [alt]="eachReview.testimonialAuthor"
+            />
+            <h3>{{ eachReview.testimonialAuthor }}</h3>
+          </div>
+        </swiper-slide>
+        }
+      </swiper-container>
     </div>
     <div class="testimonial-image">
       <img src="{{ assetPath }}/testimonials-pic.jpg" alt="Client Image" />

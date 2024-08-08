@@ -13,6 +13,7 @@ import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
 import { environment } from 'src/environments/environment';
+import { Navigation, Pagination } from 'swiper/modules';
 import { SwiperOptions } from 'swiper/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -26,12 +27,56 @@ import { v4 as uuidv4 } from 'uuid';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageComponent implements OnInit {
-  contents: any = [];
-  testimonials: any = [];
   emailNewsLetter: any = '';
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
-  vehicleConfig: SwiperOptions = CONSTANTS.vehicleConfig;
+  // vehicleConfig: SwiperOptions = CONSTANTS.vehicleConfig;
+  vehicleConfig: SwiperOptions = {
+    modules: [Navigation, Pagination],
+    autoHeight: false,
+    pagination: {
+      clickable: true,
+      dynamicBullets: false,
+    },
+    speed: 1000,
+    spaceBetween: 24,
+    slidesPerView: 3,
+    slidesPerGroup: 1,
+    direction: 'horizontal',
+    loop: false,
+    grabCursor: true,
+    navigation: {
+      nextEl: '#product-button-next',
+      prevEl: '#product-button-prev',
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+      },
+      768: {
+        slidesPerView: 2,
+        slidesPerGroup: 1,
+      },
+      991: {
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+      },
+    },
+  };
+  // testimonialConfig: SwiperOptions = CONSTANTS.testimonialConfig;
+  testimonialConfig: SwiperOptions = {
+    modules: [Navigation],
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    speed: 1000,
+    direction: 'horizontal',
+    grabCursor: true,
+    navigation: {
+      nextEl: '#testimonial-right-button',
+      prevEl: '#testimonial-left-button',
+    },
+  };
   salesDepartmentNum1 = CONSTANTS.salesDepartmentNumber1;
   salesDepartmentNum2 = CONSTANTS.salesDepartmentNumber2;
   officeLocation = CONSTANTS.officeLocation;
@@ -48,6 +93,7 @@ export class HomePageComponent implements OnInit {
   currentIndex = 0;
   aboutUsConstant = CONSTANTS.ABOUT_US;
   bannerImages!: Array<any>;
+  productDetails: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -58,11 +104,9 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     if (window.screen.width <= 500) this.vehicleConfig.navigation = false;
-    const productDetails = this.activatedRoute.snapshot.data['productDetails'];
+    this.productDetails = this.activatedRoute.snapshot.data['productDetails'];
     this.bannerImages =
       this.activatedRoute.snapshot.data['banners']?.responsePayload;
-    this.contents = productDetails?.products;
-    this.testimonials = productDetails?.testimonials;
     GlobalVariable.selectedPage = 'home';
   }
 
@@ -124,4 +168,8 @@ export class HomePageComponent implements OnInit {
   checkProduct(index: number) {
     this.router.navigate(['pages/product/' + index]);
   }
+
+  // onNext() {
+  //   this.customSwiper.swiperRef.slideNext();
+  // }
 }

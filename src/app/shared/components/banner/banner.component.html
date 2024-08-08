@@ -1,6 +1,7 @@
 @if(bannerImages && bannerImages.length > 0) {
 <div class="header-banner">
   <div class="banner">
+    @if (bannerImages.length > 1) {
     <div class="hero-content">
       <div class="carousel">
         <button
@@ -21,20 +22,27 @@
         </button>
       </div>
     </div>
-    <swiper-container
-      #featureItems
-      fmSwiper
-      [config]="bannerConfig"
-      init="false"
-    >
+
+    <swiper-container fmSwiper [config]="bannerConfig" init="false">
       @for (eachContent of bannerImages; track eachContent) {
       <swiper-slide>
-        <img [src]="eachContent.attribute1" alt="image" class="banner-image" />
+        <img
+          [src]="eachContent.attribute1"
+          alt="image"
+          class="banner-image"
+          loading="lazy"
+        />
       </swiper-slide>
       }
     </swiper-container>
+    } @else {
+    <img
+      [src]="bannerImages[0].attribute1"
+      alt="image"
+      class="banner-image"
+      loading="lazy"
+    />
+    }
   </div>
-
-  <!-- <img [src]="pageBanner" alt="image" class="banner-image" loading="lazy" /> -->
 </div>
 }

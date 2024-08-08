@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { delay } from 'rxjs';
-import { register } from 'swiper/element/bundle';
 import { LoaderService } from './shared/services/loader.service';
 import { SharedModule } from './shared/shared.module';
-
-register();
-
 @Component({
   selector: 'app-root',
   standalone: true,

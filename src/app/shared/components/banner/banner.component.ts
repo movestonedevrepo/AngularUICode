@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -12,7 +13,7 @@ import { SwiperDirective } from '../../utilities/swiper.directive';
 @Component({
   selector: 'app-banner',
   standalone: true,
-  imports: [SwiperDirective],
+  imports: [SwiperDirective, CommonModule],
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.css',
   encapsulation: ViewEncapsulation.None,

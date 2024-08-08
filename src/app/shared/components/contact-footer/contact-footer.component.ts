@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CONSTANTS } from 'src/app/constants/constants';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,4 +11,5 @@ import { environment } from 'src/environments/environment';
 })
 export class ContactFooterComponent {
   assetPath = `${environment.assestsBasePath}images/Product Page`;
+  phoneNumber = CONSTANTS.salesDepartmentNumber2;
 }
