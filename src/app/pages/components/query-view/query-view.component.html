@@ -1,33 +1,35 @@
 @defer (on viewport) {
-<section id="query-list-view" class="query-list-view">
-
-  <div class="back-arrow">
-    <a routerLink="/" aria-label="Back to home">
-      <mat-icon>arrow_back</mat-icon>
-    </a>
-  </div>
-
-  <div class="download-btn">
-    <button (click)="downloadExcel()" class="btn" type="button">
-      Download Excel
-    </button>
-  </div>
-
-  <div class="mat-elevation-z8">
-    <mat-tab-group (selectedTabChange)="changeTableData($event)">
-      <mat-tab
-        [label]="eachTab.name"
-        [id]="eachTab.month"
-        *ngFor="let eachTab of tabs"
-      >
-        <app-query-list
-          [selectedTab]="selectedTab"
-          [ELEMENT_DATA]="filteredElementData"
-        ></app-query-list>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
-</section>
+  <section id="query-list-view" class="query-list-view">
+    <div class="buttons-container">
+      <div class="back-arrow">
+        <a routerLink="/" aria-label="Back to home" class="btn">
+          <mat-icon>arrow_back</mat-icon>
+        </a>
+      </div>
+  
+      <div class="download-btn">
+        <button (click)="downloadExcel()" class="btn" type="button">
+          Download Excel
+        </button>
+      </div>
+    </div>
+  
+    <div class="mat-elevation-z8">
+      <mat-tab-group (selectedTabChange)="changeTableData($event)">
+        <mat-tab
+          [label]="eachTab.name"
+          [id]="eachTab.month"
+          *ngFor="let eachTab of tabs"
+        >
+          <app-query-list
+            [selectedTab]="selectedTab"
+            [ELEMENT_DATA]="filteredElementData"
+          ></app-query-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </section>
+  
 } @placeholder {
 <div>product View Section</div>
 }

@@ -25,6 +25,36 @@
   --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.back-arrow .btn,
+.download-btn .btn {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px; /* Adjust padding for uniformity */
+  background-color: #007bff; /* Background color for the buttons */
+  color: white; /* Text color */
+  text-decoration: none; /* Removes underline from the link */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-arrow .btn mat-icon {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.back-arrow .btn:hover,
+.download-btn .btn:hover {
+  background-color: #0056b3; /* Darken on hover */
+}
+
+
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
