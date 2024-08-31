@@ -55,7 +55,7 @@ export class ContactComponent implements OnInit {
         queryPhone: '' + this.queryForm.value.number,
         queryEmail: this.queryForm.value.email,
         queryMessage:
-          `Message from Mr/Ms ${name}:  ` + this.queryForm.value.queryMessage,
+          `${name}: ` + this.queryForm.value.queryMessage,
       };
       this.http
         .post(`${environment.baseUrl}/createQuery`, payload)

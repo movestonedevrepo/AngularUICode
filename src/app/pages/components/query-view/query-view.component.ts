@@ -74,16 +74,15 @@ export class QueryViewComponent implements OnInit {
       h1: 'v1',
       authorization: `Bearer ${this.webStorage.getAuthentication}`,
     });
-    const url = `${environment.baseUrl}/getEmailsForNewsletter`;
-    this.http.get(url, { headers }).subscribe((data: any) => {
+    const url = `${environment.baseUrl}/getQuery`;
+    this.http.post(url, {}, { headers }).subscribe((data: any) => {
       if (data && !data?.hasError) {
-        this.emailList = data.responsePayload;
+        this.queryList = data.responsePayload.queryList; // Use queryList from response
         this.loaderService.setLoading(true, url);
-
+  
         setTimeout(() => {
-          this.download(data.responsePayload);
+          this.download(this.queryList); // Pass queryList to download method
           this.loaderService.setLoading(false, url);
-          this.emailList = [];
         }, 1500);
 
         /* pass here the table id */
@@ -94,25 +93,39 @@ export class QueryViewComponent implements OnInit {
   download(jsonData: any): void {
     let data = [
       {
-        sheet: 'Emails',
+        sheet: 'Queries', // Update sheet name as needed
         columns: [
-          { label: 'Email', value: 'emailID' }, // Top level data
+          { label: 'Email', value: 'queryEmail' },
+          { label: 'Phone', value: 'queryPhone' },
+          { label: 'Message', value: 'queryMessage' }
         ],
         content: jsonData.map((eachData: any) => {
-          return { emailID: eachData };
+          return {
+            queryEmail: eachData.queryEmail,
+            queryPhone: eachData.queryPhone,
+            queryMessage: eachData.queryMessage
+          };
         }),
       },
     ];
 
     let settings = {
-      fileName: 'all-emails', // Name of the resulting spreadsheet
+      fileName: `all-contacts-${this.getCurrentDate()}`, // Name of the resulting spreadsheet
       extraLength: 3, // A bigger number means that columns will be wider
       writeMode: 'writeFile', // The available parameters are 'WriteFile' and 'write'. This setting is optional. Useful in such cases https://docs.sheetjs.com/docs/solutions/output#example-remote-file
       writeOptions: {}, // Style options from https://docs.sheetjs.com/docs/api/write-options
-      RTL: true, // Display the columns from right-to-left (the default value is false)
+      RTL: false, // Display the columns from right-to-left (the default value is false)
     };
 
     xlsx(data, settings);
+  }
+
+  getCurrentDate(): string {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   changeTableData(event: MatTabChangeEvent) {

@@ -1,8 +1,15 @@
 @defer (on viewport) {
 <section id="query-list-view" class="query-list-view">
+
+  <div class="back-arrow">
+    <a routerLink="/" aria-label="Back to home">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+  </div>
+
   <div class="download-btn">
     <button (click)="downloadExcel()" class="btn" type="button">
-      Download List
+      Download Excel
     </button>
   </div>
 
