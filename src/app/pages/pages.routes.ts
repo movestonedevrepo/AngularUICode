@@ -12,6 +12,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { QueryViewComponent } from './components/query-view/query-view.component';
 import { ReviewComponent } from './components/review/review.component';
 import { ServicesComponent } from './components/services/services.component';
+import { ControlPanelComponent } from './components/query-view/control-panel/control-panel.component';
 
 export const PAGES_ROUTES: Routes = [
   {
@@ -83,7 +84,15 @@ export const PAGES_ROUTES: Routes = [
     },
   },
   {
+    path: 'control-panel',
+    component: ControlPanelComponent,
+    resolve: {
+      productDetails: homeDetailsResolver, // Assuming getConfigResolver is used to fetch the product list
+    },
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
+  
 ];

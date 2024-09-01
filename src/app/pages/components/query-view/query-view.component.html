@@ -6,6 +6,12 @@
           <mat-icon>arrow_back</mat-icon>
         </a>
       </div>
+
+      <div class="control-panel-btn">
+        <button (click)="navigateToControlPanel()" class="btn" type="button">
+          Click Here to Go to Control Panel
+        </button>
+      </div>
   
       <div class="download-btn">
         <button (click)="downloadExcel()" class="btn" type="button">
@@ -44,8 +50,6 @@
     </tr>
   </table>
 </ng-container>
-
-<app-contact-footer></app-contact-footer>
 
 <div id="query-footer" class="footer">
   <nav class="footer-section">

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,  Router } from '@angular/router';
 import xlsx from 'json-as-xlsx';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { WebService } from 'src/app/shared/services/web.service';
@@ -58,6 +58,7 @@ export class QueryViewComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
+    private router: Router,
     private loaderService: LoaderService,
     private webStorage: WebService
   ) {}
@@ -126,6 +127,10 @@ export class QueryViewComponent implements OnInit {
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  navigateToControlPanel(): void {
+    this.router.navigate(['/pages/control-panel']);
   }
 
   changeTableData(event: MatTabChangeEvent) {
