@@ -48,7 +48,7 @@ export class AllProductsComponent implements OnInit, OnDestroy {
   
         // Filter products based on the route parameter
         this.contents = productDetails?.products.filter(
-          (product: any) => product.category === category
+          (product: any) => product.category === category  && product.visible === 'Y'
         );
   
         this.bannerImages =
