@@ -64,7 +64,6 @@ export class HomePageComponent implements OnInit {
       },
     },
   };
-  // testimonialConfig: SwiperOptions = CONSTANTS.testimonialConfig;
   testimonialConfig: SwiperOptions = {
     modules: [Navigation],
     slidesPerView: 1,
@@ -72,10 +71,6 @@ export class HomePageComponent implements OnInit {
     speed: 1000,
     direction: 'horizontal',
     grabCursor: true,
-    navigation: {
-      nextEl: '#testimonial-right-button',
-      prevEl: '#testimonial-left-button',
-    },
   };
   salesDepartmentNum1 = CONSTANTS.salesDepartmentNumber1;
   salesDepartmentNum2 = CONSTANTS.salesDepartmentNumber2;
@@ -168,8 +163,4 @@ export class HomePageComponent implements OnInit {
   checkProduct(index: number) {
     this.router.navigate(['pages/product/' + index]);
   }
-
-  // onNext() {
-  //   this.customSwiper.swiperRef.slideNext();
-  // }
 }
