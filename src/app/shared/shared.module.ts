@@ -21,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MagnifyComponent } from './components/magnify/magnify.component';
+import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { SwiperDirective } from './utilities/swiper.directive';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     MagnifyComponent,
     BannerComponent,
     ContactFooterComponent,
+    UploadFilesComponent,
   ],
   exports: [
     HeaderComponent,
@@ -44,6 +46,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     LoaderComponent,
     MagnifyComponent,
     BannerComponent,
+    UploadFilesComponent,
     ContactFooterComponent,
     CommonModule,
     SwiperDirective,

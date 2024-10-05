@@ -2915,12 +2915,30 @@ select {
     }
   }
 
-  .product-color {
-    width: 10rem;
-    height: 10rem;
-    border: 1px solid var(--black);
-    border-radius: 5px;
-    cursor: pointer;
+  .color-section {
+    display: grid;
+    justify-items: center;
+
+    .product-color {
+      width: 15rem;
+      height: 15rem;
+      border: 1px solid var(--black);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-color {
+      border: 1px dashed var(--black);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > span {
+        font-size: 5rem;
+        font-weight: 200;
+        text-decoration: dotted;
+      }
+    }
   }
 
   .completed-section {

@@ -27,4 +27,11 @@ export class ProductService {
       productToRemove
     );
   }
+
+  searchImageByColor(customProduct: any): Observable<any> {
+    return this.http.post(
+      `${environment.baseUrl}/getImageByColor`,
+      customProduct
+    );
+  }
 }

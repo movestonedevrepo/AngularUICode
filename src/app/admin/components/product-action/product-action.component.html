@@ -1,6 +1,5 @@
 <app-header></app-header>
 
-@defer (on viewport) {
 @switch (stepperOrientation | async) {
 @case ('horizontal') {
 <div>Make your screen smaller to see a vertical stepper</div>
@@ -10,6 +9,7 @@
 }
 }
 
+@defer (on viewport) {
 <section id="admin-product-action" class="admin-product-action">
   <mat-stepper linear #stepper [orientation]="(stepperOrientation | async)!">
 
@@ -71,12 +71,17 @@
 
     <!-- ################# Select product color and upload images ############################ -->
     <mat-step completed="false">
-      <form [formGroup]="productInformationForm">
+      <form [formGroup]="productInformationForm" class="color-section">
         <ng-template matStepLabel>Select product color and upload images</ng-template>
-        <div class="d-flex justify-content-center align-items-center gap-5 m-5">
-          @for(eachColor of product.colorOptions.split(','); track eachColor) {
-          <div class="product-color" [ngStyle]="{'background-color': eachColor}"></div>
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-5 m-5 w-75">
+          @for(eachColor of getColorOptions; track eachColor) {
+          <div class="product-color" [ngStyle]="{'background-color': eachColor}" (click)="onColorSelection(eachColor)"></div>
           }
+          <div class="example-palette-button" ngx-colors-trigger (close)="addNewColor($event)">
+            <div class="product-color add-color">
+              <span>+</span>
+            </div>
+          </div>
         </div>
 
         <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
@@ -88,7 +93,7 @@
     </mat-step>
 
     <!-- ################# Completed ############################ -->
-    <mat-step>
+    <mat-step completed="false">
       <ng-template matStepLabel>Done</ng-template>
       <div class="completed-section">
         <img src="{{assetPath}}/completed.svg" alt="">
