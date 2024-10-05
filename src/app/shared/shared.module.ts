@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
@@ -56,6 +57,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
+    MatStepperModule,
     RouterModule,
     HttpClientModule,
     MatCardModule,

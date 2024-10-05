@@ -100,7 +100,7 @@ export class HeaderComponent implements OnInit {
         .afterClosed()
         .subscribe((data) => {
           if (data && !data.hasError) {
-            this.router.navigate(['pages/queries']);
+            this.router.navigate(['admin/queries']);
           }
         });
     }
@@ -116,7 +116,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToQuery(): void {
-    this.router.navigate(['pages/queries']);
+    this.router.navigate(['admin/queries']);
   }
 
   openProductMenu(): void {

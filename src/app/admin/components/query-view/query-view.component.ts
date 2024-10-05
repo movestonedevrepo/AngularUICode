@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { ActivatedRoute,  Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import xlsx from 'json-as-xlsx';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { WebService } from 'src/app/shared/services/web.service';
@@ -80,7 +80,7 @@ export class QueryViewComponent implements OnInit {
       if (data && !data?.hasError) {
         this.queryList = data.responsePayload.queryList; // Use queryList from response
         this.loaderService.setLoading(true, url);
-  
+
         setTimeout(() => {
           this.download(this.queryList); // Pass queryList to download method
           this.loaderService.setLoading(false, url);
@@ -98,13 +98,13 @@ export class QueryViewComponent implements OnInit {
         columns: [
           { label: 'Email', value: 'queryEmail' },
           { label: 'Phone', value: 'queryPhone' },
-          { label: 'Message', value: 'queryMessage' }
+          { label: 'Message', value: 'queryMessage' },
         ],
         content: jsonData.map((eachData: any) => {
           return {
             queryEmail: eachData.queryEmail,
             queryPhone: eachData.queryPhone,
-            queryMessage: eachData.queryMessage
+            queryMessage: eachData.queryMessage,
           };
         }),
       },
@@ -130,18 +130,15 @@ export class QueryViewComponent implements OnInit {
   }
 
   navigateToControlPanel(): void {
-    this.router.navigate(['/pages/control-panel']);
+    this.router.navigate(['admin/admin-dashboard']);
   }
 
   changeTableData(event: MatTabChangeEvent) {
     this.tabs.forEach((eachTab: any) => (eachTab.isSelected = false));
     this.tabs[event.index].isSelected = true;
     this.selectedTab = this.tabs[event.index];
-    // const http= inject(HttpClient);
+
     this.filteredElementData = [];
-    // const headers = new HttpHeaders();
-    // headers.set('Content-Type', 'application/json; charset=utf-8').set('authorization', `Bearer ${this.webStorage.getAuthentication()}`);
-    // headers.set
     const headers = new HttpHeaders({
       h1: 'v1',
       authorization: `Bearer ${this.webStorage.getAuthentication}`,

@@ -1,0 +1,59 @@
+<app-header></app-header>
+
+@defer (on viewport) {
+<section id="admin-products" class="products admin-products">
+  @if (contents && contents.length > 0) {
+  <div class="products-part">
+    @for (content of getContents; track content) {
+    <div class="product-card">
+      <div class="image" (click)="editProductDetails(content?.productID)">
+        <img [src]="getImagesByColor(content)" alt="image" class="product-image" loading="lazy" />
+
+        <div class="icon">
+          <img src="{{ assetPath }}/edit-icon.svg" alt="" />
+        </div>
+      </div>
+      <div class="product-info">
+        <h2>{{ content?.productName }}</h2>
+        <p>
+          @for(eachFeature of content?.features?.split(','); track $index) {
+          {{ eachFeature }}
+          @if ($index
+          < content?.features?.split(',').length - 1) { <img src="{{ assetPath }}/arrow.jpg" alt="" />
+          }
+          }
+        </p>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex gap-3">
+            <button type="button" class="details-button" (click)="removeProduct(content?.productID)">
+              Remove
+            </button>
+            <button type="button" class="details-button" (click)="toggleVisibility(content)">
+              {{content.visible === 'Y' ? 'Hide' : 'Show'}}
+            </button>
+          </div>
+          <div class="color-options">
+            @for(eachColor of content.colorOptions.split(','); track eachColor) {
+            <span class="color-dot" [ngStyle]="{'background-color': eachColor}" (click)="changeSelectedColor(content, eachColor)"></span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <app-magnify></app-magnify>
+
+  <div class="pagination">
+    <div *ngFor="let item of [].constructor(getNumberOfPages); let i = index">
+      <a (click)="setIndex(i)" [ngClass]="{ active: currentPage === i }">
+        {{ i + 1 }}
+      </a>
+    </div>
+    <div class="forward" (click)="nextPage()">>></div>
+  </div>
+  }
+</section>
+} @placeholder {
+<div>Featured Section</div>
+}

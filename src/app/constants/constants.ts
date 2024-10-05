@@ -18,6 +18,7 @@ export const CONSTANTS = {
   salesDepartmentNumber2: '9831317367',
   facebookID: 'https://facebook.com/Movestoneservicespvtltd',
   instagramID: 'https://instagram.com/movestoneevehicle',
+  secretKey: 'PMP33',
 
   officeLocation: {
     headOffice:

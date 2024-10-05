@@ -5,6 +5,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
+  MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,12 +29,20 @@ export class DialogBoxComponent implements OnInit {
   message = 'Oops!! Something Went Wrong';
   type = 'error';
   buttons = ['Ok'];
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private dialogRef: MatDialogRef<DialogBoxComponent>
+  ) {}
 
   ngOnInit(): void {
     this.type = this.data.type ?? this.type;
     this.title = this.data.title ?? this.title;
     this.message = this.data.message ?? this.message;
     this.buttons = this.data.buttons ?? this.buttons;
+  }
+
+  closeDialog(button: string) {
+    this.dialogRef.close(button);
   }
 }

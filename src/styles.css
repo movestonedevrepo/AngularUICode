@@ -27,7 +27,7 @@
 
 .buttons-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 10px; /* Adjust margin as needed */
 }
@@ -53,7 +53,6 @@
 .download-btn .btn:hover {
   background-color: #0056b3; /* Darken on hover */
 }
-
 
 * {
   font-family: "Poppins", sans-serif;
@@ -1524,7 +1523,8 @@ select {
 }
 
 .query-list-view {
-  padding-top: 5rem;
+  padding-top: 10rem;
+  min-height: 85vh;
   overflow-x: hidden;
 }
 
@@ -1928,7 +1928,6 @@ select {
 .product-info {
   padding: 15px;
   display: flex;
-  height: 40%;
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
@@ -2868,6 +2867,18 @@ select {
 
 .review-testimonials {
   padding-bottom: 61px;
+}
+
+.admin-products {
+  padding-top: 12rem;
+}
+
+.admin-product-action {
+  padding-top: 12rem;
+
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
 }
 
 @media (max-width: 1260px) {

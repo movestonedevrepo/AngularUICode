@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { getConfigResolver } from '../resolvers/get-config.resolver';
-import { getQueryResolver } from '../resolvers/get-query.resolver';
 import { homeDetailsResolver } from '../resolvers/home-details.resolver';
 import { productSpecResolver } from '../resolvers/product-spec.resolver';
 import { AboutUsComponent } from './components/about-us/about-us.component';
@@ -9,10 +8,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { QueryViewComponent } from './components/query-view/query-view.component';
 import { ReviewComponent } from './components/review/review.component';
 import { ServicesComponent } from './components/services/services.component';
-import { ControlPanelComponent } from './components/query-view/control-panel/control-panel.component';
 
 export const PAGES_ROUTES: Routes = [
   {
@@ -59,13 +56,6 @@ export const PAGES_ROUTES: Routes = [
     },
   },
   {
-    path: 'queries',
-    component: QueryViewComponent,
-    resolve: {
-      queryData: getQueryResolver,
-    },
-  },
-  {
     path: 'product/:id',
     component: ProductDetailsComponent,
     resolve: {
@@ -84,15 +74,7 @@ export const PAGES_ROUTES: Routes = [
     },
   },
   {
-    path: 'control-panel',
-    component: ControlPanelComponent,
-    resolve: {
-      productDetails: homeDetailsResolver, // Assuming getConfigResolver is used to fetch the product list
-    },
-  },
-  {
     path: '**',
     redirectTo: 'home',
   },
-  
 ];
