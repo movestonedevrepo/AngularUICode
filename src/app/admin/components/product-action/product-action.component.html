@@ -1,41 +1,103 @@
 <app-header></app-header>
 
 @defer (on viewport) {
+@switch (stepperOrientation | async) {
+@case ('horizontal') {
+<div>Make your screen smaller to see a vertical stepper</div>
+}
+@case ('vertical') {
+<div>Make your screen larger to see a horizontal stepper</div>
+}
+}
+
 <section id="admin-product-action" class="admin-product-action">
-  <mat-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperNext>Next</button>
+  <mat-stepper linear #stepper [orientation]="(stepperOrientation | async)!">
+
+    <!-- ################# Fill out basic product details ############################ -->
+    <mat-step [stepControl]="basicProductDetailsForm" errorMessage="Name is required." completed="false">
+      <form [formGroup]="basicProductDetailsForm">
+        <ng-template matStepLabel>Fill out basic product details</ng-template>
+        <div class="admin-form">
+          <div class="form-group">
+            <label for="productID">Product ID *</label>
+            <mat-form-field appearance="outline" class="mat-input">
+              <input matInput formControlName="productID" type="text" name="productID" id="productID" required />
+              <mat-error *ngIf="basicProductDetailsForm.get('productID')?.hasError('required')">
+                Product ID is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <label for="productName">Product Name *</label>
+            <mat-form-field appearance="outline" class="mat-input">
+              <input matInput formControlName="productName" type="text" name="productName" id="productName" required />
+              <mat-error *ngIf="basicProductDetailsForm.get('productName')?.hasError('required')">
+                Product name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center mt-6">
+          <button mat-button class="btn" (click)="onBasicDetailsFilled($event)">Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div>
-          <p>Go to a different step to see the error state</p>
+
+    <!-- ################# Fill out product informations ############################ -->
+    <mat-step [stepControl]="productInformationForm" completed="false">
+      <form [formGroup]="productInformationForm" class="admin-grid">
+        <ng-template matStepLabel>Fill out product informations</ng-template>
+        @for (feature of getProductFeatures; track $index) {
+        @if (!featuresToOmit[feature]) {
+        <div class="admin-form">
+          <div class="form-group">
+            <label [for]="feature">{{camelCaseToWords(feature)}}</label>
+            <mat-form-field appearance="outline" class="mat-input">
+              <input matInput [formControlName]="feature" type="text" [name]="feature" [id]="feature" />
+            </mat-form-field>
+          </div>
+        </div>
+        }
+        }
+      </form>
+      <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-stroked-button (click)="productInformationForm.reset()">Reset</button>
+        <button mat-button class="btn" (click)="onProdInfoFilled()">Next</button>
+      </div>
+    </mat-step>
+
+    <!-- ################# Select product color and upload images ############################ -->
+    <mat-step completed="false">
+      <form [formGroup]="productInformationForm">
+        <ng-template matStepLabel>Select product color and upload images</ng-template>
+        <div class="d-flex justify-content-center align-items-center gap-5 m-5">
+          @for(eachColor of product.colorOptions.split(','); track eachColor) {
+          <div class="product-color" [ngStyle]="{'background-color': eachColor}"></div>
+          }
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-stroked-button (click)="productInformationForm.reset()">Reset</button>
+          <button mat-button class="btn" (click)="onImageUploaded()">Next</button>
         </div>
       </form>
     </mat-step>
+
+    <!-- ################# Completed ############################ -->
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
+      <div class="completed-section">
+        <img src="{{assetPath}}/completed.svg" alt="">
+        <h1>You are almost done!</h1>
+        <p>Just One more Step to Complete the Process.</p>
+      </div>
+      <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button class="btn" (click)="backToDashboard()">Back to Admin Dashboard</button>
       </div>
     </mat-step>
   </mat-stepper>

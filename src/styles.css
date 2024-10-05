@@ -2875,9 +2875,70 @@ select {
 
 .admin-product-action {
   padding-top: 12rem;
+  margin-bottom: 5rem;
+
+  .btn {
+    margin-top: 0 !important;
+  }
 
   .mat-mdc-form-field {
     margin-top: 16px;
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(50px, 1fr));
+    grid-gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .admin-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    padding: 0 5%;
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form-group .mat-input {
+      width: 100%;
+    }
+
+    .form-group label {
+      font-weight: 700;
+      font-size: 15px;
+    }
+  }
+
+  .product-color {
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .completed-section {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 5rem;
+    gap: 3rem;
+
+    > h1 {
+      font-size: 5rem;
+      font-weight: 700;
+    }
+
+    > p {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
   }
 }
 

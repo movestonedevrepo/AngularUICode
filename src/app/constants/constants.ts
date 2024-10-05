@@ -189,6 +189,16 @@ export const CONSTANTS = {
     wiper: 'WIPER',
   },
 
+  featuresToOmitInAdmin: {
+    colorOptions: true,
+    features: true,
+    imageURL: true,
+    productID: true,
+    productName: true,
+    productPictureDetails: true,
+    visible: true,
+  },
+
   ABOUT_US: [
     '“Move Stone” is a well known Brand of E-Rickshaw in India.',
     'The Company is manufacturing E-Rickshaw since Aug’2020.',
