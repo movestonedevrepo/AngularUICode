@@ -77,7 +77,7 @@
           @for(eachColor of getColorOptions; track eachColor) {
           <div class="product-color" [ngStyle]="{'background-color': eachColor}" (click)="onColorSelection(eachColor)"></div>
           }
-          <div class="example-palette-button" ngx-colors-trigger (close)="addNewColor($event)">
+          <div class="example-palette-button" ngx-colors-trigger (close)="createNewColor($event)">
             <div class="product-color add-color">
               <span>+</span>
             </div>

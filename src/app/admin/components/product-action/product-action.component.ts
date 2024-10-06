@@ -133,6 +133,11 @@ export class ProductActionComponent implements OnInit {
     return this.product.colorOptions.split(',');
   }
 
+  createNewColor(color: string): void {
+    this.imagesByColor = [];
+    this.addNewColor(color);
+  }
+
   onColorSelection(color: string): void {
     const customProd = {
       productID: this.product.productID,
@@ -165,7 +170,7 @@ export class ProductActionComponent implements OnInit {
         .subscribe((data: any) => {
           console.log(data);
 
-          if (!doesColorExist) {
+          if (data && !doesColorExist) {
             this.product.colorOptions = this.product.colorOptions + ',' + event;
           }
         });
