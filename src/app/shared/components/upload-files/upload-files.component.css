@@ -64,8 +64,9 @@
 }
 
 .file-preview-item .existing-image {
-  max-width: 140px !important;
-  max-height: 140px !important;
+  max-width: 170px !important;
+  max-height: 170px !important;
+  border-radius: 10px;
 }
 
 .file-preview-item .cross-icon {

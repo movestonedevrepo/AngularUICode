@@ -18,9 +18,9 @@ export class ProductService {
     return this.http.patch(`${environment.baseUrl}/updateProduct`, product);
   }
 
-  removeProduct(product: any): Observable<any> {
+  removeProduct(productID: string): Observable<any> {
     const productToRemove = {
-      productID: product.productID,
+      productID,
       secretKey: CONSTANTS.secretKey,
     };
     return this.http.post(
@@ -34,5 +34,13 @@ export class ProductService {
       `${environment.baseUrl}/getImageByColor`,
       customProduct
     );
+  }
+
+  uploadImage(images: File[]): Observable<any> {
+    const formData = new FormData();
+    images.forEach((eachImage) => {
+      formData.append('multipartFile', eachImage);
+    });
+    return this.http.post(`${environment.baseUrl}/uploadFiles`, formData);
   }
 }

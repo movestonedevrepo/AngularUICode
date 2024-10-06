@@ -83,10 +83,6 @@ export class ProductActionComponent implements OnInit {
     return this.formBuilder.group(prodInfoForm);
   }
 
-  get getProductFeatures(): Array<string> {
-    return Object.keys(this.product);
-  }
-
   camelCaseToWords(str: string): string {
     const result = str.replace(/([A-Z])/g, ' $1');
     return result.charAt(0).toUpperCase() + result.slice(1);
@@ -125,6 +121,44 @@ export class ProductActionComponent implements OnInit {
     }
   }
 
+  onImageUploaded(): void {
+    this.moveToNextStep();
+  }
+
+  createNewColor(color: string): void {
+    this.imagesByColor = [];
+    if (color) {
+      this.addImageForColor()
+        .afterClosed()
+        .subscribe((uploadedImage: any) => {
+          if (uploadedImage) {
+            this.prodColors = this.prodColors + ',' + color;
+
+            const newColor = {
+              productID: this.product.productID,
+              colorOptions: this.prodColors,
+            };
+            this.updateExistingProduct(newColor);
+          }
+        });
+    }
+  }
+
+  uploadImageForExistingColor(color: string): void {
+    const customProd = {
+      productID: this.product.productID,
+      productColorHex: color,
+    };
+    this.productService
+      .searchImageByColor(customProd)
+      .subscribe((data: any) => {
+        if (data && !data.hasError) {
+          this.imagesByColor = data.responsePayload?.pictures;
+          this.addImageForColor();
+        }
+      });
+  }
+
   createNewProduct(product: any, isFirstStep = false): void {
     // TODO:
     this.productService
@@ -157,17 +191,24 @@ export class ProductActionComponent implements OnInit {
       });
   }
 
+  addImageForColor(): any {
+    return this.dialogService.openDialog(
+      {
+        width: '700px',
+        height: '700px',
+        data: {
+          extras: this.imagesByColor,
+        } as DialogData,
+      },
+      UploadFilesComponent
+    );
+  }
+
   moveToNextStep(): void {
     if (this.stepper && this.stepper.selected) {
       this.stepper.selected.completed = true;
       this.stepper.next();
     }
-  }
-
-  onImageUploaded(): void {
-    // TODO:
-    this.product.colorOptions = this.prodColors;
-    this.moveToNextStep();
   }
 
   backToDashboard() {
@@ -177,52 +218,11 @@ export class ProductActionComponent implements OnInit {
     }
   }
 
+  get getProductFeatures(): Array<string> {
+    return Object.keys(this.product);
+  }
+
   get getColorOptions(): Array<string> {
     return this.prodColors?.split(',');
-  }
-
-  createNewColor(color: string): void {
-    this.imagesByColor = [];
-    this.addNewColor(color);
-  }
-
-  onColorSelection(color: string): void {
-    const customProd = {
-      productID: this.product.productID,
-      productColorHex: color,
-    };
-    this.productService
-      .searchImageByColor(customProd)
-      .subscribe((data: any) => {
-        if (data && !data.hasError) {
-          this.imagesByColor = data.responsePayload?.pictures;
-          this.addNewColor(color, true);
-        }
-      });
-  }
-
-  addNewColor(event?: any, doesColorExist = false): void {
-    if (event) {
-      this.dialogService
-        .openDialog(
-          {
-            width: '700px',
-            height: '700px',
-            data: {
-              extras: this.imagesByColor,
-            } as DialogData,
-          },
-          UploadFilesComponent
-        )
-        .afterClosed()
-        .subscribe((data: any) => {
-          console.log(data);
-
-          if (data && !doesColorExist) {
-            this.prodColors = this.prodColors + ',' + event;
-            console.log(this.product.colorOptions);
-          }
-        });
-    }
   }
 }

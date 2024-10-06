@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
+import { getAllProductsResolver } from '../resolvers/all-products.resolver';
 import { getQueryResolver } from '../resolvers/get-query.resolver';
-import { homeDetailsResolver } from '../resolvers/home-details.resolver';
 import { productSpecResolver } from '../resolvers/product-spec.resolver';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ProductActionComponent } from './components/product-action/product-action.component';
@@ -18,7 +18,7 @@ export const ADMIN_ROUTES: Routes = [
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
     resolve: {
-      productDetails: homeDetailsResolver, // Assuming getConfigResolver is used to fetch the product list
+      productDetails: getAllProductsResolver,
     },
   },
   {

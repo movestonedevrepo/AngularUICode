@@ -55,7 +55,7 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigate(['admin/edit-product', productID]);
   }
 
-  removeProduct(productID: string): void {
+  removeProduct(index: number): void {
     this.dialogService
       .openDialog({
         data: {
@@ -66,15 +66,14 @@ export class AdminDashboardComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((data: string) => {
-        // TODO:
         if (data === 'Remove') {
-          console.log('Product Removed');
-
-          // this.productService.removeProduct(productID).subscribe((removedProd: any) => {
-          //   if (removedProd && !removedProd.hasError) {
-          //     console.log(removedProd);
-          //   }
-          // });
+          this.productService
+            .removeProduct(this.contents[index]?.productID)
+            .subscribe((removedProd: any) => {
+              if (removedProd && !removedProd.hasError) {
+                this.contents.splice(index, 1);
+              }
+            });
         }
       });
   }

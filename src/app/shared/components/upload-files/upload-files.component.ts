@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from 'src/app/models/dialog-data';
 import { environment } from 'src/environments/environment';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-upload-files',
@@ -18,7 +19,8 @@ export class UploadFilesComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private dialogRef: MatDialogRef<UploadFilesComponent>
+    private dialogRef: MatDialogRef<UploadFilesComponent>,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
@@ -73,7 +75,11 @@ export class UploadFilesComponent implements OnInit {
 
   uploadFiles(): void {
     if (this.files && this.files.length > 0) {
-      this.closeLoginPopup(this.files);
+      this.productService.uploadImage(this.files).forEach((result: any) => {
+        if (result && !result.hasError) {
+          this.closeLoginPopup(this.files);
+        }
+      });
     }
   }
 }
