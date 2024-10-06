@@ -39,6 +39,7 @@ export class ProductActionComponent implements OnInit {
   basicProductDetailsForm!: FormGroup;
   productInformationForm!: FormGroup;
   imagesByColor!: Array<any>;
+  prodColors!: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -57,10 +58,19 @@ export class ProductActionComponent implements OnInit {
     this.product =
       this.activatedRoute.snapshot.data['productDetails']?.productDetails;
 
-    this.basicProductDetailsForm = this.createBasicProductForm();
-    this.productInformationForm = this.createProductInformationForm();
+    this.prodColors = this.product?.colorOptions;
 
-    this.addNewColor('');
+    this.basicProductDetailsForm = this.createBasicProductForm();
+  }
+
+  createBasicProductForm(): FormGroup {
+    return this.formBuilder.group({
+      productID: [
+        { value: this.product?.productID, disabled: this.product?.productID },
+        Validators.required,
+      ],
+      productName: [this.product?.productName, Validators.required],
+    });
   }
 
   createProductInformationForm(): FormGroup {
@@ -73,16 +83,6 @@ export class ProductActionComponent implements OnInit {
     return this.formBuilder.group(prodInfoForm);
   }
 
-  createBasicProductForm(): FormGroup {
-    return this.formBuilder.group({
-      productID: [
-        { value: this.product.productID, disabled: this.product.productID },
-        Validators.required,
-      ],
-      productName: [this.product.productName, Validators.required],
-    });
-  }
-
   get getProductFeatures(): Array<string> {
     return Object.keys(this.product);
   }
@@ -92,12 +92,21 @@ export class ProductActionComponent implements OnInit {
     return result.charAt(0).toUpperCase() + result.slice(1);
   }
 
+  resetProductColors(): void {
+    this.prodColors = this.product?.colorOptions;
+  }
+
   onBasicDetailsFilled(event: any): void {
-    if (this.basicProductDetailsForm.valid) {
-      if (this.stepper && this.stepper.selected) {
-        // complete the current step
-        this.stepper.selected.completed = true;
-        this.stepper.next();
+    if (this.basicProductDetailsForm && this.basicProductDetailsForm.valid) {
+      const newProd = {
+        productID: this.basicProductDetailsForm.get('productID')?.value,
+        productName: this.basicProductDetailsForm.get('productName')?.value,
+      };
+      const page = this.router.url;
+      if (page === CONSTANTS.addProduct) {
+        this.createNewProduct(newProd, true);
+      } else {
+        this.updateExistingProduct(newProd, true);
       }
     } else {
       this.basicProductDetailsForm.markAllAsTouched();
@@ -105,21 +114,60 @@ export class ProductActionComponent implements OnInit {
   }
 
   onProdInfoFilled(): void {
-    if (this.productInformationForm.valid) {
-      if (this.stepper && this.stepper.selected) {
-        this.stepper.selected.completed = true;
-        this.stepper.next();
-      }
+    if (this.productInformationForm && this.productInformationForm.valid) {
+      const productToUpdate = {
+        productID: this.product.productID,
+        ...this.productInformationForm.value,
+      };
+      this.updateExistingProduct(productToUpdate);
     } else {
       this.productInformationForm.markAllAsTouched();
     }
   }
 
-  onImageUploaded(): void {
+  createNewProduct(product: any, isFirstStep = false): void {
+    // TODO:
+    this.productService
+      .createProduct(product)
+      .subscribe((createdProduct: any) => {
+        if (createdProduct && !createdProduct.hasError) {
+          this.product = createdProduct;
+          if (isFirstStep) {
+            this.productInformationForm = this.createProductInformationForm();
+          }
+
+          this.moveToNextStep();
+        }
+      });
+  }
+
+  updateExistingProduct(product: any, isFirstStep = false): void {
+    // TODO:
+    this.productService
+      .updateProduct(product)
+      .subscribe((updatedProduct: any) => {
+        if (updatedProduct && !updatedProduct.hasError) {
+          this.product = updatedProduct;
+          if (isFirstStep) {
+            this.productInformationForm = this.createProductInformationForm();
+          }
+
+          this.moveToNextStep();
+        }
+      });
+  }
+
+  moveToNextStep(): void {
     if (this.stepper && this.stepper.selected) {
       this.stepper.selected.completed = true;
       this.stepper.next();
     }
+  }
+
+  onImageUploaded(): void {
+    // TODO:
+    this.product.colorOptions = this.prodColors;
+    this.moveToNextStep();
   }
 
   backToDashboard() {
@@ -130,7 +178,7 @@ export class ProductActionComponent implements OnInit {
   }
 
   get getColorOptions(): Array<string> {
-    return this.product.colorOptions.split(',');
+    return this.prodColors?.split(',');
   }
 
   createNewColor(color: string): void {
@@ -171,7 +219,8 @@ export class ProductActionComponent implements OnInit {
           console.log(data);
 
           if (data && !doesColorExist) {
-            this.product.colorOptions = this.product.colorOptions + ',' + event;
+            this.prodColors = this.prodColors + ',' + event;
+            console.log(this.product.colorOptions);
           }
         });
     }

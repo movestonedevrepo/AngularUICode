@@ -12,7 +12,7 @@
     <div class="file-preview">
       @for (image of existingImages; track $index) {
       <div class="file-preview-item mat-elevation-z8">
-        <img class="w-100" [src]="image" alt="Image-{{ $index }}">
+        <img class="existing-image" [src]="image" alt="Image-{{ $index }}">
         <i class="fa-solid fa-circle-xmark cross-icon" (click)="removeFile($index)"></i>
       </div>
       }

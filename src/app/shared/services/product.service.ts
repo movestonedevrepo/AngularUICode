@@ -10,11 +10,12 @@ import { environment } from 'src/environments/environment';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
+  createProduct(product: any): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/createProduct`, product);
+  }
+
   updateProduct(product: any): Observable<any> {
-    return this.http.post(`${environment.baseUrl}/products`, {
-      productID: product.productID,
-      visible: product.visible,
-    });
+    return this.http.patch(`${environment.baseUrl}/updateProduct`, product);
   }
 
   removeProduct(product: any): Observable<any> {

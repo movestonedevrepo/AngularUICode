@@ -28,4 +28,8 @@ export const ADMIN_ROUTES: Routes = [
       productDetails: productSpecResolver,
     },
   },
+  {
+    path: 'add-product',
+    component: ProductActionComponent,
+  },
 ];

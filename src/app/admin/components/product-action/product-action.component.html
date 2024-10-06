@@ -14,9 +14,10 @@
   <mat-stepper linear #stepper [orientation]="(stepperOrientation | async)!">
 
     <!-- ################# Fill out basic product details ############################ -->
-    <mat-step [stepControl]="basicProductDetailsForm" errorMessage="Name is required." completed="false">
+    <mat-step [stepControl]="basicProductDetailsForm" errorMessage="Product name is required" completed="false">
+      <ng-template matStepLabel>Fill out basic product details</ng-template>
+      @if (basicProductDetailsForm) {
       <form [formGroup]="basicProductDetailsForm">
-        <ng-template matStepLabel>Fill out basic product details</ng-template>
         <div class="admin-form">
           <div class="form-group">
             <label for="productID">Product ID *</label>
@@ -43,12 +44,14 @@
           <button mat-button class="btn" (click)="onBasicDetailsFilled($event)">Next</button>
         </div>
       </form>
+      }
     </mat-step>
 
     <!-- ################# Fill out product informations ############################ -->
     <mat-step [stepControl]="productInformationForm" completed="false">
+      <ng-template matStepLabel>Fill out product informations</ng-template>
+      @if (productInformationForm) {
       <form [formGroup]="productInformationForm" class="admin-grid">
-        <ng-template matStepLabel>Fill out product informations</ng-template>
         @for (feature of getProductFeatures; track $index) {
         @if (!featuresToOmit[feature]) {
         <div class="admin-form">
@@ -62,6 +65,7 @@
         }
         }
       </form>
+      }
       <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-stroked-button (click)="productInformationForm.reset()">Reset</button>
@@ -69,9 +73,10 @@
       </div>
     </mat-step>
 
+
     <!-- ################# Select product color and upload images ############################ -->
     <mat-step completed="false">
-      <form [formGroup]="productInformationForm" class="color-section">
+      <form class="color-section">
         <ng-template matStepLabel>Select product color and upload images</ng-template>
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-5 m-5 w-75">
           @for(eachColor of getColorOptions; track eachColor) {
@@ -86,7 +91,7 @@
 
         <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-stroked-button (click)="productInformationForm.reset()">Reset</button>
+          <button mat-stroked-button (click)="resetProductColors()">Reset</button>
           <button mat-button class="btn" (click)="onImageUploaded()">Next</button>
         </div>
       </form>

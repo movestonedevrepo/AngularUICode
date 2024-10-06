@@ -25,11 +25,15 @@
         </p>
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex gap-3">
-            <button type="button" class="details-button" (click)="removeProduct(content?.productID)">
-              Remove
+            <button type="button" class="delete-button" (click)="removeProduct(content?.productID)">
+              <i class="fa-solid fa-trash"></i>
             </button>
-            <button type="button" class="details-button" (click)="toggleVisibility(content)">
-              {{content.visible === 'Y' ? 'Hide' : 'Show'}}
+            <button type="button" class="visible-button" (click)="toggleVisibility(content)">
+              @if (content.visible === 'Y') {
+              <i class="fa-regular fa-eye-slash"></i>
+              } @else {
+              <i class="fa-regular fa-eye"></i>
+              }
             </button>
           </div>
           <div class="color-options">
@@ -42,7 +46,6 @@
     </div>
     }
   </div>
-  <app-magnify></app-magnify>
 
   <div class="pagination">
     <div *ngFor="let item of [].constructor(getNumberOfPages); let i = index">
@@ -53,6 +56,10 @@
     <div class="forward" (click)="nextPage()">>></div>
   </div>
   }
+
+  <button class="btn float" (click)="addNewproduct()">
+    <i class="fa fa-plus"></i>
+  </button>
 </section>
 } @placeholder {
 <div>Featured Section</div>

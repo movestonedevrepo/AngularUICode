@@ -25,6 +25,10 @@
   --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
+.mat-horizontal-stepper-header {
+  pointer-events: none;
+}
+
 .buttons-container {
   display: flex;
   justify-content: flex-end;
@@ -1948,18 +1952,42 @@ select {
   width: 70%;
 }
 
-.details-button {
-  background-color: #0d43f1;
+.delete-button,
+.visible-button {
   color: var(--white);
   border: none;
-  font-size: 11px;
-  border-radius: 5rem;
-  padding: 10px 20px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.details-button:hover {
+.delete-button {
+  background-color: red;
+}
+
+.visible-button {
+  background-color: #0d43f1;
+}
+
+.visible-button:hover {
   background-color: #0056b3;
+}
+
+.float {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  bottom: 100px;
+  right: 40px;
+  border-radius: 50% !important;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+
+  > i {
+    font-size: 3rem;
+    color: var(--white);
+  }
 }
 
 .color-options {

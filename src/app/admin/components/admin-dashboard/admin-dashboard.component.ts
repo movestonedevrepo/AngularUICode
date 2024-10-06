@@ -1,6 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -115,5 +116,9 @@ export class AdminDashboardComponent implements OnInit {
       this.currentPage = this.currentPage + 1;
       this.viewportScroller.scrollToAnchor('products');
     }
+  }
+
+  addNewproduct(): void {
+    this.router.navigate([CONSTANTS.addProduct]);
   }
 }

@@ -19,6 +19,7 @@ export const CONSTANTS = {
   facebookID: 'https://facebook.com/Movestoneservicespvtltd',
   instagramID: 'https://instagram.com/movestoneevehicle',
   secretKey: 'PMP33',
+  addProduct: '/admin/add-product',
 
   officeLocation: {
     headOffice:
