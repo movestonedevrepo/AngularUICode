@@ -30,7 +30,7 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.contents =
-      this.activatedRoute.snapshot.data['productDetails']?.products;
+      this.activatedRoute.snapshot.data['productDetails'];
   }
 
   get getNumberOfPages(): number {

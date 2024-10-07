@@ -165,7 +165,7 @@ export class ProductActionComponent implements OnInit {
       .createProduct(product)
       .subscribe((createdProduct: any) => {
         if (createdProduct && !createdProduct.hasError) {
-          this.product = createdProduct;
+          this.product = createdProduct.responsePayload;
           if (isFirstStep) {
             this.productInformationForm = this.createProductInformationForm();
           }
@@ -181,7 +181,7 @@ export class ProductActionComponent implements OnInit {
       .updateProduct(product)
       .subscribe((updatedProduct: any) => {
         if (updatedProduct && !updatedProduct.hasError) {
-          this.product = updatedProduct;
+          this.product = updatedProduct.responsePayload[0];
           if (isFirstStep) {
             this.productInformationForm = this.createProductInformationForm();
           }
