@@ -175,6 +175,16 @@ export class ProductActionComponent implements OnInit {
       });
   }
 
+//   "PORT = 5000
+// DATABASE='dev_rickshaw'
+// DBUSERNAME='postgres'
+// DBPASSWORD='development'
+// DBHOST='localhost'
+// CLOUDINARY_CLOUD='dyizlmke8'
+// CLOUDINARY_API_KEY='179627892588444'
+// CLOUDINARY_API_SECRET='Lb0Xl2cYfJbTNEtP5TRbjv7_cXk'"
+
+
   updateExistingProduct(product: any, isFirstStep = false): void {
     // TODO:
     this.productService
