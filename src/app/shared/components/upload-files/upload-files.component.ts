@@ -12,6 +12,7 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './upload-files.component.css',
 })
 export class UploadFilesComponent implements OnInit {
+  product: any;
   files: any[] = [];
   isDragging = false;
   assetPath = `${environment.assestsBasePath}images/Admin-Dashboard`;
@@ -24,8 +25,8 @@ export class UploadFilesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.existingImages = this.data.extras;
-    console.log(this.existingImages);
+    this.existingImages = this.data.extras?.images;
+    this.product = this.data.extras?.product;
   }
 
   onDragOver(event: DragEvent) {
@@ -75,11 +76,13 @@ export class UploadFilesComponent implements OnInit {
 
   uploadFiles(): void {
     if (this.files && this.files.length > 0) {
-      this.productService.uploadImage(this.files).forEach((result: any) => {
-        if (result && !result.hasError) {
-          this.closeLoginPopup(this.files);
-        }
-      });
+      this.productService
+        .uploadImage(this.product, this.files)
+        .forEach((result: any) => {
+          if (result && !result.hasError) {
+            this.closeLoginPopup(this.files);
+          }
+        });
     }
   }
 }

@@ -128,17 +128,11 @@ export class ProductActionComponent implements OnInit {
   createNewColor(color: string): void {
     this.imagesByColor = [];
     if (color) {
-      this.addImageForColor()
+      this.addImageForColor(color)
         .afterClosed()
         .subscribe((uploadedImage: any) => {
           if (uploadedImage) {
             this.prodColors = this.prodColors + ',' + color;
-
-            const newColor = {
-              productID: this.product.productID,
-              colorOptions: this.prodColors,
-            };
-            this.updateExistingProduct(newColor);
           }
         });
     }
@@ -154,7 +148,7 @@ export class ProductActionComponent implements OnInit {
       .subscribe((data: any) => {
         if (data && !data.hasError) {
           this.imagesByColor = data.responsePayload?.pictures;
-          this.addImageForColor();
+          this.addImageForColor(color);
         }
       });
   }
@@ -165,7 +159,7 @@ export class ProductActionComponent implements OnInit {
       .createProduct(product)
       .subscribe((createdProduct: any) => {
         if (createdProduct && !createdProduct.hasError) {
-          this.product = createdProduct.responsePayload;
+          this.product = createdProduct.responsePayload[0];
           if (isFirstStep) {
             this.productInformationForm = this.createProductInformationForm();
           }
@@ -174,16 +168,6 @@ export class ProductActionComponent implements OnInit {
         }
       });
   }
-
-//   "PORT = 5000
-// DATABASE='dev_rickshaw'
-// DBUSERNAME='postgres'
-// DBPASSWORD='development'
-// DBHOST='localhost'
-// CLOUDINARY_CLOUD='dyizlmke8'
-// CLOUDINARY_API_KEY='179627892588444'
-// CLOUDINARY_API_SECRET='Lb0Xl2cYfJbTNEtP5TRbjv7_cXk'"
-
 
   updateExistingProduct(product: any, isFirstStep = false): void {
     // TODO:
@@ -201,13 +185,19 @@ export class ProductActionComponent implements OnInit {
       });
   }
 
-  addImageForColor(): any {
+  addImageForColor(color: string): any {
     return this.dialogService.openDialog(
       {
         width: '700px',
         height: '700px',
         data: {
-          extras: this.imagesByColor,
+          extras: {
+            images: this.imagesByColor,
+            product: {
+              productID: this.product?.productID,
+              productHexCode: color,
+            },
+          },
         } as DialogData,
       },
       UploadFilesComponent

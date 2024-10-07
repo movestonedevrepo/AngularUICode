@@ -29,8 +29,7 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.contents =
-      this.activatedRoute.snapshot.data['productDetails'];
+    this.contents = this.activatedRoute.snapshot.data['productDetails'];
   }
 
   get getNumberOfPages(): number {
@@ -78,7 +77,7 @@ export class AdminDashboardComponent implements OnInit {
       });
   }
 
-  toggleVisibility(product: any) {
+  toggleVisibility(product: any): void {
     const newProd = {
       productID: product.productID,
       visible: product.visible === 'Y' ? 'N' : 'Y',
@@ -86,7 +85,7 @@ export class AdminDashboardComponent implements OnInit {
 
     this.productService.updateProduct(newProd).subscribe((data: any) => {
       if (data && !data.hasError) {
-        product.visible = data.responsePayload?.visible;
+        product = data.responsePayload[0];
       }
     });
   }

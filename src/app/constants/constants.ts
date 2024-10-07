@@ -198,6 +198,8 @@ export const CONSTANTS = {
     productName: true,
     productPictureDetails: true,
     visible: true,
+    createdAt: true,
+    updatedAt: true,
   },
 
   ABOUT_US: [

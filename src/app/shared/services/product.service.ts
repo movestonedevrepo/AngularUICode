@@ -36,11 +36,23 @@ export class ProductService {
     );
   }
 
-  uploadImage(images: File[]): Observable<any> {
+  uploadImage(product: any, images: File[]): Observable<any> {
     const formData = new FormData();
-    images.forEach((eachImage) => {
-      formData.append('multipartFile', eachImage);
+
+    formData.append('productID', product.productID);
+    formData.append('productHexCode', product.productHexCode);
+    images.forEach((eachImage: File) => {
+      formData.append('photos', eachImage, eachImage.name);
     });
+
+    // const request = {
+    //   productID: product.productID,
+    //   productHexCode: product.productHexCode,
+    // };
+
+    // images.forEach((eachImage: File) => {
+    //   request.files.push({ photos: eachImage });
+    // });
     return this.http.post(`${environment.baseUrl}/uploadFiles`, formData);
   }
 }
