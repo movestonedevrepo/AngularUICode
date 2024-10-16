@@ -5,6 +5,7 @@ import {
 } from '@angular/cdk/stepper';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxColorsModule } from 'ngx-colors';
@@ -130,7 +131,7 @@ export class ProductActionComponent implements OnInit {
   createNewColor(color: string): void {
     this.imagesByColor = [];
     if (color) {
-      this.addImageForColor(color)
+      this.updateImageForColor(color)
         .afterClosed()
         .subscribe((uploadedImage: any) => {
           if (uploadedImage) {
@@ -138,35 +139,101 @@ export class ProductActionComponent implements OnInit {
               ? this.prodColors + ',' + color
               : color;
 
-            const newColor = {
-              productID: this.product.productID,
-              colorOptions: this.prodColors,
-            };
-            this.updateExistingProduct(newColor, false, false);
+            this.changeColor();
           }
         });
     }
   }
 
-  uploadImageForExistingColor(color: string): void {
+  removeColor(color: string, index: number): void {
+    const data: DialogData = {
+      title: 'Confirmation',
+      message: 'Are you sure you want to delete this color?',
+      buttons: ['Cancel', 'Delete'],
+    };
+    this.openDialog({ data })
+      .afterClosed()
+      .subscribe((dialogData: any) => {
+        if (dialogData === 'Delete') {
+          this.deleteColor(color, index);
+        }
+      });
+  }
+
+  deleteColor(color: string, index: number): void {
+    this.productService
+      .deleteColor(this.product.productID, color)
+      .subscribe((data: any) => {
+        if (data && !data.hasError) {
+          this.isColorEditable = false;
+          let colors = this.getColorOptions;
+          colors.splice(index, 1);
+          this.prodColors = colors.join(',');
+          this.changeColor();
+        }
+      });
+  }
+
+  changeColor(): void {
+    const newColor = {
+      productID: this.product.productID,
+      colorOptions: this.prodColors,
+    };
+    this.updateExistingProduct(newColor, false, false);
+  }
+
+  uploadImageForExistingColor(color: string, index: number): void {
     if (!this.isColorEditable) {
-      const customProd = {
-        productID: this.product.productID,
-        productColorHex: color,
-      };
-      this.productService
-        .searchImageByColor(customProd)
-        .subscribe((data: any) => {
-          if (data && !data.hasError) {
-            this.imagesByColor = data.responsePayload?.pictures;
-            this.addImageForColor(color);
-          }
-        });
+      this.searchImageByColor(color).subscribe((data: any) => {
+        if (data && !data.hasError) {
+          this.imagesByColor = data.responsePayload?.pictures;
+          this.updateImageForColor(color)
+            .afterClosed()
+            .subscribe((_) => {
+              this.checkIfImageExistForColor(color, index);
+            });
+        }
+      });
     }
+  }
+
+  checkIfImageExistForColor(color: string, index: number): void {
+    this.searchImageByColor(color).subscribe((data: any) => {
+      if (data && !data.hasError) {
+        this.imagesByColor = data.responsePayload?.pictures;
+        if (!this.imagesByColor.length) {
+          this.deleteColor(color, index);
+        }
+      }
+    });
+  }
+
+  searchImageByColor(color: string): any {
+    const customProd = {
+      productID: this.product.productID,
+      productColorHex: color,
+    };
+    return this.productService.searchImageByColor(customProd);
+  }
+
+  updateImageForColor(color: string): MatDialogRef<UploadFilesComponent> {
+    const dialogInfo: MatDialogConfig = {
+      width: '700px',
+      height: '700px',
+      data: {
+        extras: {
+          images: this.imagesByColor,
+          product: {
+            productID: this.product?.productID,
+            productHexCode: color,
+          },
+        },
+      },
+    };
+    return this.openDialog(dialogInfo, UploadFilesComponent);
   }
 
   createNewProduct(product: any, isFirstStep = false): void {
-    // TODO:
     this.productService
       .createProduct(product)
       .subscribe((createdProduct: any) => {
@@ -186,7 +253,6 @@ export class ProductActionComponent implements OnInit {
     isFirstStep = false,
     isNextStepRequired = true
   ): void {
-    // TODO:
     this.productService
       .updateProduct(product)
       .subscribe((updatedProduct: any) => {
@@ -197,57 +263,6 @@ export class ProductActionComponent implements OnInit {
           }
 
           if (isNextStepRequired) this.moveToNextStep();
-        }
-      });
-  }
-
-  addImageForColor(color: string): any {
-    return this.dialogService.openDialog(
-      {
-        width: '700px',
-        height: '700px',
-        data: {
-          extras: {
-            images: this.imagesByColor,
-            product: {
-              productID: this.product?.productID,
-              productHexCode: color,
-            },
-          },
-        } as DialogData,
-      },
-      UploadFilesComponent
-    );
-  }
-
-  deleteColor(color: string, index: number): void {
-    this.dialogService
-      .openDialog({
-        data: {
-          title: 'Confirmation',
-          message: 'Are you sure you want to delete this color?',
-          buttons: ['Cancel', 'Delete'],
-        } as DialogData,
-      })
-      .afterClosed()
-      .subscribe((dialogData: any) => {
-        if (dialogData === 'Delete') {
-          this.productService
-            .deleteColor(this.product.productID, color)
-            .subscribe((data: any) => {
-              if (data && !data.hasError) {
-                this.isColorEditable = false;
-                let colors = this.getColorOptions;
-                colors.splice(index, 1);
-                this.prodColors = colors.join(',');
-
-                const newColor = {
-                  productID: this.product.productID,
-                  colorOptions: this.prodColors,
-                };
-                this.updateExistingProduct(newColor, false, false);
-              }
-            });
         }
       });
   }
@@ -268,6 +283,10 @@ export class ProductActionComponent implements OnInit {
 
   editColors(): void {
     this.isColorEditable = !this.isColorEditable;
+  }
+
+  openDialog(data: MatDialogConfig, component?: any): MatDialogRef<any> {
+    return this.dialogService.openDialog(data, component);
   }
 
   get getProductFeatures(): Array<string> {

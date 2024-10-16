@@ -28,6 +28,7 @@ export class MatDialogService {
     dialogConfig?: MatDialogConfig,
     component: any = DialogBoxComponent
   ): MatDialogRef<any> {
+    if (!component) component = DialogBoxComponent;
     this.dialogRef = this.dialog.open(component, {
       ...this.dialogConfig,
       ...dialogConfig,

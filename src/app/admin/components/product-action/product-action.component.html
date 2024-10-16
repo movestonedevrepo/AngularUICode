@@ -82,10 +82,10 @@
           @if (this.prodColors) {
           @for(eachColor of getColorOptions; track eachColor) {
           <div class="color-preview" [ngClass]="{'edit-colors': isColorEditable}">
-            <div class="product-color" [ngStyle]="{'background-color': eachColor}" (click)="uploadImageForExistingColor(eachColor)">
+            <div class="product-color" [ngStyle]="{'background-color': eachColor}" (click)="uploadImageForExistingColor(eachColor, $index)">
             </div>
             @if (isColorEditable) {
-            <img src="{{ assetPath }}/remove-icon.svg" class="cross-icon" alt="Remove" (click)="deleteColor(eachColor, $index)">
+            <img src="{{ assetPath }}/remove-icon.svg" class="cross-icon" alt="Remove" (click)="removeColor(eachColor, $index)">
             }
           </div>
           }
