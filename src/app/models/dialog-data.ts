@@ -1,5 +1,5 @@
 export interface DialogData {
-  type?: string;
+  type?: 'success' | 'error';
   title?: string;
   message?: string;
   buttons?: Array<string>;

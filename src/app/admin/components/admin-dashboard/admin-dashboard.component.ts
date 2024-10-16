@@ -59,15 +59,18 @@ export class AdminDashboardComponent implements OnInit {
       .openDialog({
         data: {
           title: 'Confirmation',
-          message: 'Are you sure you want to remove this product ?',
+          message: 'Please provide the secret key to remove this product.',
           buttons: ['Cancel', 'Remove'],
+          extras: {
+            inputLevel: 'Secret Key',
+          },
         } as DialogData,
       })
       .afterClosed()
-      .subscribe((data: string) => {
-        if (data === 'Remove') {
+      .subscribe((data: any) => {
+        if (data && data.button === 'Remove') {
           this.productService
-            .removeProduct(this.contents[index]?.productID)
+            .removeProduct(this.contents[index]?.productID, data.key)
             .subscribe((removedProd: any) => {
               if (removedProd && !removedProd.hasError) {
                 this.contents.splice(index, 1);

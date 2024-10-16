@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
@@ -8,7 +9,9 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { DialogData } from 'src/app/models/dialog-data';
 
 @Component({
@@ -21,6 +24,9 @@ import { DialogData } from 'src/app/models/dialog-data';
     MatDialogClose,
     MatDialogTitle,
     MatDialogContent,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './dialog-box.component.html',
 })
@@ -29,6 +35,8 @@ export class DialogBoxComponent implements OnInit {
   message = 'Oops!! Something Went Wrong';
   type = 'error';
   buttons = ['Ok'];
+  inputForm!: FormControl;
+  inputLevel!: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -40,9 +48,21 @@ export class DialogBoxComponent implements OnInit {
     this.title = this.data.title ?? this.title;
     this.message = this.data.message ?? this.message;
     this.buttons = this.data.buttons ?? this.buttons;
+    if (this.data.extras && this.data.extras.inputLevel) {
+      this.inputForm = new FormControl();
+      this.inputLevel = this.data.extras.inputLevel;
+    }
   }
 
   closeDialog(button: string) {
-    this.dialogRef.close(button);
+    if (this.inputLevel && this.inputForm) {
+      if (this.inputForm.valid) {
+        this.dialogRef.close({ button, key: this.inputForm.value });
+      } else {
+        this.inputForm.markAllAsTouched();
+      }
+    } else {
+      this.dialogRef.close(button);
+    }
   }
 }

@@ -18,7 +18,6 @@ export const CONSTANTS = {
   salesDepartmentNumber2: '9831317367',
   facebookID: 'https://facebook.com/Movestoneservicespvtltd',
   instagramID: 'https://instagram.com/movestoneevehicle',
-  secretKey: 'PMP33',
   addProduct: '/admin/add-product',
 
   officeLocation: {
@@ -117,11 +116,7 @@ export const CONSTANTS = {
     slidesPerView: 1,
     spaceBetween: 0,
     direction: 'horizontal',
-    autoplay: {
-      delay: 2000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
+    autoplay: false,
     speed: 1000,
     loop: true,
     grabCursor: true,

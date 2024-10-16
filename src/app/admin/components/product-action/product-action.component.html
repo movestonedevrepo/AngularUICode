@@ -81,19 +81,28 @@
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-5 m-5 w-75">
           @if (this.prodColors) {
           @for(eachColor of getColorOptions; track eachColor) {
-          <div class="product-color" [ngStyle]="{'background-color': eachColor}" (click)="uploadImageForExistingColor(eachColor)"></div>
+          <div class="color-preview" [ngClass]="{'edit-colors': isColorEditable}">
+            <div class="product-color" [ngStyle]="{'background-color': eachColor}" (click)="uploadImageForExistingColor(eachColor)">
+            </div>
+            @if (isColorEditable) {
+            <img src="{{ assetPath }}/remove-icon.svg" class="cross-icon" alt="Remove" (click)="deleteColor(eachColor, $index)">
+            }
+          </div>
           }
           }
 
+          @if (!isColorEditable) {
           <div class="example-palette-button" ngx-colors-trigger (close)="createNewColor($event)">
-            <div class="product-color add-color">
+            <div class="add-color">
               <span>+</span>
             </div>
           </div>
+          }
         </div>
 
         <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
           <button mat-button matStepperPrevious>Back</button>
+          <button mat-stroked-button (click)="editColors()">{{!isColorEditable ? 'Edit Colors' : 'Cancel'}}</button>
           <button mat-stroked-button (click)="resetProductColors()">Reset</button>
           <button mat-button class="btn" (click)="onImageUploaded()">Next</button>
         </div>

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CONSTANTS } from 'src/app/constants/constants';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,10 +17,10 @@ export class ProductService {
     return this.http.patch(`${environment.baseUrl}/updateProduct`, product);
   }
 
-  removeProduct(productID: string): Observable<any> {
+  removeProduct(productID: string, secretKey: string): Observable<any> {
     const productToRemove = {
       productID,
-      secretKey: CONSTANTS.secretKey,
+      secretKey,
     };
     return this.http.post(
       `${environment.baseUrl}/deleteProduct`,
@@ -45,14 +44,21 @@ export class ProductService {
       formData.append('photos', eachImage, eachImage.name);
     });
 
-    // const request = {
-    //   productID: product.productID,
-    //   productHexCode: product.productHexCode,
-    // };
-
-    // images.forEach((eachImage: File) => {
-    //   request.files.push({ photos: eachImage });
-    // });
     return this.http.post(`${environment.baseUrl}/uploadFiles`, formData);
+  }
+
+  deleteImage(imageUrl: string): Observable<any> {
+    const imageToRemove = {
+      imageUrl,
+    };
+    return this.http.post(`${environment.baseUrl}/deleteImage`, imageToRemove);
+  }
+
+  deleteColor(productID: string, colorHexCode: string): Observable<any> {
+    const colorToRemove = {
+      productID,
+      colorHexCode,
+    };
+    return this.http.post(`${environment.baseUrl}/deleteColor`, colorToRemove);
   }
 }

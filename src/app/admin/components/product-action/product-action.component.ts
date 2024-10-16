@@ -40,6 +40,7 @@ export class ProductActionComponent implements OnInit {
   productInformationForm!: FormGroup;
   imagesByColor!: Array<any>;
   prodColors!: string;
+  isColorEditable: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -90,6 +91,7 @@ export class ProductActionComponent implements OnInit {
 
   resetProductColors(): void {
     this.prodColors = this.product?.colorOptions;
+    this.isColorEditable = false;
   }
 
   onBasicDetailsFilled(event: any): void {
@@ -147,18 +149,20 @@ export class ProductActionComponent implements OnInit {
   }
 
   uploadImageForExistingColor(color: string): void {
-    const customProd = {
-      productID: this.product.productID,
-      productColorHex: color,
-    };
-    this.productService
-      .searchImageByColor(customProd)
-      .subscribe((data: any) => {
-        if (data && !data.hasError) {
-          this.imagesByColor = data.responsePayload?.pictures;
-          this.addImageForColor(color);
-        }
-      });
+    if (!this.isColorEditable) {
+      const customProd = {
+        productID: this.product.productID,
+        productColorHex: color,
+      };
+      this.productService
+        .searchImageByColor(customProd)
+        .subscribe((data: any) => {
+          if (data && !data.hasError) {
+            this.imagesByColor = data.responsePayload?.pictures;
+            this.addImageForColor(color);
+          }
+        });
+    }
   }
 
   createNewProduct(product: any, isFirstStep = false): void {
@@ -216,6 +220,38 @@ export class ProductActionComponent implements OnInit {
     );
   }
 
+  deleteColor(color: string, index: number): void {
+    this.dialogService
+      .openDialog({
+        data: {
+          title: 'Confirmation',
+          message: 'Are you sure you want to delete this color?',
+          buttons: ['Cancel', 'Delete'],
+        } as DialogData,
+      })
+      .afterClosed()
+      .subscribe((dialogData: any) => {
+        if (dialogData === 'Delete') {
+          this.productService
+            .deleteColor(this.product.productID, color)
+            .subscribe((data: any) => {
+              if (data && !data.hasError) {
+                this.isColorEditable = false;
+                let colors = this.getColorOptions;
+                colors.splice(index, 1);
+                this.prodColors = colors.join(',');
+
+                const newColor = {
+                  productID: this.product.productID,
+                  colorOptions: this.prodColors,
+                };
+                this.updateExistingProduct(newColor, false, false);
+              }
+            });
+        }
+      });
+  }
+
   moveToNextStep(): void {
     if (this.stepper && this.stepper.selected) {
       this.stepper.selected.completed = true;
@@ -228,6 +264,10 @@ export class ProductActionComponent implements OnInit {
       this.stepper.selected.completed = true;
       this.router.navigate(['admin/admin-dashboard']);
     }
+  }
+
+  editColors(): void {
+    this.isColorEditable = !this.isColorEditable;
   }
 
   get getProductFeatures(): Array<string> {

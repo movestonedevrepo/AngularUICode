@@ -38,25 +38,24 @@ export class AllProductsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     GlobalVariable.selectedPage = 'products';
-  
+
     // Subscribe to both the route params and resolver data
     this.paramSubscriber = this.activatedRoute.paramMap.subscribe(
       (params: ParamMap) => {
         const category = params.get('id'); // Capture the route parameter
         const productDetails =
           this.activatedRoute.snapshot.data['productDetails'];
-  
+
         // Filter products based on the route parameter
         this.contents = productDetails?.products.filter(
-          (product: any) => product.category === category  && product.visible === 'Y'
+          (product: any) => product.category === category
         );
-  
+
         this.bannerImages =
           this.activatedRoute.snapshot.data['banners']?.responsePayload;
       }
     );
   }
-  
 
   checkProduct(productId: any) {
     this.router.navigate(['pages/product/' + productId]);

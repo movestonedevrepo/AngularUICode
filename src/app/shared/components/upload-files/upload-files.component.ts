@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from 'src/app/models/dialog-data';
 import { environment } from 'src/environments/environment';
+import { MatDialogService } from '../../services/mat-dialog.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class UploadFilesComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private dialogRef: MatDialogRef<UploadFilesComponent>,
-    private productService: ProductService
+    private productService: ProductService,
+    private dialogService: MatDialogService
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +66,29 @@ export class UploadFilesComponent implements OnInit {
 
   isImage(file: any) {
     return file.type.startsWith('image/');
+  }
+
+  removeImage(index: number) {
+    this.dialogService
+      .openDialog({
+        data: {
+          title: 'Confirmation',
+          message: 'Are you sure you want to delete this image ?',
+          buttons: ['Cancel', 'Delete'],
+        } as DialogData,
+      })
+      .afterClosed()
+      .subscribe((dialogData: any) => {
+        if (dialogData === 'Delete') {
+          this.productService
+            .deleteImage(this.existingImages[index])
+            .subscribe((data: any) => {
+              if (data && !data.hasError) {
+                this.existingImages.splice(index, 1);
+              }
+            });
+        }
+      });
   }
 
   removeFile(index: number) {
