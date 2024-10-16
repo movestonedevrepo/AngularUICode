@@ -39,7 +39,7 @@ export class ProductActionComponent implements OnInit {
   basicProductDetailsForm!: FormGroup;
   productInformationForm!: FormGroup;
   imagesByColor!: Array<any>;
-  prodColors!: string;
+  prodColors: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -133,6 +133,12 @@ export class ProductActionComponent implements OnInit {
         .subscribe((uploadedImage: any) => {
           if (uploadedImage) {
             this.prodColors = this.prodColors + ',' + color;
+
+            const newColor = {
+              productID: this.product.productID,
+              colorOptions: this.prodColors,
+            };
+            this.updateExistingProduct(newColor, false, false);
           }
         });
     }
@@ -169,7 +175,11 @@ export class ProductActionComponent implements OnInit {
       });
   }
 
-  updateExistingProduct(product: any, isFirstStep = false): void {
+  updateExistingProduct(
+    product: any,
+    isFirstStep = false,
+    isNextStepRequired = true
+  ): void {
     // TODO:
     this.productService
       .updateProduct(product)
@@ -180,7 +190,7 @@ export class ProductActionComponent implements OnInit {
             this.productInformationForm = this.createProductInformationForm();
           }
 
-          this.moveToNextStep();
+          if (isNextStepRequired) this.moveToNextStep();
         }
       });
   }

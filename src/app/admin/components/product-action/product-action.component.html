@@ -79,9 +79,12 @@
       <form class="color-section">
         <ng-template matStepLabel>Select product color and upload images</ng-template>
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-5 m-5 w-75">
+          @if (this.prodColors) {
           @for(eachColor of getColorOptions; track eachColor) {
           <div class="product-color" [ngStyle]="{'background-color': eachColor}" (click)="uploadImageForExistingColor(eachColor)"></div>
           }
+          }
+
           <div class="example-palette-button" ngx-colors-trigger (close)="createNewColor($event)">
             <div class="product-color add-color">
               <span>+</span>

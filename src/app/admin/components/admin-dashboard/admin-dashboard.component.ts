@@ -77,7 +77,7 @@ export class AdminDashboardComponent implements OnInit {
       });
   }
 
-  toggleVisibility(product: any): void {
+  toggleVisibility(product: any, index: number): void {
     const newProd = {
       productID: product.productID,
       visible: product.visible === 'Y' ? 'N' : 'Y',
@@ -85,7 +85,7 @@ export class AdminDashboardComponent implements OnInit {
 
     this.productService.updateProduct(newProd).subscribe((data: any) => {
       if (data && !data.hasError) {
-        product = data.responsePayload[0];
+        this.contents[index] = data.responsePayload[0];
       }
     });
   }

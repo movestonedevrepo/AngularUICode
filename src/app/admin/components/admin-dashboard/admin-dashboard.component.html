@@ -4,10 +4,14 @@
 <section id="admin-products" class="products admin-products">
   @if (contents && contents.length > 0) {
   <div class="products-part">
-    @for (content of getContents; track content) {
+    @for (content of getContents; track $index) {
     <div class="product-card">
       <div class="image" (click)="editProductDetails(content?.productID)">
+        @if (content.imageURL) {
         <img [src]="getImagesByColor(content)" alt="image" class="product-image" loading="lazy" />
+        } @else {
+        <img src="{{ assetPath }}/Image-not-available.jpg" alt="No-image" class="product-image no-image" loading="lazy" />
+        }
 
         <div class="icon">
           <img src="{{ assetPath }}/edit-icon.svg" alt="" />
@@ -28,7 +32,7 @@
             <button type="button" class="delete-button" (click)="removeProduct($index)">
               <i class="fa-solid fa-trash"></i>
             </button>
-            <button type="button" class="visible-button" (click)="toggleVisibility(content)">
+            <button type="button" class="visible-button" (click)="toggleVisibility(content, $index)">
               @if (content.visible === 'Y') {
               <i class="fa-regular fa-eye-slash"></i>
               } @else {
@@ -37,7 +41,7 @@
             </button>
           </div>
           <div class="color-options">
-            @for(eachColor of content.colorOptions.split(','); track eachColor) {
+            @for(eachColor of content?.colorOptions?.split(','); track eachColor) {
             <span class="color-dot" [ngStyle]="{'background-color': eachColor}" (click)="changeSelectedColor(content, eachColor)"></span>
             }
           </div>
