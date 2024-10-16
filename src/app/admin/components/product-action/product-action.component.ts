@@ -39,7 +39,7 @@ export class ProductActionComponent implements OnInit {
   basicProductDetailsForm!: FormGroup;
   productInformationForm!: FormGroup;
   imagesByColor!: Array<any>;
-  prodColors: string = '';
+  prodColors!: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -132,7 +132,9 @@ export class ProductActionComponent implements OnInit {
         .afterClosed()
         .subscribe((uploadedImage: any) => {
           if (uploadedImage) {
-            this.prodColors = this.prodColors + ',' + color;
+            this.prodColors = this.prodColors
+              ? this.prodColors + ',' + color
+              : color;
 
             const newColor = {
               productID: this.product.productID,
@@ -165,7 +167,7 @@ export class ProductActionComponent implements OnInit {
       .createProduct(product)
       .subscribe((createdProduct: any) => {
         if (createdProduct && !createdProduct.hasError) {
-          this.product = createdProduct.responsePayload[0];
+          this.product = createdProduct.responsePayload;
           if (isFirstStep) {
             this.productInformationForm = this.createProductInformationForm();
           }
