@@ -223,10 +223,8 @@ export class ProductActionComponent implements OnInit {
       data: {
         extras: {
           images: this.imagesByColor,
-          product: {
-            productID: this.product?.productID,
-            productHexCode: color,
-          },
+          product: this.product,
+          productHexCode: color,
         },
       },
     };

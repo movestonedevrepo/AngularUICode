@@ -1,5 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { DialogData } from 'src/app/models/dialog-data';
 import { environment } from 'src/environments/environment';
 import { MatDialogService } from '../../services/mat-dialog.service';
@@ -8,7 +11,7 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'app-upload-files',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule, CommonModule, MatSnackBarModule],
   templateUrl: './upload-files.component.html',
   styleUrl: './upload-files.component.css',
 })
@@ -18,16 +21,19 @@ export class UploadFilesComponent implements OnInit {
   isDragging = false;
   assetPath = `${environment.assestsBasePath}images/Admin-Dashboard`;
   existingImages: Array<any> = [];
+  productHexCode!: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private dialogRef: MatDialogRef<UploadFilesComponent>,
     private productService: ProductService,
-    private dialogService: MatDialogService
+    private dialogService: MatDialogService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.existingImages = this.data.extras?.images;
+    this.productHexCode = this.data.extras?.productHexCode;
     this.product = this.data.extras?.product;
   }
 
@@ -53,6 +59,25 @@ export class UploadFilesComponent implements OnInit {
     this.handleFiles(selectedFiles);
   }
 
+  updateImageURL(imageURL: string) {
+    const body = {
+      productID: this.product.productID,
+      imageURL: imageURL,
+    };
+    this.productService.updateProduct(body).subscribe((result) => {
+      if (result && !result.hasError) {
+        this.product.imageURL = result.responsePayload[0]?.imageURL;
+        this.openSnackBar('Default Image updated successfully', 'Close');
+      }
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
   handleFiles(fileList: any[]) {
     for (let file of fileList) {
       const reader = new FileReader();
@@ -61,6 +86,7 @@ export class UploadFilesComponent implements OnInit {
       };
       reader.readAsDataURL(file);
       this.files.push(file);
+      console.log(this.files);
     }
   }
 
@@ -102,7 +128,7 @@ export class UploadFilesComponent implements OnInit {
   uploadFiles(): void {
     if (this.files && this.files.length > 0) {
       this.productService
-        .uploadImage(this.product, this.files)
+        .uploadImage(this.product.productID, this.productHexCode, this.files)
         .forEach((result: any) => {
           if (result && !result.hasError) {
             this.closeLoginPopup(this.files);

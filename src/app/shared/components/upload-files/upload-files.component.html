@@ -11,9 +11,12 @@
   <div class="uploaded-items-area" [class.dragging]="isDragging">
     <div class="file-preview">
       @for (image of existingImages; track $index) {
-      <div class="file-preview-item mat-elevation-z8">
+      <div class="file-preview-item mat-elevation-z8" [ngClass]="{'baseImage': image === product.imageURL}" (click)="updateImageURL(image)">
         <img class="existing-image" [src]="image" alt="Image-{{ $index }}">
         <i class="fa-solid fa-circle-xmark cross-icon" (click)="removeImage($index)"></i>
+        @if (image === product.imageURL) {
+        <img src="{{ assetPath }}/success.svg" class="selected-icon" alt="Selected">
+        }
       </div>
       }
       @for (file of files; track $index) {

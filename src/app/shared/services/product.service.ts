@@ -35,11 +35,15 @@ export class ProductService {
     );
   }
 
-  uploadImage(product: any, images: File[]): Observable<any> {
+  uploadImage(
+    productID: string,
+    productHexCode: string,
+    images: File[]
+  ): Observable<any> {
     const formData = new FormData();
 
-    formData.append('productID', product.productID);
-    formData.append('productHexCode', product.productHexCode);
+    formData.append('productID', productID);
+    formData.append('productHexCode', productHexCode);
     images.forEach((eachImage: File) => {
       formData.append('photos', eachImage, eachImage.name);
     });
