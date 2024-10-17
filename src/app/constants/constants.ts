@@ -19,6 +19,16 @@ export const CONSTANTS = {
   facebookID: 'https://facebook.com/Movestoneservicespvtltd',
   instagramID: 'https://instagram.com/movestoneevehicle',
   addProduct: '/admin/add-product',
+  productItems: [
+    {
+      id: 'eRikshaw',
+      name: 'E Rikshaw',
+    },
+    {
+      id: 'loader',
+      name: 'Loader',
+    },
+  ],
 
   officeLocation: {
     headOffice:
@@ -116,7 +126,11 @@ export const CONSTANTS = {
     slidesPerView: 1,
     spaceBetween: 0,
     direction: 'horizontal',
-    autoplay: false,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
     speed: 1000,
     loop: true,
     grabCursor: true,

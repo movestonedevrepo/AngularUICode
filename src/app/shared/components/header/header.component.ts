@@ -40,16 +40,7 @@ export class HeaderComponent implements OnInit {
   isVerticalScroll: boolean = false;
   assetPath = `${environment.assestsBasePath}images/Header`;
   bannerConfig: SwiperOptions = CONSTANTS.bannerConfig;
-  itemsToDisplayInProducts = [
-    {
-      id: 'eRikshaw',
-      name: 'E Rikshaw',
-    },
-    {
-      id: 'loader',
-      name: 'Loader',
-    },
-  ];
+  itemsToDisplayInProducts = CONSTANTS.productItems;
   globalVeriable = GlobalVariable;
   isProductMenuVisiable: boolean = false;
 
