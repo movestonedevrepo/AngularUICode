@@ -13,7 +13,6 @@ import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GlobalVariable } from 'src/app/shared/utilities/global-veriables';
 import { environment } from 'src/environments/environment';
-import { Navigation, Pagination } from 'swiper/modules';
 import { SwiperOptions } from 'swiper/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -27,12 +26,9 @@ import { v4 as uuidv4 } from 'uuid';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageComponent implements OnInit {
-  emailNewsLetter: any = '';
   facebookID = CONSTANTS.facebookID;
   instagramID = CONSTANTS.instagramID;
-  // vehicleConfig: SwiperOptions = CONSTANTS.vehicleConfig;
   vehicleConfig: SwiperOptions = {
-    modules: [Navigation, Pagination],
     autoHeight: false,
     pagination: {
       clickable: true,
@@ -65,12 +61,15 @@ export class HomePageComponent implements OnInit {
     },
   };
   testimonialConfig: SwiperOptions = {
-    modules: [Navigation],
     slidesPerView: 1,
     slidesPerGroup: 1,
     speed: 1000,
     direction: 'horizontal',
     grabCursor: true,
+    navigation: {
+      nextEl: '#testimonial-right-button',
+      prevEl: '#testimonial-left-button',
+    },
   };
   salesDepartmentNum1 = CONSTANTS.salesDepartmentNumber1;
   salesDepartmentNum2 = CONSTANTS.salesDepartmentNumber2;
@@ -103,25 +102,6 @@ export class HomePageComponent implements OnInit {
     this.bannerImages =
       this.activatedRoute.snapshot.data['banners']?.responsePayload;
     GlobalVariable.selectedPage = 'home';
-  }
-
-  submitEmailForNewsLetter(): void {
-    const payload = { emailID: this.emailNewsLetter };
-    this.http
-      .post(`${environment.baseUrl}/submitEmails`, payload)
-      .subscribe((data: any) => {
-        if (data.hasError) {
-          this.dialogService.openDialog({
-            data: {
-              title: data.hasError ? 'Error' : 'Success',
-              type: data.hasError ? 'error' : 'success',
-              message: data.hasError
-                ? data.extendedMessage
-                : 'Query raised successfully',
-            } as DialogData,
-          });
-        }
-      });
   }
 
   sendQuery() {
