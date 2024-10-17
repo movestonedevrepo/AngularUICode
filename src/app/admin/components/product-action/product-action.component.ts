@@ -9,7 +9,8 @@ import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxColorsModule } from 'ngx-colors';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { DialogData } from 'src/app/models/dialog-data';
 import { UploadFilesComponent } from 'src/app/shared/components/upload-files/upload-files.component';
@@ -101,8 +102,7 @@ export class ProductActionComponent implements OnInit {
         productID: this.basicProductDetailsForm.get('productID')?.value,
         productName: this.basicProductDetailsForm.get('productName')?.value,
       };
-      const page = this.router.url;
-      if (page === CONSTANTS.addProduct) {
+      if (this.isAddProductPage) {
         this.createNewProduct(newProd, true);
       } else {
         this.updateExistingProduct(newProd, true);
@@ -218,8 +218,8 @@ export class ProductActionComponent implements OnInit {
 
   updateImageForColor(color: string): MatDialogRef<UploadFilesComponent> {
     const dialogInfo: MatDialogConfig = {
-      width: '700px',
-      height: '700px',
+      width: window.screen.width > 450 ? '60%' : '100%',
+      height: '60%',
       data: {
         extras: {
           images: this.imagesByColor,
@@ -295,5 +295,9 @@ export class ProductActionComponent implements OnInit {
 
   get getColorOptions(): Array<string> {
     return this.prodColors?.split(',');
+  }
+
+  get isAddProductPage(): boolean {
+    return this.router.url === CONSTANTS.addProduct;
   }
 }

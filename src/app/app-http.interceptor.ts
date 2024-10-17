@@ -6,7 +6,8 @@ import {
 } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { DialogData } from './models/dialog-data';
 import { LoaderService } from './shared/services/loader.service';
 import { MatDialogService } from './shared/services/mat-dialog.service';

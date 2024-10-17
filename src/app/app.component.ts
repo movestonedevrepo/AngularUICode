@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { delay } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { LoaderService } from './shared/services/loader.service';
 import { SharedModule } from './shared/shared.module';
 @Component({
@@ -19,8 +19,10 @@ export class AppComponent {
   }
 
   listenToLoading(): void {
-    this.loaderService.loadingSub.pipe(delay(0)).subscribe((loading) => {
-      this.loading = loading;
-    });
+    this.loaderService.loadingSub
+      .pipe(delay(0))
+      .subscribe((loading: boolean) => {
+        this.loading = loading;
+      });
   }
 }

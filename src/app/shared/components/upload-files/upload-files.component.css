@@ -102,3 +102,19 @@
     width: 100%;
   }
 }
+
+@media (max-width: 450px) {
+  .file-preview-item {
+    padding: 1rem;
+
+    > img {
+      max-width: 70px;
+      max-height: 70px;
+    }
+  }
+
+  .upload-more {
+    top: -14px;
+    right: -8px;
+  }
+}

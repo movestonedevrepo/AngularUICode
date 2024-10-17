@@ -1,5 +1,5 @@
 <div class="upload-container" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
-  <input type="file" #fileInput (change)="onFilesSelected($event)" multiple hidden accept="image/png, image/gif, image/jpeg">
+  <input type="file" title="upload" #fileInput (change)="onFilesSelected($event)" multiple hidden accept="image/png, image/gif, image/jpeg">
   @if (!files.length && !existingImages.length) {
   <div class="upload-area" [class.dragging]="isDragging">
     <p class="fs-2">Drag and drop your files here or</p>

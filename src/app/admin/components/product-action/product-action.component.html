@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <div class="d-flex justify-content-center align-items-center mt-6">
+        <div class="buttons-container mt-6">
           <button mat-button class="btn" (click)="onBasicDetailsFilled($event)">Next</button>
         </div>
       </form>
@@ -66,7 +66,7 @@
         }
       </form>
       }
-      <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
+      <div class="buttons-container mt-6">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-stroked-button (click)="productInformationForm.reset()">Reset</button>
         <button mat-button class="btn" (click)="onProdInfoFilled()">Next</button>
@@ -78,7 +78,7 @@
     <mat-step completed="false">
       <form class="color-section">
         <ng-template matStepLabel>Select product color and upload images</ng-template>
-        <div class="d-flex justify-content-center align-items-center flex-wrap gap-5 m-5 w-75">
+        <div class="buttons-container color-container my-5">
           @if (this.prodColors) {
           @for(eachColor of getColorOptions; track eachColor) {
           <div class="color-preview" [ngClass]="{'edit-colors': isColorEditable}">
@@ -92,7 +92,7 @@
           }
 
           @if (!isColorEditable) {
-          <div class="example-palette-button" ngx-colors-trigger (close)="createNewColor($event)">
+          <div ngx-colors-trigger (close)="createNewColor($event)">
             <div class="add-color">
               <span>+</span>
             </div>
@@ -100,7 +100,7 @@
           }
         </div>
 
-        <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
+        <div class="buttons-container mt-6">
           <button mat-button matStepperPrevious>Back</button>
           <button mat-stroked-button (click)="editColors()">{{!isColorEditable ? 'Edit Colors' : 'Cancel'}}</button>
           <button mat-stroked-button (click)="resetProductColors()">Reset</button>
@@ -113,13 +113,16 @@
     <mat-step completed="false">
       <ng-template matStepLabel>Done</ng-template>
       <div class="completed-section">
-        <img src="{{assetPath}}/completed.svg" alt="">
-        <h1>You are almost done!</h1>
-        <p>Just One more Step to Complete the Process.</p>
+        <img src="{{assetPath}}/completed.svg" alt="Completed">
+        <div class="process-finish">
+          <h1>Your product is {{isAddProductPage ? 'added' : 'updated'}}!</h1>
+          <p>{{isAddProductPage ? 'Check your added product in admin dashboard and enable it.' : 'Check your updated product in admin dashboard.'}}
+          </p>
+        </div>
       </div>
-      <div class="d-flex justify-content-center align-items-center mt-6 gap-5">
+      <div class="buttons-container mt-6">
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button class="btn" (click)="backToDashboard()">Back to Admin Dashboard</button>
+        <button mat-button class="btn" (click)="backToDashboard()">Go to Admin Dashboard</button>
       </div>
     </mat-step>
   </mat-stepper>

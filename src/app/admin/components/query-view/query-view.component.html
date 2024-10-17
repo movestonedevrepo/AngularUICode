@@ -3,19 +3,15 @@
 @defer (on viewport) {
 <section id="query-list-view" class="query-list-view">
   <div class="buttons-container">
-    <div class="control-panel-btn">
-      <button (click)="navigateToControlPanel()" class="btn d-flex align-items-center gap-4" type="button">
-        <i class="fa-solid fa-user-tie fa-lg"></i>
-        Go to Admin Dashboard
-      </button>
-    </div>
+    <button (click)="navigateToControlPanel()" class="btn d-flex justify-content-center align-items-center gap-4" type="button">
+      <i class="fa-solid fa-user-tie fa-lg"></i>
+      Go to Admin Dashboard
+    </button>
 
-    <div class="download-btn">
-      <button (click)="downloadExcel()" class="btn d-flex align-items-center gap-3" type="button">
-        <i class="fa-solid fa-download fa-lg"></i>
-        Download Excel
-      </button>
-    </div>
+    <button (click)="downloadExcel()" class="btn d-flex justify-content-center align-items-center gap-3" type="button">
+      <i class="fa-solid fa-download fa-lg"></i>
+      Download Excel
+    </button>
   </div>
 
   <div class="mat-elevation-z8">

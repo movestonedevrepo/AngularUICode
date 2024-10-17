@@ -22,6 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MagnifyComponent } from './components/magnify/magnify.component';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
+import { MatTableResponsiveModule } from './utilities/mat-table-responsive/mat-table-responsive.module';
 import { SwiperDirective } from './utilities/swiper.directive';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     BannerComponent,
     ContactFooterComponent,
     UploadFilesComponent,
+    MatTableResponsiveModule,
   ],
   exports: [
     HeaderComponent,
@@ -67,6 +69,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     CdkMenuTrigger,
     CdkMenu,
     CdkMenuItem,
+    MatTableResponsiveModule,
   ],
 })
 export class SharedModule {}
