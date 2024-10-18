@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build",
+    "build:dev": "ng build --configuration development",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -21,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^17.0.8",
     "@angular/router": "^17.0.8",
     "ngx-colors": "^3.6.0",
+    "ngx-image-cropper": "^8.0.0",
     "rxjs": "^6.5.3",
     "swiper": "^11.0.5",
     "tslib": "2.6.2",

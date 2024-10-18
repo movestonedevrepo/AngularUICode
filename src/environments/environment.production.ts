@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   assestsBasePath: '../../../assets/',
-  baseUrl: 'http://localhost:8080',
+  baseUrl: 'https://rickshawback.onrender.com'
 };
