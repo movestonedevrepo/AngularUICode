@@ -24,6 +24,7 @@ import { MagnifyComponent } from './components/magnify/magnify.component';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { MatTableResponsiveModule } from './utilities/mat-table-responsive/mat-table-responsive.module';
 import { SwiperDirective } from './utilities/swiper.directive';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     ContactFooterComponent,
     UploadFilesComponent,
     MatTableResponsiveModule,
+    MatSelectModule
   ],
   exports: [
     HeaderComponent,
@@ -66,6 +68,7 @@ import { SwiperDirective } from './utilities/swiper.directive';
     RouterModule,
     HttpClientModule,
     MatCardModule,
+    MatSelectModule,
     CdkMenuTrigger,
     CdkMenu,
     CdkMenuItem,

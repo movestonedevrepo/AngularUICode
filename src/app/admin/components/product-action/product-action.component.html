@@ -64,6 +64,19 @@
         </div>
         }
         }
+        <div class="admin-form">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <mat-form-field appearance="outline" class="mat-input">
+              <mat-select disableRipple id="category" placeholder="Select Product Category">
+                @for (category of categories; track $index) {
+                  <mat-option [value]="category.id">{{category.name}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        
       </form>
       }
       <div class="buttons-container mt-6">

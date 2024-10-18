@@ -4164,6 +4164,16 @@ select {
   }
 }
 
+@media (max-width: 400px) {
+  .admin-product-action {
+    .color-section {
+      .color-container {
+        grid-template-columns: repeat(2, minmax(50px, 1fr));
+      }
+    }
+  }
+}
+
 @media (max-width: 380px) {
   .home h1 {
     font-size: 4rem;
@@ -4211,13 +4221,5 @@ select {
 
   .contact-section .contact-view .about-section {
     padding: 2rem;
-  }
-
-  .admin-product-action {
-    .color-section {
-      .color-container {
-        grid-template-columns: repeat(2, minmax(50px, 1fr));
-      }
-    }
   }
 }

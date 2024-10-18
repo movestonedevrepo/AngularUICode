@@ -209,6 +209,7 @@ export const CONSTANTS = {
     visible: true,
     createdAt: true,
     updatedAt: true,
+    category: true
   },
 
   ABOUT_US: [

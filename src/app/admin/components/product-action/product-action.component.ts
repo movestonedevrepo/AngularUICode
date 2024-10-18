@@ -43,6 +43,7 @@ export class ProductActionComponent implements OnInit {
   imagesByColor!: Array<any>;
   prodColors!: string;
   isColorEditable: boolean = false;
+  categories = CONSTANTS.productItems;
 
   constructor(
     private activatedRoute: ActivatedRoute,
