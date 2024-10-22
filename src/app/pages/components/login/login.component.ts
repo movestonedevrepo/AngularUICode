@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { WebService } from 'src/app/shared/services/web.service';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +34,7 @@ export class LoginComponent {
     this.dialogRef.close(result);
   }
 
-  onLogin() {
+  onLogin(): void {
     const authPayload = {
       userID: this.loginForm?.value?.email,
       password: this.loginForm?.value?.password,
