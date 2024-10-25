@@ -32,7 +32,6 @@
           },
           "configurations": {
             "production": {
-              "index": "src/index-prod.html",
               "buildOptimizer": true,
               "aot": true,
               "optimization": true,
@@ -53,6 +52,10 @@
                   "maximumError": "4kb"
                 }
               ],
+              "index": {
+                "input": "src/index-prod.html",
+                "output": "index.html"
+              },
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
