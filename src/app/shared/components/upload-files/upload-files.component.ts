@@ -1,12 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogConfig,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { DialogData } from 'src/app/models/dialog-data';
 import { environment } from 'src/environments/environment';
 import { MatDialogService } from '../../services/mat-dialog.service';
 import { ProductService } from '../../services/product.service';
+import {CustomImageCropperComponent} from '../image-cropper/image-cropper.component';
 
 @Component({
   selector: 'app-upload-files',
@@ -78,7 +83,7 @@ export class UploadFilesComponent implements OnInit {
     });
   }
 
-  handleFiles(fileList: any[]) {
+  handleFiles(fileList: any[]): void {
     for (let file of fileList) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
@@ -88,6 +93,19 @@ export class UploadFilesComponent implements OnInit {
       this.files.push(file);
       console.log(this.files);
     }
+  }
+
+  cropImage(file: any): void {
+    const imageDetails: MatDialogConfig = {
+      width: '60%',
+      height: '60%',
+      data: {
+        extras: {
+          imageBase64: file.preview,
+        },
+      } as DialogData,
+    };
+    this.dialogService.openDialog(imageDetails, CustomImageCropperComponent);
   }
 
   isImage(file: any) {
@@ -121,7 +139,7 @@ export class UploadFilesComponent implements OnInit {
     this.files.splice(index, 1);
   }
 
-  closeLoginPopup(result?: any) {
+  closeUploadPopup(result?: any) {
     this.dialogRef.close(result);
   }
 
@@ -131,7 +149,7 @@ export class UploadFilesComponent implements OnInit {
         .uploadImage(this.product.productID, this.productHexCode, this.files)
         .forEach((result: any) => {
           if (result && !result.hasError) {
-            this.closeLoginPopup(this.files);
+            this.closeUploadPopup(this.files);
           }
         });
     }

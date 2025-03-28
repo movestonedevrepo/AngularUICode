@@ -22,7 +22,7 @@
       @for (file of files; track $index) {
       <div class="file-preview-item mat-elevation-z8">
         @if (isImage(file)) {
-        <img [src]="file.preview" alt="{{ file.name }}">
+        <img [src]="file.preview" alt="{{ file.name }}" (click)="cropImage(file)">
         }
         <p>{{ file.name }}</p>
         <i class="fa-solid fa-circle-xmark cross-icon" (click)="removeFile($index)"></i>
