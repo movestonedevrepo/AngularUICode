@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ConfigPayload } from '../models/config-payload';
+import { CONFIG_DETAILS } from '../constants/config-details';
 
 export const getConfigResolver: ResolveFn<any> = (
   route: ActivatedRouteSnapshot
@@ -16,11 +17,16 @@ export const getConfigResolver: ResolveFn<any> = (
     pageName,
   };
 
-  Object.values(specificParamKeys).forEach((eachParam: string) => {
-    postBody.pageName = eachParam
-      ? `${postBody.pageName}-${eachParam}`
-      : postBody.pageName;
-  });
+  // Object.values(specificParamKeys).forEach((eachParam: string) => {
+  //   postBody.pageName = eachParam
+  //     ? `${postBody.pageName}-${eachParam}`
+  //     : postBody.pageName;
+  // });
 
-  return http.post(`${environment.baseUrl}/GetConfig`, postBody);
+  // return http.post(`${environment.baseUrl}/GetConfig`, postBody);
+
+  /**
+   * Done For Static Data Fetch
+   */
+  return of(CONFIG_DETAILS);
 };

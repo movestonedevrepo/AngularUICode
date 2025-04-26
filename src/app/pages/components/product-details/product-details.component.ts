@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CONSTANTS } from 'src/app/constants/constants';
+import { PRODUCT_IMAGES } from 'src/app/constants/product-images';
 import { DialogData } from 'src/app/models/dialog-data';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { MatDialogService } from 'src/app/shared/services/mat-dialog.service';
@@ -97,7 +98,17 @@ export class ProductDetailsComponent implements OnInit {
       productID,
       productColorHex,
     };
-    return this.http.post(`${environment.baseUrl}/getImageByColor`, postBody);
+    // return this.http.post(`${environment.baseUrl}/getImageByColor`, postBody);
+
+    /**
+     * Done For Static Data Fetch
+     */
+    return of({
+      responsePayload: PRODUCT_IMAGES.find(
+        (ele) =>
+          ele.productID === productID && ele.productColorHex === productColorHex
+      ),
+    });
   }
 
   colorOption(index: number): string {
